@@ -1,0 +1,68 @@
+{
+    "name": "lara-zeus/sky",
+    "description": "simple packages to create and manage forms for your users",
+    "keywords": [
+        "laravel",
+        "lara-zeus",
+        "sky",
+        "cms",
+        "pages",
+        "menu",
+        "news"
+    ],
+    "homepage": "https://larazeus.com",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Ashraf Monshi",
+            "email": "wh7r.com@gmail.com",
+            "role": "Owner"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "ext-json": "*",
+        "calebporzio/sushi": "^2.4",
+        "filament/filament": "^2.10",
+        "filament/spatie-laravel-media-library-plugin": "^2.0",
+        "filament/spatie-laravel-tags-plugin": "^2.0",
+        "filament/spatie-laravel-translatable-plugin": "^2.0",
+        "jgrossi/corcel": "^6.0",
+        "livewire/livewire": "^2.10",
+        "mohamedsabil83/filament-forms-tinyeditor": "^1.5",
+        "spatie/laravel-sluggable": "^3.3"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^7.0",
+        "phpunit/phpunit": "^9.5.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "LaraZeus\\Sky\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LaraZeus\\Sky\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaraZeus\\Sky\\SkyServiceProvider"
+            ],
+            "aliases": {
+                "Sky": "LaraZeus\\Sky\\SkyFacade"
+            }
+        }
+    }
+}

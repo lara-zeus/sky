@@ -31,7 +31,10 @@
         "jgrossi/corcel": "^6.0",
         "livewire/livewire": "^2.10",
         "mohamedsabil83/filament-forms-tinyeditor": "^1.5",
-        "spatie/laravel-sluggable": "^3.3"
+        "spatie/laravel-medialibrary": "^10.0.0",
+        "spatie/laravel-sluggable": "^3.3",
+        "spatie/laravel-tags": "^4.0",
+        "lara-zeus/core": "dev-main"
     },
     "require-dev": {
         "orchestra/testbench": "^7.0",

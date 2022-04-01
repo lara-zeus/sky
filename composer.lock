@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "533d39a72e5794f66d54affa2c653c33",
+    "content-hash": "fb7d6ecd35ec2ed4b07c5af04df6f8d3",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -1051,16 +1051,16 @@
         },
         {
             "name": "filament/spatie-laravel-media-library-plugin",
-            "version": "v2.10.10",
+            "version": "v2.10.41",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-filament/spatie-laravel-media-library-plugin.git",
-                "reference": "844fdf49bc75d1dfb58277e5dc36223117a35ce2"
+                "reference": "9daf78b9a373ed4f59219388849dba928cc44c4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-filament/spatie-laravel-media-library-plugin/zipball/844fdf49bc75d1dfb58277e5dc36223117a35ce2",
-                "reference": "844fdf49bc75d1dfb58277e5dc36223117a35ce2",
+                "url": "https://api.github.com/repos/laravel-filament/spatie-laravel-media-library-plugin/zipball/9daf78b9a373ed4f59219388849dba928cc44c4a",
+                "reference": "9daf78b9a373ed4f59219388849dba928cc44c4a",
                 "shasum": ""
             },
             "require": {
@@ -1084,7 +1084,7 @@
                 "issues": "https://github.com/laravel-filament/filament/issues",
                 "source": "https://github.com/laravel-filament/filament"
             },
-            "time": "2022-02-13T11:01:30+00:00"
+            "time": "2022-02-24T21:09:46+00:00"
         },
         {
             "name": "filament/spatie-laravel-tags-plugin",

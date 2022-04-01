@@ -2,17 +2,16 @@
 
 namespace LaraZeus\Sky\Filament\Resources;
 
-use Filament\Forms\Components\TextInput;
-use Filament\Tables\Columns\TextColumn;
-use Illuminate\Support\Str;
-use LaraZeus\Sky\Filament\Resources\TagResource\Pages;
+use Closure;
 use Filament\Forms;
+use Filament\Forms\Components\TextInput;
+use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
-use Filament\Tables;
-use Filament\Resources\Concerns\Translatable;
-use Closure;
+use Filament\Tables\Columns\TextColumn;
+use Illuminate\Support\Str;
+use LaraZeus\Sky\Filament\Resources\TagResource\Pages;
 use LaraZeus\Sky\Models\Tag;
 
 class TagResource extends Resource
@@ -34,6 +33,11 @@ class TagResource extends Resource
                         $set('slug', Str::slug($state));
                     }),
                 TextInput::make('slug')->required()->maxLength(255),
+                Forms\Components\Select::make('type')
+                    ->options([
+                        'tag' => 'Tag',
+                        'category' => 'Category',
+                    ]),
             ]);
     }
 
@@ -69,6 +73,6 @@ class TagResource extends Resource
 
     public static function getTranslatableLocales(): array
     {
-        return ['en', 'es'];
+        return ['en', 'ar'];
     }
 }

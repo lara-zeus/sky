@@ -53,11 +53,16 @@ class PostResource extends Resource
                         Textarea::make('description')->maxLength(255),
                         TextInput::make('slug'),
                         SpatieTagsInput::make('tags')->type('tag'),
+                        SpatieTagsInput::make('category')->type('category'),
                         TextInput::make('user_id')->required(),
                         TextInput::make('parent_id'),
+                        TextInput::make('ordering')->integer(),
+                        TextInput::make('status'),
+                        TextInput::make('password'),
                         SpatieMediaLibraryFileUpload::make('featured_image')->collection('posts'),
                         //FileUpload::make('featured_image'),
                         DateTimePicker::make('published_at'),
+                        DateTimePicker::make('sticky_until'),
                         Hidden::make('post_type')->default('page'),
                     ])
                     ->columnSpan(1)

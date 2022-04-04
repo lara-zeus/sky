@@ -7,8 +7,9 @@ use LaraZeus\Sky\Http\Controllers\HomeController;
     Route::prefix(config('zeus-sky.path'))
         ->middleware(config('zeus-sky.middleware'))
         ->group(function () {
-            Route::get('/', [HomeController::class,'index'])->name('blogs');
-            Route::get('/{post:slug}', [HomeController::class,'show'])->name('post');
+            Route::get('/', \LaraZeus\Sky\Http\Livewire\Posts::class)->name('blogs');
+            Route::get('/{post:slug}', \LaraZeus\Sky\Http\Livewire\Post::class)->name('post');
+
 
             Route::get('cat/{slug}', [HomeController::class, 'cat']);
             Route::get('tag/{slug}', [HomeController::class, 'tag']);

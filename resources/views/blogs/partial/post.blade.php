@@ -1,5 +1,5 @@
 <div class="mt-6">
-    <div class="max-w-4xl px-6 pb-6 mx-auto bg-white rounded-[2rem] rounded-bl-none rounded-tr-none shadow-md">
+    <div class="px-6 pb-6 mx-auto bg-white rounded-[2rem] rounded-bl-none rounded-tr-none shadow-md">
         <div class="flex items-center justify-between">
             <span class="font-light text-sm text-gray-600">{{ optional($post->published_at)->diffForHumans() ?? '' }}</span>
             <div>

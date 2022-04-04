@@ -1,6 +1,6 @@
-<div class="px-8 my-4">
-    <h1 class="mb-4 text-xl font-bold text-gray-700">Recent Post</h1>
-    <div class="flex flex-col gap-4 max-w-sm px-4 py-6 mx-auto bg-white rounded-lg shadow-md shadow-secondary-600/50">
+<div class="my-4">
+    <h4 class="mb-4 text-xl font-bold text-gray-700">Recent Post</h4>
+    <div class="flex flex-col gap-4 max-w-sm px-4 py-6 mx-auto bg-white rounded-[2rem] ltr:rounded-br-none rtl:rounded-bl-none shadow-md shadow-secondary-600/50">
         @foreach($recent as $post)
             <a href="{{ route('post',$post->slug) }}">
                 <div class="flex space-x-3 rtl:space-x-reverse">

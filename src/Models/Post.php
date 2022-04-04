@@ -73,6 +73,7 @@ class Post extends Model implements HasMedia
     public function scopeNotSticky($query)
     {
         $query->whereDate('sticky_until', '<=', now())
+            ->orWhereNull('sticky_until')
             ->whereDate('published_at', '<=', now());
     }
 

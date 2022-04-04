@@ -6,5 +6,7 @@ return [
     'prefix' => '/',
     'path' => 'blog',
 
+    'layout' => 'zeus::components.layouts.app',
+
     'middleware' => ['web'],
 ];

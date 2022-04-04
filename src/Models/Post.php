@@ -2,6 +2,7 @@
 
 namespace LaraZeus\Sky\Models;
 
+use Database\Factories\PostFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -41,7 +42,12 @@ class Post extends Model implements HasMedia
      */
     protected static function newFactory()
     {
-        return \Database\Factories\PostFactory::new();
+        return PostFactory::new();
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 
     protected function statusDesc(): Attribute
@@ -55,5 +61,28 @@ class Post extends Model implements HasMedia
     public function auther()
     {
         return $this->belongsTo(config('auth.providers.users.model'), 'user_id', 'id');
+    }
+
+    public function scopeSticky($query)
+    {
+        $query->whereNotNull('sticky_until')
+            ->whereDate('sticky_until', '>=', now())
+            ->whereDate('published_at', '<=', now());
+    }
+
+    public function scopeNotSticky($query)
+    {
+        $query->whereDate('sticky_until', '<=', now())
+            ->whereDate('published_at', '<=', now());
+    }
+
+    public function scopePublished($query)
+    {
+        $query->whereDate('published_at', '<=', now());
+    }
+
+    public function scopeRelated($query, $post)
+    {
+        $query->withAnyTags($post->tags->pluck('name')->toArray(),'category');
     }
 }

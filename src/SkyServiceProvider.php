@@ -12,7 +12,6 @@ class SkyServiceProvider extends PluginServiceProvider
 {
     public static string $name = 'zeus-sky';
 
-    // art vendor:publish --provider="LaraZeus\Sky\SkyServiceProvider"
     public function configurePackage(Package $package): void
     {
         parent::configurePackage($package);

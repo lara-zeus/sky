@@ -1,26 +1,28 @@
-<div class="w-full mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
-    <img class="object-cover w-full h-64" src="{{ $post->getFirstMediaUrl('posts') ?? 'https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60' }}" alt="Article">
-
-    <div class="p-6">
-        <div>
-            <span class="text-xs font-medium text-blue-600 uppercase dark:text-blue-400">
-                {{ $post->tags->where('type','category')->first()->name }}
-            </span>
-            <a href="#" class="block mt-2 text-2xl font-semibold text-gray-800 transition-colors duration-200 transform dark:text-white hover:text-gray-600 hover:underline">
+<div class="mt-6">
+    <div class="max-w-4xl px-6 pb-6 mx-auto bg-white rounded-[2rem] rounded-bl-none rounded-tr-none shadow-md">
+        <div class="flex items-center justify-between">
+            <span class="font-light text-sm text-gray-600">{{ optional($post->published_at)->diffForHumans() ?? '' }}</span>
+            <div>
+                @unless ($post->tags->isEmpty())
+                    @each('zeus-sky::components.tag', $post->tags->where('type','category'), 'tag')
+                @endunless
+            </div>
+        </div>
+        <div class="mt-2">
+            <a href="{{ route('post',$post->slug) }}" class="text-2xl md:text-3xl font-bold text-gray-700 hover:underline">
                 {{ $post->title ?? '' }}
             </a>
-            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            <p class="mt-2 text-gray-600">
                 {{ $post->description ?? '' }}
             </p>
         </div>
-
-        <div class="mt-4">
-            <div class="flex items-center">
-                <div class="flex items-center">
-                    <img class="object-cover h-10 rounded-full" src="{{ \Filament\Facades\Filament::getUserAvatarUrl($post->auther) }}" alt="Avatar">
-                    <a href="#" class="mx-2 font-semibold text-gray-700 dark:text-gray-200">{{ $post->auther->name ?? '' }}</a>
-                </div>
-                <span class="mx-1 text-xs text-gray-600 dark:text-gray-300">{{ optional($post->published_at)->diffForHumans() ?? '' }}</span>
+        <div class="flex items-center justify-between mt-4">
+            <a href="{{ route('post',$post->slug) }}" class="text-blue-500 hover:underline">Read more</a>
+            <div>
+                <a class="flex items-center gap-2">
+                    <img src="{{ \Filament\Facades\Filament::getUserAvatarUrl($post->auther) }}" alt="avatar" class="hidden object-cover w-8 h-8 rounded-full sm:block">
+                    <p class="text-gray-700 hover:underline">{{ $post->auther->name ?? '' }}</p>
+                </a>
             </div>
         </div>
     </div>

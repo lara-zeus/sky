@@ -4,8 +4,69 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fb7d6ecd35ec2ed4b07c5af04df6f8d3",
+    "content-hash": "a486786d850b4300b2f51d7c2e9b2972",
     "packages": [
+        {
+            "name": "3x1io/filament-browser",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/3x1io/filament-browser.git",
+                "reference": "ffaf3fa3f00c0938829741d15b17bbc99d6b8c23"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/3x1io/filament-browser/zipball/ffaf3fa3f00c0938829741d15b17bbc99d6b8c23",
+                "reference": "ffaf3fa3f00c0938829741d15b17bbc99d6b8c23",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^2.9",
+                "php": "^8.0",
+                "spatie/laravel-package-tools": "^1.10"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "io3x1\\FilamentBrowser\\FilamentBrowserProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "io3x1\\FilamentBrowser\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "3x1",
+                    "email": "info@3x1.io",
+                    "role": "CEO"
+                }
+            ],
+            "description": "File & Folders & Media Browser With Code Editor",
+            "homepage": "https://3x1.io",
+            "keywords": [
+                ".env editor",
+                "browser",
+                "code",
+                "editor",
+                "filament",
+                "file",
+                "laravel",
+                "ui"
+            ],
+            "support": {
+                "issues": "https://github.com/3x1io/filament-browser/issues",
+                "source": "https://github.com/3x1io/filament-browser/tree/v1.0"
+            },
+            "time": "2022-04-02T19:02:03+00:00"
+        },
         {
             "name": "akaunting/laravel-money",
             "version": "2.0.1",
@@ -389,6 +450,76 @@
                 }
             ],
             "time": "2022-01-18T22:48:40+00:00"
+        },
+        {
+            "name": "codeat3/blade-iconpark",
+            "version": "1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codeat3/blade-iconpark.git",
+                "reference": "f241731d133dadcc276f0e266bea59576a0eff09"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codeat3/blade-iconpark/zipball/f241731d133dadcc276f0e266bea59576a0eff09",
+                "reference": "f241731d133dadcc276f0e266bea59576a0eff09",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.1",
+                "illuminate/support": "^8.0|^9.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "codeat3/phpcs-styles": "^1.0",
+                "orchestra/testbench": "^6.0|^7.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Codeat3\\BladeIconpark\\BladeIconparkServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Codeat3\\BladeIconpark\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Swapnil Sarwe",
+                    "homepage": "https://swapnilsarwe.com"
+                },
+                {
+                    "name": "Dries Vints",
+                    "homepage": "https://driesvints.com"
+                }
+            ],
+            "description": "A package to easily make use of \"Icon Park Icons\" in your Laravel Blade views. ",
+            "homepage": "https://github.com/codeat3/blade-iconpark",
+            "keywords": [
+                "blade",
+                "iconpark",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/codeat3/blade-iconpark/issues",
+                "source": "https://github.com/codeat3/blade-iconpark/tree/1.4.1"
+            },
+            "funding": [
+                {
+                    "url": "https://www.buymeacoffee.com/swapnilsarwe",
+                    "type": "custom"
+                }
+            ],
+            "time": "2022-02-04T11:24:01+00:00"
         },
         {
             "name": "danharrin/date-format-converter",
@@ -1547,6 +1678,81 @@
                 "source": "https://github.com/corcel/corcel/tree/v6.0.0"
             },
             "time": "2022-02-13T21:33:57+00:00"
+        },
+        {
+            "name": "lara-zeus/core",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lara-zeus/core.git",
+                "reference": "ac410674e3a53fa2b00e024cbfcdfd57d6b4709d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lara-zeus/core/zipball/ac410674e3a53fa2b00e024cbfcdfd57d6b4709d",
+                "reference": "ac410674e3a53fa2b00e024cbfcdfd57d6b4709d",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-heroicons": "^1.3",
+                "blade-ui-kit/blade-icons": "^1.2",
+                "codeat3/blade-iconpark": "^1.4",
+                "filament/filament": "^2.0",
+                "illuminate/support": "^8.0 || ^9.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0 || ^7.0",
+                "phpunit/phpunit": "^9.5.10"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "LaraZeus\\Core\\CoreServiceProvider"
+                    ],
+                    "aliases": {
+                        "Core": "LaraZeus\\Core\\CoreFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LaraZeus\\Core\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ashraf Monshi",
+                    "email": "wh7r.com@gmail.com",
+                    "role": "Owner"
+                }
+            ],
+            "description": "the core for zeus packages",
+            "homepage": "https://github.com/lara-zeus",
+            "keywords": [
+                "contact",
+                "core",
+                "form",
+                "lara-zeus",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/lara-zeus/core/issues",
+                "source": "https://github.com/lara-zeus/core/tree/main"
+            },
+            "funding": [
+                {
+                    "url": "https://www.patreon.com/atm_code",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2022-04-01T02:01:47+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3412,6 +3618,78 @@
                 }
             ],
             "time": "2021-09-25T23:10:38+00:00"
+        },
+        {
+            "name": "rvxlab/filament-colorpicker",
+            "version": "1.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RVxLab/filament-colorpicker.git",
+                "reference": "ee8df12170d027b6100c3a6a8603d4d7a7d11d7c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RVxLab/filament-colorpicker/zipball/ee8df12170d027b6100c3a6a8603d4d7a7d11d7c",
+                "reference": "ee8df12170d027b6100c3a6a8603d4d7a7d11d7c",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^2.0",
+                "illuminate/contracts": "^8.71|^9.0",
+                "myclabs/php-enum": "^1.8",
+                "php": "^8.0",
+                "spatie/laravel-package-tools": "^1.4.3"
+            },
+            "require-dev": {
+                "brianium/paratest": "^6.2",
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "nunomaduro/collision": "^5|^6",
+                "nunomaduro/larastan": "^1.0",
+                "orchestra/testbench": "^6.15|^7.0",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpunit/phpunit": "^9.3",
+                "roave/security-advisories": "dev-latest",
+                "spatie/laravel-ray": "^1.23",
+                "symfony/console": "^5|~6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "RVxLab\\FilamentColorPicker\\FilamentColorPickerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "RVxLab\\FilamentColorPicker\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "RVxLab",
+                    "email": "richard@rvx.works",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A color picker package for Laravel Filament",
+            "homepage": "https://github.com/rvxlab/filament-colorpicker",
+            "keywords": [
+                "colorpicker",
+                "filament",
+                "laravel",
+                "vanilla-picker"
+            ],
+            "support": {
+                "issues": "https://github.com/RVxLab/filament-colorpicker/issues",
+                "source": "https://github.com/RVxLab/filament-colorpicker/tree/1.3.3"
+            },
+            "time": "2022-03-28T21:38:58+00:00"
         },
         {
             "name": "spatie/eloquent-sortable",
@@ -9447,7 +9725,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "lara-zeus/core": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

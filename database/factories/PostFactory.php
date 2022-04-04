@@ -18,12 +18,14 @@ class PostFactory extends Factory
     {
         return [
             'user_id' => 1,
-            'title' => $this->faker->title,
+            'title' => $this->faker->word,
             'slug' => $this->faker->slug(2),
             'parent_id' => 0,
             'description' => $this->faker->sentence,
             'content' => $this->faker->sentence,
+            'published_at' => now(),
             'post_type' => 'page',
+            'tags' => $this->faker->randomElement([['dev'], ['talk'], ['laravel']]),
         ];
     }
 }

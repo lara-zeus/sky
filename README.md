@@ -45,7 +45,8 @@ php artisan vendor:publish --provider="Spatie\Tags\TagsServiceProvider" --tag="t
 php artisan vendor:publish --provider="Spatie\MediaLibrary\MediaLibraryServiceProvider" --tag="migrations"
 
 php artisan vendor:publish --tag="filament-forms-tinyeditor-assets"
-
+php artisan vendor:publish --tag="filament-browser-js"
+php artisan vendor:publish --tag=filament-colorpicker-views
 ```
 
 ## Usage

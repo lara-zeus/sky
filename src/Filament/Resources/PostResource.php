@@ -4,8 +4,10 @@ namespace LaraZeus\Sky\Filament\Resources;
 
 use Closure;
 use Filament\Forms;
-use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\SpatieTagsInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -19,8 +21,6 @@ use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\PostResource\Pages;
 use LaraZeus\Sky\Models\Post;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
-use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
-use Filament\Forms\Components\DateTimePicker;
 
 class PostResource extends Resource
 {
@@ -55,15 +55,21 @@ class PostResource extends Resource
                         SpatieTagsInput::make('tags')->type('tag'),
                         SpatieTagsInput::make('category')->type('category'),
                         TextInput::make('user_id')->required(),
-                        TextInput::make('parent_id'),
+                        Select::make('parent_id')->options(Post::wherePostType('page')->pluck('title', 'id')),
                         TextInput::make('ordering')->integer(),
-                        TextInput::make('status'),
+                        Select::make('status')->default('publish')
+                            ->options([
+                                'publish' => 'publish',
+                            ]),
                         TextInput::make('password'),
                         SpatieMediaLibraryFileUpload::make('featured_image')->collection('posts'),
-                        //FileUpload::make('featured_image'),
                         DateTimePicker::make('published_at'),
                         DateTimePicker::make('sticky_until'),
-                        Hidden::make('post_type')->default('page'),
+                        Select::make('post_type')->default('post')
+                            ->options([
+                                'page' => 'Page',
+                                'post' => 'Post',
+                            ]),
                     ])
                     ->columnSpan(1)
                     ->collapsible(),
@@ -88,7 +94,7 @@ class PostResource extends Resource
                 SpatieTagsColumn::make('tags')->type('tag'),
                 SpatieTagsColumn::make('category')->label('category')->type('category'),
             ])
-            ->defaultSort('id','desc')
+            ->defaultSort('id', 'desc')
             ->filters([
                 //
             ]);

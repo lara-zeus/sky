@@ -4,10 +4,10 @@
         <ul>
             @foreach($tags as $tag)
                 <li class="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
-                    <a href="{{ url('/blog/tag/'.$tag->slug) }}" class="flex items-center text-gray-600 cursor-pointer">
+                    <a href="{{ route('tags',['category',$tag->slug]) }}" class="flex items-center text-gray-600 cursor-pointer">
                         {{ $tag->name }}
-                        <span class="text-gray-500 ml-auto">{{ $tag->posts_count }} Post</span>
-                        <i class='text-gray-500 bx bx-right-arrow-alt ml-1'></i>
+                        <span class="text-gray-500 ltr:ml-auto rtl:mr-auto">{{ $tag->posts_count }} Post</span>
+                        <i class='text-gray-500 bx bx-right-arrow-alt ltr:ml-1 rtl:mr-1'></i>
                     </a>
                 </li>
             @endforeach

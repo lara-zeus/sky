@@ -12,7 +12,7 @@ use Spatie\Tags\HasTags;
 
 class Post extends Model implements HasMedia
 {
-    use HasFactory, HasTags, InteractsWithMedia;
+    use HasFactory, HasTags, InteractsWithMedia, PostScope;
 
     protected $fillable = [
         'title',
@@ -61,29 +61,5 @@ class Post extends Model implements HasMedia
     public function auther()
     {
         return $this->belongsTo(config('auth.providers.users.model'), 'user_id', 'id');
-    }
-
-    public function scopeSticky($query)
-    {
-        $query->whereNotNull('sticky_until')
-            ->whereDate('sticky_until', '>=', now())
-            ->whereDate('published_at', '<=', now());
-    }
-
-    public function scopeNotSticky($query)
-    {
-        $query->whereDate('sticky_until', '<=', now())
-            ->orWhereNull('sticky_until')
-            ->whereDate('published_at', '<=', now());
-    }
-
-    public function scopePublished($query)
-    {
-        $query->whereDate('published_at', '<=', now());
-    }
-
-    public function scopeRelated($query, $post)
-    {
-        $query->withAnyTags($post->tags->pluck('name')->toArray(),'category');
     }
 }

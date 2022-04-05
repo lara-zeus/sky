@@ -13,7 +13,7 @@ class Posts extends Component
     {
         return view('zeus-sky::blogs.list')
             ->with([
-                'posts' => Post::NotSticky()->get(),
+                'posts' => Post::NotSticky()->orderBy('published_at','desc')->get(),
                 'tags' => Tag::withCount('posts')->where('type', 'category')->get(),
                 'stickies' => Post::sticky()->get(),
                 'recent' => Post::take(5)->get(),

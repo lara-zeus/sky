@@ -16,6 +16,14 @@ class Post extends Component
 
     public function render()
     {
+        if(!$this->post->getMedia('posts')->isEmpty()){
+            seo()->image($this->post->getFirstMediaUrl('posts'));
+        }
+        seo()
+            ->title($this->post->title)
+            ->description($this->post->description)
+            ->twitter();
+
         return view('zeus-sky::blogs.show')
             ->with('post', $this->post)
             ->with('related', postModel::related($this->post)->take(4)->get())

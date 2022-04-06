@@ -12,11 +12,18 @@ class Page extends Component
     public function mount($slug)
     {
         $this->page = Post::whereSlug($slug)->page()->firstOrFail();
-        //$children = AtmPost::with(['thumbnail', 'attachment'])->where('post_parent', $page->ID)->where('post_type', 'page')->get();
     }
 
     public function render()
     {
+        if(!$this->post->getMedia('posts')->isEmpty()){
+            seo()->image($this->post->getFirstMediaUrl('posts'));
+        }
+        seo()
+            ->title($this->post->title)
+            ->description($this->post->description)
+            ->twitter();
+
         return view('zeus-sky::blogs.show')
             ->with([
                 'post' => $this->page,

@@ -16,19 +16,19 @@ class Page extends Component
 
     public function render()
     {
-        if(!$this->post->getMedia('posts')->isEmpty()){
-            seo()->image($this->post->getFirstMediaUrl('posts'));
+        if(!$this->page->getMedia('pages')->isEmpty()){
+            seo()->image($this->page->getFirstMediaUrl('pages'));
         }
         seo()
-            ->title($this->post->title)
-            ->description($this->post->description)
+            ->title($this->page->title)
+            ->description($this->page->description)
             ->twitter();
 
-        return view('zeus-sky::blogs.show')
+        return view('zeus-sky::themes.'.config('zeus-sky.theme').'.page')
             ->with([
                 'post' => $this->page,
-                'related' => Post::where('parent_id',$this->page->id)->get(),
+                'children' => Post::where('parent_id',$this->page->id)->get(),
             ])
-            ->layout(config('zeus-sky.layout'));
+            ->layout('zeus-sky::themes.'.config('zeus-sky.theme').'.layouts.app');
     }
 }

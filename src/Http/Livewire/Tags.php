@@ -26,10 +26,10 @@ class Tags extends Component
             ->description('Show All posts in '.$this->tag->name)
             ->twitter();
 
-        return view('zeus-sky::blogs.category')
+        return view('zeus-sky::themes.'.config('zeus-sky.theme').'.category')
             ->with([
                 'posts' => Post::withAllTags([$this->slug], $this->type)->get(),
             ])
-            ->layout(config('zeus-sky.layout'));
+            ->layout('zeus-sky::themes.'.config('zeus-sky.theme').'.layouts.app');
     }
 }

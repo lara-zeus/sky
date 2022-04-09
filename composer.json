@@ -31,15 +31,25 @@
         "filament/spatie-laravel-media-library-plugin": "^2.0",
         "filament/spatie-laravel-tags-plugin": "^2.0",
         "filament/spatie-laravel-translatable-plugin": "^2.0",
-        "lara-zeus/core": "dev-main",
         "mohamedsabil83/filament-forms-tinyeditor": "^1.5",
         "rvxlab/filament-colorpicker": "^1.3",
         "spatie/laravel-medialibrary": "^10.0.0",
         "spatie/laravel-sluggable": "^3.3",
-        "spatie/laravel-tags": "^4.0"
+        "spatie/laravel-tags": "^4.0",
+
+
+        "archtechx/laravel-seo": "^0.4.0",
+        "blade-ui-kit/blade-heroicons": "^1.3",
+        "blade-ui-kit/blade-icons": "^1.2",
+        "codeat3/blade-clarity-icons": "^1.7",
+        "codeat3/blade-iconpark": "^1.4",
+
+        "filament/filament": "^2.0"
+
+
     },
     "require-dev": {
-        "orchestra/testbench": "^7.0",
+        "orchestra/testbench": "^6.0 || ^7.0",
         "phpunit/phpunit": "^9.5.10"
     },
     "autoload": {

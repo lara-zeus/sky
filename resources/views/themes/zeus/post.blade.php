@@ -9,7 +9,7 @@
             <span class="font-light text-gray-600">{{ optional($post->published_at)->diffForHumans() ?? '' }}</span>
             <div>
                 @unless ($post->tags->isEmpty())
-                    @each('zeus-sky::components.tag', $post->tags->where('type','category'), 'tag')
+                    @each('zeus-sky::themes.'.config('zeus-sky.theme').'.partial.tag', $post->tags->where('type','category'), 'tag')
                 @endunless
             </div>
         </div>
@@ -42,7 +42,7 @@
 
         <div class="grid grid-cols-3 gap-4">
             @foreach($related as $post)
-                @include('zeus-sky::blogs.partial.related')
+                @include('zeus-sky::themes.'.config('zeus-sky.theme').'.partial.related')
             @endforeach
         </div>
     </div>

@@ -16,7 +16,7 @@ class Tags extends Component
     {
         $this->type = $type;
         $this->slug = $slug;
-        $this->tag = Tag::findBySlug($slug,$type);
+        $this->tag = Tag::findBySlug($slug, $type);
     }
 
     public function render()
@@ -30,6 +30,6 @@ class Tags extends Component
             ->with([
                 'posts' => Post::withAllTags([$this->slug], $this->type)->get(),
             ])
-            ->layout('zeus-sky::themes.'.config('zeus-sky.theme').'.layouts.app');
+            ->layout(config('zeus-sky.layout'));
     }
 }

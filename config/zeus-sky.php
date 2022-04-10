@@ -5,8 +5,6 @@ return [
 
     'path' => 'blog',
 
-    'layout' => 'zeus-sky::components.layouts.app',
-
     'middleware' => ['web'],
 
     'site_title' => config('app.name', 'Laravel').' | '.'Blogs',
@@ -14,6 +12,8 @@ return [
     'site_description' => 'All about '.config('app.name', 'Laravel').' Blogs',
 
     'site_color' => '#F5F5F4',
+
+    'layout' => 'zeus::components.app',
 
     'theme' => 'zeus',
 ];

@@ -18,6 +18,6 @@ class Posts extends Component
                 'stickies' => Post::sticky()->get(),
                 'recent' => Post::take(5)->get(),
             ])
-            ->layout('zeus-sky::themes.'.config('zeus-sky.theme').'.layouts.app');
+            ->layout(config('zeus-sky.layout'));
     }
 }

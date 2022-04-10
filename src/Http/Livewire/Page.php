@@ -16,7 +16,7 @@ class Page extends Component
 
     public function render()
     {
-        if(!$this->page->getMedia('pages')->isEmpty()){
+        if (!$this->page->getMedia('pages')->isEmpty()) {
             seo()->image($this->page->getFirstMediaUrl('pages'));
         }
         seo()
@@ -27,8 +27,8 @@ class Page extends Component
         return view('zeus-sky::themes.'.config('zeus-sky.theme').'.page')
             ->with([
                 'post' => $this->page,
-                'children' => Post::where('parent_id',$this->page->id)->get(),
+                'children' => Post::where('parent_id', $this->page->id)->get(),
             ])
-            ->layout('zeus-sky::themes.'.config('zeus-sky.theme').'.layouts.app');
+            ->layout(config('zeus-sky.layout'));
     }
 }

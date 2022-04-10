@@ -4,6 +4,7 @@ namespace LaraZeus\Sky\Filament\Resources;
 
 use Closure;
 use Filament\Forms;
+use Filament\Forms\Components\Card;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
@@ -34,7 +35,7 @@ class PostResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Card::make()
+                Card::make()
                     ->columnSpan(2)
                     ->schema([
                         TextInput::make('title')
@@ -82,7 +83,7 @@ class PostResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')->sortable(),
-                ViewColumn::make('titleCard')->label('Title')->sortable(['title'])->view('zeus-sky::columns.post-title'),
+                ViewColumn::make('titleCard')->label('Title')->sortable(['title'])->view('zeus-sky::filament.columns.post-title'),
 
                 //TextColumn::make('user.name'),
                 //TextColumn::make('parent_id'),

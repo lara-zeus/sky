@@ -20,7 +20,7 @@
                     @endunless
                 </div>
                 <div class="w-1/4">
-                    @include('zeus-sky::themes.'.config('zeus-sky.theme').'.layouts.sidebar')
+                    @include('zeus-sky::themes.'.config('zeus-sky.theme').'.partial.sidebar')
                 </div>
             </div>
         </div>

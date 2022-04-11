@@ -11,14 +11,14 @@ class PostStatus extends Model
     public function getRows()
     {
         return [
-            ['name' => 'publish', 'label' => 'Publish', 'class' => 'success', 'icon' => 'heroicon-o-pencil'],
-            ['name' => 'future', 'label' => 'Future', 'class' => 'warning', 'icon' => 'heroicon-o-pencil'],
-            ['name' => 'draft', 'label' => 'Draft', 'class' => 'primary', 'icon' => 'heroicon-o-pencil'],
-            ['name' => 'auto-draft', 'label' => 'Draft', 'class' => 'primary', 'icon' => 'heroicon-o-pencil'],
-            ['name' => 'pending', 'label' => 'Pending', 'class' => 'primary', 'icon' => 'heroicon-o-pencil'],
-            ['name' => 'private', 'label' => 'Private', 'class' => 'danger', 'icon' => 'heroicon-o-pencil'],
-            ['name' => 'trash', 'label' => 'Trash', 'class' => 'danger', 'icon' => 'heroicon-o-pencil'],
-            ['name' => 'inherit', 'label' => 'inherit', 'class' => 'primary', 'icon' => 'heroicon-o-pencil'],
+            ['name' => 'publish', 'label' => __('Publish'), 'class' => 'success', 'icon' => 'heroicon-o-pencil'],
+            ['name' => 'future', 'label' => __('Future'), 'class' => 'warning', 'icon' => 'heroicon-o-pencil'],
+            ['name' => 'draft', 'label' => __('Draft'), 'class' => 'primary', 'icon' => 'heroicon-o-pencil'],
+            ['name' => 'auto-draft', 'label' => __('Auto draft'), 'class' => 'primary', 'icon' => 'heroicon-o-pencil'],
+            ['name' => 'pending', 'label' => __('Pending'), 'class' => 'primary', 'icon' => 'heroicon-o-pencil'],
+            ['name' => 'private', 'label' => __('Private'), 'class' => 'danger', 'icon' => 'heroicon-o-pencil'],
+            ['name' => 'trash', 'label' => __('Trash'), 'class' => 'danger', 'icon' => 'heroicon-o-pencil'],
+            ['name' => 'inherit', 'label' => __('Inherit'), 'class' => 'primary', 'icon' => 'heroicon-o-pencil'],
         ];
     }
 

@@ -55,13 +55,6 @@ class TagResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
     public static function getPages(): array
     {
         return [
@@ -73,6 +66,26 @@ class TagResource extends Resource
 
     public static function getTranslatableLocales(): array
     {
-        return ['en', 'ar'];
+        return config('zeus-sky.translatable_Locales');
+    }
+
+    public static function getLabel(): string
+    {
+        return __('Tag');
+    }
+
+    public static function getPluralLabel(): string
+    {
+        return __('Tags');
+    }
+
+    protected static function getNavigationLabel(): string
+    {
+        return __('Tags');
+    }
+
+    protected static function getNavigationGroup(): ?string
+    {
+        return __('CMS');
     }
 }

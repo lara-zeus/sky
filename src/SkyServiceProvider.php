@@ -4,6 +4,7 @@ namespace LaraZeus\Sky;
 
 use Filament\PluginServiceProvider;
 use Illuminate\Support\Facades\Blade;
+use LaraZeus\Sky\Filament\Resources\PageResource;
 use LaraZeus\Sky\Filament\Resources\PostResource;
 use LaraZeus\Sky\Filament\Resources\TagResource;
 use Spatie\LaravelPackageTools\Package;
@@ -32,13 +33,15 @@ class SkyServiceProvider extends PluginServiceProvider
         $package
             ->hasConfigFile()
             ->hasMigrations(['create_posts_table'])
-            ->hasRoute('web');
+            ->hasRoute('web')
+            ->hasTranslations();
     }
 
     protected function getResources(): array
     {
         return [
             PostResource::class,
+            PageResource::class,
             TagResource::class,
         ];
     }

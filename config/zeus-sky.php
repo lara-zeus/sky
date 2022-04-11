@@ -1,8 +1,9 @@
 <?php
 
 return [
-    'prefix' => '/',
-
+    /**
+     * set the default path for the blogs homepage
+     */
     'path' => 'blog',
 
     'middleware' => ['web'],
@@ -16,4 +17,6 @@ return [
     'layout' => 'zeus::components.app',
 
     'theme' => 'zeus',
+
+    'translatable_Locales' => ['en','ar'],
 ];

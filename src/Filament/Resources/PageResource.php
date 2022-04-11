@@ -22,16 +22,18 @@ use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\MultiSelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
-use LaraZeus\Sky\Filament\Resources\PostResource\Pages;
+use LaraZeus\Sky\Filament\Resources\PageResource\Pages;
 use LaraZeus\Sky\Models\Post;
 use LaraZeus\Sky\Models\PostStatus;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
-class PostResource extends Resource
+class PageResource extends Resource
 {
     protected static ?string $model = Post::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static ?string $slug = 'pages';
+
+    protected static ?string $navigationIcon = 'heroicon-o-document';
 
     public static function form(Form $form): Form
     {
@@ -56,22 +58,14 @@ class PostResource extends Resource
                         ->description(__('SEO Settings'))
                         ->schema([
                             Hidden::make('user_id'),
-                            Hidden::make('post_type')->default('post'),
+                            Hidden::make('post_type')->default('page'),
                             Textarea::make('description')
                                 ->maxLength(255)
                                 ->label(__('Description'))
                                 ->hint(__('Write an excerpt for your post')),
                             TextInput::make('slug')->required()->maxLength(255)->label(__('Post Slug')),
-                            //Select::make('parent_id')->options(Post::wherePostType('page')->pluck('title', 'id')), // todo pages only
-                            // TextInput::make('ordering')->integer(), // todo pages only
-                        ])
-                        ->collapsible(),
-
-                    Section::make(__('Tags and Categories'))
-                        ->description(__('Tags and Categories Options'))
-                        ->schema([
-                            SpatieTagsInput::make('tags')->type('tag')->label(__('Tags')),
-                            SpatieTagsInput::make('category')->type('category')->label(__('Categories')),
+                            Select::make('parent_id')->options(Post::wherePostType('page')->pluck('title', 'id'))->label(__('Parent Page')),
+                            TextInput::make('ordering')->integer()->label(__('Page Order')),
                         ])
                         ->collapsible(),
 
@@ -87,7 +81,6 @@ class PostResource extends Resource
                             TextInput::make('password')->label(__('Password'))->reactive()
                                 ->visible(fn (Closure $get): bool => $get('status') === 'private'),
                             DateTimePicker::make('published_at')->label(__('published at')),
-                            DateTimePicker::make('sticky_until')->label(__('Sticky Until')),
                         ])
                         ->collapsible(),
 
@@ -108,7 +101,7 @@ class PostResource extends Resource
                     ->label(__('Title'))
                     ->sortable(['title'])
                     ->searchable(['title'])
-                    ->view('zeus-sky::filament.columns.post-title'),
+                    ->view('zeus-sky::filament.columns.page-title'),
 
                 ViewColumn::make('status_desc')
                     ->label(__('Status'))
@@ -116,9 +109,6 @@ class PostResource extends Resource
                     ->searchable(['status'])
                     ->view('zeus-sky::filament.columns.status-desc')
                     ->tooltip(fn(Post $record): string => $record->published_at->format('Y/m/d | H:i A')),
-
-                SpatieTagsColumn::make('tags')->label(__('Post Tags'))->type('tag'),
-                SpatieTagsColumn::make('category')->label(__('Post Category'))->type('category'),
             ])
             ->defaultSort('id', 'desc')
             ->filters([
@@ -126,23 +116,6 @@ class PostResource extends Resource
 
                 Filter::make('password')->label(__('Password Protected'))
                     ->query(fn(Builder $query): Builder => $query->whereNotNull('password')),
-
-                Filter::make('sticky')->label(__('Still Sticky'))
-                    ->query(fn(Builder $query): Builder => $query->sticky()),
-
-                Filter::make('not_sticky')->label(__('Not Sticky'))
-                    ->query(fn(Builder $query): Builder => $query
-                        ->whereDate('sticky_until', '<=', now())
-                        ->orWhereNull('sticky_until')
-                    ),
-
-                Filter::make('sticky_only')->label(__('Sticky Only'))
-                    ->query(fn(Builder $query): Builder => $query
-                        ->wherePostType('post')
-                        ->whereNotNull('sticky_until')
-                    ),
-
-                MultiSelectFilter::make('tags')->relationship('tags', 'name')->label(__('Tags'))
             ]);
     }
 
@@ -157,17 +130,17 @@ class PostResource extends Resource
 
     public static function getLabel(): string
     {
-        return __('Post');
+        return __('Page');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('Posts');
+        return __('Pages');
     }
 
     protected static function getNavigationLabel(): string
     {
-        return __('Posts');
+        return __('Pages');
     }
 
     protected static function getNavigationGroup(): ?string

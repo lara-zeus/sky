@@ -30,10 +30,9 @@ use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 class PostResource extends Resource
 {
     protected static ?string $model = Post::class;
+    protected static ?string $navigationIcon = 'iconpark-docdetail-o';
 
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
-
-    public static function form(Form $form): Form
+    public static function form(Form $form) : Form
     {
         return $form
             ->schema([
@@ -62,8 +61,6 @@ class PostResource extends Resource
                                 ->label(__('Description'))
                                 ->hint(__('Write an excerpt for your post')),
                             TextInput::make('slug')->required()->maxLength(255)->label(__('Post Slug')),
-                            //Select::make('parent_id')->options(Post::wherePostType('page')->pluck('title', 'id')), // todo pages only
-                            // TextInput::make('ordering')->integer(), // todo pages only
                         ])
                         ->collapsible(),
 
@@ -85,7 +82,7 @@ class PostResource extends Resource
                                 ->reactive()
                                 ->options(PostStatus::pluck('label', 'name')),
                             TextInput::make('password')->label(__('Password'))->reactive()
-                                ->visible(fn (Closure $get): bool => $get('status') === 'private'),
+                                ->visible(fn(Closure $get) : bool => $get('status') === 'private'),
                             DateTimePicker::make('published_at')->label(__('published at')),
                             DateTimePicker::make('sticky_until')->label(__('Sticky Until')),
                         ])
@@ -100,22 +97,22 @@ class PostResource extends Resource
             ])->columns(4);
     }
 
-    public static function table(Table $table): Table
+    public static function table(Table $table) : Table
     {
         return $table
             ->columns([
                 ViewColumn::make('title_card')
                     ->label(__('Title'))
-                    ->sortable(['title'])
-                    ->searchable(['title'])
+                    ->sortable([ 'title' ])
+                    ->searchable([ 'title' ])
                     ->view('zeus-sky::filament.columns.post-title'),
 
                 ViewColumn::make('status_desc')
                     ->label(__('Status'))
-                    ->sortable(['status'])
-                    ->searchable(['status'])
+                    ->sortable([ 'status' ])
+                    ->searchable([ 'status' ])
                     ->view('zeus-sky::filament.columns.status-desc')
-                    ->tooltip(fn(Post $record): string => $record->published_at->format('Y/m/d | H:i A')),
+                    ->tooltip(fn(Post $record) : string => $record->published_at->format('Y/m/d | H:i A')),
 
                 SpatieTagsColumn::make('tags')->label(__('Post Tags'))->type('tag'),
                 SpatieTagsColumn::make('category')->label(__('Post Category'))->type('category'),
@@ -125,54 +122,53 @@ class PostResource extends Resource
                 MultiSelectFilter::make('status')->options(PostStatus::pluck('label', 'name')),
 
                 Filter::make('password')->label(__('Password Protected'))
-                    ->query(fn(Builder $query): Builder => $query->whereNotNull('password')),
+                    ->query(fn(Builder $query) : Builder => $query->whereNotNull('password')),
 
                 Filter::make('sticky')->label(__('Still Sticky'))
-                    ->query(fn(Builder $query): Builder => $query->sticky()),
+                    ->query(fn(Builder $query) : Builder => $query->sticky()),
 
                 Filter::make('not_sticky')->label(__('Not Sticky'))
-                    ->query(fn(Builder $query): Builder => $query
+                    ->query(fn(Builder $query) : Builder => $query
                         ->whereDate('sticky_until', '<=', now())
                         ->orWhereNull('sticky_until')
                     ),
 
                 Filter::make('sticky_only')->label(__('Sticky Only'))
-                    ->query(fn(Builder $query): Builder => $query
+                    ->query(fn(Builder $query) : Builder => $query
                         ->wherePostType('post')
                         ->whereNotNull('sticky_until')
                     ),
 
-                MultiSelectFilter::make('tags')->relationship('tags', 'name')->label(__('Tags'))
+                MultiSelectFilter::make('tags')->relationship('tags', 'name')->label(__('Tags')),
             ]);
     }
 
-    public static function getPages(): array
+    public static function getPages() : array
     {
         return [
-            'index' => Pages\ListPosts::route('/'),
+            'index'  => Pages\ListPosts::route('/'),
             'create' => Pages\CreatePost::route('/create'),
-            'edit' => Pages\EditPost::route('/{record}/edit'),
+            'edit'   => Pages\EditPost::route('/{record}/edit'),
         ];
     }
 
-    public static function getLabel(): string
+    public static function getLabel() : string
     {
         return __('Post');
     }
 
-    public static function getPluralLabel(): string
+    public static function getPluralLabel() : string
     {
         return __('Posts');
     }
 
-    protected static function getNavigationLabel(): string
+    protected static function getNavigationLabel() : string
     {
         return __('Posts');
     }
 
-    protected static function getNavigationGroup(): ?string
+    protected static function getNavigationGroup() : ?string
     {
         return __('CMS');
     }
-
 }

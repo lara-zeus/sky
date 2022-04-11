@@ -3,9 +3,9 @@
 namespace LaraZeus\Sky\Models;
 
 use Database\Factories\PostFactory;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Blade;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Tags\HasTags;
@@ -15,25 +15,24 @@ class Post extends Model implements HasMedia
     use HasFactory, HasTags, InteractsWithMedia, PostScope;
 
     protected $fillable = [
-        'title',
-        'slug',
-        'description',
-        'post_type',
-        'content',
-        'user_id',
-        'parent_id',
-        'featured_image',
-        'published_at',
-        'sticky_until',
-        'password',
-        'ordering',
-        'status',
-    ];
-
+            'title',
+            'slug',
+            'description',
+            'post_type',
+            'content',
+            'user_id',
+            'parent_id',
+            'featured_image',
+            'published_at',
+            'sticky_until',
+            'password',
+            'ordering',
+            'status',
+        ];
     protected $casts = [
-        'published_at' => 'datetime',
-        'sticky_until' => 'datetime',
-    ];
+            'published_at' => 'datetime',
+            'sticky_until' => 'datetime',
+        ];
 
     /**
      * Create a new factory instance for the model.
@@ -50,12 +49,12 @@ class Post extends Model implements HasMedia
         return 'slug';
     }
 
-    protected function statusDesc(): Attribute
+    public function statusDesc() : string
     {
         $PostStatus = PostStatus::where('name', $this->status)->first();
-        return new Attribute(
-            get: fn($value) => "<span title='post status' class='px-2 py-0.5 text-xs rounded-xl text-{$PostStatus->class}-700 bg-{$PostStatus->class}-500/10'>{$PostStatus->label}</span>",
-        );
+        $icon       = Blade::render('@svg("' . $PostStatus->icon . '","w-4 h-4 inline-flex")');
+
+        return "<span title='" . __('post status') . "' class='px-2 py-0.5 text-xs rounded-xl text-{$PostStatus->class}-700 bg-{$PostStatus->class}-500/10'> " . $icon . " {$PostStatus->label}</span>";
     }
 
     public function auther()

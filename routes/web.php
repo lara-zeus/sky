@@ -1,9 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use LaraZeus\Sky\Http\Controllers\HomeController;
 
-//Route::prefix(config('zeus-sky.prefix'))->name('sky.')->group(function () {
 Route::prefix(config('zeus-sky.path'))
     ->middleware(config('zeus-sky.middleware'))
     ->group(function () {
@@ -12,12 +10,9 @@ Route::prefix(config('zeus-sky.path'))
         Route::get('page/{slug}', \LaraZeus\Sky\Http\Livewire\Page::class)->name('page');
         Route::get('{type}/{slug}', \LaraZeus\Sky\Http\Livewire\Tags::class)->name('tags');
 
-        //Route::get('sitemap.xml', [SitemapXmlController::class, 'index']);
-
         Route::get('passConf', function () {
-            session()->put(request('postID').'-'.request('password'), request('password'));
+            session()->put(request('postID') . '-' . request('password'), request('password'));
 
             return redirect()->back()->with('status', 'sorry, password incorrect!');
         });
     });
-//});

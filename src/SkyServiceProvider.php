@@ -3,7 +3,6 @@
 namespace LaraZeus\Sky;
 
 use Filament\PluginServiceProvider;
-use Illuminate\Support\Facades\Blade;
 use LaraZeus\Sky\Filament\Resources\PageResource;
 use LaraZeus\Sky\Filament\Resources\PostResource;
 use LaraZeus\Sky\Filament\Resources\TagResource;

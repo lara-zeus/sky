@@ -53,7 +53,7 @@ class PageResource extends Resource
                     Section::make(__('SEO'))
                         ->description(__('SEO Settings'))
                         ->schema([
-                            Hidden::make('user_id'),
+                            Hidden::make('user_id')->default(auth()->user()->id),
                             Hidden::make('post_type')->default('page'),
                             Textarea::make('description')
                                 ->maxLength(255)
@@ -61,7 +61,7 @@ class PageResource extends Resource
                                 ->hint(__('Write an excerpt for your post')),
                             TextInput::make('slug')->required()->maxLength(255)->label(__('Post Slug')),
                             Select::make('parent_id')->options(Post::wherePostType('page')->pluck('title', 'id'))->label(__('Parent Page')),
-                            TextInput::make('ordering')->integer()->label(__('Page Order')),
+                            TextInput::make('ordering')->integer()->label(__('Page Order'))->default(1),
                         ])
                         ->collapsible(),
 
@@ -76,13 +76,13 @@ class PageResource extends Resource
                                 ->options(PostStatus::pluck('label', 'name')),
                             TextInput::make('password')->label(__('Password'))->reactive()
                                 ->visible(fn(Closure $get) : bool => $get('status') === 'private'),
-                            DateTimePicker::make('published_at')->label(__('published at')),
+                            DateTimePicker::make('published_at')->label(__('published at'))->default(now()),
                         ])
                         ->collapsible(),
 
                     Section::make(__('Featured Image'))
                         ->schema([
-                            SpatieMediaLibraryFileUpload::make('featured_image')->collection('posts')->label(''),
+                            SpatieMediaLibraryFileUpload::make('featured_image')->collection('pages')->label(''),
                         ])
                         ->collapsible(),
                 ])->columnSpan(1),
@@ -141,6 +141,6 @@ class PageResource extends Resource
 
     protected static function getNavigationGroup() : ?string
     {
-        return __('CMS');
+        return __('Sky');
     }
 }

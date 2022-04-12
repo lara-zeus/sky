@@ -38,4 +38,10 @@ trait PostScope
         $query->wherePostType('page')
             ->whereDate('published_at', '<=', now());
     }
+
+    public function scopePosts($query)
+    {
+        $query->wherePostType('post')
+            ->whereDate('published_at', '<=', now());
+    }
 }

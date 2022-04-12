@@ -82,6 +82,6 @@ class TagResource extends Resource
 
     protected static function getNavigationGroup() : ?string
     {
-        return __('CMS');
+        return __('Sky');
     }
 }

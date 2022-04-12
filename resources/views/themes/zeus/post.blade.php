@@ -1,4 +1,13 @@
 <div class="mt-6 max-w-7xl mx-auto">
+    <x-slot name="header">
+        <span class="capitalize">{{ $post->title }}</span>
+    </x-slot>
+
+    <x-slot name="breadcrumps">
+        <li>
+            <a class="text-gray-500 capitalize" aria-current="page">{{ $post->title }}</a>
+        </li>
+    </x-slot>
 
     @if(!$post->getMedia('posts')->isEmpty())
         <img src="{{ $post->getFirstMediaUrl('posts') }}" class="my-10 w-full h-full shadow-md rounded-[2rem] rounded-bl-none z-0 object-cover"/>

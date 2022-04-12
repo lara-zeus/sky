@@ -61,4 +61,9 @@ class Post extends Model implements HasMedia
     {
         return $this->belongsTo(config('auth.providers.users.model'), 'user_id', 'id');
     }
+
+    public function parent()
+    {
+        return $this->belongsTo(self::class, 'parent_id', 'id');
+    }
 }

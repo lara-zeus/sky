@@ -1,5 +1,17 @@
 <div class="mt-6 max-w-7xl mx-auto">
 
+    <x-slot name="breadcrumps">
+        @if($post->parent !== null)
+            <li class="flex items-center">
+                <a href="{{ route('page',[$post->parent->slug]) }}" class="text-gray-400 capitalize" aria-current="page">{{ $post->parent->title }}</a>
+                <x-iconpark-rightsmall-o class="fill-current w-4 h-4 mx-3" />
+            </li>
+        @endif
+        <li>
+            <a class="text-gray-500 capitalize" aria-current="page">{{ $post->title }}</a>
+        </li>
+    </x-slot>
+
     @if(!$post->getMedia('posts')->isEmpty())
         <img src="{{ $post->getFirstMediaUrl('posts') }}" class="my-10 w-full aspect-video shadow-md rounded-[2rem] rounded-bl-none z-0 object-cover"/>
     @endif

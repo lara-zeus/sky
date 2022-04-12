@@ -10,18 +10,23 @@
     <div class="overflow-x-hidden">
         <div class="px-6 py-8">
             <div class="container flex justify-between mx-auto gap-6">
-                <div class="w-3/4">
-                    <div class="flex items-center justify-between">
-                        <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Posts</h1>
-                    </div>
-
-                    @unless ($posts->isEmpty())
+                @unless ($posts->isEmpty() && $stickies->isEmpty())
+                    <div class="w-3/4">
+                        @unless ($posts->isEmpty())
+                        <div class="flex items-center justify-between">
+                            <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Posts</h1>
+                        </div>
                         @each('zeus-sky::themes.'.config('zeus-sky.theme').'.partial.post', $posts, 'post')
-                    @endunless
-                </div>
-                <div class="w-1/4">
-                    @include('zeus-sky::themes.'.config('zeus-sky.theme').'.partial.sidebar')
-                </div>
+                        @else
+                            @include('zeus-sky::themes.'.config('zeus-sky.theme').'.partial.empty')
+                        @endunless
+                    </div>
+                    <div class="w-1/4">
+                        @include('zeus-sky::themes.'.config('zeus-sky.theme').'.partial.sidebar')
+                    </div>
+                @else
+                    @include('zeus-sky::themes.'.config('zeus-sky.theme').'.partial.empty')
+                @endunless
             </div>
         </div>
     </div>

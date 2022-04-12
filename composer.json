@@ -34,7 +34,6 @@
         "spatie/laravel-sluggable": "^3.3",
         "spatie/laravel-tags": "^4.0",
         "mohamedsabil83/filament-forms-tinyeditor": "^1.5",
-        "codeat3/blade-iconpark": "^1.4",
         "lara-zeus/core": "dev-main"
     },
     "require-dev": {

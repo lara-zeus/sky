@@ -16,7 +16,7 @@ class Posts extends Component
                 'pages' => Post::page()->orderBy('published_at', 'desc')->whereNull('parent_id')->get(),
                 'tags' => Tag::withCount('posts')->where('type', 'category')->get(),
                 'stickies' => Post::sticky()->get(),
-                'recent' => Post::take(5)->get(),
+                'recent' => Post::posts()->take(5)->get(),
             ])
             ->layout(config('zeus-sky.layout'));
     }

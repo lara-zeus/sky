@@ -54,7 +54,7 @@ class PostResource extends Resource
                     Section::make(__('SEO'))
                         ->description(__('SEO Settings'))
                         ->schema([
-                            Hidden::make('user_id'),
+                            Hidden::make('user_id')->default(auth()->user()->id),
                             Hidden::make('post_type')->default('post'),
                             Textarea::make('description')
                                 ->maxLength(255)
@@ -83,7 +83,7 @@ class PostResource extends Resource
                                 ->options(PostStatus::pluck('label', 'name')),
                             TextInput::make('password')->label(__('Password'))->reactive()
                                 ->visible(fn(Closure $get) : bool => $get('status') === 'private'),
-                            DateTimePicker::make('published_at')->label(__('published at')),
+                            DateTimePicker::make('published_at')->label(__('published at'))->default(now()),
                             DateTimePicker::make('sticky_until')->label(__('Sticky Until')),
                         ])
                         ->collapsible(),
@@ -169,6 +169,6 @@ class PostResource extends Resource
 
     protected static function getNavigationGroup() : ?string
     {
-        return __('CMS');
+        return __('Sky');
     }
 }

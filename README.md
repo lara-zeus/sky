@@ -12,21 +12,29 @@
 <a href="https://www.codefactor.io/repository/github/lara-zeus/sky"><img src="https://www.codefactor.io/repository/github/lara-zeus/sky/badge" alt="CodeFactor" /></a>
 </p>
 
-Lara-zeus sky is a Blog and simple CMS for your website.
+Lara-zeus sky is simple CMS for your website. it include posts, pages, tags, and categories.
 >small tasks can be time-consuming, let us build these for you,
 
 ## features
 - 🔥 built with [TALL stack](https://tallstack.dev/)
 - 🔥 using [filament](https://filamentadmin.com) as an admin panel
-- 🔥 optionally you can add categories to the contact form like 'sales','dev','report bug' etc.
-- 🔥 you can add logos for all categories.
-- 🔥 direct URL to contact on specific category.
+- 🔥 FrontEnd scaffolding, highlight customizable.
+  - sticky posts
+  - recent posts
+  - pages list
+- 🔥 pages for static content like about us.
+  - support child pages, with ordering.
+- 🔥 posts, with some SEO options
+  - sticky posts
+  - password protections
+  - multiple tags and categories
+  - Featured Image
+and more in the way.
 
 ## Demo
 
+> visit our demo site: https://demo.larazeus.com
 > visit our website to get the full documentation: https://larazeus.com/sky
-
-> real use: https://atm-code.com/contact-us
 
 ## Installation
 
@@ -36,22 +44,18 @@ You can install the package via composer:
 composer require lara-zeus/sky
 ```
 
-run the command:
+run the commands:
 
 ```bash
-php artisan sky:publish
-
+php artisan vendor:publish --provider="LaraZeus\Sky\SkyServiceProvider" --tag=zeus-sky-migrations
 php artisan vendor:publish --provider="Spatie\Tags\TagsServiceProvider" --tag="tags-migrations"
 php artisan vendor:publish --provider="Spatie\MediaLibrary\MediaLibraryServiceProvider" --tag="migrations"
-
 php artisan vendor:publish --tag="filament-forms-tinyeditor-assets"
-php artisan vendor:publish --tag="filament-browser-js"
-php artisan vendor:publish --tag=filament-colorpicker-views
 ```
 
 ## Usage
 
-visit the url `/admin` to manage the Letters, and `/contact-us` to access the contact form.
+visit the url `/admin` to manage the Letters, and `/blog` to access the contact form.
 
 ## Full Documentation
 

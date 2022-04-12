@@ -27,7 +27,7 @@ class Page extends Component
         return view('zeus-sky::themes.'.config('zeus-sky.theme').'.page')
             ->with([
                 'post' => $this->page,
-                'children' => Post::where('parent_id', $this->page->id)->get(),
+                'children' => Post::with('parent')->where('parent_id', $this->page->id)->get(),
             ])
             ->layout(config('zeus-sky.layout'));
     }

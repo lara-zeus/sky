@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9f1abf80421d61e5486f92d253c39abb",
+    "content-hash": "3c8716031cfd1e17c23eb07b50ff933e",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -1637,12 +1637,12 @@
             "dist": {
                 "type": "path",
                 "url": "../core",
-                "reference": "f1d1711401eeada57c62893f3bd8db4d9e93c134"
+                "reference": "1474b42dc3f8518893f02a58a4f4fb1b4126f5b2"
             },
             "require": {
                 "archtechx/laravel-seo": "^0.4.0",
                 "calebporzio/sushi": "^2.4",
-                "filament/filament": "^2.0",
+                "filament/filament": "^2.10",
                 "illuminate/support": "^8.0 || ^9.0",
                 "php": "^8.0"
             },
@@ -2130,16 +2130,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "3.0.15",
+            "version": "3.0.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "3b71cd136dc0331ee87b636b25f4ee339368c718"
+                "reference": "dea729954c596bdb6cdaecba6f73df9f3e2c4255"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/3b71cd136dc0331ee87b636b25f4ee339368c718",
-                "reference": "3b71cd136dc0331ee87b636b25f4ee339368c718",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/dea729954c596bdb6cdaecba6f73df9f3e2c4255",
+                "reference": "dea729954c596bdb6cdaecba6f73df9f3e2c4255",
                 "shasum": ""
             },
             "require": {
@@ -2200,7 +2200,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/3.0.15"
+                "source": "https://github.com/thephpleague/flysystem/tree/3.0.16"
             },
             "funding": [
                 {
@@ -2216,7 +2216,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-08T18:36:06+00:00"
+            "time": "2022-04-11T13:32:22+00:00"
         },
         {
             "name": "league/glide",
@@ -2285,16 +2285,16 @@
         },
         {
             "name": "league/mime-type-detection",
-            "version": "1.9.0",
+            "version": "1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/mime-type-detection.git",
-                "reference": "aa70e813a6ad3d1558fc927863d47309b4c23e69"
+                "reference": "3e4a35d756eedc67096f30240a68a3149120dae7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/aa70e813a6ad3d1558fc927863d47309b4c23e69",
-                "reference": "aa70e813a6ad3d1558fc927863d47309b4c23e69",
+                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/3e4a35d756eedc67096f30240a68a3149120dae7",
+                "reference": "3e4a35d756eedc67096f30240a68a3149120dae7",
                 "shasum": ""
             },
             "require": {
@@ -2325,7 +2325,7 @@
             "description": "Mime-type detection for Flysystem",
             "support": {
                 "issues": "https://github.com/thephpleague/mime-type-detection/issues",
-                "source": "https://github.com/thephpleague/mime-type-detection/tree/1.9.0"
+                "source": "https://github.com/thephpleague/mime-type-detection/tree/1.10.0"
             },
             "funding": [
                 {
@@ -2337,7 +2337,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-21T11:48:40+00:00"
+            "time": "2022-04-11T12:49:04+00:00"
         },
         {
             "name": "livewire/livewire",
@@ -3561,78 +3561,6 @@
                 }
             ],
             "time": "2022-03-27T21:42:02+00:00"
-        },
-        {
-            "name": "rvxlab/filament-colorpicker",
-            "version": "1.4.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/RVxLab/filament-colorpicker.git",
-                "reference": "2632b52be80ed860df79cb7528bfa02943ee7118"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/RVxLab/filament-colorpicker/zipball/2632b52be80ed860df79cb7528bfa02943ee7118",
-                "reference": "2632b52be80ed860df79cb7528bfa02943ee7118",
-                "shasum": ""
-            },
-            "require": {
-                "filament/filament": "^2.7",
-                "illuminate/contracts": "^8.71|^9.0",
-                "myclabs/php-enum": "^1.8",
-                "php": "^8.0",
-                "spatie/laravel-package-tools": "^1.4.3"
-            },
-            "require-dev": {
-                "brianium/paratest": "^6.2",
-                "friendsofphp/php-cs-fixer": "^3.0",
-                "nunomaduro/collision": "^5|^6",
-                "nunomaduro/larastan": "^1.0",
-                "orchestra/testbench": "^6.15|^7.0",
-                "phpstan/extension-installer": "^1.1",
-                "phpstan/phpstan-phpunit": "^1.0",
-                "phpunit/phpunit": "^9.3",
-                "roave/security-advisories": "dev-latest",
-                "spatie/laravel-ray": "^1.23",
-                "symfony/console": "^5|~6.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "RVxLab\\FilamentColorPicker\\FilamentColorPickerServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "RVxLab\\FilamentColorPicker\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "RVxLab",
-                    "email": "richard@rvx.works",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A color picker package for Laravel Filament",
-            "homepage": "https://github.com/rvxlab/filament-colorpicker",
-            "keywords": [
-                "colorpicker",
-                "filament",
-                "laravel",
-                "vanilla-picker"
-            ],
-            "support": {
-                "issues": "https://github.com/RVxLab/filament-colorpicker/issues",
-                "source": "https://github.com/RVxLab/filament-colorpicker/tree/1.4.1"
-            },
-            "time": "2022-04-08T23:45:30+00:00"
         },
         {
             "name": "spatie/eloquent-sortable",

@@ -14,13 +14,13 @@ composer update
 then run the same command to publish any new files
 
 ```bash
-php artisan wind:publish
+php artisan sky:publish
 ```
 
 if you want to overwrite all existing files, run:
 
 ```bash
-php artisan wind:publish --force
+php artisan sky:publish --force
 ```
 
 More Documentation are coming soon...

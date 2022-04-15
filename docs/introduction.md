@@ -3,21 +3,23 @@ title: Introduction
 weight: 1
 ---
 
-Lara-zeus Wind, is a package provides a simple contact form manger, with the abilety to store the messages in the database, and you can reply to them from the dashboard.
+Lara-zeus sky, is a contact form provides a simple contact form manager, with the ability to store the messages in the database, and you can reply to them from a dashboard.
 
+**[Demo](https://sky.larazeus.com) · [Github](https://github.com/lara-zeus/sky)**
 
-**[Demo](https://wind.larazeus.com) · [Source Code](https://github.com/lara-zeus/wind)**
-
-## features:
-
-🔥 built with [TALL stack](https://tallstack.dev/)
-
-🔥 using [filament](https://filamentadmin.com) as an admin panel
-
-🔥 optionally you can add departments to the contact form like 'sales','dev','report bug' etc.
-
-🔥 you can add logos for all departments.
-
-🔥 direct URL to contact on specific department.
-
-More Documentation are coming soon...
+## features
+- 🔥 built with [TALL stack](https://tallstack.dev/)
+- 🔥 using [filament](https://filamentadmin.com) as an admin panel
+- 🔥 FrontEnd scaffolding, highly customizable.
+    - sticky posts
+    - recent posts
+    - pages list
+- 🔥 pages for static content like about us.
+    - support child pages, with ordering.
+- 🔥 posts, with some SEO options
+    - sticky posts
+    - password protections
+    - multiple tags and categories
+    - Featured Image
+      
+and more in the way.

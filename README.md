@@ -24,7 +24,7 @@ Lara-zeus sky is simple CMS for your website. it include posts, pages, tags, and
 ## features
 - 🔥 built with [TALL stack](https://tallstack.dev/)
 - 🔥 using [filament](https://filamentadmin.com) as an admin panel
-- 🔥 FrontEnd scaffolding, highlight customizable.
+- 🔥 FrontEnd scaffolding, highly customizable.
   - sticky posts
   - recent posts
   - pages list
@@ -35,6 +35,7 @@ Lara-zeus sky is simple CMS for your website. it include posts, pages, tags, and
   - password protections
   - multiple tags and categories
   - Featured Image
+
 and more in the way.
 
 ## Demo
@@ -66,7 +67,7 @@ php artisan migrate
 ```
 ## Usage
 
-visit the url `/admin` to manage the Letters, and `/blog` to access the contact form.
+visit the url `/admin` to manage the Letters, and `/blog`.
 
 ## Full Documentation
 

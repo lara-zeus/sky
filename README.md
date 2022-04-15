@@ -4,7 +4,6 @@
 <a href="https://larazeus.com"><img src="https://larazeus.com/images/zeus-sky-banner.png" /></a>
 </p>
 
-
 <p align="center">
 <a href="https://packagist.org/packages/lara-zeus/sky"><img src="https://img.shields.io/packagist/v/lara-zeus/sky?style=flat-square" /></a>
 <a href="https://github.styleci.io/repos/438676758?branch=main"><img src="https://github.styleci.io/repos/438676758/shield?branch=main" alt="StyleCI"></a>
@@ -15,6 +14,12 @@
 
 Lara-zeus sky is simple CMS for your website. it include posts, pages, tags, and categories.
 >small tasks can be time-consuming, let us build these for you,
+
+## Support Filament
+
+<a href="https://github.com/sponsors/danharrin">
+<img width="320" alt="filament-logo" src="https://filamentadmin.com/images/sponsor-banner.jpg">
+</a>
 
 ## features
 - 🔥 built with [TALL stack](https://tallstack.dev/)
@@ -35,6 +40,7 @@ and more in the way.
 ## Demo
 
 > visit our demo site: https://demo.larazeus.com
+
 > visit our website to get the full documentation: https://larazeus.com/sky
 
 ## Installation
@@ -54,6 +60,10 @@ php artisan vendor:publish --provider="Spatie\MediaLibrary\MediaLibraryServicePr
 php artisan vendor:publish --tag="filament-forms-tinyeditor-assets"
 ```
 
+then run the migration
+```bash
+php artisan migrate
+```
 ## Usage
 
 visit the url `/admin` to manage the Letters, and `/blog` to access the contact form.

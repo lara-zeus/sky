@@ -4,7 +4,6 @@
 <a href="https://larazeus.com"><img src="https://larazeus.com/images/zeus-sky-banner.png" /></a>
 </p>
 
-
 <p align="center">
 <a href="https://packagist.org/packages/lara-zeus/sky"><img src="https://img.shields.io/packagist/v/lara-zeus/sky?style=flat-square" /></a>
 <a href="https://github.styleci.io/repos/438676758?branch=main"><img src="https://github.styleci.io/repos/438676758/shield?branch=main" alt="StyleCI"></a>

@@ -26,9 +26,9 @@ class Tags extends Component
             ->description('Show All posts in '.$this->tag->name)
             ->twitter();
 
-        return view('zeus-sky::themes.'.config('zeus-sky.theme').'.category')
+        return view(app('theme').'.category')
             ->with([
-                'posts' => Post::withAllTags([$this->slug], $this->type)->get(),
+                'posts' => $this->tag->postsPublished,
             ])
             ->layout(config('zeus-sky.layout'));
     }

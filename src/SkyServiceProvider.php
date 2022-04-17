@@ -3,6 +3,8 @@
 namespace LaraZeus\Sky;
 
 use Filament\PluginServiceProvider;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\View;
 use LaraZeus\Sky\Filament\Resources\PageResource;
 use LaraZeus\Sky\Filament\Resources\PostResource;
 use LaraZeus\Sky\Filament\Resources\TagResource;
@@ -18,10 +20,16 @@ class SkyServiceProvider extends PluginServiceProvider
             ->site(config('app.name', 'Laravel'))
             ->title(config('zeus-sky.site_title'))
             ->description(config('zeus-sky.site_description'))
-            ->rawTag('favicon', '<link rel="icon" type="image/x-icon" href="'.asset('favicon/favicon.ico').'">')
-            ->rawTag('<meta name="theme-color" content="'.config('zeus-sky.site_color').'" />')
+            ->rawTag('favicon', '<link rel="icon" type="image/x-icon" href="' . asset('favicon/favicon.ico') . '">')
+            ->rawTag('<meta name="theme-color" content="' . config('zeus-sky.site_color') . '" />')
             ->withUrl()
             ->twitter();
+
+        View::share('theme', 'zeus-sky::themes.' . config('zeus-sky.theme'));
+
+        App::singleton('theme', function () {
+            return 'zeus-sky::themes.' . config('zeus-sky.theme');
+        });
 
         return parent::boot();
     }

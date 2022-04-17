@@ -24,7 +24,7 @@ class Post extends Component
             ->description($this->post->description)
             ->twitter();
 
-        return view('zeus-sky::themes.'.config('zeus-sky.theme').'.post')
+        return view(app('theme').'.post')
             ->with('post', $this->post)
             ->with('related', postModel::related($this->post)->take(4)->get())
             ->layout(config('zeus-sky.layout'));

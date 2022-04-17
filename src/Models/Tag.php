@@ -9,6 +9,11 @@ class Tag extends \Spatie\Tags\Tag
         return $this->morphedByMany(Post::class, 'taggable');
     }
 
+    public function postsPublished()
+    {
+        return $this->morphedByMany(Post::class, 'taggable')->published();
+    }
+
     protected function generateSlug(string $locale): string
     {
         if ($this->slug !== null) {

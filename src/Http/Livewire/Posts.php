@@ -10,7 +10,7 @@ class Posts extends Component
 {
     public function render()
     {
-        return view('zeus-sky::themes.'.config('zeus-sky.theme').'.home')
+        return view(app('theme').'.home')
             ->with([
                 'posts' => Post::NotSticky()->orderBy('published_at', 'desc')->get(),
                 'pages' => Post::page()->orderBy('published_at', 'desc')->whereNull('parent_id')->get(),

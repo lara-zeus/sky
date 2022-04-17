@@ -3,9 +3,10 @@ title: Introduction
 weight: 1
 ---
 
-Lara-zeus sky, is a contact form provides a simple contact form manager, with the ability to store the messages in the database, and you can reply to them from a dashboard.
+## Introduction
+@zeus sky, is a simple CMS for your website. it includes posts, pages, tags, and categories, with a frontend scaffolding.
 
-**[Demo](https://sky.larazeus.com) · [Github](https://github.com/lara-zeus/sky)**
+**[Demo](https://demo.larazeus.com) · [Github](https://github.com/lara-zeus/sky)**
 
 ## features
 - 🔥 built with [TALL stack](https://tallstack.dev/)
@@ -22,4 +23,8 @@ Lara-zeus sky, is a contact form provides a simple contact form manager, with th
     - multiple tags and categories
     - Featured Image
       
-and more in the way.
+and more in the way:
+- authers
+- menus
+- comments
+- and more!

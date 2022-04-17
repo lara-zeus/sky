@@ -9,7 +9,7 @@
         <div class="p-4 absolute bottom-0 ltr:left-0 rtl:right-0 z-20">
             <div>
                 @unless ($post->tags->isEmpty())
-                    @each('zeus-sky::themes.'.config('zeus-sky.theme').'.partial.tag', $post->tags->where('type','category'), 'tag')
+                    @each($theme.'.partial.tag', $post->tags->where('type','category'), 'tag')
                 @endunless
             </div>
             <a href="{{ route('post',$post->slug) }}" class="text-4xl font-semibold text-gray-100 leading-tight">

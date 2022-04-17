@@ -2,7 +2,7 @@
     @unless($stickies->isEmpty())
         <div class="mt-10 grid @if($stickies->count() > 1) grid-cols-3 @endif gap-4">
             @foreach($stickies as $post)
-                @include('zeus-sky::themes.'.config('zeus-sky.theme').'.partial.sticky')
+                @include($theme.'.partial.sticky')
             @endforeach
         </div>
     @endunless
@@ -16,16 +16,16 @@
                         <div class="flex items-center justify-between">
                             <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Posts</h1>
                         </div>
-                        @each('zeus-sky::themes.'.config('zeus-sky.theme').'.partial.post', $posts, 'post')
+                        @each($theme.'.partial.post', $posts, 'post')
                         @else
-                            @include('zeus-sky::themes.'.config('zeus-sky.theme').'.partial.empty')
+                            @include($theme.'.partial.empty')
                         @endunless
                     </div>
                     <div class="w-1/4">
-                        @include('zeus-sky::themes.'.config('zeus-sky.theme').'.partial.sidebar')
+                        @include($theme.'.partial.sidebar')
                     </div>
                 @else
-                    @include('zeus-sky::themes.'.config('zeus-sky.theme').'.partial.empty')
+                    @include($theme.'.partial.empty')
                 @endunless
             </div>
         </div>

@@ -1,4 +1,4 @@
-{{--@include('zeus-sky::themes.'.config('zeus-sky.theme').'.partial.authors')--}}
-@include('zeus-sky::themes.'.config('zeus-sky.theme').'.partial.sidebar.categories')
-@include('zeus-sky::themes.'.config('zeus-sky.theme').'.partial.sidebar.recent')
-@include('zeus-sky::themes.'.config('zeus-sky.theme').'.partial.sidebar.pages')
+{{--@include($theme.'.partial.authors')--}}
+@include($theme.'.partial.sidebar.categories')
+@include($theme.'.partial.sidebar.recent')
+@include($theme.'.partial.sidebar.pages')

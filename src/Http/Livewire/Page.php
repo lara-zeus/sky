@@ -24,7 +24,7 @@ class Page extends Component
             ->description($this->page->description)
             ->twitter();
 
-        return view('zeus-sky::themes.'.config('zeus-sky.theme').'.page')
+        return view(app('theme') . '.page')
             ->with([
                 'post' => $this->page,
                 'children' => Post::with('parent')->where('parent_id', $this->page->id)->get(),

@@ -2,6 +2,6 @@
 
 All notable changes to `sky` will be documented in this file
 
-## 1.0.0 - 2022-04-19
+## 2.0.0 - 2022-04-19
 
-- initial release, and happy birthday to me :)
+- the first stable release, and happy birthday to me :)

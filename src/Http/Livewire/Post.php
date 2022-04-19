@@ -16,7 +16,7 @@ class Post extends Component
 
     public function render()
     {
-        if (!$this->post->getMedia('posts')->isEmpty()) {
+        if (! $this->post->getMedia('posts')->isEmpty()) {
             seo()->image($this->post->getFirstMediaUrl('posts'));
         }
 
@@ -25,7 +25,7 @@ class Post extends Component
             ->description($this->post->description ?? '')
             ->twitter();
 
-        return view(app('theme') . '.post')
+        return view(app('theme').'.post')
             ->with('post', $this->post)
             ->with('related', postModel::related($this->post)->take(4)->get())
             ->layout(config('zeus-sky.layout'));

@@ -11,11 +11,11 @@ return [
      * for example if you want to make your blog for users only, add the middleware 'auth'
      */
     'middleware' => ['web'],
-
+    
     /**
      * this will be setup the default seo site title. read more about it in 'laravel-seo'
      */
-    'site_title' => config('app.name', 'Laravel').' | '.'Blogs',
+    'site_title' => config('app.name', 'Laravel').' | Blogs',
 
     /**
      * this will be setup the default seo site description. read more about it in 'laravel-seo'

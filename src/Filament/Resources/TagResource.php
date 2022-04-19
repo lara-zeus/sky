@@ -3,7 +3,6 @@
 namespace LaraZeus\Sky\Filament\Resources;
 
 use Closure;
-use Filament\Forms;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Concerns\Translatable;
@@ -23,7 +22,7 @@ class TagResource extends Resource
     protected static ?string $navigationIcon = 'iconpark-tag-o';
     protected static ?string $navigationGroup = 'Sky';
 
-    public static function form(Form $form) : Form
+    public static function form(Form $form): Form
     {
         return $form
             ->schema([
@@ -40,7 +39,7 @@ class TagResource extends Resource
             ]);
     }
 
-    public static function table(Table $table) : Table
+    public static function table(Table $table): Table
     {
         return $table
             ->columns([
@@ -51,7 +50,7 @@ class TagResource extends Resource
             ]);
     }
 
-    public static function getPages() : array
+    public static function getPages(): array
     {
         return [
             'index'  => Pages\ListTags::route('/'),
@@ -60,27 +59,27 @@ class TagResource extends Resource
         ];
     }
 
-    public static function getTranslatableLocales() : array
+    public static function getTranslatableLocales(): array
     {
         return config('zeus-sky.translatable_Locales');
     }
 
-    public static function getLabel() : string
+    public static function getLabel(): string
     {
         return __('Tag');
     }
 
-    public static function getPluralLabel() : string
+    public static function getPluralLabel(): string
     {
         return __('Tags');
     }
 
-    protected static function getNavigationLabel() : string
+    protected static function getNavigationLabel(): string
     {
         return __('Tags');
     }
 
-    protected static function getNavigationGroup() : ?string
+    protected static function getNavigationGroup(): ?string
     {
         return __('Sky');
     }

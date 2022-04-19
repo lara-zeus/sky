@@ -23,7 +23,7 @@ class PostFactory extends Factory
             'description'  => $this->faker->sentence,
             'content'      => $this->faker->sentence,
             'published_at' => now(),
-            'post_type'    => $this->faker->randomElement([ 'page', 'post' ]),
+            'post_type'    => $this->faker->randomElement(['page', 'post']),
         ];
     }
 }

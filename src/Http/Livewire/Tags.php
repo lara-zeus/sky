@@ -2,7 +2,6 @@
 
 namespace LaraZeus\Sky\Http\Livewire;
 
-use LaraZeus\Sky\Models\Post;
 use LaraZeus\Sky\Models\Tag;
 use Livewire\Component;
 

@@ -31,7 +31,7 @@ class PageResource extends Resource
     protected static ?string $slug = 'pages';
     protected static ?string $navigationIcon = 'iconpark-folder-o';
 
-    public static function form(Form $form) : Form
+    public static function form(Form $form): Form
     {
         return $form
             ->schema([
@@ -75,7 +75,7 @@ class PageResource extends Resource
                                 ->reactive()
                                 ->options(PostStatus::pluck('label', 'name')),
                             TextInput::make('password')->label(__('Password'))->reactive()
-                                ->visible(fn(Closure $get) : bool => $get('status') === 'private'),
+                                ->visible(fn (Closure $get): bool => $get('status') === 'private'),
                             DateTimePicker::make('published_at')->label(__('published at'))->default(now()),
                         ])
                         ->collapsible(),
@@ -89,33 +89,33 @@ class PageResource extends Resource
             ])->columns(4);
     }
 
-    public static function table(Table $table) : Table
+    public static function table(Table $table): Table
     {
         return $table
             ->columns([
                 ViewColumn::make('title_card')
                     ->label(__('Title'))
-                    ->sortable([ 'title' ])
-                    ->searchable([ 'title' ])
+                    ->sortable(['title'])
+                    ->searchable(['title'])
                     ->view('zeus-sky::filament.columns.page-title'),
 
                 ViewColumn::make('status_desc')
                     ->label(__('Status'))
-                    ->sortable([ 'status' ])
-                    ->searchable([ 'status' ])
+                    ->sortable(['status'])
+                    ->searchable(['status'])
                     ->view('zeus-sky::filament.columns.status-desc')
-                    ->tooltip(fn(Post $record) : string => $record->published_at->format('Y/m/d | H:i A')),
+                    ->tooltip(fn (Post $record): string => $record->published_at->format('Y/m/d | H:i A')),
             ])
             ->defaultSort('id', 'desc')
             ->filters([
                 MultiSelectFilter::make('status')->options(PostStatus::pluck('label', 'name')),
 
                 Filter::make('password')->label(__('Password Protected'))
-                    ->query(fn(Builder $query) : Builder => $query->whereNotNull('password')),
+                    ->query(fn (Builder $query): Builder => $query->whereNotNull('password')),
             ]);
     }
 
-    public static function getPages() : array
+    public static function getPages(): array
     {
         return [
             'index'  => Pages\ListPosts::route('/'),
@@ -124,22 +124,22 @@ class PageResource extends Resource
         ];
     }
 
-    public static function getLabel() : string
+    public static function getLabel(): string
     {
         return __('Page');
     }
 
-    public static function getPluralLabel() : string
+    public static function getPluralLabel(): string
     {
         return __('Pages');
     }
 
-    protected static function getNavigationLabel() : string
+    protected static function getNavigationLabel(): string
     {
         return __('Pages');
     }
 
-    protected static function getNavigationGroup() : ?string
+    protected static function getNavigationGroup(): ?string
     {
         return __('Sky');
     }

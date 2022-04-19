@@ -16,7 +16,7 @@ class Post extends Component
 
     public function render()
     {
-        if (!$this->post->getMedia('posts')->isEmpty()) {
+        if (! $this->post->getMedia('posts')->isEmpty()) {
             seo()->image($this->post->getFirstMediaUrl('posts'));
         }
         seo()

@@ -2,8 +2,8 @@
 
 namespace LaraZeus\Sky\Filament\Resources\PageResource\Pages;
 
-use LaraZeus\Sky\Filament\Resources\PageResource;
 use Filament\Resources\Pages\CreateRecord;
+use LaraZeus\Sky\Filament\Resources\PageResource;
 
 class CreatePost extends CreateRecord
 {

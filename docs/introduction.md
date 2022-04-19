@@ -27,4 +27,11 @@ and more in the way:
 - authers
 - menus
 - comments
+- RSS
 - and more!
+
+## Support
+available support channels:
+* using our channel `#sky` on [Discord](https://filamentphp.com/discord)
+* open an issue on [GitHub](https://github.com/lara-zeus/sky/issues)
+* email us using the [contact center](https://atm-code.com/contact-us/lara-zeus)

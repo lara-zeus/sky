@@ -25,5 +25,14 @@ to customize the default views for sky:
 php artisan vendor:publish --tag=zeus-sky-views
 ```
 
+## Publishing Translations
+
+to customize the translations:
+
+```bash
+php artisan vendor:publish --tag=zeus-sky-translations
+```
+
+
 ## themes
 soon

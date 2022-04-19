@@ -1,7 +1,7 @@
 <h1 align="center">Lara Zeus Sky</h1>
 
 <p align="center">
-<a href="https://larazeus.com"><img src="https://larazeus.com/images/zeus-sky-banner.png" /></a>
+<a href="https://larazeus.com"><img src="https://larazeus.com/images/sky-banner.png" /></a>
 </p>
 
 <p align="center">
@@ -76,6 +76,12 @@ visit the url `/admin` to manage the Letters, and `/blog`.
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
+
+## Support
+available support channels:
+* using our channel `#sky` on [Discord](https://filamentphp.com/discord)
+* open an issue on [GitHub](https://github.com/lara-zeus/sky/issues)
+* email us using the [contact center](https://atm-code.com/contact-us/lara-zeus)
 
 ## Contributing
 

@@ -22,10 +22,10 @@ class Tags extends Component
     {
         seo()
             ->title($this->tag->name)
-            ->description('Show All posts in '.$this->tag->name)
+            ->description(__('Show All posts in') . ' ' . $this->tag->name)
             ->twitter();
 
-        return view(app('theme').'.category')
+        return view(app('theme') . '.category')
             ->with([
                 'posts' => $this->tag->postsPublished,
             ])

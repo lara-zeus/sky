@@ -19,9 +19,10 @@ class Post extends Component
         if (! $this->post->getMedia('posts')->isEmpty()) {
             seo()->image($this->post->getFirstMediaUrl('posts'));
         }
+
         seo()
             ->title($this->post->title)
-            ->description($this->post->description)
+            ->description($this->post->description ?? '')
             ->twitter();
 
         return view(app('theme').'.post')

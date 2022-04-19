@@ -21,7 +21,7 @@ class Page extends Component
         }
         seo()
             ->title($this->page->title)
-            ->description($this->page->description)
+            ->description($this->page->description ?? '')
             ->twitter();
 
         return view(app('theme').'.page')

@@ -2,8 +2,8 @@
 
 namespace LaraZeus\Sky\Filament\Resources\TagResource\Pages;
 
-use LaraZeus\Sky\Filament\Resources\TagResource;
 use Filament\Resources\Pages\ListRecords;
+use LaraZeus\Sky\Filament\Resources\TagResource;
 
 class ListTags extends ListRecords
 {

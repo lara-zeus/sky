@@ -2,8 +2,8 @@
 
 namespace LaraZeus\Sky\Filament\Resources\TagResource\Pages;
 
-use LaraZeus\Sky\Filament\Resources\TagResource;
 use Filament\Resources\Pages\CreateRecord;
+use LaraZeus\Sky\Filament\Resources\TagResource;
 
 class CreateTag extends CreateRecord
 {

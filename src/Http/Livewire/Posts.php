@@ -14,7 +14,7 @@ class Posts extends Component
             ->with([
                 'posts' => Post::NotSticky()->orderBy('published_at', 'desc')->get(),
                 'pages' => Post::page()->orderBy('published_at', 'desc')->whereNull('parent_id')->get(),
-                'tags' => Tag::withCount('postsPublished')->where('type', 'category')->get(),// $this->tag->postsPublished
+                'tags' => Tag::withCount('postsPublished')->where('type', 'category')->get(), // $this->tag->postsPublished
                 'stickies' => Post::sticky()->get(),
                 'recent' => Post::posts()->take(5)->get(),
             ])

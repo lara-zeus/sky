@@ -11,7 +11,7 @@ Route::prefix(config('zeus-sky.path'))
         Route::get('{type}/{slug}', \LaraZeus\Sky\Http\Livewire\Tags::class)->name('tags');
 
         Route::get('passConf', function () {
-            session()->put(request('postID') . '-' . request('password'), request('password'));
+            session()->put(request('postID').'-'.request('password'), request('password'));
 
             return redirect()->back()->with('status', 'sorry, password incorrect!');
         });

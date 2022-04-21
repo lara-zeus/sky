@@ -1,4 +1,4 @@
-<a href="/{{ $getRecord->slug }}" target="_blank" class="block">
+<a href="{{ route('post',$getRecord->slug) }}" target="_blank" class="block">
     <div class="filament-tables-text-column text-primary-600 transition hover:underline hover:text-primary-500 focus:underline focus:text-primary-500">
         @if($getRecord->password !== null)
             <span x-tooltip.raw="{{ __('Password Protected') }}" title="{{ __('Password Protected') }}">

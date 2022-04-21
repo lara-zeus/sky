@@ -29,6 +29,16 @@ return [
     'middleware' => ['web'],
 
     /**
+     * set the prefix for posts URL.
+     */
+    'post_uri_prefix' => 'post',
+
+    /**
+     * set the prefix for pages URL.
+     */
+    'page_uri_prefix' => 'page',
+    
+    /**
      * this will be setup the default seo site title. read more about it in 'laravel-seo'
      */
     'site_title' => config('app.name', 'Laravel').' | '.'Blogs',

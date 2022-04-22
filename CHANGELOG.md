@@ -2,6 +2,15 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.0.5 - 2022-04-22
+
+## What's Changed
+
+- Apply fixes from StyleCI by @atmonshi in https://github.com/lara-zeus/sky/pull/11
+- small fixes by @atmonshi in https://github.com/lara-zeus/sky/pull/10
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.0.4...2.0.5
+
 ## 2.0.4 - 2022-04-22
 
 ## What's Changed

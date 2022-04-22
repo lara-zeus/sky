@@ -46,7 +46,7 @@ class PostResource extends Resource
                             ->afterStateUpdated(function (Closure $set, $state) {
                                 $set('slug', Str::slug($state));
                             }),
-                        TinyEditor::make('content')->label(__('Post Content'))->showMenuBar(),
+                        TinyEditor::make('content')->label(__('Post Content'))->showMenuBar()->required(),
                     ]),
                 ])->columnSpan(3),
 
@@ -54,8 +54,8 @@ class PostResource extends Resource
                     Section::make(__('SEO'))
                         ->description(__('SEO Settings'))
                         ->schema([
-                            Hidden::make('user_id')->default(auth()->user()->id),
-                            Hidden::make('post_type')->default('post'),
+                            Hidden::make('user_id')->default(auth()->user()->id)->required(),
+                            Hidden::make('post_type')->default('post')->required(),
                             Textarea::make('description')
                                 ->maxLength(255)
                                 ->label(__('Description'))

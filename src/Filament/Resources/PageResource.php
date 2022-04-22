@@ -45,7 +45,7 @@ class PageResource extends Resource
                             ->afterStateUpdated(function (Closure $set, $state) {
                                 $set('slug', Str::slug($state));
                             }),
-                        TinyEditor::make('content')->label(__('Post Content'))->showMenuBar(),
+                        TinyEditor::make('content')->label(__('Post Content'))->showMenuBar()->required(),
                     ]),
                 ])->columnSpan(3),
 
@@ -53,14 +53,14 @@ class PageResource extends Resource
                     Section::make(__('SEO'))
                         ->description(__('SEO Settings'))
                         ->schema([
-                            Hidden::make('user_id')->default(auth()->user()->id),
-                            Hidden::make('post_type')->default('page'),
+                            Hidden::make('user_id')->default(auth()->user()->id)->required(),
+                            Hidden::make('post_type')->default('page')->required(),
                             Textarea::make('description')
                                 ->maxLength(255)
                                 ->label(__('Description'))
                                 ->hint(__('Write an excerpt for your post')),
                             TextInput::make('slug')->required()->maxLength(255)->label(__('Post Slug')),
-                            Select::make('parent_id')->options(Post::wherePostType('page')->pluck('title', 'id'))->label(__('Parent Page')),
+                            Select::make('parent_id')->options(Post::wherePostType('page')->pluck('title', 'id'))->label(__('Parent Page'))->integer(),
                             TextInput::make('ordering')->integer()->label(__('Page Order'))->default(1),
                         ])
                         ->collapsible(),

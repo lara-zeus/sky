@@ -60,7 +60,7 @@ class PageResource extends Resource
                                 ->label(__('Description'))
                                 ->hint(__('Write an excerpt for your post')),
                             TextInput::make('slug')->required()->maxLength(255)->label(__('Post Slug')),
-                            Select::make('parent_id')->options(Post::wherePostType('page')->pluck('title', 'id'))->label(__('Parent Page'))->integer(),
+                            Select::make('parent_id')->options(Post::wherePostType('page')->pluck('title', 'id'))->label(__('Parent Page')),
                             TextInput::make('ordering')->integer()->label(__('Page Order'))->default(1),
                         ])
                         ->collapsible(),

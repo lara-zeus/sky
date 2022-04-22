@@ -2,6 +2,14 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.0.4 - 2022-04-22
+
+## What's Changed
+
+- add missing validation by @atmonshi in https://github.com/lara-zeus/sky/pull/9
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.0.3...2.0.4
+
 ## 2.0.3 - 2022-04-21
 
 ## What's Changed

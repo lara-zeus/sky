@@ -16,9 +16,9 @@
                 {{ $post->title ?? '' }}
             </a>
             <div class="flex mt-3">
-                <img src="{{ \Filament\Facades\Filament::getUserAvatarUrl($post->auther) }}" class="h-10 w-10 rounded-full ltr:mr-2 rtl:ml-2 object-cover"/>
+                <img src="{{ \Filament\Facades\Filament::getUserAvatarUrl($post->author) }}" class="h-10 w-10 rounded-full ltr:mr-2 rtl:ml-2 object-cover"/>
                 <div>
-                    <p class="font-semibold text-gray-200 text-sm">{{ $post->auther->name ?? '' }}</p>
+                    <p class="font-semibold text-gray-200 text-sm">{{ $post->author->name ?? '' }}</p>
                     <p class="font-semibold text-gray-400 text-xs">{{ optional($post->published_at)->diffForHumans() ?? '' }}</p>
                 </div>
             </div>

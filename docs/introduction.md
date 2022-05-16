@@ -24,7 +24,7 @@ weight: 1
     - Featured Image
       
 and more in the way:
-- authers
+- authors
 - menus
 - comments
 - RSS

@@ -35,8 +35,8 @@
 
             <div>
                 <a href="#" class="flex items-center">
-                    <img src="{{ \Filament\Facades\Filament::getUserAvatarUrl($post->auther) }}" alt="avatar" class="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block">
-                    <h1 class="font-bold text-gray-700 hover:underline">{{ $post->auther->name ?? '' }}</h1>
+                    <img src="{{ \Filament\Facades\Filament::getUserAvatarUrl($post->author) }}" alt="avatar" class="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block">
+                    <h1 class="font-bold text-gray-700 hover:underline">{{ $post->author->name ?? '' }}</h1>
                 </a>
             </div>
         </div>

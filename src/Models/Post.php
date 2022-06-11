@@ -64,7 +64,7 @@ class Post extends Model implements HasMedia
         return "<span title='".__('post status')."' class='px-2 py-0.5 text-xs rounded-xl text-{$PostStatus->class}-700 bg-{$PostStatus->class}-500/10'> ".$icon." {$PostStatus->label}</span>";
     }
 
-    public function auther()
+    public function author()
     {
         return $this->belongsTo(config('auth.providers.users.model'), 'user_id', 'id');
     }

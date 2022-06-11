@@ -22,5 +22,3 @@ if you want to overwrite all existing files, run:
 ```bash
 php artisan sky:publish --force
 ```
-
-More Documentation are coming soon...

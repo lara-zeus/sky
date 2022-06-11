@@ -5,6 +5,7 @@ namespace LaraZeus\Sky;
 use Filament\PluginServiceProvider;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\View;
+use LaraZeus\Sky\Filament\Resources\FaqResource;
 use LaraZeus\Sky\Filament\Resources\PageResource;
 use LaraZeus\Sky\Filament\Resources\PostResource;
 use LaraZeus\Sky\Filament\Resources\TagResource;
@@ -39,7 +40,7 @@ class SkyServiceProvider extends PluginServiceProvider
         parent::configurePackage($package);
         $package
             ->hasConfigFile()
-            ->hasMigrations(['create_posts_table'])
+            ->hasMigrations(['create_posts_table', 'create_faqs_table'])
             ->hasRoute('web')
             ->hasTranslations();
     }
@@ -50,6 +51,7 @@ class SkyServiceProvider extends PluginServiceProvider
             PostResource::class,
             PageResource::class,
             TagResource::class,
+            FaqResource::class,
         ];
     }
 }

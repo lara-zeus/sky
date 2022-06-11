@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\View;
 use LaraZeus\Sky\Filament\Resources\PageResource;
 use LaraZeus\Sky\Filament\Resources\PostResource;
 use LaraZeus\Sky\Filament\Resources\TagResource;
+use LaraZeus\Sky\Console\migrateCommand;
 use Spatie\LaravelPackageTools\Package;
 
 class SkyServiceProvider extends PluginServiceProvider
@@ -41,6 +42,7 @@ class SkyServiceProvider extends PluginServiceProvider
             ->hasConfigFile()
             ->hasMigrations(['create_posts_table'])
             ->hasRoute('web')
+            ->hasCommand(migrateCommand::class)
             ->hasTranslations();
     }
 

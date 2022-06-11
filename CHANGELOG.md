@@ -2,10 +2,6 @@
 
 All notable changes to `sky` will be documented in this file
 
-## 2.1.0 - to be released
-
-- introduce the ability to write posts and pages in multiple languages
-
 ## 2.0.4 - 2022-04-22
 
 ## What's Changed

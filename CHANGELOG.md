@@ -2,6 +2,14 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.1.2 - 2022-06-11
+
+### What's Changed
+
+- change translatable column types by @atmonshi in https://github.com/lara-zeus/sky/pull/21
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.1.1...2.1.2
+
 ## 2.1.1 - 2022-06-11
 
 ### What's Changed

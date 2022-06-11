@@ -23,9 +23,9 @@ if you want to overwrite all existing files, run:
 php artisan sky:publish --force
 ```
 
-### updating to V3
+### updating to V2.1
 
-if updating to V3, make sure to take a backup from your database,
+if updating to V2.1, make sure to take a backup from your database,
 and run the command:
 
 ```bash

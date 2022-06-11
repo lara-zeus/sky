@@ -9,10 +9,17 @@ use Illuminate\Support\Facades\Blade;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Tags\HasTags;
+use Spatie\Translatable\HasTranslations;
 
 class Post extends Model implements HasMedia
 {
-    use HasFactory, HasTags, InteractsWithMedia, PostScope;
+    use HasFactory, HasTags, InteractsWithMedia, PostScope, HasTranslations;
+
+    public $translatable = [
+        'title',
+        'content',
+        'description',
+    ];
 
     protected $fillable = [
         'title',

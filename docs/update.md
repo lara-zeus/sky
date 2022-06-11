@@ -23,4 +23,13 @@ if you want to overwrite all existing files, run:
 php artisan sky:publish --force
 ```
 
-More Documentation are coming soon...
+### updating to V2.1
+
+if updating to V2.1, make sure to take a backup from your database,
+and run the command:
+
+```bash
+php artisan sky:migrate
+```
+
+this command will migrate all the strings of the post model (title,content,description) from `string` to `json` format to support multi langs

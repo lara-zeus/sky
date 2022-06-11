@@ -3,8 +3,8 @@
 namespace LaraZeus\Sky\Filament\Resources\FaqResource\Pages;
 
 use Filament\Resources\Pages\CreateRecord\Concerns\Translatable;
-use LaraZeus\Sky\Filament\Resources\FaqResource;
 use Filament\Resources\Pages\ListRecords;
+use LaraZeus\Sky\Filament\Resources\FaqResource;
 
 class ListFaqs extends ListRecords
 {

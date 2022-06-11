@@ -11,7 +11,7 @@ class Faq extends Model
 
     public $translatable = [
         'question',
-        'answer'
+        'answer',
     ];
 
     protected $fillable = [

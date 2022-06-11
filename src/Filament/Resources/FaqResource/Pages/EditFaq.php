@@ -2,9 +2,9 @@
 
 namespace LaraZeus\Sky\Filament\Resources\FaqResource\Pages;
 
-use LaraZeus\Sky\Filament\Resources\FaqResource;
-use Filament\Resources\Pages\EditRecord;
 use Filament\Resources\Pages\CreateRecord\Concerns\Translatable;
+use Filament\Resources\Pages\EditRecord;
+use LaraZeus\Sky\Filament\Resources\FaqResource;
 
 class EditFaq extends EditRecord
 {

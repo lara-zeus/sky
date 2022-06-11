@@ -23,6 +23,8 @@ if you want to overwrite all existing files, run:
 php artisan sky:publish --force
 ```
 
+=======
+
 ### updating to V2.1
 
 if updating to V2.1, make sure to take a backup from your database,

@@ -2,6 +2,7 @@
 
 All notable changes to `sky` will be documented in this file
 
+
 ## 2.0.5 - 2022-04-22
 
 ## What's Changed

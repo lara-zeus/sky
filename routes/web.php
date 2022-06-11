@@ -20,3 +20,7 @@ Route::prefix(config('zeus-sky.path'))
             return redirect()->back()->with('status', 'sorry, password incorrect!');
         });
     });
+
+if (config('zeus-sky.enableFaq')) {
+    Route::get(config('zeus-sky.faq_uri_prefix').'', \LaraZeus\Sky\Http\Livewire\Faq::class)->name('faq');
+}

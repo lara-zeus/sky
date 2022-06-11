@@ -23,6 +23,16 @@ return [
     'page_uri_prefix' => 'page',
 
     /**
+     * enable or disable FAQ addons.
+     */
+    'enableFaq' => true,
+
+    /**
+     * set the prefix for FAQ URL.
+     */
+    'faq_uri_prefix' => 'faq',
+
+    /**
      * this will be setup the default seo site title. read more about it in 'laravel-seo'.
      */
     'site_title' => config('app.name', 'Laravel').' | Blogs',

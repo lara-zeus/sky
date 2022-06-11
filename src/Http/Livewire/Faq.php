@@ -15,7 +15,7 @@ class Faq extends Component
             ->twitter();
 
         return view(app('theme').'.addons.faq')
-            ->with('faqs' , Faqs::get())
+            ->with('faqs', Faqs::get())
             ->layout(config('zeus-sky.layout'));
     }
 }

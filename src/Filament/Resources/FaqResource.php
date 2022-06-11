@@ -2,15 +2,15 @@
 
 namespace LaraZeus\Sky\Filament\Resources;
 
-use LaraZeus\Sky\Filament\Resources\FaqResource\Pages;
-use LaraZeus\Sky\Models\Faq;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Textarea;
+use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Filament\Resources\Concerns\Translatable;
+use LaraZeus\Sky\Filament\Resources\FaqResource\Pages;
+use LaraZeus\Sky\Models\Faq;
 
 class FaqResource extends Resource
 {
@@ -64,7 +64,7 @@ class FaqResource extends Resource
                 //
             ]);
     }
-    
+
     public static function getPages(): array
     {
         return [

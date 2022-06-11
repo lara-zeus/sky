@@ -5,10 +5,10 @@ namespace LaraZeus\Sky;
 use Filament\PluginServiceProvider;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\View;
+use LaraZeus\Sky\Console\migrateCommand;
 use LaraZeus\Sky\Filament\Resources\PageResource;
 use LaraZeus\Sky\Filament\Resources\PostResource;
 use LaraZeus\Sky\Filament\Resources\TagResource;
-use LaraZeus\Sky\Console\migrateCommand;
 use Spatie\LaravelPackageTools\Package;
 
 class SkyServiceProvider extends PluginServiceProvider

@@ -41,22 +41,23 @@ class migrateCommand extends Command
                 'description',
             ];
 
-            if (!$this->isJson($title)) {
+            if (! $this->isJson($title)) {
                 $post->title = $title;
             }
-            if (!$this->isJson($content)) {
+            if (! $this->isJson($content)) {
                 $post->content = $content;
             }
-            if (!$this->isJson($description)) {
+            if (! $this->isJson($description)) {
                 $post->description = $description;
             }
             $post->save();
         }
     }
 
-    function isJson($string)
+    public function isJson($string)
     {
         json_decode($string);
+
         return json_last_error() === JSON_ERROR_NONE;
     }
 }

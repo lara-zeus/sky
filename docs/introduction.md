@@ -12,6 +12,7 @@ weight: 1
 - 🔥 built with [TALL stack](https://tallstack.dev/)
 - 🔥 using [filament](https://filamentadmin.com) as an admin panel
 - 🔥 FrontEnd scaffolding, highly customizable.
+- 🔥 all models are translatable.
     - sticky posts
     - recent posts
     - pages list

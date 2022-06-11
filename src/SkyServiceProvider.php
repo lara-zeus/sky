@@ -6,6 +6,7 @@ use Filament\PluginServiceProvider;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\View;
 use LaraZeus\Sky\Filament\Resources\FaqResource;
+use LaraZeus\Sky\Console\migrateCommand;
 use LaraZeus\Sky\Filament\Resources\PageResource;
 use LaraZeus\Sky\Filament\Resources\PostResource;
 use LaraZeus\Sky\Filament\Resources\TagResource;
@@ -42,6 +43,7 @@ class SkyServiceProvider extends PluginServiceProvider
             ->hasConfigFile()
             ->hasMigrations(['create_posts_table', 'create_faqs_table'])
             ->hasRoute('web')
+            ->hasCommand(migrateCommand::class)
             ->hasTranslations();
     }
 

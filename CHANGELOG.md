@@ -2,6 +2,12 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.1.3 - 2022-06-21
+
+update core version
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.1.2...2.1.3
+
 ## 2.1.2 - 2022-06-11
 
 ### What's Changed

@@ -54,11 +54,5 @@
                 "LaraZeus\\Sky\\SkyServiceProvider"
             ]
         }
-    },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../core"
-        }
-    ]
+    }
 }

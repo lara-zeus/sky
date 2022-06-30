@@ -6,6 +6,7 @@ use Filament\PluginServiceProvider;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\View;
 use LaraZeus\Sky\Console\migrateCommand;
+use LaraZeus\Sky\Filament\Resources\TagResource;
 use Spatie\LaravelPackageTools\Package;
 
 class SkyServiceProvider extends PluginServiceProvider
@@ -45,6 +46,11 @@ class SkyServiceProvider extends PluginServiceProvider
 
     protected function getResources(): array
     {
-        return config('zeus-sky.enabled_resources');
+        // TagResouce should not be disabled.
+
+        return array_merge(
+            config('zeus-sky.enabled_resources'),
+            [TagResource::class]
+        );
     }
 }

@@ -18,6 +18,11 @@ class TagResource extends SkyResource
     protected static ?string $navigationIcon = 'iconpark-tag-o';
     protected static ?string $navigationGroup = 'Sky';
 
+    protected static function shouldRegisterNavigation(): bool
+    {
+        return in_array(self::class, config('zeus-sky.enabled_resources'));
+    }
+
     protected static function getNavigationBadge(): ?string
     {
         return (string) Tag::query()->count();

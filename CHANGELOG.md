@@ -2,10 +2,6 @@
 
 All notable changes to `sky` will be documented in this file
 
-## 2.1.4 - to be releasd
-
-Added ability to enable/disable individual resources
-
 ## 2.1.3 - 2022-06-21
 
 update core version

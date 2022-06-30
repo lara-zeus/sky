@@ -48,6 +48,11 @@ return [
     'site_description' => 'All about '.config('app.name', 'Laravel').' Blogs',
 
     /**
+     * Num of recent pages/posts displayed on frontend.
+     */
+    'site_recent_count' => 5,
+
+    /**
      * this will be setup the default seo site color theme. read more about it in 'laravel-seo'.
      */
     'site_color' => '#F5F5F4',

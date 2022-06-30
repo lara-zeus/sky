@@ -21,6 +21,6 @@ Route::prefix(config('zeus-sky.path'))
         });
     });
 
-if (config('zeus-sky.enableFaq')) {
+if (in_array('LaraZeus\Sky\Filament\Resources\FaqResource', config('zeus-sky.enabled_resources'))) {
     Route::get(config('zeus-sky.faq_uri_prefix').'', \LaraZeus\Sky\Http\Livewire\Faq::class)->name('faq');
 }

@@ -23,9 +23,14 @@ return [
     'page_uri_prefix' => 'page',
 
     /**
-     * enable or disable FAQ addons.
+     * enable or disable individual Resources.
      */
-    'enableFaq' => true,
+    'enabled_resources' => [
+        LaraZeus\Sky\Filament\Resources\PostResource::class,
+        LaraZeus\Sky\Filament\Resources\PageResource::class,
+        LaraZeus\Sky\Filament\Resources\TagResource::class,
+        LaraZeus\Sky\Filament\Resources\FaqResource::class,
+    ],
 
     /**
      * set the prefix for FAQ URL.

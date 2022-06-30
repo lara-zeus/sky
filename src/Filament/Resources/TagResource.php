@@ -5,22 +5,23 @@ namespace LaraZeus\Sky\Filament\Resources;
 use Closure;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Form;
-use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\TagResource\Pages;
 use LaraZeus\Sky\Models\Tag;
 
-class TagResource extends Resource
+class TagResource extends SkyResource
 {
-    use Translatable;
-
     protected static ?string $model = Tag::class;
     protected static ?string $navigationIcon = 'iconpark-tag-o';
     protected static ?string $navigationGroup = 'Sky';
+
+    protected static function getNavigationBadge(): ?string
+    {
+        return (string) Tag::query()->count();
+    }
 
     public static function form(Form $form): Form
     {
@@ -57,11 +58,6 @@ class TagResource extends Resource
             'create' => Pages\CreateTag::route('/create'),
             'edit'   => Pages\EditTag::route('/{record}/edit'),
         ];
-    }
-
-    public static function getTranslatableLocales(): array
-    {
-        return config('zeus-sky.translatable_Locales');
     }
 
     public static function getLabel(): string

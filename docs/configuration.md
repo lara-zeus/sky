@@ -37,6 +37,16 @@ return [
      * set the prefix for pages URL.
      */
     'page_uri_prefix' => 'page',
+
+    /**
+     * enable or disable individual Resources.
+     */
+    'enabled_resources' => [
+        LaraZeus\Sky\Filament\Resources\PostResource::class,
+        LaraZeus\Sky\Filament\Resources\PageResource::class,
+        LaraZeus\Sky\Filament\Resources\TagResource::class,
+        LaraZeus\Sky\Filament\Resources\FaqResource::class,
+    ],
     
     /**
      * this will be setup the default seo site title. read more about it in 'laravel-seo'

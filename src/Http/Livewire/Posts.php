@@ -12,11 +12,25 @@ class Posts extends Component
     {
         return view(app('theme').'.home')
             ->with([
-                'posts' => Post::NotSticky()->orderBy('published_at', 'desc')->get(),
-                'pages' => Post::page()->orderBy('published_at', 'desc')->whereNull('parent_id')->get(),
-                'tags' => Tag::withCount('postsPublished')->where('type', 'category')->get(), // $this->tag->postsPublished
+                'posts' => Post::NotSticky()
+                    ->orderBy('published_at', 'desc')
+                    ->get(),
+
+                'pages' => Post::page()
+                    ->orderBy('published_at', 'desc')
+                    ->whereNull('parent_id')
+                    ->get(),
+
+                'tags' => Tag::withCount('postsPublished')
+                    ->where('type', 'category')
+                    ->get(), // $this->tag->postsPublished
+
                 'stickies' => Post::sticky()->get(),
-                'recent' => Post::posts()->take(5)->get(),
+
+                'recent' => Post::posts()
+                    ->take(config('zeus-sky.site_recent_count', 5))
+                    ->orderBy('published_at', 'desc')
+                    ->get(),
             ])
             ->layout(config('zeus-sky.layout'));
     }

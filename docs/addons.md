@@ -14,7 +14,7 @@ to set the url of the FAQ from the `zeus-sky.php` config file:
 'faq_uri_prefix' => 'faq',
 ```
 
-to disable faq, set the config to false:
+to disable any resource, remove it from the config:
 ```php
-'enableFaq' => true,
+'enabled_resources' => [ ... ],
 ```

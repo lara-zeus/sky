@@ -4,25 +4,21 @@ namespace LaraZeus\Sky\Filament\Resources;
 
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Textarea;
-use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Form;
-use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use LaraZeus\Sky\Filament\Resources\FaqResource\Pages;
 use LaraZeus\Sky\Models\Faq;
 
-class FaqResource extends Resource
+class FaqResource extends SkyResource
 {
-    use Translatable;
-
     protected static ?string $model = Faq::class;
 
     protected static ?string $navigationIcon = 'iconpark-folderwithdrawal-o';
 
-    protected static function shouldRegisterNavigation(): bool
+    protected static function getNavigationBadge(): ?string
     {
-        return config('zeus-sky.enableFaq');
+        return (string) Faq::query()->count();
     }
 
     protected static function getNavigationGroup(): ?string
@@ -72,10 +68,5 @@ class FaqResource extends Resource
             'create' => Pages\CreateFaq::route('/create'),
             'edit' => Pages\EditFaq::route('/{record}/edit'),
         ];
-    }
-
-    public static function getTranslatableLocales(): array
-    {
-        return config('zeus-sky.translatable_Locales');
     }
 }

@@ -23,9 +23,14 @@ return [
     'page_uri_prefix' => 'page',
 
     /**
-     * enable or disable FAQ addons.
+     * enable or disable individual Resources.
      */
-    'enableFaq' => true,
+    'enabled_resources' => [
+        LaraZeus\Sky\Filament\Resources\PostResource::class,
+        LaraZeus\Sky\Filament\Resources\PageResource::class,
+        LaraZeus\Sky\Filament\Resources\TagResource::class,
+        LaraZeus\Sky\Filament\Resources\FaqResource::class,
+    ],
 
     /**
      * set the prefix for FAQ URL.
@@ -41,6 +46,11 @@ return [
      * this will be setup the default seo site description. read more about it in 'laravel-seo'.
      */
     'site_description' => 'All about '.config('app.name', 'Laravel').' Blogs',
+
+    /**
+     * Num of recent pages/posts displayed on frontend.
+     */
+    'site_recent_count' => 5,
 
     /**
      * this will be setup the default seo site color theme. read more about it in 'laravel-seo'.

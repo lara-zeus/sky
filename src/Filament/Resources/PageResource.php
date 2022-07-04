@@ -12,9 +12,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Form;
-use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables\Columns\ViewColumn;
 use Filament\Tables\Filters\Filter;
@@ -26,17 +24,15 @@ use LaraZeus\Sky\Models\Post;
 use LaraZeus\Sky\Models\PostStatus;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
-class PageResource extends Resource
+class PageResource extends SkyResource
 {
-    use Translatable;
-
     protected static ?string $model = Post::class;
     protected static ?string $slug = 'pages';
     protected static ?string $navigationIcon = 'iconpark-folder-o';
 
-    public static function getTranslatableLocales(): array
+    protected static function getNavigationBadge(): ?string
     {
-        return config('zeus-sky.translatable_Locales');
+        return (string) Post::query()->page()->count();
     }
 
     public static function form(Form $form): Form

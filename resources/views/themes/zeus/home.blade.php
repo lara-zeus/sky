@@ -1,4 +1,8 @@
 <div>
+    {{-- You can override the used class in config/zeus-sky.php 'search_result_highlight_css_class'' --}}
+    <style type="text/css">
+        span.highlight { background-color: yellow; }
+    </style>
     @unless($stickies->isEmpty())
         <div class="mt-10 grid @if($stickies->count() > 1) grid-cols-3 @endif gap-4">
             @foreach($stickies as $post)

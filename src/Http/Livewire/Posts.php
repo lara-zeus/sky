@@ -3,6 +3,7 @@
 namespace LaraZeus\Sky\Http\Livewire;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 use LaraZeus\Sky\Models\Post;
 use LaraZeus\Sky\Models\Tag;
@@ -26,6 +27,9 @@ class Posts extends Component
             ->orderBy('published_at', 'desc')
             ->whereNull('parent_id')
             ->get();
+
+        $pages = $this->highlightSearchResults($pages, $search);
+        $posts = $this->highlightSearchResults($posts, $search);
 
         $recent = Post::posts()
                     ->limit(config('zeus-sky.site_recent_count', 5))
@@ -56,5 +60,24 @@ class Posts extends Component
         }
 
         return $query;
+    }
+
+    private function highlightSearchResults(Collection $posts, ?string $search = null): Collection
+    {
+        if (! $search) {
+            return $posts;
+        }
+
+        foreach ($posts as $i => $post) {
+            $posts[$i]->content = strtr($post->content, [
+                $search => sprintf(
+                    '<span class="%s">%s</span>',
+                    config('zeus-sky.search_result_highlight_css_class', 'highlight'),
+                    $search
+                ),
+            ]);
+        }
+
+        return $posts;
     }
 }

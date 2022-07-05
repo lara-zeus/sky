@@ -1,4 +1,8 @@
 <div>
+    {{-- You can override the used class in config/zeus-sky.php 'search_result_highlight_css_class'' --}}
+    <style type="text/css">
+        span.highlight { background-color: yellow; }
+    </style>
     @unless($stickies->isEmpty())
         <div class="mt-10 grid @if($stickies->count() > 1) grid-cols-3 @endif gap-4">
             @foreach($stickies as $post)
@@ -10,23 +14,19 @@
     <div class="overflow-x-hidden">
         <div class="px-6 py-8">
             <div class="container flex justify-between mx-auto gap-6">
-                @unless ($posts->isEmpty() && $stickies->isEmpty())
-                    <div class="w-3/4">
-                        @unless ($posts->isEmpty())
-                        <div class="flex items-center justify-between">
-                            <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Posts</h1>
-                        </div>
-                        @each($theme.'.partial.post', $posts, 'post')
-                        @else
-                            @include($theme.'.partial.empty')
-                        @endunless
+                <div class="w-3/4">
+                    @unless ($posts->isEmpty())
+                    <div class="flex items-center justify-between">
+                        <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Posts</h1>
                     </div>
-                    <div class="w-1/4">
-                        @include($theme.'.partial.sidebar')
-                    </div>
-                @else
-                    @include($theme.'.partial.empty')
-                @endunless
+                    @each($theme.'.partial.post', $posts, 'post')
+                    @else
+                        @include($theme.'.partial.empty')
+                    @endunless
+                </div>
+                <div class="w-1/4">
+                    @include($theme.'.partial.sidebar')
+                </div>
             </div>
         </div>
     </div>

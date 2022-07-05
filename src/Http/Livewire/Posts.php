@@ -68,14 +68,14 @@ class Posts extends Component
             return $posts;
         }
 
+        $class = config('zeus-sky.search_result_highlight_css_class', 'highlight');
+
         foreach ($posts as $i => $post) {
-            $posts[$i]->content = strtr($post->content, [
-                $search => sprintf(
-                    '<span class="%s">%s</span>',
-                    config('zeus-sky.search_result_highlight_css_class', 'highlight'),
-                    $search
-                ),
-            ]);
+            $posts[$i]->content = str_ireplace(
+                $search,
+                sprintf('<span class="%s">%s</span>', $class, $search),
+                $post->content,
+            );
         }
 
         return $posts;

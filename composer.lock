@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bdad389cf0707567621f96ec2ad8215a",
+    "content-hash": "a4ff2cda0933687d746f0a28e2bb2086",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -2030,23 +2030,23 @@
         },
         {
             "name": "lara-zeus/core",
-            "version": "dev-main",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lara-zeus/core.git",
-                "reference": "309d8630a7aaf35494e272b3f13bb99c869a5b09"
+                "reference": "9928661836e820efb84de6b52d5e3bb5e6242bf7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lara-zeus/core/zipball/309d8630a7aaf35494e272b3f13bb99c869a5b09",
-                "reference": "309d8630a7aaf35494e272b3f13bb99c869a5b09",
+                "url": "https://api.github.com/repos/lara-zeus/core/zipball/9928661836e820efb84de6b52d5e3bb5e6242bf7",
+                "reference": "9928661836e820efb84de6b52d5e3bb5e6242bf7",
                 "shasum": ""
             },
             "require": {
                 "archtechx/laravel-seo": "^0.4.0",
                 "calebporzio/sushi": "^2.4",
                 "codeat3/blade-iconpark": "^1.4",
-                "filament/filament": "^2.10",
+                "filament/filament": "^2.13",
                 "illuminate/support": "^8.0 || ^9.0",
                 "php": "^8.0"
             },
@@ -2054,7 +2054,6 @@
                 "orchestra/testbench": "^6.0 || ^7.0",
                 "phpunit/phpunit": "^9.5.10"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -2093,7 +2092,7 @@
             ],
             "support": {
                 "issues": "https://github.com/lara-zeus/core/issues",
-                "source": "https://github.com/lara-zeus/core/tree/main"
+                "source": "https://github.com/lara-zeus/core/tree/2.1.0"
             },
             "funding": [
                 {
@@ -2101,7 +2100,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-04-19T12:26:56+00:00"
+            "time": "2022-07-10T17:16:33+00:00"
         },
         {
             "name": "laravel/framework",
@@ -10270,9 +10269,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "lara-zeus/core": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

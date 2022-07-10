@@ -10,11 +10,13 @@
         </div>
         <div class="mt-2">
             <a href="{{ route('post',$post->slug) }}" class="text-2xl md:text-3xl font-bold text-gray-700 hover:underline">
-                {{ $post->title ?? '' }}
+                {!! $post->title !!}
             </a>
-            <p class="mt-2 text-gray-600">
-                {{ $post->description ?? '' }}
-            </p>
+            @if($post->description !== null)
+                <p class="mt-2 text-gray-600">
+                    {!! $post->description !!}
+                </p>
+            @endif
         </div>
         <div class="flex items-center justify-between mt-4">
             <a href="{{ route('post',$post->slug) }}" class="text-blue-500 hover:underline">Read more</a>

@@ -69,6 +69,11 @@ return [
     'theme' => 'zeus',
 
     /**
+     * css class to apply on found search result, e.g. `bg-yellow-400`.
+     */
+    'search_result_highlight_css_class' => 'highlight',
+
+    /**
      * available locales, this currently used only in tags manager.
      */
     'translatable_Locales' => ['en', 'ar'],

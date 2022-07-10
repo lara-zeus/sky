@@ -2,6 +2,14 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.1.5 - 2022-07-05
+
+### What's Changed
+
+- introduce full-text search by @thyseus in https://github.com/lara-zeus/sky/pull/23
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.1.4...2.1.5
+
 ## 2.1.3 - 2022-06-21
 
 update core version

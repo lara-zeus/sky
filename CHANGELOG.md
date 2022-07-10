@@ -2,6 +2,15 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.1.6 - 2022-07-10
+
+### What's Changed
+
+- Faq translation by @atmonshi in https://github.com/lara-zeus/sky/pull/25
+- improvements by @atmonshi in https://github.com/lara-zeus/sky/pull/26
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.1.5...2.1.6
+
 ## 2.1.5 - 2022-07-05
 
 ### What's Changed

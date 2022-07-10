@@ -28,25 +28,25 @@ class FaqResource extends SkyResource
 
     public static function getLabel(): string
     {
-        return __('سؤال');
+        return __('FAQ');
     }
 
     public static function getPluralLabel(): string
     {
-        return __('الأسئلة الشائعة');
+        return __('frequently asked questions');
     }
 
     protected static function getNavigationLabel(): string
     {
-        return __('الأسئلة الشائعة');
+        return __('FAQs');
     }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Textarea::make('question')->label(__('السؤال'))->required()->maxLength(65535)->columnSpan(2),
-                RichEditor::make('answer')->label(__('الإجابة'))->required()->maxLength(65535)->columnSpan(2),
+                Textarea::make('question')->label(__('Question'))->required()->maxLength(65535)->columnSpan(2),
+                RichEditor::make('answer')->label(__('Answer'))->required()->maxLength(65535)->columnSpan(2),
             ]);
     }
 
@@ -55,9 +55,6 @@ class FaqResource extends SkyResource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('question'),
-            ])
-            ->filters([
-                //
             ]);
     }
 

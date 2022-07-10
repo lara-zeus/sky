@@ -13,7 +13,7 @@ class Posts extends Component
 {
     public function render()
     {
-        $search = strtolower(request()->get('search'));
+        $search = strtolower(request('search'));
 
         $posts = Post::NotSticky();
         $posts = $this->applySearch($posts, $search);
@@ -69,7 +69,9 @@ class Posts extends Component
         }
 
         foreach ($posts as $i => $post) {
+            $posts[$i]->title = static::hl($post->title, [$search]);
             $posts[$i]->content = static::hl($post->content, [$search]);
+            $posts[$i]->description = static::hl($post->description, [$search]);
         }
 
         return $posts;

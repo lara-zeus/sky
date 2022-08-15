@@ -2,6 +2,19 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.1.7 - 2022-08-15
+
+### What's Changed
+
+- French Translation by @nicolasbaud in https://github.com/lara-zeus/sky/pull/27
+- refactor SEO and remove it form SkyServiceProvider by @atmonshi in https://github.com/lara-zeus/sky/pull/28
+
+### New Contributors
+
+- @nicolasbaud made their first contribution in https://github.com/lara-zeus/sky/pull/27
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.1.6...2.1.7
+
 ## 2.1.6 - 2022-07-10
 
 ### What's Changed

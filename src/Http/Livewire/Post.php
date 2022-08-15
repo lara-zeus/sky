@@ -22,7 +22,11 @@ class Post extends Component
 
         seo()
             ->title($this->post->title)
-            ->description($this->post->description ?? '')
+            ->description(($this->post->description ?? '').' '.config('zeus-sky.site_description', 'Laravel'))
+            ->site(config('zeus-sky.site_title', 'Laravel'))
+            ->rawTag('favicon', '<link rel="icon" type="image/x-icon" href="'.asset('favicon/favicon.ico').'">')
+            ->rawTag('<meta name="theme-color" content="'.config('zeus-sky.site_color').'" />')
+            ->withUrl()
             ->twitter();
 
         return view(app('theme').'.post')

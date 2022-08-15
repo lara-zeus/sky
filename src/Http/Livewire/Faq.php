@@ -11,7 +11,7 @@ class Faq extends Component
     {
         seo()
             ->title(__('FAQ'))
-            ->description(__('FAQs') . ' ' . config('zeus-sky.site_description', 'Laravel'))
+            ->description(__('FAQs').' '.config('zeus-sky.site_description', 'Laravel'))
             ->site(config('zeus-sky.site_title', 'Laravel'))
             ->rawTag('favicon', '<link rel="icon" type="image/x-icon" href="'.asset('favicon/favicon.ico').'">')
             ->rawTag('<meta name="theme-color" content="'.config('zeus-sky.site_color').'" />')

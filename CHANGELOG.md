@@ -2,6 +2,15 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.2.1 - 2022-08-24
+
+### What's Changed
+
+- abort if tag not exist by @atmonshi in https://github.com/lara-zeus/sky/pull/31
+- update composer and assets by @atmonshi in https://github.com/lara-zeus/sky/pull/32
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.2.0...2.2.1
+
 ## 2.1.7 - 2022-08-15
 
 ### What's Changed

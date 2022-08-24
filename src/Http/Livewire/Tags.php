@@ -16,6 +16,8 @@ class Tags extends Component
         $this->type = $type;
         $this->slug = $slug;
         $this->tag = Tag::findBySlug($slug, $type);
+
+        abort_if($this->tag === null, 404);
     }
 
     public function render()

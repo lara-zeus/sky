@@ -2,6 +2,15 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.2.2 - 2022-08-31
+
+### What's Changed
+
+- Apply fixes from StyleCI by @atmonshi in https://github.com/lara-zeus/sky/pull/34
+- remove RouteKeyName slug by @atmonshi in https://github.com/lara-zeus/sky/pull/33
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.2.1...2.2.2
+
 ## 2.2.1 - 2022-08-24
 
 ### What's Changed

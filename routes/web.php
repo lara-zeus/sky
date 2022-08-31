@@ -10,7 +10,7 @@ Route::prefix(config('zeus-sky.path'))
     ->middleware(config('zeus-sky.middleware'))
     ->group(function () {
         Route::get('/', Posts::class)->name('blogs');
-        Route::get(config('zeus-sky.post_uri_prefix').'/{post:slug}', Post::class)->name('post');
+        Route::get(config('zeus-sky.post_uri_prefix').'/{slug}', Post::class)->name('post');
         Route::get(config('zeus-sky.page_uri_prefix').'/{slug}', Page::class)->name('page');
         Route::get('{type}/{slug}', Tags::class)->name('tags');
 

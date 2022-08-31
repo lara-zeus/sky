@@ -51,11 +51,6 @@ class Post extends Model implements HasMedia
         return PostFactory::new();
     }
 
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
-
     public function statusDesc(): string
     {
         $PostStatus = PostStatus::where('name', $this->status)->first();

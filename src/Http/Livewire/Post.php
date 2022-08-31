@@ -7,11 +7,11 @@ use Livewire\Component;
 
 class Post extends Component
 {
-    public postModel $post;
+    public $post;
 
-    public function mount(postModel $post)
+    public function mount($slug)
     {
-        $this->post = $post;
+        $this->post = postModel::whereSlug($slug)->firstOrFail();
     }
 
     public function render()

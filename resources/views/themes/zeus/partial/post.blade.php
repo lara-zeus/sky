@@ -1,4 +1,4 @@
-<div class="mt-6">
+<article class="mt-6" itemscope itemtype="https://schema.org/Movie">
     <div class="px-6 pb-6 mx-auto bg-white rounded-[2rem] rounded-bl-none rounded-tr-none shadow-md">
         <div class="flex items-center justify-between">
             <span class="font-light text-sm text-gray-600">{{ optional($post->published_at)->diffForHumans() ?? '' }}</span>
@@ -8,7 +8,7 @@
                 @endunless
             </div>
         </div>
-        <div class="mt-2">
+        <aside class="mt-2">
             <a href="{{ route('post',$post->slug) }}" class="text-2xl md:text-3xl font-bold text-gray-700 hover:underline">
                 {!! $post->title !!}
             </a>
@@ -17,7 +17,7 @@
                     {!! $post->description !!}
                 </p>
             @endif
-        </div>
+        </aside>
         <div class="flex items-center justify-between mt-4">
             <a href="{{ route('post',$post->slug) }}" class="text-blue-500 hover:underline">Read more</a>
             <div>
@@ -28,4 +28,4 @@
             </div>
         </div>
     </div>
-</div>
+</article>

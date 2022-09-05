@@ -8,7 +8,7 @@
                         @if(!$post->getMedia('posts')->isEmpty())
                             <img src="{{ $post->getFirstMediaUrl('posts') }}" class="h-6 w-6 shadow-md rounded-[2rem] rounded-bl-none z-0 object-cover"/>
                         @endif
-                        <div class="w-full text-lg">{{ $post->title ?? '' }}</div>
+                        <div class="w-full text-lg">{!! $post->title !!}</div>
                     </div>
                 </a>
             @endforeach

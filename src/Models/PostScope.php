@@ -2,6 +2,8 @@
 
 namespace LaraZeus\Sky\Models;
 
+use Illuminate\Support\Facades\DB;
+
 trait PostScope
 {
     public function scopeSticky($query)
@@ -43,5 +45,33 @@ trait PostScope
     {
         $query->wherePostType('post')
             ->whereDate('published_at', '<=', now());
+    }
+
+    public function scopeForCatogery($query, $category)
+    {
+        if ($category === null) {
+            return $query;
+        }
+
+        return $query->where(function ($query) use ($category) {
+            $query->withAnyTags([$category], 'category');
+
+            return $query;
+        });
+    }
+
+    public function scopeSearch($query, $term)
+    {
+        if ($term === null) {
+            return $query;
+        }
+
+        return $query->where(function ($query) use ($term) {
+            foreach (['title', 'content', 'description'] as $attribute) {
+                $query->orWhere(DB::raw("lower($attribute)"), 'like', "%$term%");
+            }
+
+            return $query;
+        });
     }
 }

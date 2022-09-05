@@ -13,16 +13,19 @@ class Posts extends Component
 {
     public function render()
     {
-        $search = strtolower(request('search'));
+        $search = request()->get('search');
+        $category = request()->get('category');
 
         $posts = Post::NotSticky();
         $posts = $this->applySearch($posts, $search);
+        $posts = $this->applyCategory($posts, $category);
         $posts = $posts
             ->orderBy('published_at', 'desc')
             ->get();
 
         $pages = Post::page();
         $pages = $this->applySearch($pages, $search);
+        $pages = $this->applyCategory($pages, $category);
         $pages = $pages
             ->orderBy('published_at', 'desc')
             ->whereNull('parent_id')
@@ -56,19 +59,32 @@ class Posts extends Component
             ->layout(config('zeus-sky.layout'));
     }
 
-    private function applySearch(Builder $query, string $search): Builder
+    private function applySearch(Builder $query, ?string $search): Builder
     {
-        if ($search) {
-            return $query->where(function ($query) use ($search) {
-                foreach (['title', 'slug', 'content', 'description'] as $attribute) {
-                    $query->orWhere(DB::raw("lower($attribute)"), 'like', "%$search%");
-                }
-
-                return $query;
-            });
+        if (! $search) {
+            return $query;
         }
 
-        return $query;
+        return $query->where(function ($query) use ($search) {
+            foreach (['title', 'slug', 'content', 'description'] as $attribute) {
+                $query->orWhere(DB::raw("lower($attribute)"), 'like', "%$search%");
+            }
+
+            return $query;
+        });
+    }
+
+    private function applyCategory(Builder $query, ?string $category): Builder
+    {
+        if (! $category) {
+            return $query;
+        }
+
+        return $query->where(function ($query) use ($category) {
+            $query->withAnyTags([$category], 'category');
+
+            return $query;
+        });
     }
 
     private function highlightSearchResults(Collection $posts, ?string $search = null): Collection

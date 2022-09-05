@@ -8,7 +8,7 @@ trait SearchHelpers
 {
     private function highlightSearchResults(Collection $collection, ?string $search = null): Collection
     {
-        if (!$search) {
+        if (! $search) {
             return $collection;
         }
 
@@ -33,7 +33,7 @@ trait SearchHelpers
         $pattern = [];
 
         foreach ($replace as $k => $fword) {
-            $pattern[] = '/\b(' . $fword . ')(?!>)\b/i';
+            $pattern[] = '/\b('.$fword.')(?!>)\b/i';
             $replace[$k] = sprintf('<span class="%s">$1</span>', $class);
         }
 

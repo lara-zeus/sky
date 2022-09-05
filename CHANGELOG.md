@@ -2,6 +2,16 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.2.3 - 2022-09-05
+
+### What's Changed
+
+- introduce the ability to filter posts by category by @thyseus in https://github.com/lara-zeus/sky/pull/35
+- add Scopes for search by @atmonshi in https://github.com/lara-zeus/sky/pull/36
+- update responsive design by @atmonshi in https://github.com/lara-zeus/sky/pull/38
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.2.2...2.2.3
+
 ## 2.2.2 - 2022-08-31
 
 ### What's Changed

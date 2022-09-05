@@ -1,5 +1,4 @@
-<div class="mt-6 max-w-7xl mx-auto">
-
+<div class="mt-6 container mx-auto px-2 md:px-4">
     <x-slot name="breadcrumps">
         @if($post->parent !== null)
             <li class="flex items-center">
@@ -12,8 +11,8 @@
         </li>
     </x-slot>
 
-    @if(!$post->getMedia('posts')->isEmpty())
-        <img src="{{ $post->getFirstMediaUrl('posts') }}" class="my-10 w-full aspect-video shadow-md rounded-[2rem] rounded-bl-none z-0 object-cover"/>
+    @if(!$post->getMedia('pages')->isEmpty())
+        <img src="{{ $post->getFirstMediaUrl('pages') }}" class="my-10 w-full aspect-video shadow-md rounded-[2rem] rounded-bl-none z-0 object-cover"/>
     @endif
 
     <div class="bg-white rounded-[2rem] rounded-tl-none shadow-md px-10 pb-6 ">
@@ -26,7 +25,7 @@
             </div>
         </div>
 
-        <div class="flex items-center justify-between mt-4">
+        <div class="flex flex-col items-start justify-start gap-4">
             <div>
                 <a href="#" class="text-2xl font-bold text-gray-700 hover:underline">
                     {{ $post->title ?? '' }}
@@ -35,13 +34,10 @@
                     {{ $post->description ?? '' }}
                 </p>
             </div>
-
-            <div>
-                <a href="#" class="flex items-center">
-                    <img src="{{ \Filament\Facades\Filament::getUserAvatarUrl($post->author) }}" alt="avatar" class="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block">
-                    <h1 class="font-bold text-gray-700 hover:underline">{{ $post->author->name ?? '' }}</h1>
-                </a>
-            </div>
+            <a href="#" class="flex items-center gap-2">
+                <img src="{{ \Filament\Facades\Filament::getUserAvatarUrl($post->author) }}" alt="avatar" class="object-cover w-10 h-10 rounded-full sm:block">
+                <h1 class="font-bold text-gray-700 hover:underline">{{ $post->author->name ?? '' }}</h1>
+            </a>
         </div>
 
         <div class="mt-12">

@@ -2,6 +2,14 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.2.4 - 2022-09-06
+
+### What's Changed
+
+- update core to fix lang switcher by @atmonshi in https://github.com/lara-zeus/sky/pull/40
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.2.3...2.2.4
+
 ## 2.2.3 - 2022-09-05
 
 ### What's Changed

@@ -2,7 +2,6 @@
 
 namespace LaraZeus\Sky\Models;
 
-use Database\Factories\PostFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Blade;
@@ -41,14 +40,9 @@ class Post extends Model implements HasMedia
         'sticky_until' => 'datetime',
     ];
 
-    /**
-     * Create a new factory instance for the model.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    protected static function newFactory()
+    public function getRouteKeyName()
     {
-        return PostFactory::new();
+        return 'slug';
     }
 
     public function statusDesc(): string

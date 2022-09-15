@@ -2,6 +2,19 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.2.5 - 2022-09-15
+
+### What's Changed
+
+- remove SEO from the service provider by @atmonshi in https://github.com/lara-zeus/sky/pull/41
+- remove Factories by @thyseus in https://github.com/lara-zeus/sky/pull/42
+- add route name slug by @thyseus in https://github.com/lara-zeus/sky/pull/44
+- check for status on posts and pages by @atmonshi in https://github.com/lara-zeus/sky/pull/47
+
+also checkout our roadmap: #46
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.2.4...2.2.5
+
 ## 2.2.4 - 2022-09-06
 
 ### What's Changed

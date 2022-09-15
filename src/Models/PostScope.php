@@ -26,6 +26,7 @@ trait PostScope
     public function scopePublished($query)
     {
         $query->wherePostType('post')
+            ->whereIn('status', ['publish', 'private'])
             ->whereDate('published_at', '<=', now());
     }
 
@@ -38,6 +39,7 @@ trait PostScope
     public function scopePage($query)
     {
         $query->wherePostType('page')
+            ->whereIn('status', ['publish', 'private'])
             ->whereDate('published_at', '<=', now());
     }
 

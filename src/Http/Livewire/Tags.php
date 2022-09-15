@@ -8,7 +8,9 @@ use Livewire\Component;
 class Tags extends Component
 {
     public $type;
+
     public $slug;
+
     public $tag;
 
     public function mount($type, $slug)
@@ -24,7 +26,11 @@ class Tags extends Component
     {
         seo()
             ->title($this->tag->name)
-            ->description(__('Show All posts in').' '.$this->tag->name)
+            ->site(config('app.name', 'Laravel'))
+            ->description(config('zeus-sky.site_description').' '.__('Show All posts in').' '.$this->tag->name)
+            ->rawTag('favicon', '<link rel="icon" type="image/x-icon" href="'.asset('favicon/favicon.ico').'">')
+            ->rawTag('<meta name="theme-color" content="'.config('zeus-sky.site_color').'" />')
+            ->withUrl()
             ->twitter();
 
         return view(app('theme').'.category')

@@ -19,6 +19,7 @@ class Page extends Component
         if (! $this->page->getMedia('pages')->isEmpty()) {
             seo()->image($this->page->getFirstMediaUrl('pages'));
         }
+
         seo()
             ->title($this->page->title)
             ->description(($this->page->description ?? '').' '.config('zeus-sky.site_description', 'Laravel'))

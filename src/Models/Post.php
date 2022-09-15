@@ -36,6 +36,7 @@ class Post extends Model implements HasMedia
         'ordering',
         'status',
     ];
+
     protected $casts = [
         'published_at' => 'datetime',
         'sticky_until' => 'datetime',

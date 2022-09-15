@@ -10,9 +10,9 @@ class SkySeeder extends Seeder
 {
     public function run()
     {
-        Tag::create(['name' => ['en'=>'laravel', 'ar'=>'لارافل'], 'type' => 'category']);
-        Tag::create(['name' => ['en'=>'talks', 'ar'=>'اخبار'], 'type' => 'category']);
-        Tag::create(['name' => ['en'=>'dev', 'ar'=>'تطوير'], 'type' => 'category']);
+        Tag::create(['name' => ['en' => 'laravel', 'ar' => 'لارافل'], 'type' => 'category']);
+        Tag::create(['name' => ['en' => 'talks', 'ar' => 'اخبار'], 'type' => 'category']);
+        Tag::create(['name' => ['en' => 'dev', 'ar' => 'تطوير'], 'type' => 'category']);
 
         Post::factory()
             ->count(8)

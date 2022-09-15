@@ -13,6 +13,7 @@ class migrateCommand extends Command
      * @var string
      */
     protected $signature = 'sky:migrate';
+
     /**
      * The console command description.
      *

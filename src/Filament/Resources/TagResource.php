@@ -15,7 +15,9 @@ use LaraZeus\Sky\Models\Tag;
 class TagResource extends SkyResource
 {
     protected static ?string $model = Tag::class;
+
     protected static ?string $navigationIcon = 'iconpark-tag-o';
+
     protected static ?string $navigationGroup = 'Sky';
 
     protected static function shouldRegisterNavigation(): bool
@@ -39,7 +41,7 @@ class TagResource extends SkyResource
                 TextInput::make('slug')->required()->maxLength(255),
                 Select::make('type')
                     ->options([
-                        'tag'      => 'Tag',
+                        'tag' => 'Tag',
                         'category' => 'Category',
                     ]),
             ]);
@@ -59,9 +61,9 @@ class TagResource extends SkyResource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListTags::route('/'),
+            'index' => Pages\ListTags::route('/'),
             'create' => Pages\CreateTag::route('/create'),
-            'edit'   => Pages\EditTag::route('/{record}/edit'),
+            'edit' => Pages\EditTag::route('/{record}/edit'),
         ];
     }
 

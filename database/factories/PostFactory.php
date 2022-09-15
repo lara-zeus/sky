@@ -17,13 +17,13 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'user_id'      => 1,
-            'title'        => $this->faker->word,
-            'slug'         => $this->faker->slug(2),
-            'description'  => $this->faker->sentence,
-            'content'      => $this->faker->sentence,
+            'user_id' => 1,
+            'title' => $this->faker->word,
+            'slug' => $this->faker->slug(2),
+            'description' => $this->faker->sentence,
+            'content' => $this->faker->sentence,
             'published_at' => now(),
-            'post_type'    => $this->faker->randomElement(['page', 'post']),
+            'post_type' => $this->faker->randomElement(['page', 'post']),
         ];
     }
 }

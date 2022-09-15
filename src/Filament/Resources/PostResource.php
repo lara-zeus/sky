@@ -29,6 +29,7 @@ use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 class PostResource extends SkyResource
 {
     protected static ?string $model = Post::class;
+
     protected static ?string $navigationIcon = 'iconpark-docdetail-o';
 
     protected static function getNavigationBadge(): ?string
@@ -150,9 +151,9 @@ class PostResource extends SkyResource
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListPosts::route('/'),
+            'index' => Pages\ListPosts::route('/'),
             'create' => Pages\CreatePost::route('/create'),
-            'edit'   => Pages\EditPost::route('/{record}/edit'),
+            'edit' => Pages\EditPost::route('/{record}/edit'),
         ];
     }
 

@@ -15,15 +15,6 @@ class SkyServiceProvider extends PluginServiceProvider
 
     public function boot()
     {
-        seo()
-            ->site(config('app.name', 'Laravel'))
-            ->title(config('zeus-sky.site_title'))
-            ->description(config('zeus-sky.site_description'))
-            ->rawTag('favicon', '<link rel="icon" type="image/x-icon" href="'.asset('favicon/favicon.ico').'">')
-            ->rawTag('<meta name="theme-color" content="'.config('zeus-sky.site_color').'" />')
-            ->withUrl()
-            ->twitter();
-
         View::share('theme', 'zeus-sky::themes.'.config('zeus-sky.theme'));
 
         App::singleton('theme', function () {
@@ -47,7 +38,6 @@ class SkyServiceProvider extends PluginServiceProvider
     protected function getResources(): array
     {
         // TagResouce should not be disabled.
-
         return array_merge(
             config('zeus-sky.enabled_resources'),
             [TagResource::class]

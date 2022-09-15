@@ -7,12 +7,7 @@ use Livewire\Component;
 
 class Post extends Component
 {
-    public $post;
-
-    public function mount($slug)
-    {
-        $this->post = postModel::whereSlug($slug)->firstOrFail();
-    }
+    public postModel $post;
 
     public function render()
     {

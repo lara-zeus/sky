@@ -14,6 +14,11 @@ class Post extends Model implements HasMedia
 {
     use HasFactory, HasTags, InteractsWithMedia, PostScope, HasTranslations;
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public $translatable = [
         'title',
         'content',

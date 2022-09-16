@@ -2,6 +2,7 @@
 
 namespace LaraZeus\Sky\Models;
 
+use Database\Factories\PostFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Blade;
@@ -13,11 +14,6 @@ use Spatie\Translatable\HasTranslations;
 class Post extends Model implements HasMedia
 {
     use HasFactory, HasTags, InteractsWithMedia, PostScope, HasTranslations;
-
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
 
     public $translatable = [
         'title',
@@ -45,6 +41,16 @@ class Post extends Model implements HasMedia
         'published_at' => 'datetime',
         'sticky_until' => 'datetime',
     ];
+
+    protected static function newFactory(): PostFactory
+    {
+        return PostFactory::new();
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     public function statusDesc(): string
     {

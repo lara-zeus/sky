@@ -2,6 +2,14 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.2.6 - 2022-09-16
+
+### What's Changed
+
+- restore the post factory by @atmonshi in https://github.com/lara-zeus/sky/pull/48
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.2.5...2.2.6
+
 ## 2.2.5 - 2022-09-15
 
 ### What's Changed

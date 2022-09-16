@@ -2,6 +2,7 @@
 
 namespace LaraZeus\Sky\Models;
 
+use Database\Factories\PostFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Blade;
@@ -13,6 +14,11 @@ use Spatie\Translatable\HasTranslations;
 class Post extends Model implements HasMedia
 {
     use HasFactory, HasTags, InteractsWithMedia, PostScope, HasTranslations;
+
+    protected static function newFactory(): PostFactory
+    {
+        return PostFactory::new();
+    }
 
     public function getRouteKeyName()
     {

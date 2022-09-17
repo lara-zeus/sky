@@ -2,6 +2,10 @@
 
 namespace LaraZeus\Sky\Models;
 
+/**
+ * @property string $slug
+ * @property string $type
+ */
 class Tag extends \Spatie\Tags\Tag
 {
     public function posts()

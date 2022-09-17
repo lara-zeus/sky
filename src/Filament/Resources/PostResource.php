@@ -133,13 +133,15 @@ class PostResource extends SkyResource
                     ->query(fn (Builder $query): Builder => $query->sticky()),
 
                 Filter::make('not_sticky')->label(__('Not Sticky'))
-                    ->query(fn (Builder $query): Builder => $query
+                    ->query(
+                        fn (Builder $query): Builder => $query
                         ->whereDate('sticky_until', '<=', now())
                         ->orWhereNull('sticky_until')
                     ),
 
                 Filter::make('sticky_only')->label(__('Sticky Only'))
-                    ->query(fn (Builder $query): Builder => $query
+                    ->query(
+                        fn (Builder $query): Builder => $query
                         ->wherePostType('post')
                         ->whereNotNull('sticky_until')
                     ),

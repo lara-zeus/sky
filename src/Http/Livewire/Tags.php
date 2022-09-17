@@ -27,13 +27,13 @@ class Tags extends Component
         seo()
             ->title($this->tag->name)
             ->site(config('app.name', 'Laravel'))
-            ->description(config('zeus-sky.site_description').' '.__('Show All posts in').' '.$this->tag->name)
-            ->rawTag('favicon', '<link rel="icon" type="image/x-icon" href="'.asset('favicon/favicon.ico').'">')
-            ->rawTag('<meta name="theme-color" content="'.config('zeus-sky.site_color').'" />')
+            ->description(config('zeus-sky.site_description') . ' ' . __('Show All posts in') . ' ' . $this->tag->name)
+            ->rawTag('favicon', '<link rel="icon" type="image/x-icon" href="' . asset('favicon/favicon.ico') . '">')
+            ->rawTag('<meta name="theme-color" content="' . config('zeus-sky.site_color') . '" />')
             ->withUrl()
             ->twitter();
 
-        return view(app('theme').'.category')
+        return view(app('theme') . '.category')
             ->with([
                 'posts' => $this->tag->postsPublished,
             ])

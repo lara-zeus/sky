@@ -31,23 +31,50 @@
         "filament/spatie-laravel-media-library-plugin": "^2.0",
         "filament/spatie-laravel-tags-plugin": "^2.0",
         "filament/spatie-laravel-translatable-plugin": "^2.0",
-        "lara-zeus/core": "^2.2",
+        "lara-zeus/core": "^2.3",
         "mohamedsabil83/filament-forms-tinyeditor": "^1.5",
         "spatie/laravel-medialibrary": "^10.0.0",
         "spatie/laravel-sluggable": "^3.3",
         "spatie/laravel-tags": "^4.0"
     },
     "require-dev": {
-        "laravel/pint": "^1.2",
-        "orchestra/testbench": "^6.0 || ^7.0"
+        "orchestra/testbench": "^6.0 || ^7.0",
+        "laravel/pint": "^1.0",
+        "nunomaduro/larastan": "^2.0.1",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "pestphp/pest-plugin-livewire": "^1.0",
+        "pestphp/pest-plugin-parallel": "^0.3",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
+        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "psr-4": {
             "LaraZeus\\Sky\\": "src"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "LaraZeus\\Sky\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "pint": "vendor/bin/pint",
+        "test:pest": "vendor/bin/pest --parallel",
+        "test:phpstan": "vendor/bin/phpstan analyse",
+        "test": [
+            "@test:pest",
+            "@test:phpstan"
+        ]
+    },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
     },
     "extra": {
         "laravel": {

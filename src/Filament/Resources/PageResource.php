@@ -51,23 +51,44 @@ class PageResource extends SkyResource
                             ->afterStateUpdated(function (Closure $set, $state) {
                                 $set('slug', Str::slug($state));
                             }),
-                        TinyEditor::make('content')->label(__('Post Content'))->showMenuBar()->required(),
+
+                        TinyEditor::make('content')
+                            ->label(__('Post Content'))
+                            ->showMenuBar()
+                            ->required(),
                     ]),
-                ])->columnSpan(3),
+                ])
+                    ->columnSpan(3),
 
                 Grid::make()->schema([
                     Section::make(__('SEO'))
-                        ->description(__('SEO Settings'))
-                        ->schema([
-                            Hidden::make('user_id')->default(auth()->user()->id)->required(),
-                            Hidden::make('post_type')->default('page')->required(),
+                        ->description(__('SEO Settings'))->schema([
+                            Hidden::make('user_id')
+                                ->required()
+                                ->default(auth()->user()->id),
+
+                            Hidden::make('post_type')
+                                ->default('page')
+                                ->required(),
+
                             Textarea::make('description')
                                 ->maxLength(255)
                                 ->label(__('Description'))
                                 ->hint(__('Write an excerpt for your post')),
-                            TextInput::make('slug')->required()->maxLength(255)->label(__('Post Slug')),
-                            Select::make('parent_id')->options(Post::wherePostType('page')->pluck('title', 'id'))->label(__('Parent Page')),
-                            TextInput::make('ordering')->integer()->label(__('Page Order'))->default(1),
+
+                            TextInput::make('slug')
+                                ->required()
+                                ->maxLength(255)
+                                ->label(__('Post Slug')),
+
+                            Select::make('parent_id')
+                                ->options(Post::wherePostType('page')->pluck('title', 'id'))
+                                ->label(__('Parent Page')),
+
+                            TextInput::make('ordering')
+                                ->integer()
+                                ->label(__('Page Order'))
+                                ->default(1),
                         ])
                         ->collapsible(),
 
@@ -80,15 +101,23 @@ class PageResource extends SkyResource
                                 ->required()
                                 ->reactive()
                                 ->options(PostStatus::pluck('label', 'name')),
-                            TextInput::make('password')->label(__('Password'))->reactive()
+
+                            TextInput::make('password')
+                                ->label(__('Password'))
+                                ->reactive()
                                 ->visible(fn (Closure $get): bool => $get('status') === 'private'),
-                            DateTimePicker::make('published_at')->label(__('published at'))->default(now()),
+
+                            DateTimePicker::make('published_at')
+                                ->label(__('published at'))
+                                ->default(now()),
                         ])
                         ->collapsible(),
 
                     Section::make(__('Featured Image'))
                         ->schema([
-                            SpatieMediaLibraryFileUpload::make('featured_image')->collection('pages')->label(''),
+                            SpatieMediaLibraryFileUpload::make('featured_image')
+                                ->collection('pages')
+                                ->label(''),
                         ])
                         ->collapsible(),
                 ])->columnSpan(1),
@@ -114,9 +143,12 @@ class PageResource extends SkyResource
             ])
             ->defaultSort('id', 'desc')
             ->filters([
-                MultiSelectFilter::make('status')->options(PostStatus::pluck('label', 'name')),
+                MultiSelectFilter::make('status')
+                    ->label(__('Status'))
+                    ->options(PostStatus::pluck('label', 'name')),
 
-                Filter::make('password')->label(__('Password Protected'))
+                Filter::make('password')
+                    ->label(__('Password Protected'))
                     ->query(fn (Builder $query): Builder => $query->whereNotNull('password')),
             ]);
     }

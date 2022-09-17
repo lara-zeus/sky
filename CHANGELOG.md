@@ -2,6 +2,17 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.3.0 - 2022-09-17
+
+### What's Changed
+
+- improve skeleton and add tests and dark mode
+- separate the CSS for frontend and filament
+- update .github workflows
+- add phpstan and pint
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.2.6...2.3.0
+
 ## 2.2.6 - 2022-09-16
 
 ### What's Changed

@@ -51,7 +51,11 @@ class PostResource extends SkyResource
                             ->afterStateUpdated(function (Closure $set, $state) {
                                 $set('slug', Str::slug($state));
                             }),
-                        TinyEditor::make('content')->label(__('Post Content'))->showMenuBar()->required(),
+
+                        TinyEditor::make('content')
+                            ->label(__('Post Content'))
+                            ->showMenuBar()
+                            ->required(),
                     ]),
                 ])->columnSpan(3),
 
@@ -59,21 +63,36 @@ class PostResource extends SkyResource
                     Section::make(__('SEO'))
                         ->description(__('SEO Settings'))
                         ->schema([
-                            Hidden::make('user_id')->default(auth()->user()->id)->required(),
-                            Hidden::make('post_type')->default('post')->required(),
+                            Hidden::make('user_id')
+                                ->default(auth()->user()->id)
+                                ->required(),
+
+                            Hidden::make('post_type')
+                                ->default('post')
+                                ->required(),
+
                             Textarea::make('description')
                                 ->maxLength(255)
                                 ->label(__('Description'))
                                 ->hint(__('Write an excerpt for your post')),
-                            TextInput::make('slug')->required()->maxLength(255)->label(__('Post Slug')),
+
+                            TextInput::make('slug')
+                                ->required()
+                                ->maxLength(255)
+                                ->label(__('Post Slug')),
                         ])
                         ->collapsible(),
 
                     Section::make(__('Tags and Categories'))
                         ->description(__('Tags and Categories Options'))
                         ->schema([
-                            SpatieTagsInput::make('tags')->type('tag')->label(__('Tags')),
-                            SpatieTagsInput::make('category')->type('category')->label(__('Categories')),
+                            SpatieTagsInput::make('tags')
+                                ->type('tag')
+                                ->label(__('Tags')),
+
+                            SpatieTagsInput::make('category')
+                                ->type('category')
+                                ->label(__('Categories')),
                         ])
                         ->collapsible(),
 
@@ -86,16 +105,26 @@ class PostResource extends SkyResource
                                 ->required()
                                 ->reactive()
                                 ->options(PostStatus::pluck('label', 'name')),
-                            TextInput::make('password')->label(__('Password'))->reactive()
+
+                            TextInput::make('password')
+                                ->label(__('Password'))
+                                ->reactive()
                                 ->visible(fn (Closure $get): bool => $get('status') === 'private'),
-                            DateTimePicker::make('published_at')->label(__('published at'))->default(now()),
-                            DateTimePicker::make('sticky_until')->label(__('Sticky Until')),
+
+                            DateTimePicker::make('published_at')
+                                ->label(__('published at'))
+                                ->default(now()),
+
+                            DateTimePicker::make('sticky_until')
+                                ->label(__('Sticky Until')),
                         ])
                         ->collapsible(),
 
                     Section::make(__('Featured Image'))
                         ->schema([
-                            SpatieMediaLibraryFileUpload::make('featured_image')->collection('posts')->label(''),
+                            SpatieMediaLibraryFileUpload::make('featured_image')
+                                ->collection('posts')
+                                ->label(''),
                         ])
                         ->collapsible(),
                 ])->columnSpan(1),
@@ -119,34 +148,47 @@ class PostResource extends SkyResource
                     ->view('zeus-sky::filament.columns.status-desc')
                     ->tooltip(fn (Post $record): string => $record->published_at->format('Y/m/d | H:i A')),
 
-                SpatieTagsColumn::make('tags')->label(__('Post Tags'))->type('tag'),
-                SpatieTagsColumn::make('category')->label(__('Post Category'))->type('category'),
+                SpatieTagsColumn::make('tags')
+                    ->label(__('Post Tags'))
+                    ->type('tag'),
+
+                SpatieTagsColumn::make('category')
+                    ->label(__('Post Category'))
+                    ->type('category'),
             ])
             ->defaultSort('id', 'desc')
             ->filters([
-                MultiSelectFilter::make('status')->options(PostStatus::pluck('label', 'name')),
+                MultiSelectFilter::make('status')
+                    ->label(__('Status'))
+                    ->options(PostStatus::pluck('label', 'name')),
 
-                Filter::make('password')->label(__('Password Protected'))
+                Filter::make('password')
+                    ->label(__('Password Protected'))
                     ->query(fn (Builder $query): Builder => $query->whereNotNull('password')),
 
-                Filter::make('sticky')->label(__('Still Sticky'))
+                Filter::make('sticky')
+                    ->label(__('Still Sticky'))
                     ->query(fn (Builder $query): Builder => $query->sticky()),
 
-                Filter::make('not_sticky')->label(__('Not Sticky'))
+                Filter::make('not_sticky')
+                    ->label(__('Not Sticky'))
                     ->query(
                         fn (Builder $query): Builder => $query
-                        ->whereDate('sticky_until', '<=', now())
-                        ->orWhereNull('sticky_until')
+                            ->whereDate('sticky_until', '<=', now())
+                            ->orWhereNull('sticky_until')
                     ),
 
-                Filter::make('sticky_only')->label(__('Sticky Only'))
+                Filter::make('sticky_only')
+                    ->label(__('Sticky Only'))
                     ->query(
                         fn (Builder $query): Builder => $query
-                        ->wherePostType('post')
-                        ->whereNotNull('sticky_until')
+                            ->wherePostType('post')
+                            ->whereNotNull('sticky_until')
                     ),
 
-                MultiSelectFilter::make('tags')->relationship('tags', 'name')->label(__('Tags')),
+                MultiSelectFilter::make('tags')
+                    ->relationship('tags', 'name')
+                    ->label(__('Tags')),
             ]);
     }
 

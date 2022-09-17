@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use LaraZeus\Sky\Http\Livewire\Faq;
 use LaraZeus\Sky\Http\Livewire\Page;
 use LaraZeus\Sky\Http\Livewire\Post;
 use LaraZeus\Sky\Http\Livewire\Posts;
@@ -22,5 +23,5 @@ Route::prefix(config('zeus-sky.path'))
     });
 
 if (in_array('LaraZeus\Sky\Filament\Resources\FaqResource', config('zeus-sky.enabled_resources'))) {
-    Route::get(config('zeus-sky.faq_uri_prefix') . '', \LaraZeus\Sky\Http\Livewire\Faq::class)->name('faq');
+    Route::get(config('zeus-sky.faq_uri_prefix') . '', Faq::class)->name('faq');
 }

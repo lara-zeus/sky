@@ -34,11 +34,17 @@ class TagResource extends SkyResource
     {
         return $form
             ->schema([
-                TextInput::make('name')->required()->maxLength(255)->label(__('Tag.Name'))->reactive()
+                TextInput::make('name')
+                    ->required()
+                    ->maxLength(255)
+                    ->label(__('Tag.Name'))
+                    ->reactive()
                     ->afterStateUpdated(function (Closure $set, $state) {
                         $set('slug', Str::slug($state));
                     }),
-                TextInput::make('slug')->required()->maxLength(255),
+                TextInput::make('slug')
+                    ->required()
+                    ->maxLength(255),
                 Select::make('type')
                     ->options([
                         'tag' => 'Tag',

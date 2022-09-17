@@ -61,7 +61,7 @@ class Post extends Model implements HasMedia
         $PostStatus = PostStatus::where('name', $this->status)->first();
         $icon = Blade::render('@svg("' . $PostStatus->icon . '","w-4 h-4 inline-flex")');
 
-        return "<span title='" . __('post status') . "' class='px-2 py-0.5 text-xs rounded-xl text-{$PostStatus->class}-700 bg-{$PostStatus->class}-500/10'> " . $icon . " {$PostStatus->label}</span>";
+        return "<span title='" . __('post status') . "' class='$PostStatus->class'> " . $icon . " {$PostStatus->label}</span>";
     }
 
     public function author()

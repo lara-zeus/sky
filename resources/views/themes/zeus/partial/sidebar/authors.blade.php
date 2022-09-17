@@ -1,6 +1,6 @@
 <div class="px-8">
-    <h1 class="mb-4 text-xl font-bold text-gray-700">Authors</h1>
-    <div class="flex flex-col max-w-sm px-6 py-4 mx-auto bg-white rounded-lg shadow-md">
+    <h1 class="mb-4 text-xl font-bold text-gray-700 dark:text-gray-200">Authors</h1>
+    <div class="flex flex-col max-w-sm px-6 py-4 mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md">
         <ul class="-mx-4">
             <li class="flex items-center"><img
                         src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=731&amp;q=80"

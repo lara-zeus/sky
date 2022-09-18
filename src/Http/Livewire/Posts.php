@@ -37,7 +37,7 @@ class Posts extends Component
             ->get();
 
         seo()
-            ->title(__('Posts'))
+            ->title(config('zeus-sky.site_title', 'Laravel') . ' ' . __('Posts'))
             ->description(__('Posts') . ' ' . config('zeus-sky.site_description', 'Laravel'))
             ->site(config('zeus-sky.site_title', 'Laravel'))
             ->rawTag('favicon', '<link rel="icon" type="image/x-icon" href="' . asset('favicon/favicon.ico') . '">')

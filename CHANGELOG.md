@@ -2,6 +2,14 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.3.1 - 2022-09-18
+
+### What's Changed
+
+- improve SEO by @atmonshi in https://github.com/lara-zeus/sky/pull/50
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.3.0...2.3.1
+
 ## 2.3.0 - 2022-09-17
 
 ### What's Changed

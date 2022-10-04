@@ -5,11 +5,14 @@
 </p>
 
 <p align="center">
-<a href="https://packagist.org/packages/lara-zeus/sky"><img src="https://img.shields.io/packagist/v/lara-zeus/sky?style=flat-square" /></a>
-<a href="https://github.styleci.io/repos/475187095?branch=main"><img src="https://github.styleci.io/repos/438676758/shield?branch=main" alt="StyleCI"></a>
-<a href="https://packagist.org/packages/lara-zeus/sky"><img src="https://img.shields.io/packagist/dt/lara-zeus/sky?style=flat-square" /></a>
+
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/lara-zeus/sky.svg?style=flat-square)](https://packagist.org/packages/lara-zeus/sky)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/lara-zeus/sky/run-tests?label=tests)](https://github.com/lara-zeus/sky/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![code style](https://github.com/lara-zeus/sky/actions/workflows/fix-php-code-style-issues.yml/badge.svg)](https://github.com/lara-zeus/sky/actions/workflows/fix-php-code-style-issues.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/lara-zeus/sky.svg?style=flat-square)](https://packagist.org/packages/lara-zeus/sky)
 <a href="https://github.com/lara-zeus/sky"><img src="https://img.shields.io/github/stars/lara-zeus/sky?style=flat-square" /></a>
 <a href="https://www.codefactor.io/repository/github/lara-zeus/sky"><img src="https://www.codefactor.io/repository/github/lara-zeus/sky/badge" alt="CodeFactor" /></a>
+
 </p>
 
 Lara-zeus sky is simple CMS for your website. it include posts, pages, tags, and categories.

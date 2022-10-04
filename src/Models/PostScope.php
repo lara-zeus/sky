@@ -69,7 +69,7 @@ trait PostScope
         }
 
         return $query->where(function ($query) use ($term) {
-            foreach (['title', 'content', 'description'] as $attribute) {
+            foreach (['title', 'slug', 'content', 'description'] as $attribute) {
                 $query->orWhere(DB::raw("lower($attribute)"), 'like', "%$term%");
             }
 

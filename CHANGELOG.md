@@ -2,6 +2,19 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.3.2 - 2022-10-04
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.3 to 1.3.4 by @dependabot in https://github.com/lara-zeus/sky/pull/51
+- PostScope: also search in 'slug' column by @thyseus in https://github.com/lara-zeus/sky/pull/52
+
+### New Contributors
+
+- @dependabot made their first contribution in https://github.com/lara-zeus/sky/pull/51
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.3.1...2.3.2
+
 ## 2.3.1 - 2022-09-18
 
 ### What's Changed

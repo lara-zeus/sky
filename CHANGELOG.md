@@ -2,6 +2,14 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.3.3 - 2022-10-28
+
+### What's Changed
+
+- s/$getRecord/$getRecord() by @thyseus in https://github.com/lara-zeus/sky/pull/54
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.3.2...2.3.3
+
 ## 2.3.2 - 2022-10-04
 
 ### What's Changed

@@ -44,7 +44,8 @@ class FaqResource extends SkyResource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
+            ->schema(
+                [
                 Textarea::make('question')
                     ->label(__('Question'))
                     ->required()
@@ -56,15 +57,18 @@ class FaqResource extends SkyResource
                     ->required()
                     ->maxLength(65535)
                     ->columnSpan(2),
-            ]);
+                ]
+            );
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
+            ->columns(
+                [
                 TextColumn::make('question'),
-            ]);
+                ]
+            );
     }
 
     public static function getPages(): array

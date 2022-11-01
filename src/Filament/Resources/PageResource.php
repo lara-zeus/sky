@@ -40,29 +40,38 @@ class PageResource extends SkyResource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Grid::make()->schema([
-                    Card::make()->schema([
+            ->schema(
+                [
+                Grid::make()->schema(
+                    [
+                    Card::make()->schema(
+                        [
                         TextInput::make('title')
                             ->label(__('Post Title'))
                             ->required()
                             ->maxLength(255)
                             ->reactive()
-                            ->afterStateUpdated(function (Closure $set, $state) {
-                                $set('slug', Str::slug($state));
-                            }),
+                            ->afterStateUpdated(
+                                function (Closure $set, $state) {
+                                    $set('slug', Str::slug($state));
+                                }
+                            ),
 
                         TinyEditor::make('content')
                             ->label(__('Post Content'))
                             ->showMenuBar()
                             ->required(),
-                    ]),
-                ])
+                        ]
+                    ),
+                    ]
+                )
                     ->columnSpan(3),
 
-                Grid::make()->schema([
+                Grid::make()->schema(
+                    [
                     Section::make(__('SEO'))
-                        ->description(__('SEO Settings'))->schema([
+                        ->description(__('SEO Settings'))->schema(
+                            [
                             Hidden::make('user_id')
                                 ->required()
                                 ->default(auth()->user()->id),
@@ -89,12 +98,14 @@ class PageResource extends SkyResource
                                 ->integer()
                                 ->label(__('Page Order'))
                                 ->default(1),
-                        ])
+                            ]
+                        )
                         ->collapsible(),
 
                     Section::make(__('visibility'))
                         ->description(__('Visibility Options'))
-                        ->schema([
+                        ->schema(
+                            [
                             Select::make('status')
                                 ->label(__('status'))
                                 ->default('publish')
@@ -110,24 +121,30 @@ class PageResource extends SkyResource
                             DateTimePicker::make('published_at')
                                 ->label(__('published at'))
                                 ->default(now()),
-                        ])
+                            ]
+                        )
                         ->collapsible(),
 
                     Section::make(__('Featured Image'))
-                        ->schema([
+                        ->schema(
+                            [
                             SpatieMediaLibraryFileUpload::make('featured_image')
                                 ->collection('pages')
                                 ->label(''),
-                        ])
+                            ]
+                        )
                         ->collapsible(),
-                ])->columnSpan(1),
-            ])->columns(4);
+                    ]
+                )->columnSpan(1),
+                ]
+            )->columns(4);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
+            ->columns(
+                [
                 ViewColumn::make('title_card')
                     ->label(__('Title'))
                     ->sortable(['title'])
@@ -140,9 +157,11 @@ class PageResource extends SkyResource
                     ->searchable(['status'])
                     ->view('zeus-sky::filament.columns.status-desc')
                     ->tooltip(fn (Post $record): string => $record->published_at->format('Y/m/d | H:i A')),
-            ])
+                ]
+            )
             ->defaultSort('id', 'desc')
-            ->filters([
+            ->filters(
+                [
                 MultiSelectFilter::make('status')
                     ->label(__('Status'))
                     ->options(PostStatus::pluck('label', 'name')),
@@ -150,7 +169,8 @@ class PageResource extends SkyResource
                 Filter::make('password')
                     ->label(__('Password Protected'))
                     ->query(fn (Builder $query): Builder => $query->whereNotNull('password')),
-            ]);
+                ]
+            );
     }
 
     public static function getPages(): array

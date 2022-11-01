@@ -33,35 +33,43 @@ class TagResource extends SkyResource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
+            ->schema(
+                [
                 TextInput::make('name')
                     ->required()
                     ->maxLength(255)
                     ->label(__('Tag.Name'))
                     ->reactive()
-                    ->afterStateUpdated(function (Closure $set, $state) {
-                        $set('slug', Str::slug($state));
-                    }),
+                    ->afterStateUpdated(
+                        function (Closure $set, $state) {
+                            $set('slug', Str::slug($state));
+                        }
+                    ),
                 TextInput::make('slug')
                     ->required()
                     ->maxLength(255),
                 Select::make('type')
-                    ->options([
+                    ->options(
+                        [
                         'tag' => 'Tag',
                         'category' => 'Category',
-                    ]),
-            ]);
+                        ]
+                    ),
+                ]
+            );
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
+            ->columns(
+                [
                 TextColumn::make('name'),
                 TextColumn::make('type'),
                 TextColumn::make('slug'),
                 TextColumn::make('posts_count')->counts('posts'),
-            ]);
+                ]
+            );
     }
 
     public static function getPages(): array

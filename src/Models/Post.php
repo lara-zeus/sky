@@ -2,10 +2,10 @@
 
 namespace LaraZeus\Sky\Models;
 
-use LaraZeus\Sky\Factories\PostFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Blade;
+use LaraZeus\Sky\Factories\PostFactory;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Tags\HasTags;

@@ -77,6 +77,7 @@ class PostResource extends SkyResource
                                 ->hint(__('Write an excerpt for your post')),
 
                             TextInput::make('slug')
+                                ->unique()
                                 ->required()
                                 ->maxLength(255)
                                 ->label(__('Post Slug')),

@@ -46,6 +46,7 @@ class TagResource extends SkyResource
                         }
                     ),
                 TextInput::make('slug')
+                    ->unique()
                     ->required()
                     ->maxLength(255),
                 Select::make('type')

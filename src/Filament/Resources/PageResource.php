@@ -19,6 +19,7 @@ use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\MultiSelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Model;
 use LaraZeus\Sky\Filament\Resources\PageResource\Pages;
 use LaraZeus\Sky\Models\Post;
 use LaraZeus\Sky\Models\PostStatus;
@@ -77,7 +78,7 @@ class PageResource extends SkyResource
                                 ->hint(__('Write an excerpt for your post')),
 
                             TextInput::make('slug')
-                                ->unique()
+                                ->unique(ignorable: fn (?Model $record): ?Model => $record)
                                 ->required()
                                 ->maxLength(255)
                                 ->label(__('Post Slug')),

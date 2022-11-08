@@ -16,14 +16,16 @@ class Posts extends Component
         $category = request('category');
 
         $posts = Post::NotSticky()
-            ->Search($search)
-            ->ForCatogery($category)
+            ->search($search)
+            ->forCategory($category)
+            ->published()
             ->orderBy('published_at', 'desc')
             ->get();
 
         $pages = Post::page()
-            ->Search($search)
-            ->ForCatogery($category)
+            ->search($search)
+            ->forCategory($category)
+            ->published()
             ->orderBy('published_at', 'desc')
             ->whereNull('parent_id')
             ->get();
@@ -32,6 +34,7 @@ class Posts extends Component
         $posts = $this->highlightSearchResults($posts, $search);
 
         $recent = Post::posts()
+            ->published()
             ->limit(config('zeus-sky.site_recent_count', 5))
             ->orderBy('published_at', 'desc')
             ->get();
@@ -45,14 +48,13 @@ class Posts extends Component
             ->withUrl()
             ->twitter();
 
-        return view(app('theme') . '.home')
-            ->with([
-                'posts' => $posts,
-                'pages' => $pages,
-                'recent' => $recent,
-                'tags' => Tag::withCount('postsPublished')->where('type', 'category')->get(),
-                'stickies' => Post::sticky()->get(),
-            ])
+        return view(app('theme') . '.home')->with([
+            'posts' => $posts,
+            'pages' => $pages,
+            'recent' => $recent,
+            'tags' => Tag::withCount('postsPublished')->where('type', 'category')->get(),
+            'stickies' => Post::sticky()->published()->get(),
+        ])
             ->layout(config('zeus-sky.layout'));
     }
 }

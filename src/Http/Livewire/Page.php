@@ -30,15 +30,11 @@ class Page extends Component
             ->twitter();
 
         return view(app('theme') . '.page')
-            ->with(
-                [
+            ->with([
                 'post' => $this->page,
-                /**
-                * @phpstan-ignore-next-line
-                */
+                /** @phpstan-ignore-next-line */
                 'children' => Post::with('parent')->where('parent_id', $this->page->id)->get(),
-                ]
-            )
+            ])
             ->layout(config('zeus-sky.layout'));
     }
 }

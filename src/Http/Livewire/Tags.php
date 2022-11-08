@@ -34,11 +34,9 @@ class Tags extends Component
             ->twitter();
 
         return view(app('theme') . '.category')
-            ->with(
-                [
+            ->with([
                 'posts' => $this->tag->postsPublished,
-                ]
-            )
+            ])
             ->layout(config('zeus-sky.layout'));
     }
 }

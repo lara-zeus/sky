@@ -17,12 +17,9 @@ class SkyServiceProvider extends PluginServiceProvider
     {
         View::share('theme', 'zeus-sky::themes.' . config('zeus-sky.theme', 'zeus'));
 
-        App::singleton(
-            'theme',
-            function () {
-                return 'zeus-sky::themes.' . config('zeus-sky.theme', 'zeus');
-            }
-        );
+        App::singleton('theme', function () {
+            return 'zeus-sky::themes.' . config('zeus-sky.theme', 'zeus');
+        });
 
         return parent::boot();
     }

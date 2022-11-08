@@ -41,38 +41,29 @@ class PostResource extends SkyResource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema(
-                [
-                Grid::make()->schema(
-                    [
-                    Card::make()->schema(
-                        [
+            ->schema([
+                Grid::make()->schema([
+                    Card::make()->schema([
                         TextInput::make('title')
                             ->label(__('Post Title'))
                             ->required()
                             ->maxLength(255)
                             ->reactive()
-                            ->afterStateUpdated(
-                                function (Closure $set, $state) {
-                                    $set('slug', Str::slug($state));
-                                }
-                            ),
+                            ->afterStateUpdated(function (Closure $set, $state) {
+                                $set('slug', Str::slug($state));
+                            }),
 
                         TinyEditor::make('content')
                             ->label(__('Post Content'))
                             ->showMenuBar()
                             ->required(),
-                        ]
-                    ),
-                    ]
-                )->columnSpan(3),
+                    ]),
+                ])->columnSpan(3),
 
-                Grid::make()->schema(
-                    [
+                Grid::make()->schema([
                     Section::make(__('SEO'))
                         ->description(__('SEO Settings'))
-                        ->schema(
-                            [
+                        ->schema([
                             Hidden::make('user_id')
                                 ->default(auth()->user()->id)
                                 ->required(),
@@ -91,14 +82,12 @@ class PostResource extends SkyResource
                                 ->required()
                                 ->maxLength(255)
                                 ->label(__('Post Slug')),
-                            ]
-                        )
+                        ])
                         ->collapsible(),
 
                     Section::make(__('Tags and Categories'))
                         ->description(__('Tags and Categories Options'))
-                        ->schema(
-                            [
+                        ->schema([
                             SpatieTagsInput::make('tags')
                                 ->type('tag')
                                 ->label(__('Tags')),
@@ -106,14 +95,12 @@ class PostResource extends SkyResource
                             SpatieTagsInput::make('category')
                                 ->type('category')
                                 ->label(__('Categories')),
-                            ]
-                        )
+                        ])
                         ->collapsible(),
 
                     Section::make(__('visibility'))
                         ->description(__('Visibility Options'))
-                        ->schema(
-                            [
+                        ->schema([
                             Select::make('status')
                                 ->label(__('status'))
                                 ->default('publish')
@@ -132,30 +119,24 @@ class PostResource extends SkyResource
 
                             DateTimePicker::make('sticky_until')
                                 ->label(__('Sticky Until')),
-                            ]
-                        )
+                        ])
                         ->collapsible(),
 
                     Section::make(__('Featured Image'))
-                        ->schema(
-                            [
+                        ->schema([
                             SpatieMediaLibraryFileUpload::make('featured_image')
                                 ->collection('posts')
                                 ->label(''),
-                            ]
-                        )
+                        ])
                         ->collapsible(),
-                    ]
-                )->columnSpan(1),
-                ]
-            )->columns(4);
+                ])->columnSpan(1),
+            ])->columns(4);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns(
-                [
+            ->columns([
                 ViewColumn::make('title_card')
                     ->label(__('Title'))
                     ->sortable(['title'])
@@ -176,11 +157,9 @@ class PostResource extends SkyResource
                 SpatieTagsColumn::make('category')
                     ->label(__('Post Category'))
                     ->type('category'),
-                ]
-            )
+            ])
             ->defaultSort('id', 'desc')
-            ->filters(
-                [
+            ->filters([
                 MultiSelectFilter::make('status')
                     ->label(__('Status'))
                     ->options(PostStatus::pluck('label', 'name')),
@@ -212,8 +191,7 @@ class PostResource extends SkyResource
                 MultiSelectFilter::make('tags')
                     ->relationship('tags', 'name')
                     ->label(__('Tags')),
-                ]
-            );
+            ]);
     }
 
     public static function getPages(): array

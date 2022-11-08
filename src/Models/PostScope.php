@@ -17,8 +17,8 @@ trait PostScope
     public function scopeNotSticky($query)
     {
         $query->wherePostType('post')->where(function ($q) {
-                    return $q->whereDate('sticky_until', '<=', now())->orWhereNull('sticky_until');
-                })
+            return $q->whereDate('sticky_until', '<=', now())->orWhereNull('sticky_until');
+        })
         ->whereDate('published_at', '<=', now());
     }
 

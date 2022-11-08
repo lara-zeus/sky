@@ -49,12 +49,12 @@ class Posts extends Component
             ->twitter();
 
         return view(app('theme') . '.home')->with([
-                'posts'    => $posts,
-                'pages'    => $pages,
-                'recent'   => $recent,
-                'tags'     => Tag::withCount('postsPublished')->where('type', 'category')->get(),
-                'stickies' => Post::sticky()->published()->get(),
-                ])
+            'posts' => $posts,
+            'pages' => $pages,
+            'recent' => $recent,
+            'tags' => Tag::withCount('postsPublished')->where('type', 'category')->get(),
+            'stickies' => Post::sticky()->published()->get(),
+        ])
             ->layout(config('zeus-sky.layout'));
     }
 }

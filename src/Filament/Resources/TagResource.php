@@ -8,6 +8,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\TagResource\Pages;
 use LaraZeus\Sky\Models\Tag;
@@ -33,8 +34,7 @@ class TagResource extends SkyResource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema(
-                [
+            ->schema([
                 TextInput::make('name')
                     ->required()
                     ->maxLength(255)
@@ -46,16 +46,14 @@ class TagResource extends SkyResource
                         }
                     ),
                 TextInput::make('slug')
-                    ->unique()
+                    ->unique(ignorable: fn (?Model $record): ?Model => $record)
                     ->required()
                     ->maxLength(255),
                 Select::make('type')
-                    ->options(
-                        [
-                        'tag' => 'Tag',
+                    ->options([
+                        'tag'      => 'Tag',
                         'category' => 'Category',
-                        ]
-                    ),
+                        ]),
                 ]
             );
     }

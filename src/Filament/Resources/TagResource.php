@@ -8,6 +8,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\TagResource\Pages;
 use LaraZeus\Sky\Models\Tag;
@@ -43,6 +44,7 @@ class TagResource extends SkyResource
                         $set('slug', Str::slug($state));
                     }),
                 TextInput::make('slug')
+                    ->unique(ignorable: fn (?Model $record): ?Model => $record)
                     ->required()
                     ->maxLength(255),
                 Select::make('type')

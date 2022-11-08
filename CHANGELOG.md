@@ -2,6 +2,16 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.3.4 - 2022-11-08
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.4 to 1.3.5 by @dependabot in https://github.com/lara-zeus/sky/pull/58
+- add unique() constraint to slug fields by @thyseus in https://github.com/lara-zeus/sky/pull/57
+- ensure only posts with status 'publish' are being shown in public by @thyseus in https://github.com/lara-zeus/sky/pull/56
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.3.3...2.3.4
+
 ## 2.3.3 - 2022-10-28
 
 ### What's Changed

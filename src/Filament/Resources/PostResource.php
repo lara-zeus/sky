@@ -18,7 +18,7 @@ use Filament\Resources\Table;
 use Filament\Tables\Columns\SpatieTagsColumn;
 use Filament\Tables\Columns\ViewColumn;
 use Filament\Tables\Filters\Filter;
-use Filament\Tables\Filters\MultiSelectFilter;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -160,7 +160,8 @@ class PostResource extends SkyResource
             ])
             ->defaultSort('id', 'desc')
             ->filters([
-                MultiSelectFilter::make('status')
+                SelectFilter::make('status')
+                    ->multiple()
                     ->label(__('Status'))
                     ->options(PostStatus::pluck('label', 'name')),
 
@@ -184,11 +185,12 @@ class PostResource extends SkyResource
                     ->label(__('Sticky Only'))
                     ->query(
                         fn (Builder $query): Builder => $query
-                            ->where('post_type','post')
+                            ->where('post_type', 'post')
                             ->whereNotNull('sticky_until')
                     ),
 
-                MultiSelectFilter::make('tags')
+                SelectFilter::make('tags')
+                    ->multiple()
                     ->relationship('tags', 'name')
                     ->label(__('Tags')),
             ]);

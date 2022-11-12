@@ -11,7 +11,7 @@ class Post extends Component
 
     public function mount($slug)
     {
-        $this->post = postModel::Published()->where('slug',$slug)->firstOrFail();
+        $this->post = postModel::Published()->where('slug', $slug)->firstOrFail();
     }
 
     public function render()

@@ -16,7 +16,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Tables\Columns\ViewColumn;
 use Filament\Tables\Filters\Filter;
-use Filament\Tables\Filters\MultiSelectFilter;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -84,7 +84,7 @@ class PageResource extends SkyResource
                                 ->label(__('Post Slug')),
 
                             Select::make('parent_id')
-                                ->options(Post::wherePostType('page')->pluck('title', 'id'))
+                                ->options(Post::where('post_type', 'page')->pluck('title', 'id'))
                                 ->label(__('Parent Page')),
 
                             TextInput::make('ordering')
@@ -145,7 +145,8 @@ class PageResource extends SkyResource
             ])
             ->defaultSort('id', 'desc')
             ->filters([
-                MultiSelectFilter::make('status')
+                SelectFilter::make('status')
+                    ->multiple()
                     ->label(__('Status'))
                     ->options(PostStatus::pluck('label', 'name')),
 

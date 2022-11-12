@@ -4,6 +4,12 @@ namespace LaraZeus\Sky\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property string $name
+ * @property string $label
+ * @property string $class
+ * @property string $icon
+ */
 class PostStatus extends Model
 {
     use \Sushi\Sushi;

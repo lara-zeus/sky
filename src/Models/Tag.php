@@ -5,6 +5,7 @@ namespace LaraZeus\Sky\Models;
 /**
  * @property string $slug
  * @property string $type
+ * @property string $name
  */
 class Tag extends \Spatie\Tags\Tag
 {

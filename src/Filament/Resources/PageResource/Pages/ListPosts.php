@@ -15,6 +15,6 @@ class ListPosts extends ListRecords
 
     protected function getTableQuery(): Builder
     {
-        return Post::wherePostType('page');
+        return Post::where('post_type', 'page');
     }
 }

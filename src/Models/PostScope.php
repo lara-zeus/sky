@@ -8,7 +8,7 @@ trait PostScope
 {
     public function scopeSticky($query)
     {
-        $query->wherePostType('post')
+        $query->where('post_type', 'post')
             ->whereNotNull('sticky_until')
             ->whereDate('sticky_until', '>=', now())
             ->whereDate('published_at', '<=', now());
@@ -16,7 +16,7 @@ trait PostScope
 
     public function scopeNotSticky($query)
     {
-        $query->wherePostType('post')->where(function ($q) {
+        $query->where('post_type', 'post')->where(function ($q) {
             return $q->whereDate('sticky_until', '<=', now())->orWhereNull('sticky_until');
         })
         ->whereDate('published_at', '<=', now());
@@ -24,27 +24,27 @@ trait PostScope
 
     public function scopePublished($query)
     {
-        $query->wherePostType('post')
+        $query->where('post_type', 'post')
             ->whereIn('status', ['publish', 'private'])
             ->whereDate('published_at', '<=', now());
     }
 
     public function scopeRelated($query, $post)
     {
-        $query->wherePostType('post')
+        $query->where('post_type', 'post')
             ->withAnyTags($post->tags->pluck('name')->toArray(), 'category');
     }
 
     public function scopePage($query)
     {
-        $query->wherePostType('page')
+        $query->where('post_type', 'page')
             ->whereIn('status', ['publish', 'private'])
             ->whereDate('published_at', '<=', now());
     }
 
     public function scopePosts($query)
     {
-        $query->wherePostType('post')
+        $query->where('post_type', 'post')
             ->whereDate('published_at', '<=', now());
     }
 

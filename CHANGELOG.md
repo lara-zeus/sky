@@ -2,6 +2,18 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.3.6 - 2022-11-12
+
+### What's Changed
+
+- Add prose to faq by @leekaimun in https://github.com/lara-zeus/sky/pull/61
+
+### New Contributors
+
+- @leekaimun made their first contribution in https://github.com/lara-zeus/sky/pull/61
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.3.5...2.3.6
+
 ## 2.3.5 - 2022-11-11
 
 ### What's Changed

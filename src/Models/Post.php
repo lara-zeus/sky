@@ -5,12 +5,22 @@ namespace LaraZeus\Sky\Models;
 use Database\Factories\PostFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Blade;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Tags\HasTags;
 use Spatie\Translatable\HasTranslations;
 
+/**
+ * @property string $title
+ * @property string $content
+ * @property string $description
+ * @property Carbon $published_at
+ * @property string $status
+ * @property string $slug
+ * @property string $post_type
+ */
 class Post extends Model implements HasMedia
 {
     use HasFactory;

@@ -184,7 +184,7 @@ class PostResource extends SkyResource
                     ->label(__('Sticky Only'))
                     ->query(
                         fn (Builder $query): Builder => $query
-                            ->wherePostType('post')
+                            ->where('post_type','post')
                             ->whereNotNull('sticky_until')
                     ),
 

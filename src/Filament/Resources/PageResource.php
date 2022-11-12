@@ -84,7 +84,7 @@ class PageResource extends SkyResource
                                 ->label(__('Post Slug')),
 
                             Select::make('parent_id')
-                                ->options(Post::wherePostType('page')->pluck('title', 'id'))
+                                ->options(Post::where('post_type','page')->pluck('title', 'id'))
                                 ->label(__('Parent Page')),
 
                             TextInput::make('ordering')

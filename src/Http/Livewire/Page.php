@@ -11,7 +11,7 @@ class Page extends Component
 
     public function mount($slug)
     {
-        $this->page = Post::whereSlug($slug)->page()->firstOrFail();
+        $this->page = Post::where('slug',$slug)->page()->firstOrFail();
     }
 
     public function render()

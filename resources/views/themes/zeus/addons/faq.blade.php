@@ -17,7 +17,7 @@
                                 </a>
                             </h5>
                             <div>
-                                <div class="pb-4 px-6">
+                                <div class="pb-4 px-6 prose dark:prose-invert">
                                     {!! $faq->answer !!}
                                 </div>
                             </div>

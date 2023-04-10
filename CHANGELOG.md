@@ -2,6 +2,22 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.4.0 - 2023-04-10
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.5 to 1.3.6 by @dependabot in https://github.com/lara-zeus/sky/pull/65
+- Bump aglipanci/laravel-pint-action from 1.0.0 to 2.2.0 by @dependabot in https://github.com/lara-zeus/sky/pull/68
+- Bump ramsey/composer-install from 1 to 2 by @dependabot in https://github.com/lara-zeus/sky/pull/63
+- Added config for Navigation Group Label by @chahal26 in https://github.com/lara-zeus/sky/pull/66
+- support laravel 10 by @atmonshi in https://github.com/lara-zeus/sky/pull/69
+
+### New Contributors
+
+- @chahal26 made their first contribution in https://github.com/lara-zeus/sky/pull/66
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.3.7...2.4.0
+
 ## 2.3.7 - 2022-11-12
 
 ### What's Changed

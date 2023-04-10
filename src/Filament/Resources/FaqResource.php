@@ -21,11 +21,6 @@ class FaqResource extends SkyResource
         return (string) Faq::query()->count();
     }
 
-    protected static function getNavigationGroup(): ?string
-    {
-        return __(config('zeus-sky.navigation_group_label', 'Sky'));
-    }
-
     public static function getLabel(): string
     {
         return __('FAQ');

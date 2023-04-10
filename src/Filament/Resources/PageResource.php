@@ -179,9 +179,4 @@ class PageResource extends SkyResource
     {
         return __('Pages');
     }
-
-    protected static function getNavigationGroup(): ?string
-    {
-        return __(config('zeus-sky.navigation_group_label', 'Sky'));
-    }
 }

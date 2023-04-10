@@ -2,6 +2,15 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.4.1 - 2023-04-10
+
+### What's Changed
+
+- Update configuration.md by @atmonshi in https://github.com/lara-zeus/sky/pull/70
+- refactor getNavigationGroup by @atmonshi in https://github.com/lara-zeus/sky/pull/71
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.0...2.4.1
+
 ## 2.4.0 - 2023-04-10
 
 ### What's Changed

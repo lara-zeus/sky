@@ -77,4 +77,9 @@ return [
      * available locales, this currently used only in tags manager.
      */
     'translatable_Locales' => ['en', 'ar'],
+
+    /**
+     * Navigation Group Label
+     */
+    'navigation_group_label' => 'sky',
 ];

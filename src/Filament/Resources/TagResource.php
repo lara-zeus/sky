@@ -89,9 +89,4 @@ class TagResource extends SkyResource
     {
         return __('Tags');
     }
-
-    protected static function getNavigationGroup(): ?string
-    {
-        return __(config('zeus-sky.navigation_group_label', 'Sky'));
-    }
 }

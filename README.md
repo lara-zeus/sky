@@ -7,7 +7,7 @@
 <p align="center">
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/lara-zeus/sky.svg?style=flat)](https://packagist.org/packages/lara-zeus/sky)
-[![Tests](https://img.shields.io/github/actions/workflow/status/lara-zeus/sky/run-tests?label=tests&style=flat)](https://github.com/lara-zeus/sky/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![Tests](https://img.shields.io/github/actions/workflow/status/lara-zeus/sky/run-tests.yml?label=tests&style=flat&branch=main)](https://github.com/lara-zeus/sky/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![Code Style](https://img.shields.io/github/actions/workflow/status/lara-zeus/sky/fix-php-code-style-issues.yml?label=code-style&style=flat)](https://github.com/lara-zeus/sky/actions?query=workflow%3Afix-php-code-style-issues+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/lara-zeus/sky.svg?style=flat)](https://packagist.org/packages/lara-zeus/sky)
 [![Total Downloads](https://img.shields.io/github/stars/lara-zeus/sky?style=flat)](https://github.com/lara-zeus/sky)

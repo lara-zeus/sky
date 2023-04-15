@@ -6,12 +6,11 @@
 
 <p align="center">
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/lara-zeus/sky.svg?style=flat-square)](https://packagist.org/packages/lara-zeus/sky)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/lara-zeus/sky/run-tests?label=tests)](https://github.com/lara-zeus/sky/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![code style](https://github.com/lara-zeus/sky/actions/workflows/fix-php-code-style-issues.yml/badge.svg)](https://github.com/lara-zeus/sky/actions/workflows/fix-php-code-style-issues.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/lara-zeus/sky.svg?style=flat-square)](https://packagist.org/packages/lara-zeus/sky)
-<a href="https://github.com/lara-zeus/sky"><img src="https://img.shields.io/github/stars/lara-zeus/sky?style=flat-square" /></a>
-<a href="https://www.codefactor.io/repository/github/lara-zeus/sky"><img src="https://www.codefactor.io/repository/github/lara-zeus/sky/badge" alt="CodeFactor" /></a>
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/lara-zeus/sky.svg?style=flat)](https://packagist.org/packages/lara-zeus/sky)
+[![Tests](https://img.shields.io/github/actions/workflow/status/lara-zeus/sky/run-tests?label=tests&style=flat)](https://github.com/lara-zeus/sky/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![Code Style](https://img.shields.io/github/actions/workflow/status/lara-zeus/sky/fix-php-code-style-issues.yml?label=code-style&style=flat)](https://github.com/lara-zeus/sky/actions?query=workflow%3Afix-php-code-style-issues+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/lara-zeus/sky.svg?style=flat)](https://packagist.org/packages/lara-zeus/sky)
+[![Total Downloads](https://img.shields.io/github/stars/lara-zeus/sky?style=flat)](https://github.com/lara-zeus/sky)
 
 </p>
 

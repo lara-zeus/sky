@@ -8,7 +8,7 @@
 
         @if($getRecord()->sticky_until !== null)
             <span x-tooltip.raw="{{ __('Sticky Until') }} {{ $getRecord()->sticky_until->diffForHumans() }}" title="{{ __('Sticky Until') }} {{ $getRecord()->sticky_until->diffForHumans() }}">
-                <x-iconpark-pin class="w-4 h-4 inline-flex text-primary-500"/>
+                <x-iconpark-pin class="w-4 h-4 inline-flex text-secondary-500"/>
             </span>
         @endif
 

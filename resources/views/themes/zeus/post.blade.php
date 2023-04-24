@@ -9,8 +9,8 @@
         </li>
     </x-slot>
 
-    @if(!$post->getMedia('posts')->isEmpty())
-        <img src="{{ $post->getFirstMediaUrl('posts') }}" class="my-10 w-full h-full shadow-md rounded-[2rem] rounded-bl-none z-0 object-cover"/>
+    @if($post->image() !== null)
+        <img src="{{ $post->image() }}" class="my-10 w-full h-full shadow-md rounded-[2rem] rounded-bl-none z-0 object-cover"/>
     @endif
 
     <div class="bg-white dark:bg-gray-800 rounded-[2rem] rounded-tl-none shadow-md px-10 pb-6">

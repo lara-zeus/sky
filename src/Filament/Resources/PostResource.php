@@ -7,6 +7,7 @@ use Filament\Forms\Components\Card;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
@@ -124,9 +125,30 @@ class PostResource extends SkyResource
 
                     Section::make(__('Featured Image'))
                         ->schema([
-                            SpatieMediaLibraryFileUpload::make('featured_image')
+                            Radio::make('featured_image_type')
+                                ->label('')
+                                ->reactive()
+                                ->dehydrated(false)
+                                ->afterStateHydrated(function (Closure $set, Closure $get) {
+                                    $setVal = ($get('featured_image') === null) ? 'upload' : 'url';
+                                    $set('featured_image_type', $setVal);
+                                })
+                                ->default('upload')
+                                ->options([
+                                    'upload' => __('upload'),
+                                    'url' => __('url'),
+                                ])
+                                ->inline(),
+
+                            SpatieMediaLibraryFileUpload::make('featured_image_upload')
                                 ->collection('posts')
+                                ->visible(fn (Closure $get) => $get('featured_image_type') === 'upload')
                                 ->label(''),
+
+                            TextInput::make('featured_image')
+                                ->label(__('featured image url'))
+                                ->visible(fn (Closure $get) => $get('featured_image_type') === 'url')
+                                ->url(),
                         ])
                         ->collapsible(),
                 ])->columnSpan(1),

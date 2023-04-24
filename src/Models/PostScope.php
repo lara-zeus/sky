@@ -19,7 +19,7 @@ trait PostScope
         $query->where('post_type', 'post')->where(function ($q) {
             return $q->whereDate('sticky_until', '<=', now())->orWhereNull('sticky_until');
         })
-        ->whereDate('published_at', '<=', now());
+            ->whereDate('published_at', '<=', now());
     }
 
     public function scopePublished($query)

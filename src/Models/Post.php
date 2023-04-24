@@ -83,4 +83,13 @@ class Post extends Model implements HasMedia
     {
         return $this->belongsTo(self::class, 'parent_id', 'id');
     }
+
+    public function image()
+    {
+        if (! $this->getMedia('posts')->isEmpty()) {
+            return $this->getFirstMediaUrl('posts');
+        } else {
+            return $this->featured_image;
+        }
+    }
 }

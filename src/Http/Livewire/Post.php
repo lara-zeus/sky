@@ -11,7 +11,12 @@ class Post extends Component
 
     public function mount($slug)
     {
-        $this->post = postModel::Published()->where('slug', $slug)->firstOrFail();
+        $this->post = postModel::where('slug', $slug)->firstOrFail();
+
+        if ($this->post->status !== 'publish') {
+            abort_if(! auth()->check(), 404);
+            abort_if($this->post->user_id !== auth()->user()->id, 401);
+        }
     }
 
     public function render()

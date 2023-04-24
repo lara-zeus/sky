@@ -1,6 +1,6 @@
 {
-  "name": "lara-zeus/sky",
-  "description": "simple packages to create and manage forms for your users",
+  "name": "lara-zeus/artimes",
+  "description": "theme for lara zeus sky",
   "keywords": [
     "laravel",
     "lara-zeus",
@@ -26,39 +26,7 @@
   ],
   "require": {
     "php": "^8.0",
-    "ext-json": "*",
-    "doctrine/dbal": "^3.3",
-    "filament/spatie-laravel-media-library-plugin": "^2.0",
-    "filament/spatie-laravel-tags-plugin": "^2.0",
-    "filament/spatie-laravel-translatable-plugin": "^2.0",
-    "lara-zeus/core": "^2.4",
-    "mohamedsabil83/filament-forms-tinyeditor": "^1.5",
-    "spatie/laravel-medialibrary": "^10.0.0",
-    "spatie/laravel-sluggable": "^3.3",
-    "spatie/laravel-tags": "^4.0"
-  },
-  "require-dev": {
-    "orchestra/testbench": "^6.0 || ^7.0 || ^8.0",
-    "laravel/pint": "^1.0",
-    "nunomaduro/larastan": "^2.0",
-    "pestphp/pest": "^1.21 || ^2.0",
-    "pestphp/pest-plugin-laravel": "^1.1 || ^2.0",
-    "pestphp/pest-plugin-livewire": "^1.0",
-    "pestphp/pest-plugin-parallel": "^0.3",
-    "phpstan/extension-installer": "^1.1",
-    "phpstan/phpstan-deprecation-rules": "^1.0",
-    "phpstan/phpstan-phpunit": "^1.0",
-    "phpunit/phpunit": "^9.5"
-  },
-  "autoload": {
-    "psr-4": {
-      "LaraZeus\\Sky\\": "src"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "LaraZeus\\Sky\\Tests\\": "tests"
-    }
+    "lara-zeus/sky": "^2.4"
   },
   "scripts": {
     "pint": "vendor/bin/pint",
@@ -79,7 +47,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "LaraZeus\\Sky\\SkyServiceProvider"
+        "ArtemisServiceProvider"
       ]
     }
   }

@@ -1,7 +1,7 @@
 ---
-title: v2
-slogan: simple CMS for your website. it includes posts, pages, tags, and categories, with a frontend scaffolding.
-githubUrl: https://github.com/lara-zeus/sky
+title: v1
+slogan: themes for Lara Zeus Sky.
+githubUrl: https://github.com/lara-zeus/artemis
 branch: main
 icon: ri-cloud-windy-line
 ---

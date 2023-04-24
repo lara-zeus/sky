@@ -36,7 +36,7 @@ class PostResource extends SkyResource
 
     protected static function getNavigationBadge(): ?string
     {
-        return (string)Post::query()->posts()->count();
+        return (string) Post::query()->posts()->count();
     }
 
     public static function form(Form $form): Form
@@ -79,7 +79,7 @@ class PostResource extends SkyResource
                                 ->hint(__('Write an excerpt for your post')),
 
                             TextInput::make('slug')
-                                ->unique(ignorable: fn(?Model $record): ?Model => $record)
+                                ->unique(ignorable: fn (?Model $record): ?Model => $record)
                                 ->required()
                                 ->maxLength(255)
                                 ->label(__('Post Slug')),
@@ -112,7 +112,7 @@ class PostResource extends SkyResource
                             TextInput::make('password')
                                 ->label(__('Password'))
                                 ->reactive()
-                                ->visible(fn(Closure $get): bool => $get('status') === 'private'),
+                                ->visible(fn (Closure $get): bool => $get('status') === 'private'),
 
                             DateTimePicker::make('published_at')
                                 ->label(__('published at'))
@@ -142,12 +142,12 @@ class PostResource extends SkyResource
 
                             SpatieMediaLibraryFileUpload::make('featured_image_upload')
                                 ->collection('posts')
-                                ->visible(fn(Closure $get) => $get('featured_image_type') === 'upload')
+                                ->visible(fn (Closure $get) => $get('featured_image_type') === 'upload')
                                 ->label(''),
 
                             TextInput::make('featured_image')
                                 ->label(__('featured image url'))
-                                ->visible(fn(Closure $get) => $get('featured_image_type') === 'url')
+                                ->visible(fn (Closure $get) => $get('featured_image_type') === 'url')
                                 ->url(),
                         ])
                         ->collapsible(),
@@ -170,7 +170,7 @@ class PostResource extends SkyResource
                     ->sortable(['status'])
                     ->searchable(['status'])
                     ->view('zeus-sky::filament.columns.status-desc')
-                    ->tooltip(fn(Post $record): string => $record->published_at->format('Y/m/d | H:i A')),
+                    ->tooltip(fn (Post $record): string => $record->published_at->format('Y/m/d | H:i A')),
 
                 SpatieTagsColumn::make('tags')
                     ->label(__('Post Tags'))
@@ -189,16 +189,16 @@ class PostResource extends SkyResource
 
                 Filter::make('password')
                     ->label(__('Password Protected'))
-                    ->query(fn(Builder $query): Builder => $query->whereNotNull('password')),
+                    ->query(fn (Builder $query): Builder => $query->whereNotNull('password')),
 
                 Filter::make('sticky')
                     ->label(__('Still Sticky'))
-                    ->query(fn(Builder $query): Builder => $query->sticky()),
+                    ->query(fn (Builder $query): Builder => $query->sticky()),
 
                 Filter::make('not_sticky')
                     ->label(__('Not Sticky'))
                     ->query(
-                        fn(Builder $query): Builder => $query
+                        fn (Builder $query): Builder => $query
                             ->whereDate('sticky_until', '<=', now())
                             ->orWhereNull('sticky_until')
                     ),
@@ -206,7 +206,7 @@ class PostResource extends SkyResource
                 Filter::make('sticky_only')
                     ->label(__('Sticky Only'))
                     ->query(
-                        fn(Builder $query): Builder => $query
+                        fn (Builder $query): Builder => $query
                             ->where('post_type', 'post')
                             ->whereNotNull('sticky_until')
                     ),

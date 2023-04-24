@@ -2,6 +2,18 @@
 
 All notable changes to `sky` will be documented in this file
 
+
+## 2.4.2 - 2023-04-24
+
+### What's Changed
+
+- add featured image by URL by @atmonshi in https://github.com/lara-zeus/sky/pull/72
+- Default featured image from config by @atmonshi in https://github.com/lara-zeus/sky/pull/73
+- Allow preview post for author by @atmonshi in https://github.com/lara-zeus/sky/pull/74
+- update Zeus core by @atmonshi in https://github.com/lara-zeus/sky/pull/75
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.1...2.4.2
+
 ## 2.4.1 - 2023-04-10
 
 ### What's Changed

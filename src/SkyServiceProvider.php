@@ -1,6 +1,6 @@
 <?php
 
-namespace LaraZeus\Artemis;
+namespace LaraZeus\Sky;
 
 use Filament\PluginServiceProvider;
 use Illuminate\Support\Facades\App;
@@ -9,7 +9,7 @@ use LaraZeus\Sky\Console\migrateCommand;
 use LaraZeus\Sky\Filament\Resources\TagResource;
 use Spatie\LaravelPackageTools\Package;
 
-class ArtemisServiceProvider extends PluginServiceProvider
+class SkyServiceProvider extends PluginServiceProvider
 {
     public static string $name = 'zeus-sky';
 

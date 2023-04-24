@@ -89,7 +89,7 @@ class Post extends Model implements HasMedia
         if (! $this->getMedia('posts')->isEmpty()) {
             return $this->getFirstMediaUrl('posts');
         } else {
-            return $this->featured_image;
+            return $this->featured_image ?? config('zeus-sky.default_featured_image', null);
         }
     }
 }

@@ -82,4 +82,10 @@ return [
      * Navigation Group Label
      */
     'navigation_group_label' => 'sky',
+
+    /**
+     * default featured image, set to null to disable it.
+     * ex: https://placehold.co/600x400
+     */
+    'default_featured_image' => null,
 ];

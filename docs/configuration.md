@@ -83,5 +83,10 @@ return [
      * Navigation Group Label
      */
     'navigation_group_label' => 'sky',
+    
+    /**
+     * default featured image, set to null to disable it.
+     */
+    'default_featured_image' => null,
 ];
 ```

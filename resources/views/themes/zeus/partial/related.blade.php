@@ -3,7 +3,7 @@
         <div class="absolute inset-0 w-full h-full z-10 shadow-md rounded-[2rem] @if($loop->first) md:ltr:rounded-br-none md:rtl:rounded-bl-none @else md:ltr:rounded-bl-none md:rtl:rounded-br-none @endif bg-gradient-to-b from-transparent to-gray-700"></div>
 
         @if($post->image() !== null)
-            <img src="{{ $post->image() }}" class="absolute ltr:left-0 rtl:right-0 top-0 w-full h-full shadow-md rounded-[2rem] @if($loop->first) md:ltr:rounded-br-none md:rtl:rounded-bl-none @else md:ltr:rounded-bl-none md:rtl:rounded-br-none @endif z-0 object-cover"/>
+            <img alt="{{ $post->title }}" src="{{ $post->image() }}" class="absolute ltr:left-0 rtl:right-0 top-0 w-full h-full shadow-md rounded-[2rem] @if($loop->first) md:ltr:rounded-br-none md:rtl:rounded-bl-none @else md:ltr:rounded-bl-none md:rtl:rounded-br-none @endif z-0 object-cover"/>
         @endif
 
         <div class="p-4 absolute bottom-0 ltr:left-0 rtl:right-0 z-20">

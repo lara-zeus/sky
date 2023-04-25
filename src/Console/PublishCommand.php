@@ -11,7 +11,7 @@ class PublishCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'Sky:publish {--force : Overwrite any existing files}';
+    protected $signature = 'sky:publish {--force : Overwrite any existing files}';
 
     /**
      * The console command description.

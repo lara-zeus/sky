@@ -12,6 +12,9 @@ trait SearchHelpers
             return $collection;
         }
 
+        /**
+         * @var \LaraZeus\Sky\Models\Post $item
+         */
         foreach ($collection as $item) {
             $item->title = $this->parsing($item->title, [$search]);
             $item->content = $this->parsing($item->content, [$search]);

@@ -18,7 +18,7 @@
             <span class="font-light text-gray-600 dark:text-gray-200">{{ optional($post->published_at)->diffForHumans() ?? '' }}</span>
             <div>
                 @unless ($post->tags->isEmpty())
-                    @each($theme.'.partial.tag', $post->tags->where('type','category'), 'tag')
+                    @each($theme.'.partial.category', $post->tags->where('type','category'), 'category')
                 @endunless
             </div>
         </div>
@@ -31,6 +31,13 @@
                 <p class="mt-2 text-gray-600 dark:text-gray-200">
                     {{ $post->description ?? '' }}
                 </p>
+                <div>
+                    @unless ($post->tags->isEmpty())
+                        @foreach($post->tags->where('type','tag') as $tag)
+                            @include($theme.'.partial.tag')
+                        @endforeach
+                    @endunless
+                </div>
             </div>
             <a href="#" class="flex items-center gap-2">
                 <img src="{{ \Filament\Facades\Filament::getUserAvatarUrl($post->author) }}" alt="avatar" class="object-cover w-10 h-10 rounded-full sm:block">

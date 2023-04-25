@@ -13,9 +13,9 @@ class Page extends Component
     {
         $this->page = Post::where('slug', $slug)->page()->firstOrFail();
 
-        if ($this->post->status !== 'publish') {
+        if ($this->page->status !== 'publish') {
             abort_if(! auth()->check(), 404);
-            abort_if($this->post->user_id !== auth()->user()->id, 401);
+            abort_if($this->page->user_id !== auth()->user()->id, 401);
         }
     }
 

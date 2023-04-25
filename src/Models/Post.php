@@ -20,6 +20,7 @@ use Spatie\Translatable\HasTranslations;
  * @property string $status
  * @property string $slug
  * @property string $post_type
+ * @property string $user_id
  */
 class Post extends Model implements HasMedia
 {

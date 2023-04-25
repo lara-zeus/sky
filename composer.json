@@ -33,6 +33,7 @@
     "filament/spatie-laravel-translatable-plugin": "^2.0",
     "lara-zeus/core": "^2.4",
     "mohamedsabil83/filament-forms-tinyeditor": "^1.5",
+    "ryangjchandler/filament-navigation": "^0.5",
     "spatie/laravel-medialibrary": "^10.0.0",
     "spatie/laravel-sluggable": "^3.3",
     "spatie/laravel-tags": "^4.0"

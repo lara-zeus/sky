@@ -71,7 +71,7 @@ class SkyServiceProvider extends PluginServiceProvider
                 ->searchable()
                 ->options(function () {
                     return Post::published()->pluck('title', 'id');
-                })
+                }),
         ]);
 
         FilamentNavigation::addItemType('Page link', [
@@ -80,7 +80,7 @@ class SkyServiceProvider extends PluginServiceProvider
                 ->searchable()
                 ->options(function () {
                     return Post::page()->pluck('title', 'id');
-                })
+                }),
         ]);
     }
 }

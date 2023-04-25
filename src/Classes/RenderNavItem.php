@@ -10,6 +10,7 @@ class RenderNavItem
     {
         if ($item['type'] === 'page-link') {
             $page = Post::page()->find($item['data']['page_id']) ?? '';
+
             return '<a class="' . $class . '"
                     target="' . ($item['data']['target'] ?? '_self') . '" 
                     href="' . route('page', $page) . '"
@@ -18,6 +19,7 @@ class RenderNavItem
                 '</a>';
         } elseif ($item['type'] === 'post-link') {
             $post = Post::find($item['data']['post_id']) ?? '';
+
             return '<a class="' . $class . '"
                     target="' . ($item['data']['target'] ?? '_self') . '" 
                     href="' . route('post', $post) . '"

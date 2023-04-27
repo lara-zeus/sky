@@ -2,6 +2,7 @@
 
 namespace LaraZeus\Sky;
 
+use Filament\Facades\Filament;
 use Filament\Forms\Components\Select;
 use Filament\PluginServiceProvider;
 use Illuminate\Support\Facades\App;
@@ -18,33 +19,6 @@ class SkyServiceProvider extends PluginServiceProvider
 {
     public static string $name = 'zeus-sky';
 
-    public function boot()
-    {
-        View::share('theme', 'zeus-sky::themes.' . config('zeus-sky.theme', 'zeus'));
-
-        App::singleton('theme', function () {
-            return 'zeus-sky::themes.' . config('zeus-sky.theme', 'zeus');
-        });
-
-        $this->bootFilamentNavigation();
-
-        return parent::boot();
-    }
-
-    public function configurePackage(Package $package): void
-    {
-        parent::configurePackage($package);
-        $package
-            ->hasConfigFile()
-            ->hasMigrations(['create_posts_table', 'create_faqs_table', 'modify_posts_columns'])
-            ->hasRoute('web')
-            ->hasCommands([
-                migrateCommand::class,
-                PublishCommand::class,
-            ])
-            ->hasTranslations();
-    }
-
     protected function getResources(): array
     {
         // TagResource should not be disabled.
@@ -52,6 +26,34 @@ class SkyServiceProvider extends PluginServiceProvider
             config('zeus-sky.enabled_resources'),
             [TagResource::class]
         );
+    }
+
+    public function bootingPackage(): void
+    {
+        View::share('theme', 'zeus-sky::themes.' . config('zeus-sky.theme', 'zeus'));
+
+        App::singleton('theme', function () {
+            return 'zeus-sky::themes.' . config('zeus-sky.theme', 'zeus');
+        });
+
+        Filament::serving(function () {
+            $this->bootFilamentNavigation();
+        });
+    }
+
+    protected function getCommands(): array
+    {
+        return [
+            migrateCommand::class,
+            PublishCommand::class,
+        ];
+    }
+
+    public function packageConfiguring(Package $package): void
+    {
+        $package
+            ->hasMigrations(['create_posts_table', 'create_faqs_table', 'modify_posts_columns'])
+            ->hasRoute('web');
     }
 
     private function bootFilamentNavigation(): void

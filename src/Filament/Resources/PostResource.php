@@ -25,18 +25,20 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\PostResource\Pages;
 use LaraZeus\Sky\Models\Post;
-use LaraZeus\Sky\Models\PostStatus;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class PostResource extends SkyResource
 {
-    protected static ?string $model = Post::class;
+    public static function getModel(): string
+    {
+        return config('zeus-sky.models.post');
+    }
 
     protected static ?string $navigationIcon = 'iconpark-docdetail-o';
 
     protected static function getNavigationBadge(): ?string
     {
-        return (string) Post::query()->posts()->count();
+        return (string) config('zeus-sky.models.post')::query()->posts()->count();
     }
 
     public static function form(Form $form): Form
@@ -107,7 +109,7 @@ class PostResource extends SkyResource
                                 ->default('publish')
                                 ->required()
                                 ->reactive()
-                                ->options(PostStatus::pluck('label', 'name')),
+                                ->options(config('zeus-sky.models.postStatus')::pluck('label', 'name')),
 
                             TextInput::make('password')
                                 ->label(__('Password'))
@@ -185,7 +187,7 @@ class PostResource extends SkyResource
                 SelectFilter::make('status')
                     ->multiple()
                     ->label(__('Status'))
-                    ->options(PostStatus::pluck('label', 'name')),
+                    ->options(config('zeus-sky.models.postStatus')::pluck('label', 'name')),
 
                 Filter::make('password')
                     ->label(__('Password Protected'))

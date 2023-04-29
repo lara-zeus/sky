@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\View;
 use LaraZeus\Sky\Console\migrateCommand;
 use LaraZeus\Sky\Console\PublishCommand;
 use LaraZeus\Sky\Filament\Resources\TagResource;
-use LaraZeus\Sky\Models\Post;
 use RyanChandler\FilamentNavigation\Facades\FilamentNavigation;
 use RyanChandler\FilamentNavigation\Filament\Resources\NavigationResource;
 use Spatie\LaravelPackageTools\Package;
@@ -31,7 +30,6 @@ class SkyServiceProvider extends PluginServiceProvider
     public function bootingPackage(): void
     {
         View::share('theme', 'zeus-sky::themes.' . config('zeus-sky.theme', 'zeus'));
-
         App::singleton('theme', function () {
             return 'zeus-sky::themes.' . config('zeus-sky.theme', 'zeus');
         });
@@ -72,7 +70,7 @@ class SkyServiceProvider extends PluginServiceProvider
                 ->label(__('Select Post'))
                 ->searchable()
                 ->options(function () {
-                    return Post::published()->pluck('title', 'id');
+                    return config('zeus-sky.models.post')::published()->pluck('title', 'id');
                 }),
         ]);
 
@@ -81,7 +79,7 @@ class SkyServiceProvider extends PluginServiceProvider
                 ->label(__('Select Page'))
                 ->searchable()
                 ->options(function () {
-                    return Post::page()->pluck('title', 'id');
+                    return config('zeus-sky.models.post')::page()->pluck('title', 'id');
                 }),
         ]);
     }

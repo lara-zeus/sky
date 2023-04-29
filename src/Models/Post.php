@@ -69,7 +69,7 @@ class Post extends Model implements HasMedia
 
     public function statusDesc(): string
     {
-        $PostStatus = PostStatus::where('name', $this->status)->first();
+        $PostStatus = config('zeus-sky.models.postStatus')::where('name', $this->status)->first();
         $icon = Blade::render('@svg("' . $PostStatus->icon . '","w-4 h-4 inline-flex")');
 
         return "<span title='" . __('post status') . "' class='$PostStatus->class'> " . $icon . " {$PostStatus->label}</span>";

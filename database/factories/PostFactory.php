@@ -6,9 +6,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PostFactory extends Factory
 {
-    /**
-     * @return string
-     */
     public function getModel(): string
     {
         return config('zeus-sky.models.post');

@@ -23,6 +23,16 @@ return [
     'page_uri_prefix' => 'page',
 
     /**
+     * customize the models
+     */
+    'models' => [
+        'faq' => \LaraZeus\Sky\Models\Faq::class,
+        'post' => \LaraZeus\Sky\Models\Post::class,
+        'postStatus' => \LaraZeus\Sky\Models\PostStatus::class,
+        'tag' => \LaraZeus\Sky\Models\Tag::class,
+    ],
+
+    /**
      * enable or disable individual Resources.
      */
     'enabled_resources' => [

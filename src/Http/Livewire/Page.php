@@ -2,7 +2,6 @@
 
 namespace LaraZeus\Sky\Http\Livewire;
 
-use LaraZeus\Sky\Models\Post;
 use Livewire\Component;
 
 class Page extends Component
@@ -11,7 +10,7 @@ class Page extends Component
 
     public function mount($slug)
     {
-        $this->page = Post::where('slug', $slug)->page()->firstOrFail();
+        $this->page = config('zeus-sky.models.post')::where('slug', $slug)->page()->firstOrFail();
 
         if ($this->page->status !== 'publish') {
             abort_if(! auth()->check(), 404);
@@ -38,7 +37,7 @@ class Page extends Component
             ->with([
                 'post' => $this->page,
                 /** @phpstan-ignore-next-line */
-                'children' => Post::with('parent')->where('parent_id', $this->page->id)->get(),
+                'children' => config('zeus-sky.models.post')::with('parent')->where('parent_id', $this->page->id)->get(),
             ])
             ->layout(config('zeus-sky.layout'));
     }

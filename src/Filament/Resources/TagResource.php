@@ -11,11 +11,13 @@ use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\TagResource\Pages;
-use LaraZeus\Sky\Models\Tag;
 
 class TagResource extends SkyResource
 {
-    protected static ?string $model = Tag::class;
+    public static function getModel(): string
+    {
+        return config('zeus-sky.models.tag');
+    }
 
     protected static ?string $navigationIcon = 'iconpark-tag-o';
 
@@ -28,7 +30,7 @@ class TagResource extends SkyResource
 
     protected static function getNavigationBadge(): ?string
     {
-        return (string) Tag::query()->count();
+        return (string) config('zeus-sky.models.tag')::query()->count();
     }
 
     public static function form(Form $form): Form

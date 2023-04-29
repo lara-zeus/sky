@@ -12,7 +12,10 @@ use LaraZeus\Sky\Models\Faq;
 
 class FaqResource extends SkyResource
 {
-    protected static ?string $model = Faq::class;
+    public static function getModel(): string
+    {
+        return config('zeus-sky.models.faq') ?? Faq::class;
+    }
 
     protected static ?string $navigationIcon = 'iconpark-folderwithdrawal-o';
 

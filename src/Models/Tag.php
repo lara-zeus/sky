@@ -11,12 +11,12 @@ class Tag extends \Spatie\Tags\Tag
 {
     public function posts()
     {
-        return $this->morphedByMany(Post::class, 'taggable');
+        return $this->morphedByMany(config('zeus-sky.models.post'), 'taggable');
     }
 
     public function postsPublished()
     {
-        return $this->morphedByMany(Post::class, 'taggable')->published();
+        return $this->morphedByMany(config('zeus-sky.models.post'), 'taggable')->published();
     }
 
     protected function generateSlug(string $locale): string

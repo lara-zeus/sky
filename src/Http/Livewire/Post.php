@@ -2,7 +2,6 @@
 
 namespace LaraZeus\Sky\Http\Livewire;
 
-use LaraZeus\Sky\Models\Post as postModel;
 use Livewire\Component;
 
 class Post extends Component
@@ -11,7 +10,7 @@ class Post extends Component
 
     public function mount($slug)
     {
-        $this->post = postModel::where('slug', $slug)->firstOrFail();
+        $this->post = config('zeus-sky.models.post')::where('slug', $slug)->firstOrFail();
 
         if ($this->post->status !== 'publish') {
             abort_if(! auth()->check(), 404);
@@ -36,7 +35,7 @@ class Post extends Component
 
         return view(app('theme') . '.post')
             ->with('post', $this->post)
-            ->with('related', postModel::related($this->post)->take(4)->get())
+            ->with('related', config('zeus-sky.models.post')::related($this->post)->take(4)->get())
             ->layout(config('zeus-sky.layout'));
     }
 }

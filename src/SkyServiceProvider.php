@@ -65,7 +65,7 @@ class SkyServiceProvider extends PluginServiceProvider
 
         NavigationResource::navigationIcon('iconpark-treelist-o');
 
-        FilamentNavigation::addItemType('Post link', [
+        FilamentNavigation::addItemType(__('Post link'), [
             Select::make('post_id')
                 ->label(__('Select Post'))
                 ->searchable()
@@ -74,7 +74,7 @@ class SkyServiceProvider extends PluginServiceProvider
                 }),
         ]);
 
-        FilamentNavigation::addItemType('Page link', [
+        FilamentNavigation::addItemType(__('Page link'), [
             Select::make('page_id')
                 ->label(__('Select Page'))
                 ->searchable()

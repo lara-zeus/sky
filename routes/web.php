@@ -23,5 +23,7 @@ Route::prefix(config('zeus-sky.path'))
     });
 
 if (in_array('LaraZeus\Sky\Filament\Resources\FaqResource', config('zeus-sky.enabled_resources'))) {
-    Route::get(config('zeus-sky.faq_uri_prefix'), Faq::class)->name('faq');
+    Route::middleware(config('zeus-sky.middleware'))
+        ->get(config('zeus-sky.faq_uri_prefix'), Faq::class)
+        ->name('faq');
 }

@@ -50,7 +50,7 @@ class SkyServiceProvider extends PluginServiceProvider
     public function packageConfiguring(Package $package): void
     {
         $package
-            ->hasMigrations(['create_posts_table', 'create_faqs_table', 'modify_posts_columns'])
+            ->hasMigrations(['create_posts_table', 'create_faqs_table', 'modify_posts_columns','add_indices_to_posts'])
             ->hasRoute('web');
     }
 

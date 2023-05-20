@@ -39,6 +39,17 @@ return [
     'page_uri_prefix' => 'page',
 
     /**
+     * customize the models
+     */
+    'models' => [
+        'faq' => \LaraZeus\Sky\Models\Faq::class,
+        'post' => \LaraZeus\Sky\Models\Post::class,
+        'postStatus' => \LaraZeus\Sky\Models\PostStatus::class,
+        'tag' => \LaraZeus\Sky\Models\Tag::class,
+        'library' => \LaraZeus\Sky\Models\Library::class,
+    ],
+    
+    /**
      * enable or disable individual Resources.
      */
     'enabled_resources' => [
@@ -46,6 +57,7 @@ return [
         LaraZeus\Sky\Filament\Resources\PageResource::class,
         LaraZeus\Sky\Filament\Resources\TagResource::class,
         LaraZeus\Sky\Filament\Resources\FaqResource::class,
+        LaraZeus\Sky\Filament\Resources\LibraryResource::class,
     ],
     
     /**
@@ -88,5 +100,15 @@ return [
      * default featured image, set to null to disable it.
      */
     'default_featured_image' => null,
+    
+    /**
+     * these types help you to render the items in the FE
+     * set it to null to hide it from the form
+     */
+    'library_types' => [
+        'FILE' => 'File',
+        'IMAGE' => 'Image',
+        'VIDEO' => 'Video',
+    ],
 ];
 ```

@@ -20,5 +20,12 @@ class SkySeeder extends Seeder
             $random_tags = config('zeus-sky.models.tag')::all()->random(1)->first()->name;
             $post->syncTagsWithType([$random_tags], 'category');
         }
+
+        config('zeus-sky.models.tag')::create(['name' => ['en' => 'support docs', 'ar' => 'الدعم الفني'], 'type' => 'library']);
+        config('zeus-sky.models.tag')::create(['name' => ['en' => 'how to', 'ar' => 'كيف'], 'type' => 'library']);
+
+        config('zeus-sky.models.library')::factory()
+            ->count(8)
+            ->create();
     }
 }

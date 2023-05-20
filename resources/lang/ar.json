@@ -61,5 +61,19 @@
     "Select Page": "اختر الصفحة",
     "Recent Post": "أحدث التدوينات",
     "Post link": "رابط تدوينة",
-    "Page link": "رابط صفحة"
+    "Page link": "رابط صفحة",
+    "Libraries": "المكتبات",
+    "Image": "صورة",
+    "File": "ملف",
+    "Video": "فيديو",
+    "library": "مكتبة",
+    "created at": "أنشأت بتاريخ",
+    "Show File": "عرض الملف",
+    "Library Title": "عنوان المكتبة",
+    "Library Slug": "رابط المكتبة",
+    "Library Description": "وصف المكتبة",
+    "Library Categories": "تصنيف المكتبة",
+    "Library Type": "نوع المحتوى",
+    "Library File": "ملف المكتبة",
+    "file url": "رابط الملف"
 }

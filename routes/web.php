@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use LaraZeus\Sky\Http\Livewire\Faq;
+use LaraZeus\Sky\Http\Livewire\Library;
 use LaraZeus\Sky\Http\Livewire\Page;
 use LaraZeus\Sky\Http\Livewire\Post;
 use LaraZeus\Sky\Http\Livewire\Posts;
@@ -26,4 +27,14 @@ if (in_array('LaraZeus\Sky\Filament\Resources\FaqResource', config('zeus-sky.ena
     Route::middleware(config('zeus-sky.middleware'))
         ->get(config('zeus-sky.faq_uri_prefix'), Faq::class)
         ->name('faq');
+}
+
+if (in_array('LaraZeus\Sky\Filament\Resources\LibraryResource', config('zeus-sky.enabled_resources'))) {
+    Route::middleware(config('zeus-sky.middleware'))
+        ->get(config('zeus-sky.library_uri_prefix'), Library::class)
+        ->name('library');
+
+    Route::middleware(config('zeus-sky.middleware'))
+        ->get(config('zeus-sky.library_uri_prefix') . '/{slug}', \LaraZeus\Sky\Http\Livewire\LibraryItem::class)
+        ->name('library.item');
 }

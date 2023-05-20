@@ -14,6 +14,11 @@ class Tag extends \Spatie\Tags\Tag
         return $this->morphedByMany(config('zeus-sky.models.post'), 'taggable');
     }
 
+    public function library()
+    {
+        return $this->morphedByMany(config('zeus-sky.models.library'), 'taggable');
+    }
+
     public function postsPublished()
     {
         return $this->morphedByMany(config('zeus-sky.models.post'), 'taggable')->published();

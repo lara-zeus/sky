@@ -52,7 +52,11 @@ class PostResource extends SkyResource
                             ->required()
                             ->maxLength(255)
                             ->reactive()
-                            ->afterStateUpdated(function (Closure $set, $state) {
+                            ->afterStateUpdated(function (Closure $set, $state, $context) {
+                                if ($context === 'edit') {
+                                    return;
+                                }
+
                                 $set('slug', Str::slug($state));
                             }),
 

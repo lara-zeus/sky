@@ -23,6 +23,11 @@ return [
     'page_uri_prefix' => 'page',
 
     /**
+     * set the prefix for library URL.
+     */
+    'library_uri_prefix' => 'library',
+
+    /**
      * customize the models
      */
     'models' => [
@@ -30,6 +35,7 @@ return [
         'post' => \LaraZeus\Sky\Models\Post::class,
         'postStatus' => \LaraZeus\Sky\Models\PostStatus::class,
         'tag' => \LaraZeus\Sky\Models\Tag::class,
+        'library' => \LaraZeus\Sky\Models\Library::class,
     ],
 
     /**
@@ -40,6 +46,7 @@ return [
         LaraZeus\Sky\Filament\Resources\PageResource::class,
         LaraZeus\Sky\Filament\Resources\TagResource::class,
         LaraZeus\Sky\Filament\Resources\FaqResource::class,
+        LaraZeus\Sky\Filament\Resources\LibraryResource::class,
     ],
 
     /**
@@ -98,4 +105,14 @@ return [
      * ex: https://placehold.co/600x400
      */
     'default_featured_image' => null,
+
+    /**
+     * these types help you to render the items in the FE
+     * set it to null to hide it from the form
+     */
+    'library_types' => [
+        'FILE' => 'File',
+        'IMAGE' => 'Image',
+        'VIDEO' => 'Video',
+    ],
 ];

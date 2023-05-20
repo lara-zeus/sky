@@ -60,19 +60,19 @@ class LibraryResource extends SkyResource
 
                 Textarea::make('description')
                     ->maxLength(255)
-                    ->label(__('Description'))
+                    ->label(__('Library Description'))
                     ->columnSpan(2),
 
                 SpatieTagsInput::make('category')
                     ->type('library')
-                    ->label(__('Categories')),
+                    ->label(__('Library Categories')),
 
                 Select::make('type')
-                    ->label(__('Type'))
+                    ->label(__('Library Type'))
                     ->visible(config('zeus-sky.library_types') !== null)
                     ->options(config('zeus-sky.library_types', null)),
 
-                Section::make(__('File'))
+                Section::make(__('Library File'))
                     ->schema([
                         Radio::make('upload_or_url')
                             ->label('')

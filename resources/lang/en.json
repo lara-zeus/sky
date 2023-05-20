@@ -61,5 +61,19 @@
     "Select Page": "Select Page",
     "Recent Post": "Recent Post",
     "Post link": "Post link",
-    "Page link": "Page link"
+    "Page link": "Page link",
+    "Libraries": "Libraries",
+    "Image": "Image",
+    "File": "File",
+    "Video": "Video",
+    "library": "library",
+    "created at": "created at",
+    "Show File": "Show File",
+    "Library Title": "Library Title",
+    "Library Slug": "Library Slug",
+    "Library Description": "Library Description",
+    "Library Categories": "Library Categories",
+    "Library Type": "Library Type",
+    "Library File": "Library File",
+    "file url": "file url"
 }

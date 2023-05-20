@@ -50,7 +50,7 @@ class Library extends Model implements HasMedia
 
     public function theFile()
     {
-        if (!$this->getMedia('library')->isEmpty()) {
+        if (! $this->getMedia('library')->isEmpty()) {
             return $this->getFirstMediaUrl('library');
         }
 

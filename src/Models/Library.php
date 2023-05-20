@@ -47,4 +47,13 @@ class Library extends Model implements HasMedia
     {
         return 'slug';
     }
+
+    public function theFile()
+    {
+        if (! $this->getMedia('library')->isEmpty()) {
+            return $this->getFirstMediaUrl('library');
+        }
+
+        return $this->file_path;
+    }
 }

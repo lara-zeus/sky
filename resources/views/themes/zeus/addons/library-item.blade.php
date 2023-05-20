@@ -28,12 +28,12 @@
         </p>
 
         @if($item->type === 'IMAGE')
-            <img class="mx-auto" src="{{ $item->file_path }}">
+            <img class="mx-auto" src="{{ $item->theFile() }}">
         @endif
 
         @if($item->type === 'FILE')
             <div class="text-center">
-                <x-filament::button tag="a" target="_blank" href="{{ $item->file_path }}" class="mx-auto">
+                <x-filament::button tag="a" target="_blank" href="{{ $item->theFile() }}" class="mx-auto">
                     {{ __('Show File') }}
                 </x-filament::button>
             </div>
@@ -41,10 +41,9 @@
 
         @if($item->type === 'VIDEO')
             <video width="100%" class="w-full" controls>
-                <source src="{{ $item->file_path }}">
+                <source src="{{ $item->theFile() }}">
                 Your browser does not support HTML video.
             </video>
         @endif
-
     </x-filament::card>
 </div>

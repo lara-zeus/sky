@@ -3,8 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use LaraZeus\Sky\Models\Library;
-use LaraZeus\Sky\Models\Tag;
 
 class SkySeeder extends Seeder
 {

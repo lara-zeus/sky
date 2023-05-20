@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use LaraZeus\Sky\Models\Library;
+use LaraZeus\Sky\Models\Tag;
 
 class SkySeeder extends Seeder
 {
@@ -16,7 +18,7 @@ class SkySeeder extends Seeder
             ->count(8)
             ->create();
 
-        foreach (config('zeus-sky.models.post')::all() as $post) { // loop through all posts
+        foreach (config('zeus-sky.models.post')::all() as $post) {
             $random_tags = config('zeus-sky.models.tag')::all()->random(1)->first()->name;
             $post->syncTagsWithType([$random_tags], 'category');
         }
@@ -27,5 +29,10 @@ class SkySeeder extends Seeder
         config('zeus-sky.models.library')::factory()
             ->count(8)
             ->create();
+
+        foreach (config('zeus-sky.models.library')::all() as $library) {
+            $random_tags = config('zeus-sky.models.tag')::getWithType('library')->random(1)->first()->name;
+            $library->syncTagsWithType([$random_tags], 'library');
+        }
     }
 }

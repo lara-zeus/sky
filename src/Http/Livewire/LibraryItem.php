@@ -3,7 +3,6 @@
 namespace LaraZeus\Sky\Http\Livewire;
 
 use Livewire\Component;
-use \LaraZeus\Sky\Models\Library as libraryModel;
 
 class LibraryItem extends Component
 {
@@ -13,6 +12,7 @@ class LibraryItem extends Component
     {
         $this->item = config('zeus-sky.models.library')::where('slug', $slug)->firstOrFail();
     }
+
     public function render()
     {
         seo()

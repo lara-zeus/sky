@@ -32,7 +32,7 @@ class LibraryResource extends SkyResource
 
     protected static function getNavigationBadge(): ?string
     {
-        return (string)config('zeus-sky.models.library')::query()->count();
+        return (string) config('zeus-sky.models.library')::query()->count();
     }
 
     public static function form(Form $form): Form
@@ -53,7 +53,7 @@ class LibraryResource extends SkyResource
                     }),
 
                 TextInput::make('slug')
-                    ->unique(ignorable: fn(?Model $record): ?Model => $record)
+                    ->unique(ignorable: fn (?Model $record): ?Model => $record)
                     ->required()
                     ->maxLength(255)
                     ->label(__('Library Slug')),
@@ -71,7 +71,6 @@ class LibraryResource extends SkyResource
                     ->label(__('Type'))
                     ->visible(config('zeus-sky.library_types') !== null)
                     ->options(config('zeus-sky.library_types', null)),
-
 
                 Section::make(__('File'))
                     ->schema([

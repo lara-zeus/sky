@@ -35,6 +35,6 @@ if (in_array('LaraZeus\Sky\Filament\Resources\LibraryResource', config('zeus-sky
         ->name('library');
 
     Route::middleware(config('zeus-sky.middleware'))
-        ->get(config('zeus-sky.library_uri_prefix').'/{slug}', \LaraZeus\Sky\Http\Livewire\LibraryItem::class)
+        ->get(config('zeus-sky.library_uri_prefix') . '/{slug}', \LaraZeus\Sky\Http\Livewire\LibraryItem::class)
         ->name('library.item');
 }

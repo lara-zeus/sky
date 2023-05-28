@@ -6,7 +6,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
         @foreach($categories as $category)
-            <x-zeus::box>
+            <x-filament::card>
                 <h2>{{ $category->name }}</h2>
                 <div class="space-y-2">
                     @foreach($category->library as $library)
@@ -33,7 +33,7 @@
                         </div>
                     @endforeach
                 </div>
-            </x-zeus::box>
+            </x-filament::card>
         @endforeach
     </div>
 

@@ -1,6 +1,6 @@
 {
     "name": "lara-zeus/sky",
-    "description": "simple packages to create and manage forms for your users",
+    "description": "Lara-zeus sky is simple CMS for your website. it include posts, pages, tags, and categories.",
     "keywords": [
         "laravel",
         "lara-zeus",

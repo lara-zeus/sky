@@ -12,6 +12,10 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
+use Filament\Tables\Actions\Action;
+use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\SpatieTagsColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
@@ -114,6 +118,19 @@ class LibraryResource extends SkyResource
                 SpatieTagsColumn::make('tags')
                     ->label(__('Library Tags'))
                     ->type('library'),
+            ])
+            ->actions([
+                ActionGroup::make([
+                    EditAction::make('edit')->label(__('Edit')),
+                    Action::make('Open')
+                        ->color('warning')
+                        ->icon('heroicon-o-external-link')
+                        ->label(__('Open'))
+                        ->url(fn (Model $record): string => route('library.item', ['slug' => $record->slug]))
+                        ->openUrlInNewTab(),
+                    DeleteAction::make('delete')
+                        ->label(__('Delete')),
+                ]),
             ])
             ->defaultSort('id', 'desc');
     }

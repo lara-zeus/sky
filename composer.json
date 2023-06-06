@@ -12,7 +12,8 @@
         "news",
         "wordpress laravel",
         "wordpress alternative",
-        "laravel cms"
+        "laravel cms",
+        "filamentphp"
     ],
     "homepage": "https://larazeus.com",
     "license": "MIT",
@@ -20,7 +21,7 @@
     "authors": [
         {
             "name": "php coder",
-            "email": "wh7r.com@gmail.com",
+            "email": "info@larazeus.com",
             "role": "Owner"
         }
     ],

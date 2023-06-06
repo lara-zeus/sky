@@ -6,6 +6,9 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Textarea;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
+use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use LaraZeus\Sky\Filament\Resources\FaqResource\Pages;
 use LaraZeus\Sky\Models\Faq;
@@ -62,6 +65,13 @@ class FaqResource extends SkyResource
         return $table
             ->columns([
                 TextColumn::make('question'),
+            ])
+            ->actions([
+                ActionGroup::make([
+                    EditAction::make('edit')->label(__('Edit')),
+                    DeleteAction::make('delete')
+                        ->label(__('Delete')),
+                ]),
             ]);
     }
 

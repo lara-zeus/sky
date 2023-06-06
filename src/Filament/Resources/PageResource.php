@@ -14,6 +14,10 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
+use Filament\Tables\Actions\Action;
+use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\ViewColumn;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
@@ -21,14 +25,13 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\PageResource\Pages;
-use LaraZeus\Sky\Models\Post;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class PageResource extends SkyResource
 {
     public static function getModel(): string
     {
-        return config('zeus-sky.models.post') ?? Post::class;
+        return config('zeus-sky.models.post');
     }
 
     protected static ?string $slug = 'pages';
@@ -143,9 +146,22 @@ class PageResource extends SkyResource
                     ->sortable(['status'])
                     ->searchable(['status'])
                     ->view('zeus-sky::filament.columns.status-desc')
-                    ->tooltip(fn (Post $record): string => $record->published_at->format('Y/m/d | H:i A')),
+                    ->tooltip(fn (Model $record): string => $record->published_at->format('Y/m/d | H:i A')),
             ])
             ->defaultSort('id', 'desc')
+            ->actions([
+                ActionGroup::make([
+                    EditAction::make('edit')->label(__('Edit')),
+                    Action::make('Open')
+                        ->color('warning')
+                        ->icon('heroicon-o-external-link')
+                        ->label(__('Open'))
+                        ->url(fn (Model $record): string => route('page', ['slug' => $record]))
+                        ->openUrlInNewTab(),
+                    DeleteAction::make('delete')
+                        ->label(__('Delete')),
+                ]),
+            ])
             ->filters([
                 SelectFilter::make('status')
                     ->multiple()

@@ -18,6 +18,7 @@ use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\SpatieTagsColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\LibraryResource\Pages;
@@ -111,12 +112,13 @@ class LibraryResource extends SkyResource
     {
         return $table
             ->columns([
-                TextColumn::make('title')->label(__('Library Title')),
-                TextColumn::make('slug')->label(__('Library Slug')),
-                TextColumn::make('type')->label(__('Library Type')),
+                TextColumn::make('title')->label(__('Library Title'))->searchable()->sortable()->toggleable(),
+                TextColumn::make('slug')->label(__('Library Slug'))->searchable()->sortable()->toggleable(),
+                TextColumn::make('type')->label(__('Library Type'))->searchable()->sortable()->toggleable(),
 
                 SpatieTagsColumn::make('tags')
                     ->label(__('Library Tags'))
+                    ->toggleable()
                     ->type('library'),
             ])
             ->actions([
@@ -131,6 +133,15 @@ class LibraryResource extends SkyResource
                     DeleteAction::make('delete')
                         ->label(__('Delete')),
                 ]),
+            ])
+            ->filters([
+                SelectFilter::make('type')
+                    ->options(config('zeus-sky.library_types'))
+                    ->label(__('type')),
+                SelectFilter::make('tags')
+                    ->multiple()
+                    ->relationship('tags', 'name')
+                    ->label(__('Tags')),
             ])
             ->defaultSort('id', 'desc');
     }

@@ -115,4 +115,13 @@ return [
         'IMAGE' => 'Image',
         'VIDEO' => 'Video',
     ],
+
+    /**
+     * you can add more types to the Tags
+     */
+    'tags_types' => [
+        'tag' => 'Tag',
+        'category' => 'Category',
+        'library' => 'Library',
+    ],
 ];

@@ -8,6 +8,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\TagResource\Pages;
@@ -50,10 +51,7 @@ class TagResource extends SkyResource
                     ->required()
                     ->maxLength(255),
                 Select::make('type')
-                    ->options([
-                        'tag' => 'Tag',
-                        'category' => 'Category',
-                    ]),
+                    ->options(config('zeus-sky.tags_types')),
             ]);
     }
 
@@ -61,10 +59,15 @@ class TagResource extends SkyResource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
-                TextColumn::make('type'),
-                TextColumn::make('slug'),
-                TextColumn::make('posts_count')->counts('posts'),
+                TextColumn::make('name')->toggleable()->searchable()->sortable(),
+                TextColumn::make('type')->toggleable()->searchable()->sortable(),
+                TextColumn::make('slug')->toggleable()->searchable()->sortable(),
+                TextColumn::make('posts_count')->counts('posts')->toggleable()->searchable()->sortable(),
+            ])
+            ->filters([
+                SelectFilter::make('type')
+                    ->options(config('zeus-sky.tags_types'))
+                    ->label(__('type')),
             ]);
     }
 

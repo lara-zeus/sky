@@ -64,7 +64,7 @@ class FaqResource extends SkyResource
     {
         return $table
             ->columns([
-                TextColumn::make('question'),
+                TextColumn::make('question')->searchable(),
             ])
             ->actions([
                 ActionGroup::make([

@@ -139,12 +139,14 @@ class PageResource extends SkyResource
                     ->label(__('Title'))
                     ->sortable(['title'])
                     ->searchable(['title'])
+                    ->toggleable()
                     ->view('zeus-sky::filament.columns.page-title'),
 
                 ViewColumn::make('status_desc')
                     ->label(__('Status'))
                     ->sortable(['status'])
                     ->searchable(['status'])
+                    ->toggleable()
                     ->view('zeus-sky::filament.columns.status-desc')
                     ->tooltip(fn (Model $record): string => $record->published_at->format('Y/m/d | H:i A')),
             ])
@@ -167,7 +169,6 @@ class PageResource extends SkyResource
                     ->multiple()
                     ->label(__('Status'))
                     ->options(config('zeus-sky.models.postStatus')::pluck('label', 'name')),
-
                 Filter::make('password')
                     ->label(__('Password Protected'))
                     ->query(fn (Builder $query): Builder => $query->whereNotNull('password')),

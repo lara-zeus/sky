@@ -35,6 +35,6 @@ if (in_array('LaraZeus\Sky\Filament\Resources\LibraryResource', config('zeus-sky
         ->prefix(config('zeus-sky.library_uri_prefix'))
         ->group(function () {
             Route::get('/', Library::class)->name('library');
-            Route::get('/{slug}', LibraryItem::class)->name('library-item');
+            Route::get('/{slug}', LibraryItem::class)->name('library.item');
         });
 }

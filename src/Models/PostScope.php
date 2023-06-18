@@ -39,7 +39,6 @@ trait PostScope
     public function scopePage(Builder $query): void
     {
         $query->where('post_type', 'page')
-            ->where('status', 'publish')
             ->whereDate('published_at', '<=', now());
     }
 

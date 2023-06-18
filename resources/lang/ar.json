@@ -75,5 +75,7 @@
     "Library Categories": "تصنيف المكتبة",
     "Library Type": "نوع المحتوى",
     "Library File": "ملف المكتبة",
-    "file url": "رابط الملف"
+    "file url": "رابط الملف",
+    "Send": "ارسال",
+    "sorry, the password incorrect!": "عفوا، كلمة المرور غير صحيحة"
 }

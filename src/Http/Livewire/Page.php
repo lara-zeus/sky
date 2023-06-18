@@ -24,7 +24,7 @@ class Page extends Component
 
         if ($this->page->require_password && ! session()->has($this->page->slug . '-' . $this->page->password)) {
             return view(app('theme') . '.partial.password-form')
-                ->with('post' , $this->page)
+                ->with('post', $this->page)
                 ->layout(config('zeus-sky.layout'));
         }
 

@@ -3,6 +3,7 @@
 namespace LaraZeus\Sky\Models;
 
 use Database\Factories\PostFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
@@ -20,7 +21,9 @@ use Spatie\Translatable\HasTranslations;
  * @property string $status
  * @property string $slug
  * @property string $post_type
- * @property string $user_id
+ * @property int $user_id
+ * @property bool $require_password
+ * @property string $password
  */
 class Post extends Model implements HasMedia
 {
@@ -92,5 +95,12 @@ class Post extends Model implements HasMedia
         } else {
             return $this->featured_image ?? config('zeus-sky.default_featured_image', null);
         }
+    }
+
+    protected function requirePassword(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->status === 'private' && $this->password !== null,
+        );
     }
 }

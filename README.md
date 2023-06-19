@@ -15,7 +15,7 @@
 
 <h1 align="center">Lara Zeus Sky</h1>
 
-Lara-zeus sky is simple CMS for your website. it include posts, pages, tags, and categories.
+Lara-zeus sky is simple CMS for your website. It includes posts, pages, tags, and categories.
 >small tasks can be time-consuming, let us build these for you,
 
 ## Support Filament

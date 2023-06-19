@@ -1277,16 +1277,16 @@
         },
         {
             "name": "filament/filament",
-            "version": "v2.17.48",
+            "version": "v2.17.49",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/panels.git",
-                "reference": "dd3655e315e825aaed5c98aaf16ed17f37a7b3db"
+                "reference": "ed790092c1df259acb9abf9b131f6afc01aa5224"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filamentphp/panels/zipball/dd3655e315e825aaed5c98aaf16ed17f37a7b3db",
-                "reference": "dd3655e315e825aaed5c98aaf16ed17f37a7b3db",
+                "url": "https://api.github.com/repos/filamentphp/panels/zipball/ed790092c1df259acb9abf9b131f6afc01aa5224",
+                "reference": "ed790092c1df259acb9abf9b131f6afc01aa5224",
                 "shasum": ""
             },
             "require": {
@@ -1335,20 +1335,20 @@
                 "issues": "https://github.com/filamentphp/filament/issues",
                 "source": "https://github.com/filamentphp/filament"
             },
-            "time": "2023-06-12T14:24:42+00:00"
+            "time": "2023-06-18T13:30:27+00:00"
         },
         {
             "name": "filament/forms",
-            "version": "v2.17.48",
+            "version": "v2.17.49",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/forms.git",
-                "reference": "96a4e3ba9ab42d13e8630f0d37f8b83e8cff9eb2"
+                "reference": "40f4c132489cbb3ce5e5b1c60a327634e2b28862"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filamentphp/forms/zipball/96a4e3ba9ab42d13e8630f0d37f8b83e8cff9eb2",
-                "reference": "96a4e3ba9ab42d13e8630f0d37f8b83e8cff9eb2",
+                "url": "https://api.github.com/repos/filamentphp/forms/zipball/40f4c132489cbb3ce5e5b1c60a327634e2b28862",
+                "reference": "40f4c132489cbb3ce5e5b1c60a327634e2b28862",
                 "shasum": ""
             },
             "require": {
@@ -1393,11 +1393,11 @@
                 "issues": "https://github.com/filamentphp/filament/issues",
                 "source": "https://github.com/filamentphp/filament"
             },
-            "time": "2023-06-12T14:24:44+00:00"
+            "time": "2023-06-18T13:29:57+00:00"
         },
         {
             "name": "filament/notifications",
-            "version": "v2.17.48",
+            "version": "v2.17.49",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/notifications.git",
@@ -1450,7 +1450,7 @@
         },
         {
             "name": "filament/spatie-laravel-media-library-plugin",
-            "version": "v2.17.48",
+            "version": "v2.17.49",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/spatie-laravel-media-library-plugin.git",
@@ -1487,7 +1487,7 @@
         },
         {
             "name": "filament/spatie-laravel-tags-plugin",
-            "version": "v2.17.48",
+            "version": "v2.17.49",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/spatie-laravel-tags-plugin.git",
@@ -1524,7 +1524,7 @@
         },
         {
             "name": "filament/spatie-laravel-translatable-plugin",
-            "version": "v2.17.48",
+            "version": "v2.17.49",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/spatie-laravel-translatable-plugin.git",
@@ -1570,7 +1570,7 @@
         },
         {
             "name": "filament/support",
-            "version": "v2.17.48",
+            "version": "v2.17.49",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/support.git",
@@ -1621,16 +1621,16 @@
         },
         {
             "name": "filament/tables",
-            "version": "v2.17.48",
+            "version": "v2.17.49",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/tables.git",
-                "reference": "88aef59b52b2643a6536a251794abd3a043e0fc7"
+                "reference": "22507f0b8e338526d41f9e593bd9f91ad46e2d47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filamentphp/tables/zipball/88aef59b52b2643a6536a251794abd3a043e0fc7",
-                "reference": "88aef59b52b2643a6536a251794abd3a043e0fc7",
+                "url": "https://api.github.com/repos/filamentphp/tables/zipball/22507f0b8e338526d41f9e593bd9f91ad46e2d47",
+                "reference": "22507f0b8e338526d41f9e593bd9f91ad46e2d47",
                 "shasum": ""
             },
             "require": {
@@ -1673,7 +1673,7 @@
                 "issues": "https://github.com/filamentphp/filament/issues",
                 "source": "https://github.com/filamentphp/filament"
             },
-            "time": "2023-06-12T14:25:06+00:00"
+            "time": "2023-06-18T13:30:19+00:00"
         },
         {
             "name": "fruitcake/php-cors",
@@ -2094,16 +2094,16 @@
         },
         {
             "name": "lara-zeus/core",
-            "version": "2.4.15",
+            "version": "2.4.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lara-zeus/core.git",
-                "reference": "f7af097987e0240fcbd870da4462996fa16cfb55"
+                "reference": "806450f8d55cbc82d6e144426c5c7b30337ad70b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lara-zeus/core/zipball/f7af097987e0240fcbd870da4462996fa16cfb55",
-                "reference": "f7af097987e0240fcbd870da4462996fa16cfb55",
+                "url": "https://api.github.com/repos/lara-zeus/core/zipball/806450f8d55cbc82d6e144426c5c7b30337ad70b",
+                "reference": "806450f8d55cbc82d6e144426c5c7b30337ad70b",
                 "shasum": ""
             },
             "require": {
@@ -2151,7 +2151,7 @@
             "authors": [
                 {
                     "name": "php coder",
-                    "email": "wh7r.com@gmail.com",
+                    "email": "info@larazeus.com",
                     "role": "Owner"
                 }
             ],
@@ -2166,7 +2166,7 @@
             ],
             "support": {
                 "issues": "https://github.com/lara-zeus/core/issues",
-                "source": "https://github.com/lara-zeus/core/tree/2.4.15"
+                "source": "https://github.com/lara-zeus/core/tree/2.4.16"
             },
             "funding": [
                 {
@@ -2174,7 +2174,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-06-17T19:32:04+00:00"
+            "time": "2023-06-19T01:00:24+00:00"
         },
         {
             "name": "laravel/framework",

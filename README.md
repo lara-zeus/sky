@@ -15,7 +15,7 @@
 
 <h1 align="center">Lara Zeus Sky</h1>
 
-Lara-zeus sky is simple CMS for your website. it include posts, pages, tags, and categories.
+Lara-zeus sky is simple CMS for your website. It includes posts, pages, tags, and categories.
 >small tasks can be time-consuming, let us build these for you,
 
 ## Support Filament
@@ -40,7 +40,7 @@ Lara-zeus sky is simple CMS for your website. it include posts, pages, tags, and
   - multiple tags and categories
   - Featured Image
 
-and more in the way.
+and more on the way.
 
 ## Demo
 
@@ -62,6 +62,7 @@ run the commands:
 php artisan vendor:publish --provider="LaraZeus\Sky\SkyServiceProvider" --tag=zeus-sky-migrations
 php artisan vendor:publish --provider="Spatie\Tags\TagsServiceProvider" --tag="tags-migrations"
 php artisan vendor:publish --provider="Spatie\MediaLibrary\MediaLibraryServiceProvider" --tag="migrations"
+php artisan vendor:publish --tag=zeus-assets
 php artisan vendor:publish --tag="filament-forms-tinyeditor-assets"
 ```
 

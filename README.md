@@ -62,6 +62,7 @@ run the commands:
 php artisan vendor:publish --provider="LaraZeus\Sky\SkyServiceProvider" --tag=zeus-sky-migrations
 php artisan vendor:publish --provider="Spatie\Tags\TagsServiceProvider" --tag="tags-migrations"
 php artisan vendor:publish --provider="Spatie\MediaLibrary\MediaLibraryServiceProvider" --tag="migrations"
+php artisan vendor:publish --tag=zeus-assets
 php artisan vendor:publish --tag="filament-forms-tinyeditor-assets"
 ```
 

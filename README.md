@@ -40,7 +40,7 @@ Lara-zeus sky is simple CMS for your website. It includes posts, pages, tags, an
   - multiple tags and categories
   - Featured Image
 
-and more in the way.
+and more on the way.
 
 ## Demo
 

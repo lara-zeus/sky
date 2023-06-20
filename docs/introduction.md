@@ -24,7 +24,7 @@ weight: 1
     - multiple tags and categories
     - Featured Image
       
-and more in the way:
+and more on the way:
 - authors
 - menus
 - comments

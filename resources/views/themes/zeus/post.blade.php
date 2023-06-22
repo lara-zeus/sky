@@ -46,17 +46,19 @@
         </div>
 
         <div class="mt-6 lg:mt-12 prose dark:prose-invert max-w-none">
-            {!! html_entity_decode($post->content) !!}
+            {!! $post->getContent() !!}
         </div>
     </div>
 
-    <div class="py-6 flex flex-col mt-4 gap-4">
-        <h1 class="text-xl font-bold text-gray-700 dark:text-gray-100 md:text-2xl">{{ __('Related Posts') }}</h1>
+    @if($related->isNotEmpty())
+        <div class="py-6 flex flex-col mt-4 gap-4">
+            <h1 class="text-xl font-bold text-gray-700 dark:text-gray-100 md:text-2xl">{{ __('Related Posts') }}</h1>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            @foreach($related as $post)
-                @include($theme.'.partial.related')
-            @endforeach
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                @foreach($related as $post)
+                    @include($theme.'.partial.related')
+                @endforeach
+            </div>
         </div>
-    </div>
+    @endif
 </div>

@@ -103,4 +103,9 @@ class Post extends Model implements HasMedia
             get: fn () => $this->status === 'private' && $this->password !== null,
         );
     }
+
+    public function getContent(): string
+    {
+        return config('zeus-sky.editor')::render($this->content);
+    }
 }

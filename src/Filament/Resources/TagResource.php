@@ -62,7 +62,9 @@ class TagResource extends SkyResource
                 TextColumn::make('name')->toggleable()->searchable()->sortable(),
                 TextColumn::make('type')->toggleable()->searchable()->sortable(),
                 TextColumn::make('slug')->toggleable()->searchable()->sortable(),
-                TextColumn::make('posts_count')->counts('posts')->toggleable()->searchable()->sortable(),
+                TextColumn::make('items_count')
+                    ->toggleable()
+                    ->view('zeus-sky::filament.columns.tag-counts'),
             ])
             ->filters([
                 SelectFilter::make('type')

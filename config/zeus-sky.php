@@ -123,6 +123,7 @@ return [
         'tag' => 'Tag',
         'category' => 'Category',
         'library' => 'Library',
+        'faq' => 'faq',
     ],
 
     /**

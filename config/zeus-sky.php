@@ -55,7 +55,7 @@ return [
     'faq_uri_prefix' => 'faq',
 
     /**
-     * this will be setup the default seo site title. read more about it in 'laravel-seo'.
+     * this will be set up the default seo site title. read more about it in 'laravel-seo'.
      */
     'site_title' => config('app.name', 'Laravel') . ' | Blogs',
 
@@ -124,4 +124,13 @@ return [
         'category' => 'Category',
         'library' => 'Library',
     ],
+
+    /**
+     * the default editor for pages and posts, Available:
+     * \LaraZeus\Sky\Classes\TipTapEditor::class,
+     * \LaraZeus\Sky\Classes\TinyEditor::class,
+     * \LaraZeus\Sky\Classes\MarkdownEditor::class,
+     */
+
+    'editor' => \LaraZeus\Sky\Classes\TinyEditor::class,
 ];

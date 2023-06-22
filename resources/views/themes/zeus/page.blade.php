@@ -41,7 +41,7 @@
         </div>
 
         <div class="mt-6 lg:mt-12 prose dark:prose-invert max-w-none">
-            {!! html_entity_decode($post->content) !!}
+            {!! $post->getContent() !!}
         </div>
 
         @if(!$children->isEmpty())

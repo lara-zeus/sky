@@ -28,6 +28,7 @@ Lara-zeus sky is simple CMS for your website. It includes posts, pages, tags, an
 - 🔥 built with [TALL stack](https://tallstack.dev/)
 - 🔥 using [filament](https://filamentadmin.com) as an admin panel
 - 🔥 FrontEnd scaffolding, highly customizable.
+- 🔥 Configure the content editor.
 - 🔥 all models are translatable.
   - sticky posts
   - recent posts
@@ -47,32 +48,6 @@ and more on the way.
 > visit our demo site: https://demo.larazeus.com
 
 > visit our website to get the full documentation: https://larazeus.com/sky
-
-## Installation
-
-You can install the package via composer:
-
-```bash
-composer require lara-zeus/sky
-```
-
-run the commands:
-
-```bash
-php artisan vendor:publish --provider="LaraZeus\Sky\SkyServiceProvider" --tag=zeus-sky-migrations
-php artisan vendor:publish --provider="Spatie\Tags\TagsServiceProvider" --tag="tags-migrations"
-php artisan vendor:publish --provider="Spatie\MediaLibrary\MediaLibraryServiceProvider" --tag="migrations"
-php artisan vendor:publish --tag=zeus-assets
-php artisan vendor:publish --tag="filament-forms-tinyeditor-assets"
-```
-
-then run the migration
-```bash
-php artisan migrate
-```
-## Usage
-
-visit the url `/admin` to manage the Letters, and `/blog`.
 
 ## Full Documentation
 

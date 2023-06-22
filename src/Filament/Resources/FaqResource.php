@@ -3,13 +3,16 @@
 namespace LaraZeus\Sky\Filament\Resources;
 
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\SpatieTagsInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Columns\SpatieTagsColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use LaraZeus\Sky\Filament\Resources\FaqResource\Pages;
 use LaraZeus\Sky\Models\Faq;
 
@@ -57,6 +60,10 @@ class FaqResource extends SkyResource
                     ->required()
                     ->maxLength(65535)
                     ->columnSpan(2),
+
+                SpatieTagsInput::make('category')
+                    ->type('faq')
+                    ->label(__('FAQ Categories')),
             ]);
     }
 
@@ -65,6 +72,17 @@ class FaqResource extends SkyResource
         return $table
             ->columns([
                 TextColumn::make('question')->searchable(),
+
+                SpatieTagsColumn::make('tags')
+                    ->label(__('FAQ Categories'))
+                    ->toggleable()
+                    ->type('faq'),
+            ])
+            ->filters([
+                SelectFilter::make('tags')
+                    ->multiple()
+                    ->relationship('tags', 'name')
+                    ->label(__('Tags')),
             ])
             ->actions([
                 ActionGroup::make([

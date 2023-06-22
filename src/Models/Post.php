@@ -90,7 +90,7 @@ class Post extends Model implements HasMedia
 
     public function image()
     {
-        if (!$this->getMedia('posts')->isEmpty()) {
+        if (! $this->getMedia('posts')->isEmpty()) {
             return $this->getFirstMediaUrl('posts');
         } else {
             return $this->featured_image ?? config('zeus-sky.default_featured_image', null);
@@ -100,7 +100,7 @@ class Post extends Model implements HasMedia
     protected function requirePassword(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->status === 'private' && $this->password !== null,
+            get: fn () => $this->status === 'private' && $this->password !== null,
         );
     }
 

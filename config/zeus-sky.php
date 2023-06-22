@@ -131,6 +131,5 @@ return [
      * \LaraZeus\Sky\Classes\TinyEditor::class,
      * \LaraZeus\Sky\Classes\MarkdownEditor::class,
      */
-
     'editor' => \LaraZeus\Sky\Classes\TinyEditor::class,
 ];

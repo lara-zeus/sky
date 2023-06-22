@@ -28,7 +28,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\PostResource\Pages;
-use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class PostResource extends SkyResource
 {
@@ -63,10 +62,7 @@ class PostResource extends SkyResource
                                 $set('slug', Str::slug($state));
                             }),
 
-                        TinyEditor::make('content')
-                            ->label(__('Post Content'))
-                            ->showMenuBar()
-                            ->required(),
+                        config('zeus-sky.editor')::component(),
                     ]),
                 ])->columnSpan(3),
 

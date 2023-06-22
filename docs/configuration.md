@@ -15,8 +15,11 @@ you can pass `--force` option to force publishing the config file
 
 ### Content Editor
 
-the default editor is: `TinyEditor`.
-and included: `MarkdownEditor` and `TipTapEditor`, to use them you only need to install the packages.
+the default editor is: `TinyEditor`. and included:
+* [Spatie Markdown Editor](https://filamentphp.com/plugins/spatie-markdown-editor)
+* [Tiptap Editor](https://filamentphp.com/plugins/tiptap)
+
+to use them you only need to install the packages, and set the config 'editor'
 
 ### adding new editor
 

@@ -1,3 +1,3 @@
 <div>
-    {{ $getRecord()->{$getRecord()->type}()->count() }}
+    {{ $getRecord()->{$getRecord()->type}()->count() ?? 0 }}
 </div>

@@ -2,6 +2,8 @@
 
 namespace LaraZeus\Sky\Models;
 
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
+
 /**
  * @property string $slug
  * @property string $type
@@ -9,24 +11,24 @@ namespace LaraZeus\Sky\Models;
  */
 class Tag extends \Spatie\Tags\Tag
 {
-    public function posts()
-    {
-        return $this->morphedByMany(config('zeus-sky.models.post'), 'taggable');
-    }
-
-    public function library()
+    public function library(): MorphToMany
     {
         return $this->morphedByMany(config('zeus-sky.models.library'), 'taggable');
     }
 
-    public function category()
+    public function category(): MorphToMany
     {
         return $this->morphedByMany(config('zeus-sky.models.post'), 'taggable');
     }
 
-    public function faq()
+    public function faq(): MorphToMany
     {
         return $this->morphedByMany(config('zeus-sky.models.faq'), 'taggable');
+    }
+
+    public function tag(): MorphToMany
+    {
+        return $this->morphedByMany(config('zeus-sky.models.post'), 'taggable');
     }
 
     public function postsPublished()

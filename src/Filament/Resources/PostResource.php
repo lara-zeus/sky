@@ -25,9 +25,9 @@ use Filament\Tables\Columns\ViewColumn;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\PostResource\Pages;
+use LaraZeus\Sky\Models\Post;
 
 class PostResource extends SkyResource
 {
@@ -84,7 +84,7 @@ class PostResource extends SkyResource
                                 ->hint(__('Write an excerpt for your post')),
 
                             TextInput::make('slug')
-                                ->unique(ignorable: fn (?Model $record): ?Model => $record)
+                                ->unique(ignorable: fn (?Post $record): ?Post => $record)
                                 ->required()
                                 ->maxLength(255)
                                 ->label(__('Post Slug')),
@@ -177,7 +177,7 @@ class PostResource extends SkyResource
                     ->searchable(['status'])
                     ->toggleable()
                     ->view('zeus-sky::filament.columns.status-desc')
-                    ->tooltip(fn (Model $record): string => $record->published_at->format('Y/m/d | H:i A')),
+                    ->tooltip(fn (Post $record): string => $record->published_at->format('Y/m/d | H:i A')),
 
                 SpatieTagsColumn::make('tags')
                     ->label(__('Post Tags'))
@@ -197,7 +197,7 @@ class PostResource extends SkyResource
                         ->color('warning')
                         ->icon('heroicon-o-external-link')
                         ->label(__('Open'))
-                        ->url(fn (Model $record): string => route('post', ['slug' => $record]))
+                        ->url(fn (Post $record): string => route('post', ['slug' => $record]))
                         ->openUrlInNewTab(),
                     DeleteAction::make('delete')
                         ->label(__('Delete')),

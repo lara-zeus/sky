@@ -5,8 +5,6 @@ namespace LaraZeus\Sky;
 use Filament\Facades\Filament;
 use Filament\Forms\Components\Select;
 use Filament\PluginServiceProvider;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\View;
 use LaraZeus\Core\CoreServiceProvider;
 use LaraZeus\Sky\Console\migrateCommand;
 use LaraZeus\Sky\Console\PublishCommand;
@@ -30,12 +28,7 @@ class SkyServiceProvider extends PluginServiceProvider
 
     public function bootingPackage(): void
     {
-        //CoreServiceProvider::setThemePath('sky');
-        $viewPath = 'zeus::themes.'.config("zeus-sky.theme").'.sky';
-        View::share('skyTheme', $viewPath);
-        App::singleton('skyTheme', function () use ($viewPath) {
-            return $viewPath;
-        });
+        CoreServiceProvider::setThemePath('sky');
 
         Filament::serving(function () {
             $this->bootFilamentNavigation();

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b820722c7ddd2d1859cf3788a14394c1",
+    "content-hash": "160e1cf2603856f9ce990befb8803726",
     "packages": [
         {
             "name": "akaunting/laravel-money",
@@ -2094,11 +2094,11 @@
         },
         {
             "name": "lara-zeus/core",
-            "version": "dev-main",
+            "version": "dev-themes",
             "dist": {
                 "type": "path",
                 "url": "../core",
-                "reference": "e45844b0e9d84662570925db622b4b8d8434e321"
+                "reference": "762194d06ac48aa51761a64531a48a0cbe6af973"
             },
             "require": {
                 "archtechx/laravel-seo": "^0.7",
@@ -4813,16 +4813,16 @@
         },
         {
             "name": "spatie/laravel-medialibrary",
-            "version": "10.10.0",
+            "version": "10.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-medialibrary.git",
-                "reference": "bc802155cd621492fb33cdca6427a2666fdff707"
+                "reference": "84f7bb253bc7b9498ff2cd0d74f82e88d299c517"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/bc802155cd621492fb33cdca6427a2666fdff707",
-                "reference": "bc802155cd621492fb33cdca6427a2666fdff707",
+                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/84f7bb253bc7b9498ff2cd0d74f82e88d299c517",
+                "reference": "84f7bb253bc7b9498ff2cd0d74f82e88d299c517",
                 "shasum": ""
             },
             "require": {
@@ -4906,7 +4906,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-medialibrary/issues",
-                "source": "https://github.com/spatie/laravel-medialibrary/tree/10.10.0"
+                "source": "https://github.com/spatie/laravel-medialibrary/tree/10.10.1"
             },
             "funding": [
                 {
@@ -4918,7 +4918,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-06-22T10:45:08+00:00"
+            "time": "2023-06-29T07:18:20+00:00"
         },
         {
             "name": "spatie/laravel-package-tools",

@@ -32,7 +32,7 @@
         "filament/spatie-laravel-media-library-plugin": "^2.0",
         "filament/spatie-laravel-tags-plugin": "^2.0",
         "filament/spatie-laravel-translatable-plugin": "^2.0",
-        "lara-zeus/core": "dev-main",
+        "lara-zeus/core": "dev-themes",
         "mohamedsabil83/filament-forms-tinyeditor": "^1.7",
         "ryangjchandler/filament-navigation": "dev-with-rtl",
         "spatie/laravel-medialibrary": "^10.0.0",

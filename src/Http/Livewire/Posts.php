@@ -46,7 +46,7 @@ class Posts extends Component
             ->withUrl()
             ->twitter();
 
-        return view(app('theme') . '.home')->with([
+        return view(app('skyTheme') . '.home')->with([
             'posts' => $posts,
             'pages' => $pages,
             'recent' => $recent,

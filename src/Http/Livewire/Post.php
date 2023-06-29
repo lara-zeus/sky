@@ -23,11 +23,11 @@ class Post extends Component
         }
 
         if ($this->post->require_password && ! session()->has($this->post->slug . '-' . $this->post->password)) {
-            return view(app('theme') . '.partial.password-form')
+            return view(app('skyTheme') . '.partial.password-form')
                 ->layout(config('zeus-sky.layout'));
         }
 
-        return view(app('theme') . '.post')
+        return view(app('skyTheme') . '.post')
             ->with('post', $this->post)
             ->with('related', config('zeus-sky.models.post')::related($this->post)->take(4)->get())
             ->layout(config('zeus-sky.layout'));

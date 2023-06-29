@@ -169,14 +169,14 @@ class PostResource extends SkyResource
                     ->sortable(['title'])
                     ->searchable(['title'])
                     ->toggleable()
-                    ->view('zeus-sky::filament.columns.post-title'),
+                    ->view('zeus::filament.columns.post-title'),
 
                 ViewColumn::make('status_desc')
                     ->label(__('Status'))
                     ->sortable(['status'])
                     ->searchable(['status'])
                     ->toggleable()
-                    ->view('zeus-sky::filament.columns.status-desc')
+                    ->view('zeus::filament.columns.status-desc')
                     ->tooltip(fn (Post $record): string => $record->published_at->format('Y/m/d | H:i A')),
 
                 SpatieTagsColumn::make('tags')

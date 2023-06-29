@@ -2,7 +2,7 @@
     @unless($stickies->isEmpty())
         <section class="mt-10 grid @if($stickies->count() > 1) grid-cols-3 @endif gap-4">
             @foreach($stickies as $post)
-                @include($theme.'.partial.sticky')
+                @include($skyTheme.'.partial.sticky')
             @endforeach
         </section>
     @endunless
@@ -17,13 +17,13 @@
                         <x-heroicon-o-backspace class="text-secondary-500 dark:text-secondary-100 w-4 h-4 inline-flex align-middle"/>
                     </a>
                 @endif
-                @each($theme.'.partial.post', $posts, 'post')
+                @each($skyTheme.'.partial.post', $posts, 'post')
             @else
-                @include($theme.'.partial.empty')
+                @include($skyTheme.'.partial.empty')
             @endunless
         </section>
         <nav class="w-full sm:w-1/3 lg:w-1/4">
-            @include($theme.'.partial.sidebar')
+            @include($skyTheme.'.partial.sidebar')
         </nav>
     </main>
 </div>

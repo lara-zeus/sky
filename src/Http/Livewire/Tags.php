@@ -32,7 +32,7 @@ class Tags extends Component
             ->withUrl()
             ->twitter();
 
-        return view(app('theme') . '.category')
+        return view(app('skyTheme') . '.category')
             ->with([
                 'posts' => $this->tag->postsPublished,
             ])

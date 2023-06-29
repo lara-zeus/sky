@@ -36,6 +36,6 @@ class Tags extends Component
             ->with([
                 'posts' => $this->tag->postsPublished,
             ])
-            ->layout(config('zeus-sky.layout'));
+            ->layout(config('zeus.layout'));
     }
 }

@@ -25,7 +25,7 @@ class Page extends Component
         if ($this->page->require_password && ! session()->has($this->page->slug . '-' . $this->page->password)) {
             return view(app('skyTheme') . '.partial.password-form')
                 ->with('post', $this->page)
-                ->layout(config('zeus-sky.layout'));
+                ->layout(config('zeus.layout'));
         }
 
         return view(app('skyTheme') . '.page')
@@ -33,7 +33,7 @@ class Page extends Component
                 'post' => $this->page,
                 'children' => config('zeus-sky.models.post')::with('parent')->where('parent_id', $this->page->id)->get(),
             ])
-            ->layout(config('zeus-sky.layout'));
+            ->layout(config('zeus.layout'));
     }
 
     public function setSeo(): void

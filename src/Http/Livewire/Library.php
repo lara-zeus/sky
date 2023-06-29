@@ -20,6 +20,6 @@ class Library extends Component
         return view(app('skyTheme') . '.addons.library')
             ->with('libraries', config('zeus-sky.models.library')::get())
             ->with('categories', config('zeus-sky.models.tag')::getWithType('library'))
-            ->layout(config('zeus-sky.layout'));
+            ->layout(config('zeus.layout'));
     }
 }

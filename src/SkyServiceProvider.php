@@ -31,7 +31,7 @@ class SkyServiceProvider extends PluginServiceProvider
     public function bootingPackage(): void
     {
         //CoreServiceProvider::setThemePath('sky');
-        $viewPath = 'zeus::themes.'.config("zeus-sky.theme").'.sky';
+        $viewPath = 'zeus::themes.' . config('zeus-sky.theme') . '.sky';
         View::share('skyTheme', $viewPath);
         App::singleton('skyTheme', function () use ($viewPath) {
             return $viewPath;

@@ -10,7 +10,7 @@ class MarkdownEditor implements ContentEditor
 {
     public static function component(): Component
     {
-        if (class_exists(MarkdownEditorAlias::class, false)) {
+        if (class_exists(MarkdownEditorAlias::class)) {
             return MarkdownEditorAlias::make('content')
                 ->required();
         }
@@ -20,7 +20,7 @@ class MarkdownEditor implements ContentEditor
 
     public static function render(string $content): string
     {
-        if (class_exists(MarkdownEditorAlias::class, false)) {
+        if (class_exists(MarkdownEditorAlias::class)) {
             return str($content)->markdown();
         }
 

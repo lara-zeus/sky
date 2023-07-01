@@ -133,4 +133,14 @@ return [
      * \LaraZeus\Sky\Classes\MarkdownEditor::class,
      */
     'editor' => \LaraZeus\Sky\Classes\TinyEditor::class,
+
+    /**
+     * parse the content
+     * you can add any parser to do str_replace or any other operation:
+     *
+     * to render Blot form by it slug: \LaraZeus\Sky\Classes\BoltParser::class,
+     */
+    'parsers' => [
+        \LaraZeus\Sky\Classes\BoltParser::class,
+    ],
 ];

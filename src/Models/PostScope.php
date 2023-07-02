@@ -7,51 +7,73 @@ use Illuminate\Support\Facades\DB;
 
 trait PostScope
 {
-    public function scopeSticky(Builder $query): void
+    /**
+     * @param  Builder<Post>  $query
+     */
+    public function scopeSticky(Builder $query): Builder
     {
-        $query->where('post_type', 'post')
+        return $query->where('post_type', 'post')
             ->whereNotNull('sticky_until')
             ->whereDate('sticky_until', '>=', now())
             ->whereDate('published_at', '<=', now());
     }
 
-    public function scopeNotSticky(Builder $query): void
+    /**
+     * @param  Builder<Post>  $query
+     */
+    public function scopeNotSticky(Builder $query): Builder
     {
-        $query->where('post_type', 'post')->where(function ($q) {
+        return $query->where('post_type', 'post')->where(function ($q) {
             return $q->whereDate('sticky_until', '<=', now())->orWhereNull('sticky_until');
         })
             ->whereDate('published_at', '<=', now());
     }
 
-    public function scopePublished(Builder $query): void
+    /**
+     * @param  Builder<Post>  $query
+     */
+    public function scopePublished(Builder $query): Builder
     {
-        $query->where('post_type', 'post')
+        return $query->where('post_type', 'post')
             ->where('status', 'publish')
             ->whereDate('published_at', '<=', now());
     }
 
-    public function scopeRelated(Builder $query, Post $post): void
+    /**
+     * @param  Builder<Post>  $query
+     */
+    public function scopeRelated(Builder $query, Post $post): Builder
     {
-        $query->where('post_type', 'post')
+        return $query->where('post_type', 'post')
             ->withAnyTags($post->tags->pluck('name')->toArray(), 'category');
     }
 
-    public function scopePage(Builder $query): void
+    /**
+     * @param  Builder<Post>  $query
+     */
+    public function scopePage(Builder $query): Builder
     {
-        $query->where('post_type', 'page')
+        return $query->where('post_type', 'page')
             ->whereDate('published_at', '<=', now());
     }
 
-    public function scopePosts(Builder $query): void
+    /**
+     * @param  Builder<Post>  $query
+     */
+    public function scopePosts(Builder $query): Builder
     {
-        $query->where('post_type', 'post')
+        return $query->where('post_type', 'post')
             ->whereDate('published_at', '<=', now());
     }
 
-    public function scopeForCategory(Builder $query, $category = null): void
+    /**
+     * @param  Builder<Post>  $query
+     * @param  ?string  $category
+     */
+    public function scopeForCategory(Builder $query, string $category = null): Builder
     {
         if ($category !== null) {
-            $query->where(
+            return $query->where(
                 function ($query) use ($category) {
                     $query->withAnyTags([$category], 'category');
 
@@ -59,12 +81,17 @@ trait PostScope
                 }
             );
         }
+
+        return $query;
     }
 
-    public function scopeSearch(Builder $query, $term): void
+    /**
+     * @param  Builder<Post>  $query
+     */
+    public function scopeSearch(Builder $query, $term): Builder
     {
         if ($term !== null) {
-            $query->where(
+            return $query->where(
                 function ($query) use ($term) {
                     foreach (['title', 'slug', 'content', 'description'] as $attribute) {
                         $query->orWhere(DB::raw("lower({$attribute})"), 'like', "%{$term}%");
@@ -74,5 +101,7 @@ trait PostScope
                 }
             );
         }
+
+        return $query;
     }
 }

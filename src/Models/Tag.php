@@ -2,6 +2,7 @@
 
 namespace LaraZeus\Sky\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
@@ -9,6 +10,8 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @property string $slug
  * @property string $type
  * @property string $name
+ *
+ * @method Builder|static published()
  */
 class Tag extends \Spatie\Tags\Tag
 {
@@ -32,8 +35,10 @@ class Tag extends \Spatie\Tags\Tag
         return $this->morphedByMany(config('zeus-sky.models.post'), 'taggable');
     }
 
+    /** @return MorphToMany<Post> */
     public function postsPublished(): MorphToMany
     {
+        // @phpstan-ignore-next-line
         return $this->morphedByMany(config('zeus-sky.models.post'), 'taggable')->published();
     }
 

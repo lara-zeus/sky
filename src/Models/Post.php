@@ -3,9 +3,11 @@
 namespace LaraZeus\Sky\Models;
 
 use Database\Factories\PostFactory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Blade;
 use Spatie\MediaLibrary\HasMedia;
@@ -24,9 +26,15 @@ use Spatie\Translatable\HasTranslations;
  * @property int $user_id
  * @property bool $require_password
  * @property string $password
+ *
+ * @method Builder|static sticky()
+ * @method Builder|static published()
+ * @method Builder|static query()
+ * @method Builder|static withAnyTags()
  */
 class Post extends Model implements HasMedia
 {
+    use SoftDeletes;
     use HasFactory;
     use HasTags;
     use InteractsWithMedia;

@@ -8,6 +8,11 @@ use FilamentTiptapEditor\TiptapEditor as TipTapEditorAlias;
 
 class TipTapEditor implements ContentEditor
 {
+    /**
+     * @phpstan-ignore-next-line
+     *
+     * @throws InvalidOutputFormatException
+     */
     public static function component(): Component
     {
         if (class_exists(TipTapEditorAlias::class)) {

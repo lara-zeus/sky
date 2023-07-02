@@ -19,16 +19,24 @@ use Filament\Resources\Table;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ForceDeleteAction;
+use Filament\Tables\Actions\ForceDeleteBulkAction;
+use Filament\Tables\Actions\RestoreAction;
+use Filament\Tables\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\SpatieTagsColumn;
 use Filament\Tables\Columns\ViewColumn;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Filters\TrashedFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\PostResource\Pages;
 use LaraZeus\Sky\Models\Post;
+use LaraZeus\Sky\Models\PostScope;
 
+// @mixin Builder<PostScope>
 class PostResource extends SkyResource
 {
     public static function getModel(): string
@@ -199,11 +207,18 @@ class PostResource extends SkyResource
                         ->label(__('Open'))
                         ->url(fn (Post $record): string => route('post', ['slug' => $record]))
                         ->openUrlInNewTab(),
-                    DeleteAction::make('delete')
-                        ->label(__('Delete')),
+                    DeleteAction::make('delete'),
+                    ForceDeleteAction::make(),
+                    RestoreAction::make(),
                 ]),
             ])
+            ->bulkActions([
+                DeleteBulkAction::make(),
+                ForceDeleteBulkAction::make(),
+                RestoreBulkAction::make(),
+            ])
             ->filters([
+                TrashedFilter::make(),
                 SelectFilter::make('status')
                     ->multiple()
                     ->label(__('Status'))
@@ -215,6 +230,7 @@ class PostResource extends SkyResource
 
                 Filter::make('sticky')
                     ->label(__('Still Sticky'))
+                    // @phpstan-ignore-next-line
                     ->query(fn (Builder $query): Builder => $query->sticky()),
 
                 Filter::make('not_sticky')

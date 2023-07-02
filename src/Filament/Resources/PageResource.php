@@ -17,11 +17,18 @@ use Filament\Resources\Table;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ForceDeleteAction;
+use Filament\Tables\Actions\ForceDeleteBulkAction;
+use Filament\Tables\Actions\RestoreAction;
+use Filament\Tables\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\ViewColumn;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Filters\TrashedFilter;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\PageResource\Pages;
 use LaraZeus\Sky\Models\Post;
@@ -40,6 +47,17 @@ class PageResource extends SkyResource
     protected static function getNavigationBadge(): ?string
     {
         return (string) config('zeus-sky.models.post')::query()->page()->count();
+    }
+
+    /**
+     * @return Builder<Post>
+     */
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->withoutGlobalScopes([
+                SoftDeletingScope::class,
+            ]);
     }
 
     public static function form(Form $form): Form
@@ -156,11 +174,18 @@ class PageResource extends SkyResource
                         ->label(__('Open'))
                         ->url(fn (Post $record): string => route('page', ['slug' => $record]))
                         ->openUrlInNewTab(),
-                    DeleteAction::make('delete')
-                        ->label(__('Delete')),
+                    DeleteAction::make('delete'),
+                    ForceDeleteAction::make(),
+                    RestoreAction::make(),
                 ]),
             ])
+            ->bulkActions([
+                DeleteBulkAction::make(),
+                ForceDeleteBulkAction::make(),
+                RestoreBulkAction::make(),
+            ])
             ->filters([
+                TrashedFilter::make(),
                 SelectFilter::make('status')
                     ->multiple()
                     ->label(__('Status'))

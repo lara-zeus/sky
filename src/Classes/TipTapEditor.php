@@ -10,6 +10,8 @@ use FilamentTiptapEditor\TiptapEditor as TipTapEditorAlias;
 class TipTapEditor implements ContentEditor
 {
     /**
+     * @phpstan-ignore-next-line
+     *
      * @throws InvalidOutputFormatException
      */
     public static function component(): Component
@@ -27,6 +29,7 @@ class TipTapEditor implements ContentEditor
     public static function render(string $content): string
     {
         if (class_exists(TipTapEditorAlias::class)) {
+            // @phpstan-ignore-next-line
             return tiptap_converter()->asHTML($content);
             // return tiptap_converter()->asJSON($content);
             // return tiptap_converter()->asText($content);

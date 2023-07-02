@@ -19,7 +19,6 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\SpatieTagsColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\LibraryResource\Pages;
 use LaraZeus\Sky\Models\Library;
@@ -58,7 +57,7 @@ class LibraryResource extends SkyResource
                     }),
 
                 TextInput::make('slug')
-                    ->unique(ignorable: fn (?Model $record): ?Model => $record)
+                    ->unique(ignorable: fn (?Library $record): ?Library => $record)
                     ->required()
                     ->maxLength(255)
                     ->label(__('Library Slug')),
@@ -75,7 +74,7 @@ class LibraryResource extends SkyResource
                 Select::make('type')
                     ->label(__('Library Type'))
                     ->visible(config('zeus-sky.library_types') !== null)
-                    ->options(config('zeus-sky.library_types', null)),
+                    ->options(config('zeus-sky.library_types', [])),
 
                 Section::make(__('Library File'))
                     ->schema([
@@ -128,7 +127,7 @@ class LibraryResource extends SkyResource
                         ->color('warning')
                         ->icon('heroicon-o-external-link')
                         ->label(__('Open'))
-                        ->url(fn (Model $record): string => route('library.item', ['slug' => $record->slug]))
+                        ->url(fn (Library $record): string => route('library.item', ['slug' => $record->slug]))
                         ->openUrlInNewTab(),
                     DeleteAction::make('delete')
                         ->label(__('Delete')),

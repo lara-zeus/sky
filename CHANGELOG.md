@@ -2,6 +2,13 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.4.30 - 2023-07-02
+
+### What's Changed
+
+- allow to force delete and restore posts, and finally green phpstan by @atmonshi in https://github.com/lara-zeus/sky/pull/120
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.29...2.4.30
 
 ## 2.4.2 - 2023-04-24
 

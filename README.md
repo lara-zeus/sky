@@ -45,13 +45,11 @@ and more on the way.
 
 ## Demo
 
-> visit our demo site: https://demo.larazeus.com
-
-> visit our website to get the full documentation: https://larazeus.com/sky
+visit our demo site: https://demo.larazeus.com
 
 ## Full Documentation
 
-> visit our website to get the full documentation: https://larazeus.com/sky
+visit our website to get the full documentation: https://larazeus.com/sky
 
 ## Changelog
 

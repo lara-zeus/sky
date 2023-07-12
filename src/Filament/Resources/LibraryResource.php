@@ -95,6 +95,8 @@ class LibraryResource extends SkyResource
 
                         SpatieMediaLibraryFileUpload::make('file_path_upload')
                             ->collection('library')
+                            ->multiple()
+                            ->enableReordering()
                             ->visible(fn (Closure $get) => $get('upload_or_url') === 'upload')
                             ->label(''),
 

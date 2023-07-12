@@ -8,7 +8,7 @@ trait SearchHelpers
 {
     private function highlightSearchResults(Collection $collection, string $search = null): Collection
     {
-        if (!$search) {
+        if (! $search) {
             return $collection;
         }
 

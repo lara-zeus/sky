@@ -4,6 +4,8 @@
 /storage/*.key
 /vendor
 /build
+/vendor/.idea
+/bootstrap/cache
 .env
 .env.backup
 .phpunit.result.cache
@@ -12,4 +14,7 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-.php-cs-fixer.cache
+/.idea
+/.vscode
+/pkg
+.DS_Store

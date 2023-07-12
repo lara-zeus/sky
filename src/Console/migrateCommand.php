@@ -3,7 +3,6 @@
 namespace LaraZeus\Sky\Console;
 
 use Illuminate\Console\Command;
-use LaraZeus\Sky\Models\Post;
 
 class migrateCommand extends Command
 {
@@ -28,7 +27,7 @@ class migrateCommand extends Command
      */
     public function handle()
     {
-        $posts = Post::get();
+        $posts = config('zeus-sky.models.post')::get();
         foreach ($posts as $post) {
             $post->translatable = [];
 

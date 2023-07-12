@@ -2,8 +2,6 @@
 
 namespace LaraZeus\Sky\Http\Livewire;
 
-use LaraZeus\Sky\Models\Post;
-use LaraZeus\Sky\Models\Tag;
 use Livewire\Component;
 
 class Posts extends Component
@@ -15,14 +13,14 @@ class Posts extends Component
         $search = request('search');
         $category = request('category');
 
-        $posts = Post::NotSticky()
+        $posts = config('zeus-sky.models.post')::NotSticky()
             ->search($search)
             ->forCategory($category)
             ->published()
             ->orderBy('published_at', 'desc')
             ->get();
 
-        $pages = Post::page()
+        $pages = config('zeus-sky.models.post')::page()
             ->search($search)
             ->forCategory($category)
             ->published()
@@ -33,7 +31,7 @@ class Posts extends Component
         $pages = $this->highlightSearchResults($pages, $search);
         $posts = $this->highlightSearchResults($posts, $search);
 
-        $recent = Post::posts()
+        $recent = config('zeus-sky.models.post')::posts()
             ->published()
             ->limit(config('zeus-sky.site_recent_count', 5))
             ->orderBy('published_at', 'desc')
@@ -52,8 +50,8 @@ class Posts extends Component
             'posts' => $posts,
             'pages' => $pages,
             'recent' => $recent,
-            'tags' => Tag::withCount('postsPublished')->where('type', 'category')->get(),
-            'stickies' => Post::sticky()->published()->get(),
+            'tags' => config('zeus-sky.models.tag')::withCount('postsPublished')->where('type', 'category')->get(),
+            'stickies' => config('zeus-sky.models.post')::sticky()->published()->get(),
         ])
             ->layout(config('zeus-sky.layout'));
     }

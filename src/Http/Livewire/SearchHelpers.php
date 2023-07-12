@@ -6,12 +6,15 @@ use Illuminate\Database\Eloquent\Collection;
 
 trait SearchHelpers
 {
-    private function highlightSearchResults(Collection $collection, ?string $search = null): Collection
+    private function highlightSearchResults(Collection $collection, string $search = null): Collection
     {
         if (! $search) {
             return $collection;
         }
 
+        /**
+         * @var \LaraZeus\Sky\Models\Post $item
+         */
         foreach ($collection as $item) {
             $item->title = $this->parsing($item->title, [$search]);
             $item->content = $this->parsing($item->content, [$search]);

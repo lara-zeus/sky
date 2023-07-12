@@ -4,8 +4,8 @@ namespace LaraZeus\Sky\Filament\Resources\PostResource\Pages;
 
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 use LaraZeus\Sky\Filament\Resources\PostResource;
-use LaraZeus\Sky\Models\Post;
 
 class ListPosts extends ListRecords
 {
@@ -15,6 +15,10 @@ class ListPosts extends ListRecords
 
     protected function getTableQuery(): Builder
     {
-        return Post::where('post_type', 'post');
+        return config('zeus-sky.models.post')::query()
+            ->where('post_type', 'post')
+            ->withoutGlobalScopes([
+                SoftDeletingScope::class,
+            ]);
     }
 }

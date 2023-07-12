@@ -5,8 +5,8 @@
             @foreach($pages as $post)
                 <a href="{{ route('page',$post->slug) }}" class="border-b border-t border-white hover:border-primary-600 transition duration-300 px-1 py-4">
                     <div class="flex items-center space-x-3 rtl:space-x-reverse">
-                        @if(!$post->getMedia('posts')->isEmpty())
-                            <img src="{{ $post->getFirstMediaUrl('posts') }}" class="h-6 w-6 shadow-md rounded-[2rem] rounded-bl-none z-0 object-cover"/>
+                        @if($post->image() !== null)
+                            <img alt="{{ $post->title }}" src="{{ $post->image() }}" class="h-6 w-6 shadow-md rounded-[2rem] rounded-bl-none z-0 object-cover"/>
                         @endif
                         <div class="w-full text-lg">{!! $post->title !!}</div>
                     </div>

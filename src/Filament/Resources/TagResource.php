@@ -8,14 +8,17 @@ use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\TagResource\Pages;
-use LaraZeus\Sky\Models\Tag;
 
 class TagResource extends SkyResource
 {
-    protected static ?string $model = Tag::class;
+    public static function getModel(): string
+    {
+        return config('zeus-sky.models.tag');
+    }
 
     protected static ?string $navigationIcon = 'iconpark-tag-o';
 
@@ -28,7 +31,7 @@ class TagResource extends SkyResource
 
     protected static function getNavigationBadge(): ?string
     {
-        return (string) Tag::query()->count();
+        return (string) config('zeus-sky.models.tag')::query()->count();
     }
 
     public static function form(Form $form): Form
@@ -48,10 +51,7 @@ class TagResource extends SkyResource
                     ->required()
                     ->maxLength(255),
                 Select::make('type')
-                    ->options([
-                        'tag' => 'Tag',
-                        'category' => 'Category',
-                    ]),
+                    ->options(config('zeus-sky.tags_types')),
             ]);
     }
 
@@ -59,10 +59,17 @@ class TagResource extends SkyResource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
-                TextColumn::make('type'),
-                TextColumn::make('slug'),
-                TextColumn::make('posts_count')->counts('posts'),
+                TextColumn::make('name')->toggleable()->searchable()->sortable(),
+                TextColumn::make('type')->toggleable()->searchable()->sortable(),
+                TextColumn::make('slug')->toggleable()->searchable()->sortable(),
+                TextColumn::make('items_count')
+                    ->toggleable()
+                    ->view('zeus-sky::filament.columns.tag-counts'),
+            ])
+            ->filters([
+                SelectFilter::make('type')
+                    ->options(config('zeus-sky.tags_types'))
+                    ->label(__('type')),
             ]);
     }
 
@@ -88,10 +95,5 @@ class TagResource extends SkyResource
     protected static function getNavigationLabel(): string
     {
         return __('Tags');
-    }
-
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('Sky');
     }
 }

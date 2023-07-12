@@ -2,21 +2,44 @@
 
 namespace LaraZeus\Sky\Models;
 
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
+
 /**
  * @property string $slug
  * @property string $type
  * @property string $name
+ *
+ * @method Builder|static published()
  */
 class Tag extends \Spatie\Tags\Tag
 {
-    public function posts()
+    public function library(): MorphToMany
     {
-        return $this->morphedByMany(Post::class, 'taggable');
+        return $this->morphedByMany(config('zeus-sky.models.library'), 'taggable');
     }
 
-    public function postsPublished()
+    public function category(): MorphToMany
     {
-        return $this->morphedByMany(Post::class, 'taggable')->published();
+        return $this->morphedByMany(config('zeus-sky.models.post'), 'taggable');
+    }
+
+    public function faq(): MorphToMany
+    {
+        return $this->morphedByMany(config('zeus-sky.models.faq'), 'taggable');
+    }
+
+    public function tag(): MorphToMany
+    {
+        return $this->morphedByMany(config('zeus-sky.models.post'), 'taggable');
+    }
+
+    /** @return MorphToMany<Post> */
+    public function postsPublished(): MorphToMany
+    {
+        // @phpstan-ignore-next-line
+        return $this->morphedByMany(config('zeus-sky.models.post'), 'taggable')->published();
     }
 
     protected function generateSlug(string $locale): string
@@ -32,7 +55,7 @@ class Tag extends \Spatie\Tags\Tag
         return call_user_func($slugger, $this->getTranslation('name', $locale));
     }
 
-    public static function findBySlug(string $slug, string $type = null, string $locale = null)
+    public static function findBySlug(string $slug, string $type = null, string $locale = null): ?Model
     {
         $locale = $locale ?? static::getLocale();
 

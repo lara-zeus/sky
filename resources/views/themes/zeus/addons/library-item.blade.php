@@ -27,23 +27,10 @@
             <span>{{ $item->created_at->format('Y.m/d') }}-{{ $item->created_at->format('h:i a') }}</span>
         </p>
 
-        @if($item->type === 'IMAGE')
-            <img class="mx-auto" src="{{ $item->theFile() }}">
-        @endif
-
-        @if($item->type === 'FILE')
-            <div class="text-center">
-                <x-filament::button tag="a" target="_blank" href="{{ $item->theFile() }}" class="mx-auto">
-                    {{ __('Show File') }}
-                </x-filament::button>
-            </div>
-        @endif
-
-        @if($item->type === 'VIDEO')
-            <video width="100%" class="w-full" controls>
-                <source src="{{ $item->theFile() }}">
-                Your browser does not support HTML video.
-            </video>
-        @endif
+        <div class="grid grid-cols-1 @if($item->getFiles()->count() > 1) sm:grid-cols-2 lg:grid-cols-3 @endif gap-2 justify-items-stretch content-stretch">
+            @foreach($item->getFiles() as $file)
+                @include($theme.'.addons.library-types.'.strtolower($item->type))
+            @endforeach
+        </div>
     </x-filament::card>
 </div>

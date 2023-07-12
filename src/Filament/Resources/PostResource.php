@@ -7,6 +7,7 @@ use Filament\Forms\Components\Card;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
@@ -15,27 +16,39 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
+use Filament\Tables\Actions\Action;
+use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ForceDeleteAction;
+use Filament\Tables\Actions\ForceDeleteBulkAction;
+use Filament\Tables\Actions\RestoreAction;
+use Filament\Tables\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\SpatieTagsColumn;
 use Filament\Tables\Columns\ViewColumn;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Filters\TrashedFilter;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\PostResource\Pages;
 use LaraZeus\Sky\Models\Post;
-use LaraZeus\Sky\Models\PostStatus;
-use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
+use LaraZeus\Sky\Models\PostScope;
 
+// @mixin Builder<PostScope>
 class PostResource extends SkyResource
 {
-    protected static ?string $model = Post::class;
+    public static function getModel(): string
+    {
+        return config('zeus-sky.models.post');
+    }
 
     protected static ?string $navigationIcon = 'iconpark-docdetail-o';
 
     protected static function getNavigationBadge(): ?string
     {
-        return (string) Post::query()->posts()->count();
+        return (string) config('zeus-sky.models.post')::query()->posts()->count();
     }
 
     public static function form(Form $form): Form
@@ -49,14 +62,15 @@ class PostResource extends SkyResource
                             ->required()
                             ->maxLength(255)
                             ->reactive()
-                            ->afterStateUpdated(function (Closure $set, $state) {
+                            ->afterStateUpdated(function (Closure $set, $state, $context) {
+                                if ($context === 'edit') {
+                                    return;
+                                }
+
                                 $set('slug', Str::slug($state));
                             }),
 
-                        TinyEditor::make('content')
-                            ->label(__('Post Content'))
-                            ->showMenuBar()
-                            ->required(),
+                        config('zeus-sky.editor')::component(),
                     ]),
                 ])->columnSpan(3),
 
@@ -78,7 +92,7 @@ class PostResource extends SkyResource
                                 ->hint(__('Write an excerpt for your post')),
 
                             TextInput::make('slug')
-                                ->unique(ignorable: fn (?Model $record): ?Model => $record)
+                                ->unique(ignorable: fn (?Post $record): ?Post => $record)
                                 ->required()
                                 ->maxLength(255)
                                 ->label(__('Post Slug')),
@@ -106,7 +120,7 @@ class PostResource extends SkyResource
                                 ->default('publish')
                                 ->required()
                                 ->reactive()
-                                ->options(PostStatus::pluck('label', 'name')),
+                                ->options(config('zeus-sky.models.postStatus')::pluck('label', 'name')),
 
                             TextInput::make('password')
                                 ->label(__('Password'))
@@ -124,9 +138,30 @@ class PostResource extends SkyResource
 
                     Section::make(__('Featured Image'))
                         ->schema([
-                            SpatieMediaLibraryFileUpload::make('featured_image')
+                            Radio::make('featured_image_type')
+                                ->label('')
+                                ->reactive()
+                                ->dehydrated(false)
+                                ->afterStateHydrated(function (Closure $set, Closure $get) {
+                                    $setVal = ($get('featured_image') === null) ? 'upload' : 'url';
+                                    $set('featured_image_type', $setVal);
+                                })
+                                ->default('upload')
+                                ->options([
+                                    'upload' => __('upload'),
+                                    'url' => __('url'),
+                                ])
+                                ->inline(),
+
+                            SpatieMediaLibraryFileUpload::make('featured_image_upload')
                                 ->collection('posts')
+                                ->visible(fn (Closure $get) => $get('featured_image_type') === 'upload')
                                 ->label(''),
+
+                            TextInput::make('featured_image')
+                                ->label(__('featured image url'))
+                                ->visible(fn (Closure $get) => $get('featured_image_type') === 'url')
+                                ->url(),
                         ])
                         ->collapsible(),
                 ])->columnSpan(1),
@@ -141,29 +176,53 @@ class PostResource extends SkyResource
                     ->label(__('Title'))
                     ->sortable(['title'])
                     ->searchable(['title'])
+                    ->toggleable()
                     ->view('zeus-sky::filament.columns.post-title'),
 
                 ViewColumn::make('status_desc')
                     ->label(__('Status'))
                     ->sortable(['status'])
                     ->searchable(['status'])
+                    ->toggleable()
                     ->view('zeus-sky::filament.columns.status-desc')
                     ->tooltip(fn (Post $record): string => $record->published_at->format('Y/m/d | H:i A')),
 
                 SpatieTagsColumn::make('tags')
                     ->label(__('Post Tags'))
+                    ->toggleable()
                     ->type('tag'),
 
                 SpatieTagsColumn::make('category')
                     ->label(__('Post Category'))
+                    ->toggleable()
                     ->type('category'),
             ])
             ->defaultSort('id', 'desc')
+            ->actions([
+                ActionGroup::make([
+                    EditAction::make('edit')->label(__('Edit')),
+                    Action::make('Open')
+                        ->color('warning')
+                        ->icon('heroicon-o-external-link')
+                        ->label(__('Open'))
+                        ->url(fn (Post $record): string => route('post', ['slug' => $record]))
+                        ->openUrlInNewTab(),
+                    DeleteAction::make('delete'),
+                    ForceDeleteAction::make(),
+                    RestoreAction::make(),
+                ]),
+            ])
+            ->bulkActions([
+                DeleteBulkAction::make(),
+                ForceDeleteBulkAction::make(),
+                RestoreBulkAction::make(),
+            ])
             ->filters([
+                TrashedFilter::make(),
                 SelectFilter::make('status')
                     ->multiple()
                     ->label(__('Status'))
-                    ->options(PostStatus::pluck('label', 'name')),
+                    ->options(config('zeus-sky.models.postStatus')::pluck('label', 'name')),
 
                 Filter::make('password')
                     ->label(__('Password Protected'))
@@ -171,6 +230,7 @@ class PostResource extends SkyResource
 
                 Filter::make('sticky')
                     ->label(__('Still Sticky'))
+                    // @phpstan-ignore-next-line
                     ->query(fn (Builder $query): Builder => $query->sticky()),
 
                 Filter::make('not_sticky')
@@ -218,10 +278,5 @@ class PostResource extends SkyResource
     protected static function getNavigationLabel(): string
     {
         return __('Posts');
-    }
-
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('Sky');
     }
 }

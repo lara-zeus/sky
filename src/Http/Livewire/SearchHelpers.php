@@ -6,12 +6,15 @@ use Illuminate\Database\Eloquent\Collection;
 
 trait SearchHelpers
 {
-    private function highlightSearchResults(Collection $collection, ?string $search = null): Collection
+    private function highlightSearchResults(Collection $collection, string $search = null): Collection
     {
         if (!$search) {
             return $collection;
         }
 
+        /**
+         * @var \LaraZeus\Sky\Models\Post $item
+         */
         foreach ($collection as $item) {
             $item->title = $this->parsing($item->title, [$search]);
             $item->content = $this->parsing($item->content, [$search]);
@@ -32,7 +35,7 @@ trait SearchHelpers
         // <iframe> exists in the content so no html breaks:
         $skiplist = config('zeus-sky.skip_highlighting_terms', []);
         foreach ($skiplist as $skipper) {
-            if (str_contains($skipper, $content)) {
+            if (str_contains($content, $skipper)) {
                 return $content;
             }
         }

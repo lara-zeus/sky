@@ -3,11 +3,13 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use LaraZeus\Sky\Models\Post;
 
 class PostFactory extends Factory
 {
-    protected $model = Post::class;
+    public function getModel(): string
+    {
+        return config('zeus-sky.models.post');
+    }
 
     /**
      * Define the model's default state.

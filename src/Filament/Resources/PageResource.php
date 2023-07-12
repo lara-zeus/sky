@@ -14,20 +14,31 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
+use Filament\Tables\Actions\Action;
+use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ForceDeleteAction;
+use Filament\Tables\Actions\ForceDeleteBulkAction;
+use Filament\Tables\Actions\RestoreAction;
+use Filament\Tables\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\ViewColumn;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Filters\TrashedFilter;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\PageResource\Pages;
 use LaraZeus\Sky\Models\Post;
-use LaraZeus\Sky\Models\PostStatus;
-use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class PageResource extends SkyResource
 {
-    protected static ?string $model = Post::class;
+    public static function getModel(): string
+    {
+        return config('zeus-sky.models.post');
+    }
 
     protected static ?string $slug = 'pages';
 
@@ -35,7 +46,18 @@ class PageResource extends SkyResource
 
     protected static function getNavigationBadge(): ?string
     {
-        return (string) Post::query()->page()->count();
+        return (string) config('zeus-sky.models.post')::query()->page()->count();
+    }
+
+    /**
+     * @return Builder<Post>
+     */
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->withoutGlobalScopes([
+                SoftDeletingScope::class,
+            ]);
     }
 
     public static function form(Form $form): Form
@@ -53,10 +75,7 @@ class PageResource extends SkyResource
                                 $set('slug', Str::slug($state));
                             }),
 
-                        TinyEditor::make('content')
-                            ->label(__('Post Content'))
-                            ->showMenuBar()
-                            ->required(),
+                        config('zeus-sky.editor')::component(),
                     ]),
                 ])
                     ->columnSpan(3),
@@ -78,13 +97,13 @@ class PageResource extends SkyResource
                                 ->hint(__('Write an excerpt for your post')),
 
                             TextInput::make('slug')
-                                ->unique(ignorable: fn (?Model $record): ?Model => $record)
+                                ->unique(ignorable: fn (?Post $record): ?Post => $record)
                                 ->required()
                                 ->maxLength(255)
                                 ->label(__('Post Slug')),
 
                             Select::make('parent_id')
-                                ->options(Post::where('post_type', 'page')->pluck('title', 'id'))
+                                ->options(config('zeus-sky.models.post')::where('post_type', 'page')->pluck('title', 'id'))
                                 ->label(__('Parent Page')),
 
                             TextInput::make('ordering')
@@ -102,7 +121,7 @@ class PageResource extends SkyResource
                                 ->default('publish')
                                 ->required()
                                 ->reactive()
-                                ->options(PostStatus::pluck('label', 'name')),
+                                ->options(config('zeus-sky.models.postStatus')::pluck('label', 'name')),
 
                             TextInput::make('password')
                                 ->label(__('Password'))
@@ -134,22 +153,43 @@ class PageResource extends SkyResource
                     ->label(__('Title'))
                     ->sortable(['title'])
                     ->searchable(['title'])
+                    ->toggleable()
                     ->view('zeus-sky::filament.columns.page-title'),
 
                 ViewColumn::make('status_desc')
                     ->label(__('Status'))
                     ->sortable(['status'])
                     ->searchable(['status'])
+                    ->toggleable()
                     ->view('zeus-sky::filament.columns.status-desc')
                     ->tooltip(fn (Post $record): string => $record->published_at->format('Y/m/d | H:i A')),
             ])
             ->defaultSort('id', 'desc')
+            ->actions([
+                ActionGroup::make([
+                    EditAction::make('edit')->label(__('Edit')),
+                    Action::make('Open')
+                        ->color('warning')
+                        ->icon('heroicon-o-external-link')
+                        ->label(__('Open'))
+                        ->url(fn (Post $record): string => route('page', ['slug' => $record]))
+                        ->openUrlInNewTab(),
+                    DeleteAction::make('delete'),
+                    ForceDeleteAction::make(),
+                    RestoreAction::make(),
+                ]),
+            ])
+            ->bulkActions([
+                DeleteBulkAction::make(),
+                ForceDeleteBulkAction::make(),
+                RestoreBulkAction::make(),
+            ])
             ->filters([
+                TrashedFilter::make(),
                 SelectFilter::make('status')
                     ->multiple()
                     ->label(__('Status'))
-                    ->options(PostStatus::pluck('label', 'name')),
-
+                    ->options(config('zeus-sky.models.postStatus')::pluck('label', 'name')),
                 Filter::make('password')
                     ->label(__('Password Protected'))
                     ->query(fn (Builder $query): Builder => $query->whereNotNull('password')),
@@ -178,10 +218,5 @@ class PageResource extends SkyResource
     protected static function getNavigationLabel(): string
     {
         return __('Pages');
-    }
-
-    protected static function getNavigationGroup(): ?string
-    {
-        return __('Sky');
     }
 }

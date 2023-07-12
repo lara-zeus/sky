@@ -2,14 +2,11 @@
     <a class="mb-4 md:mb-0 w-full relative h-[16em] sm:h-[20em] md:h-[22em] lg:h-[24em]" href="{{ route('post',$post->slug) }}">
         <div class="absolute inset-0 w-full h-full z-10 shadow-md rounded-[2rem] @if($loop->first) md:ltr:rounded-br-none md:rtl:rounded-bl-none @else md:ltr:rounded-bl-none md:rtl:rounded-br-none @endif bg-gradient-to-b from-transparent to-gray-700"></div>
 
-        @if(!$post->getMedia('posts')->isEmpty())
-            <img src="{{ $post->getFirstMediaUrl('posts') }}" class="absolute ltr:left-0 rtl:right-0 top-0 w-full h-full shadow-md rounded-[2rem] @if($loop->first) md:ltr:rounded-br-none md:rtl:rounded-bl-none @else md:ltr:rounded-bl-none md:rtl:rounded-br-none @endif z-0 object-cover"/>
+        @if($post->image() !== null)
+            <img alt="{{ $post->title }}" src="{{ $post->image() }}" class="absolute ltr:left-0 rtl:right-0 top-0 w-full h-full shadow-md rounded-[2rem] @if($loop->first) md:ltr:rounded-br-none md:rtl:rounded-bl-none @else md:ltr:rounded-bl-none md:rtl:rounded-br-none @endif z-0 object-cover"/>
         @endif
 
         <div class="p-4 absolute bottom-0 ltr:left-0 rtl:right-0 z-20">
-            {{--@unless ($post->tags->isEmpty())
-                @each('zeus-sky::components.tag', $post->tags->where('type','category'), 'tag')
-            @endunless--}}
             <h2 class="text-2xl lg:text-4xl font-semibold text-gray-100 leading-tight">
                 {{ $post->title ?? '' }}
             </h2>

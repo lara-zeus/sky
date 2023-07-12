@@ -11,8 +11,8 @@
         </li>
     </x-slot>
 
-    @if(!$post->getMedia('pages')->isEmpty())
-        <img src="{{ $post->getFirstMediaUrl('pages') }}" class="my-10 w-full aspect-video shadow-md rounded-[2rem] rounded-bl-none z-0 object-cover"/>
+    @if($post->image() !== null)
+        <img alt="{{ $post->title }}" src="{{ $post->image() }}" class="my-10 w-full aspect-video shadow-md rounded-[2rem] rounded-bl-none z-0 object-cover"/>
     @endif
 
     <div class="bg-white dark:bg-gray-800 rounded-[2rem] rounded-tl-none shadow-md px-10 pb-6 ">
@@ -20,7 +20,7 @@
             <span class="font-light text-gray-600 dark:text-gray-100">{{ optional($post->published_at)->diffForHumans() ?? '' }}</span>
             <div>
                 @unless ($post->tags->isEmpty())
-                    @each($theme.'.partial.tag', $post->tags->where('type','category'), 'tag')
+                    @each($theme.'.partial.category', $post->tags->where('type','category'), 'category')
                 @endunless
             </div>
         </div>
@@ -41,7 +41,7 @@
         </div>
 
         <div class="mt-6 lg:mt-12 prose dark:prose-invert max-w-none">
-            {!! html_entity_decode($post->content) !!}
+            {!! $post->getContent() !!}
         </div>
 
         @if(!$children->isEmpty())

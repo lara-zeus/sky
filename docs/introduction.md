@@ -24,7 +24,7 @@ weight: 1
     - multiple tags and categories
     - Featured Image
       
-and more in the way:
+and more on the way:
 - authors
 - menus
 - comments
@@ -33,6 +33,5 @@ and more in the way:
 
 ## Support
 available support channels:
-* using our channel `#sky` on [Discord](https://filamentphp.com/discord)
 * open an issue on [GitHub](https://github.com/lara-zeus/sky/issues)
-* email us using the [contact center](https://atm-code.com/contact-us/lara-zeus)
+* email us using the [contact center](https://still-code.com/contact-us/lara-zeus)

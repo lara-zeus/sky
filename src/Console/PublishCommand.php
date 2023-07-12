@@ -11,7 +11,7 @@ class PublishCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'Sky:publish {--force : Overwrite any existing files}';
+    protected $signature = 'sky:publish {--force : Overwrite any existing files}';
 
     /**
      * The console command description.
@@ -28,17 +28,17 @@ class PublishCommand extends Command
     public function handle()
     {
         // publish Sky files
-        $this->callSilent('vendor:publish', ['--tag' => 'zeus-sky-config', '--force' => $this->option('force') ?? false]);
-        $this->callSilent('vendor:publish', ['--tag' => 'zeus-sky-migrations', '--force' => $this->option('force') ?? false]);
-        $this->callSilent('vendor:publish', ['--tag' => 'zeus-sky-translations', '--force' => $this->option('force') ?? false]);
+        $this->callSilent('vendor:publish', ['--tag' => 'zeus-sky-config', '--force' => $this->option('force')]);
+        $this->callSilent('vendor:publish', ['--tag' => 'zeus-sky-migrations', '--force' => $this->option('force')]);
+        $this->callSilent('vendor:publish', ['--tag' => 'zeus-sky-translations', '--force' => $this->option('force')]);
 
-        $this->callSilent('vendor:publish', ['--tag' => 'zeus-sky-seeder', '--force' => $this->option('force') ?? false]);
-        $this->callSilent('vendor:publish', ['--tag' => 'zeus-sky-factories', '--force' => $this->option('force') ?? false]);
+        $this->callSilent('vendor:publish', ['--tag' => 'zeus-sky-seeder', '--force' => $this->option('force')]);
+        $this->callSilent('vendor:publish', ['--tag' => 'zeus-sky-factories', '--force' => $this->option('force')]);
 
         // publish Zeus files
-        $this->callSilent('vendor:publish', ['--tag' => 'zeus-config', '--force' => $this->option('force') ?? false]);
-        $this->callSilent('vendor:publish', ['--tag' => 'zeus-views', '--force' => $this->option('force') ?? false]);
-        $this->callSilent('vendor:publish', ['--tag' => 'zeus-assets', '--force' => $this->option('force') ?? false]);
+        $this->callSilent('vendor:publish', ['--tag' => 'zeus-config', '--force' => $this->option('force')]);
+        $this->callSilent('vendor:publish', ['--tag' => 'zeus-views', '--force' => $this->option('force')]);
+        $this->callSilent('vendor:publish', ['--tag' => 'zeus-assets', '--force' => $this->option('force')]);
 
         $this->output->success('Zeus and Sky has been Published successfully');
     }

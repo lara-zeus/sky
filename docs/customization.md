@@ -34,5 +34,16 @@ php artisan vendor:publish --tag=zeus-sky-translations
 ```
 
 
+## Navigations
+to render the navigation:
+```
+@php $menu = RyanChandler\FilamentNavigation\Facades\FilamentNavigation::get('main-header-menu'); @endphp
+@foreach($menu->items as $item)
+    {!! \LaraZeus\Sky\Classes\RenderNavItem::render($item,'px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400') !!}
+@endforeach
+```
+
+for more information refer to the main plugin [Filament Navigation](https://github.com/ryangjchandler/filament-navigation)
+
 ## themes
 soon

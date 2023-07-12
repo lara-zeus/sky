@@ -2,6 +2,68 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.4.32 - 2023-07-12
+
+### What's Changed
+
+- allow to upload multiple libraries and refactor the views by @atmonshi in https://github.com/lara-zeus/sky/pull/123
+- update core by @atmonshi in https://github.com/lara-zeus/sky/pull/124
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.31...2.4.32
+
+## 2.4.31 - 2023-07-04
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.5.1 to 1.6.0 by @dependabot in https://github.com/lara-zeus/sky/pull/121
+- update all dependecies by @atmonshi in https://github.com/lara-zeus/sky/pull/122
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.30...2.4.31
+
+## 2.4.30 - 2023-07-02
+
+### What's Changed
+
+- allow to force delete and restore posts, and finally green phpstan by @atmonshi in https://github.com/lara-zeus/sky/pull/120
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.29...2.4.30
+
+## 2.4.2 - 2023-04-24
+
+### What's Changed
+
+- add featured image by URL by @atmonshi in https://github.com/lara-zeus/sky/pull/72
+- Default featured image from config by @atmonshi in https://github.com/lara-zeus/sky/pull/73
+- Allow preview post for author by @atmonshi in https://github.com/lara-zeus/sky/pull/74
+- update Zeus core by @atmonshi in https://github.com/lara-zeus/sky/pull/75
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.1...2.4.2
+
+## 2.4.1 - 2023-04-10
+
+### What's Changed
+
+- Update configuration.md by @atmonshi in https://github.com/lara-zeus/sky/pull/70
+- refactor getNavigationGroup by @atmonshi in https://github.com/lara-zeus/sky/pull/71
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.0...2.4.1
+
+## 2.4.0 - 2023-04-10
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.5 to 1.3.6 by @dependabot in https://github.com/lara-zeus/sky/pull/65
+- Bump aglipanci/laravel-pint-action from 1.0.0 to 2.2.0 by @dependabot in https://github.com/lara-zeus/sky/pull/68
+- Bump ramsey/composer-install from 1 to 2 by @dependabot in https://github.com/lara-zeus/sky/pull/63
+- Added config for Navigation Group Label by @chahal26 in https://github.com/lara-zeus/sky/pull/66
+- support laravel 10 by @atmonshi in https://github.com/lara-zeus/sky/pull/69
+
+### New Contributors
+
+- @chahal26 made their first contribution in https://github.com/lara-zeus/sky/pull/66
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.3.7...2.4.0
+
 ## 2.3.7 - 2022-11-12
 
 ### What's Changed

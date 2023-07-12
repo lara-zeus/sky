@@ -2,6 +2,15 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.4.32 - 2023-07-12
+
+### What's Changed
+
+- allow to upload multiple libraries and refactor the views by @atmonshi in https://github.com/lara-zeus/sky/pull/123
+- update core by @atmonshi in https://github.com/lara-zeus/sky/pull/124
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.31...2.4.32
+
 ## 2.4.31 - 2023-07-04
 
 ### What's Changed

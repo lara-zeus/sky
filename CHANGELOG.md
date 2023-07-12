@@ -2,6 +2,16 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.4.33 - 2023-07-12
+
+### What's Changed
+
+- Allow to skip highlighting of search terms by @thyseus in https://github.com/lara-zeus/sky/pull/125
+- fix when library is empty by @atmonshi in https://github.com/lara-zeus/sky/pull/126
+- update composer by @atmonshi in https://github.com/lara-zeus/sky/pull/127
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.32...2.4.33
+
 ## 2.4.32 - 2023-07-12
 
 ### What's Changed

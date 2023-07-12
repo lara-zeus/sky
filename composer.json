@@ -35,7 +35,7 @@
         "mohamedsabil83/filament-forms-tinyeditor": "^1.5",
         "spatie/laravel-medialibrary": "^10.0.0",
         "spatie/laravel-sluggable": "^3.3",
-        "spatie/laravel-tags": "^4.0"
+        "spatie/laravel-tags": "^4.3"
     },
     "require-dev": {
         "orchestra/testbench": "^6.0 || ^7.0",
@@ -48,7 +48,7 @@
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan-deprecation-rules": "^1.0",
         "phpstan/phpstan-phpunit": "^1.0",
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5|^10.0"
     },
     "autoload": {
         "psr-4": {

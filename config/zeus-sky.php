@@ -74,6 +74,12 @@ return [
     'search_result_highlight_css_class' => 'highlight',
 
     /**
+     * supply a list of terms that will disable the search highlight to not
+     * destroy html structure.
+     */
+    'skip_highlighting_terms' => ['iframe'],
+
+    /**
      * available locales, this currently used only in tags manager.
      */
     'translatable_Locales' => ['en', 'ar'],

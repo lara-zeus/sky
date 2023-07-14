@@ -114,6 +114,19 @@ class Post extends Model implements HasMedia
 
     public function getContent(): string
     {
-        return config('zeus-sky.editor')::render($this->content);
+        return $this->parseContent(config('zeus-sky.editor')::render($this->content));
+    }
+
+    public function parseContent($content): string
+    {
+        $parsers = config('zeus-sky.parsers');
+
+        if (! empty($parsers)) {
+            foreach ($parsers as $parser) {
+                $content = (new $parser)($content);
+            }
+        }
+
+        return $content;
     }
 }

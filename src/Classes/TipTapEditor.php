@@ -4,7 +4,6 @@ namespace LaraZeus\Sky\Classes;
 
 use Filament\Forms\Components\Component;
 use Filament\Forms\Components\Textarea;
-use FilamentTiptapEditor\Exceptions\InvalidOutputFormatException;
 use FilamentTiptapEditor\TiptapEditor as TipTapEditorAlias;
 
 class TipTapEditor implements ContentEditor

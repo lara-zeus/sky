@@ -2,6 +2,37 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.4.34 - 2023-07-14
+
+### What's Changed
+
+- fix: show pages in the sidebar and no result for search by @atmonshi in https://github.com/lara-zeus/sky/pull/129
+- add Content parser by @atmonshi in https://github.com/lara-zeus/sky/pull/118
+
+adding the ability to parse the content, by default: `BoltParser` is avaliable.
+lets you include or (embed) bolt form into any page with the syntax: `<bolt>formSlug</bolt>`
+This will be parsed to a livewire component to display the full form.
+
+### How to use:
+
+Make sure to add this to your config:
+
+```php
+'parsers' => [
+    \LaraZeus\Sky\Classes\BoltParser::class,
+],
+
+```
+You can copy that class and create your own parser, too, then add it to the array, and Sky will loop them all.
+
+```I also added a tab in forms to let users copy and paste.
+Of course, it will be visible only if you install Sky with Bolt :)
+```
+<img width="1165" alt="Screenshot 2023-07-14 at 6 26 23 PM" src="https://github.com/lara-zeus/sky/assets/1952412/5b62af0f-ac6b-46c7-ae29-af01975a9976">
+### Remember to update your views.
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.33...2.4.34
+
 ## 2.4.33 - 2023-07-12
 
 ### What's Changed

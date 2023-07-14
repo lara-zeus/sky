@@ -5,8 +5,10 @@ namespace LaraZeus\Sky\Models;
 use Database\Factories\LibraryFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
 use Spatie\Tags\HasTags;
 use Spatie\Translatable\HasTranslations;
 
@@ -48,12 +50,21 @@ class Library extends Model implements HasMedia
         return 'slug';
     }
 
-    public function theFile()
+    public function theFile(): ?string
     {
         if (! $this->getMedia('library')->isEmpty()) {
             return $this->getFirstMediaUrl('library');
         }
 
         return $this->file_path;
+    }
+
+    public function getFiles(): MediaCollection|Collection
+    {
+        if (! $this->getMedia('library')->isEmpty()) {
+            return $this->getMedia('library');
+        }
+
+        return collect();
     }
 }

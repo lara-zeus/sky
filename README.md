@@ -15,7 +15,7 @@
 
 <h1 align="center">Lara Zeus Sky</h1>
 
-Lara-zeus sky is simple CMS for your website. It includes posts, pages, tags, and categories.
+Lara Zeus Sky is simple CMS for your website. It includes posts, pages, tags, and categories.
 >small tasks can be time-consuming, let us build these for you,
 
 ## Support Filament
@@ -27,8 +27,8 @@ Lara-zeus sky is simple CMS for your website. It includes posts, pages, tags, an
 ## features
 - 🔥 built with [TALL stack](https://tallstack.dev/)
 - 🔥 using [filament](https://filamentadmin.com) as an admin panel
-- 🔥 FrontEnd scaffolding, highly customizable.
-- 🔥 Configure the content editor.
+- 🔥 frontend scaffolding, highly customizable.
+- 🔥 configure the content editor.
 - 🔥 all models are translatable.
   - sticky posts
   - recent posts
@@ -39,28 +39,28 @@ Lara-zeus sky is simple CMS for your website. It includes posts, pages, tags, an
   - sticky posts
   - password protections
   - multiple tags and categories
-  - Featured Image
+  - featured Image
+  - faq
+  - libraries
 
 and more on the way.
 
 ## Demo
 
-> visit our demo site: https://demo.larazeus.com
-
-> visit our website to get the full documentation: https://larazeus.com/sky
+visit our demo site: https://larazeus.com/docs/sky
 
 ## Full Documentation
 
-> visit our website to get the full documentation: https://larazeus.com/sky
+visit our website to get the full documentation: https://larazeus.com/sky
 
 ## Changelog
 
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
 ## Support
 available support channels:
 * open an issue on [GitHub](https://github.com/lara-zeus/sky/issues)
-* email us using the [contact center](https://still-code.com/contact-us/lara-zeus)
+* Email us using the [contact center](https://still-code.com/contact-us/lara-zeus)
 
 ## Contributing
 

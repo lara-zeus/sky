@@ -55,7 +55,7 @@ class Tag extends \Spatie\Tags\Tag
         return call_user_func($slugger, $this->getTranslation('name', $locale));
     }
 
-    public static function findBySlug(string $slug, string $type = null, string $locale = null): Model|null
+    public static function findBySlug(string $slug, string $type = null, string $locale = null): ?Model
     {
         $locale = $locale ?? static::getLocale();
 

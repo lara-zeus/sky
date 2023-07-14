@@ -2,6 +2,41 @@
 
 All notable changes to `sky` will be documented in this file
 
+## 2.4.33 - 2023-07-12
+
+### What's Changed
+
+- Allow to skip highlighting of search terms by @thyseus in https://github.com/lara-zeus/sky/pull/125
+- fix when library is empty by @atmonshi in https://github.com/lara-zeus/sky/pull/126
+- update composer by @atmonshi in https://github.com/lara-zeus/sky/pull/127
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.32...2.4.33
+
+## 2.4.32 - 2023-07-12
+
+### What's Changed
+
+- allow to upload multiple libraries and refactor the views by @atmonshi in https://github.com/lara-zeus/sky/pull/123
+- update core by @atmonshi in https://github.com/lara-zeus/sky/pull/124
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.31...2.4.32
+
+## 2.4.31 - 2023-07-04
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.5.1 to 1.6.0 by @dependabot in https://github.com/lara-zeus/sky/pull/121
+- update all dependecies by @atmonshi in https://github.com/lara-zeus/sky/pull/122
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.30...2.4.31
+
+## 2.4.30 - 2023-07-02
+
+### What's Changed
+
+- allow to force delete and restore posts, and finally green phpstan by @atmonshi in https://github.com/lara-zeus/sky/pull/120
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.29...2.4.30
 
 ## 2.4.2 - 2023-04-24
 

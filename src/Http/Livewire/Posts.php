@@ -23,7 +23,6 @@ class Posts extends Component
         $pages = config('zeus-sky.models.post')::page()
             ->search($search)
             ->forCategory($category)
-            ->published()
             ->orderBy('published_at', 'desc')
             ->whereNull('parent_id')
             ->get();

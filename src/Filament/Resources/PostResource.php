@@ -14,8 +14,7 @@ use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\SpatieTagsInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Resources\Form;
-use Filament\Resources\Table;
+use Filament\Forms\Form;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\DeleteAction;
@@ -30,25 +29,20 @@ use Filament\Tables\Columns\ViewColumn;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TrashedFilter;
+use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\PostResource\Pages;
 use LaraZeus\Sky\Models\Post;
-use LaraZeus\Sky\Models\PostScope;
 
 // @mixin Builder<PostScope>
 class PostResource extends SkyResource
 {
+    protected static ?string $navigationIcon = 'iconpark-docdetail-o';
+
     public static function getModel(): string
     {
         return config('zeus-sky.models.post');
-    }
-
-    protected static ?string $navigationIcon = 'iconpark-docdetail-o';
-
-    protected static function getNavigationBadge(): ?string
-    {
-        return (string) config('zeus-sky.models.post')::query()->posts()->count();
     }
 
     public static function form(Form $form): Form
@@ -275,7 +269,7 @@ class PostResource extends SkyResource
         return __('Posts');
     }
 
-    protected static function getNavigationLabel(): string
+    public static function getNavigationLabel(): string
     {
         return __('Posts');
     }

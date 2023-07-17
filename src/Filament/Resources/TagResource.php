@@ -5,33 +5,23 @@ namespace LaraZeus\Sky\Filament\Resources;
 use Closure;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Resources\Form;
-use Filament\Resources\Table;
+use Filament\Forms\Form;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\TagResource\Pages;
 
 class TagResource extends SkyResource
 {
-    public static function getModel(): string
-    {
-        return config('zeus-sky.models.tag');
-    }
-
     protected static ?string $navigationIcon = 'iconpark-tag-o';
 
     protected static ?string $navigationGroup = 'Sky';
 
-    protected static function shouldRegisterNavigation(): bool
+    public static function getModel(): string
     {
-        return in_array(self::class, config('zeus-sky.enabled_resources'));
-    }
-
-    protected static function getNavigationBadge(): ?string
-    {
-        return (string) config('zeus-sky.models.tag')::query()->count();
+        return config('zeus-sky.models.tag');
     }
 
     public static function form(Form $form): Form
@@ -92,7 +82,7 @@ class TagResource extends SkyResource
         return __('Tags');
     }
 
-    protected static function getNavigationLabel(): string
+    public static function getNavigationLabel(): string
     {
         return __('Tags');
     }

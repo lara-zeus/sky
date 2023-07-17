@@ -3,38 +3,39 @@
 namespace LaraZeus\Sky;
 
 use Filament\Facades\Filament;
-use Filament\Forms\Components\Select;
-use Filament\PluginServiceProvider;
 use LaraZeus\Core\CoreServiceProvider;
 use LaraZeus\Sky\Console\migrateCommand;
 use LaraZeus\Sky\Console\PublishCommand;
-use LaraZeus\Sky\Filament\Resources\TagResource;
 use RyanChandler\FilamentNavigation\Facades\FilamentNavigation;
 use RyanChandler\FilamentNavigation\Filament\Resources\NavigationResource;
 use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class SkyServiceProvider extends PluginServiceProvider
+class SkyServiceProvider extends PackageServiceProvider
 {
-    public static string $name = 'zeus-sky';
-
-    protected function getResources(): array
-    {
-        // TagResource should not be disabled.
-        return array_merge(
-            config('zeus-sky.enabled_resources'),
-            [TagResource::class]
-        );
-    }
-
-    public function bootingPackage(): void
+    public function packageBooted(): void
     {
         CoreServiceProvider::setThemePath('sky');
 
         Filament::serving(function () {
-            $this->bootFilamentNavigation();
+            // todo
+            //$this->bootFilamentNavigation();
         });
     }
 
+    public function configurePackage(Package $package): void
+    {
+        $package
+            ->name('zeus-sky')
+            ->hasMigrations($this->getMigrations())
+            ->hasViews('zeus')
+            ->hasConfigFile()
+            ->hasRoute('web');
+    }
+
+    /**
+     * @return array<class-string>
+     */
     protected function getCommands(): array
     {
         return [
@@ -43,20 +44,20 @@ class SkyServiceProvider extends PluginServiceProvider
         ];
     }
 
-    public function packageConfigured(Package $package): void
+    /**
+     * @return array<string>
+     */
+    protected function getMigrations(): array
     {
-        $package
-            ->hasMigrations([
-                'create_posts_table',
-                'create_faqs_table',
-                'modify_posts_columns',
-                'create_library_table',
-            ])
-            ->hasViews('zeus')
-            ->hasRoute('web');
+        return [
+            'create_posts_table',
+            'create_faqs_table',
+            'modify_posts_columns',
+            'create_library_table',
+        ];
     }
 
-    private function bootFilamentNavigation(): void
+    /*private function bootFilamentNavigation(): void
     {
         NavigationResource::navigationGroup(__(config('zeus-sky.navigation_group_label', 'Sky')));
         NavigationResource::navigationSort(99);
@@ -84,5 +85,5 @@ class SkyServiceProvider extends PluginServiceProvider
                     return config('zeus-sky.models.post')::page()->pluck('title', 'id');
                 }),
         ]);
-    }
+    }*/
 }

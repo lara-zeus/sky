@@ -5,29 +5,24 @@ namespace LaraZeus\Sky\Filament\Resources;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\SpatieTagsInput;
 use Filament\Forms\Components\Textarea;
-use Filament\Resources\Form;
-use Filament\Resources\Table;
+use Filament\Forms\Form;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\SpatieTagsColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Table;
 use LaraZeus\Sky\Filament\Resources\FaqResource\Pages;
 use LaraZeus\Sky\Models\Faq;
 
 class FaqResource extends SkyResource
 {
+    protected static ?string $navigationIcon = 'iconpark-folderwithdrawal-o';
+
     public static function getModel(): string
     {
         return config('zeus-sky.models.faq') ?? Faq::class;
-    }
-
-    protected static ?string $navigationIcon = 'iconpark-folderwithdrawal-o';
-
-    protected static function getNavigationBadge(): ?string
-    {
-        return (string) Faq::query()->count();
     }
 
     public static function getLabel(): string
@@ -40,7 +35,7 @@ class FaqResource extends SkyResource
         return __('frequently asked questions');
     }
 
-    protected static function getNavigationLabel(): string
+    public static function getNavigationLabel(): string
     {
         return __('FAQs');
     }

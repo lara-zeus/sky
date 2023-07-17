@@ -10,8 +10,7 @@ use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\SpatieTagsInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Resources\Form;
-use Filament\Resources\Table;
+use Filament\Forms\Form;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\DeleteAction;
@@ -19,24 +18,20 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\SpatieTagsColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\LibraryResource\Pages;
 use LaraZeus\Sky\Models\Library;
 
 class LibraryResource extends SkyResource
 {
-    public static function getModel(): string
-    {
-        return config('zeus-sky.models.library') ?? Library::class;
-    }
-
     protected static ?string $slug = 'library';
 
     protected static ?string $navigationIcon = 'iconpark-folderopen';
 
-    protected static function getNavigationBadge(): ?string
+    public static function getModel(): string
     {
-        return (string) config('zeus-sky.models.library')::query()->count();
+        return config('zeus-sky.models.library') ?? Library::class;
     }
 
     public static function form(Form $form): Form
@@ -96,7 +91,7 @@ class LibraryResource extends SkyResource
                         SpatieMediaLibraryFileUpload::make('file_path_upload')
                             ->collection('library')
                             ->multiple()
-                            ->enableReordering()
+                            ->reorderable()
                             ->visible(fn (Closure $get) => $get('upload_or_url') === 'upload')
                             ->label(''),
 
@@ -166,7 +161,7 @@ class LibraryResource extends SkyResource
         return __('Libraries');
     }
 
-    protected static function getNavigationLabel(): string
+    public static function getNavigationLabel(): string
     {
         return __('Libraries');
     }

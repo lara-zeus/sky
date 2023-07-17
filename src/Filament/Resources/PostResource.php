@@ -15,6 +15,8 @@ use Filament\Forms\Components\SpatieTagsInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\DeleteAction;
@@ -56,7 +58,7 @@ class PostResource extends SkyResource
                             ->required()
                             ->maxLength(255)
                             ->reactive()
-                            ->afterStateUpdated(function (Closure $set, $state, $context) {
+                            ->afterStateUpdated(function (Set $set, $state, $context) {
                                 if ($context === 'edit') {
                                     return;
                                 }
@@ -119,7 +121,7 @@ class PostResource extends SkyResource
                             TextInput::make('password')
                                 ->label(__('Password'))
                                 ->reactive()
-                                ->visible(fn (Closure $get): bool => $get('status') === 'private'),
+                                ->visible(fn (Get $get): bool => $get('status') === 'private'),
 
                             DateTimePicker::make('published_at')
                                 ->label(__('published at'))
@@ -136,7 +138,7 @@ class PostResource extends SkyResource
                                 ->label('')
                                 ->reactive()
                                 ->dehydrated(false)
-                                ->afterStateHydrated(function (Closure $set, Closure $get) {
+                                ->afterStateHydrated(function (Set $set, Get $get) {
                                     $setVal = ($get('featured_image') === null) ? 'upload' : 'url';
                                     $set('featured_image_type', $setVal);
                                 })
@@ -149,12 +151,12 @@ class PostResource extends SkyResource
 
                             SpatieMediaLibraryFileUpload::make('featured_image_upload')
                                 ->collection('posts')
-                                ->visible(fn (Closure $get) => $get('featured_image_type') === 'upload')
+                                ->visible(fn (Get $get) => $get('featured_image_type') === 'upload')
                                 ->label(''),
 
                             TextInput::make('featured_image')
                                 ->label(__('featured image url'))
-                                ->visible(fn (Closure $get) => $get('featured_image_type') === 'url')
+                                ->visible(fn (Get $get) => $get('featured_image_type') === 'url')
                                 ->url(),
                         ])
                         ->collapsible(),
@@ -197,7 +199,7 @@ class PostResource extends SkyResource
                     EditAction::make('edit')->label(__('Edit')),
                     Action::make('Open')
                         ->color('warning')
-                        ->icon('heroicon-o-external-link')
+                        ->icon('heroicon-o-arrow-top-right-on-square')
                         ->label(__('Open'))
                         ->url(fn (Post $record): string => route('post', ['slug' => $record]))
                         ->openUrlInNewTab(),

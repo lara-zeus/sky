@@ -13,6 +13,8 @@ use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\DeleteAction;
@@ -68,7 +70,7 @@ class PageResource extends SkyResource
                                     ->required()
                                     ->maxLength(255)
                                     ->reactive()
-                                    ->afterStateUpdated(function (Closure $set, $state) {
+                                    ->afterStateUpdated(function (Set $set, $state) {
                                         $set('slug', Str::slug($state));
                                     }),
 
@@ -126,7 +128,7 @@ class PageResource extends SkyResource
                                 TextInput::make('password')
                                     ->label(__('Password'))
                                     ->reactive()
-                                    ->visible(fn(Closure $get): bool => $get('status') === 'private'),
+                                    ->visible(fn(Get $get): bool => $get('status') === 'private'),
 
                                 DateTimePicker::make('published_at')
                                     ->label(__('published at'))
@@ -170,7 +172,7 @@ class PageResource extends SkyResource
                     EditAction::make('edit')->label(__('Edit')),
                     Action::make('Open')
                         ->color('warning')
-                        ->icon('heroicon-o-external-link')
+                        ->icon('heroicon-o-arrow-top-right-on-square')
                         ->label(__('Open'))
                         ->url(fn(Post $record): string => route('page', ['slug' => $record]))
                         ->openUrlInNewTab(),

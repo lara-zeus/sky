@@ -6,6 +6,7 @@ use Closure;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
@@ -33,7 +34,7 @@ class TagResource extends SkyResource
                     ->maxLength(255)
                     ->label(__('Tag.Name'))
                     ->reactive()
-                    ->afterStateUpdated(function (Closure $set, $state) {
+                    ->afterStateUpdated(function (Set $set, $state) {
                         $set('slug', Str::slug($state));
                     }),
                 TextInput::make('slug')

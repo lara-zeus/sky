@@ -11,6 +11,8 @@ use Filament\Forms\Components\SpatieTagsInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\DeleteAction;
@@ -43,7 +45,7 @@ class LibraryResource extends SkyResource
                     ->required()
                     ->maxLength(255)
                     ->reactive()
-                    ->afterStateUpdated(function (Closure $set, $state, $context) {
+                    ->afterStateUpdated(function (Set $set, $state, $context) {
                         if ($context === 'edit') {
                             return;
                         }
@@ -77,7 +79,7 @@ class LibraryResource extends SkyResource
                             ->label('')
                             ->reactive()
                             ->dehydrated(false)
-                            ->afterStateHydrated(function (Closure $set, Closure $get) {
+                            ->afterStateHydrated(function (Set $set, Get $get) {
                                 $setVal = ($get('file_path') === null) ? 'upload' : 'url';
                                 $set('upload_or_url', $setVal);
                             })
@@ -92,12 +94,12 @@ class LibraryResource extends SkyResource
                             ->collection('library')
                             ->multiple()
                             ->reorderable()
-                            ->visible(fn (Closure $get) => $get('upload_or_url') === 'upload')
+                            ->visible(fn (Get $get) => $get('upload_or_url') === 'upload')
                             ->label(''),
 
                         TextInput::make('file_path')
                             ->label(__('file url'))
-                            ->visible(fn (Closure $get) => $get('upload_or_url') === 'url')
+                            ->visible(fn (Get $get) => $get('upload_or_url') === 'url')
                             ->url(),
                     ])
                     ->collapsible(),
@@ -122,7 +124,7 @@ class LibraryResource extends SkyResource
                     EditAction::make('edit')->label(__('Edit')),
                     Action::make('Open')
                         ->color('warning')
-                        ->icon('heroicon-o-external-link')
+                        ->icon('heroicon-o-arrow-top-right-on-square')
                         ->label(__('Open'))
                         ->url(fn (Library $record): string => route('library.item', ['slug' => $record->slug]))
                         ->openUrlInNewTab(),

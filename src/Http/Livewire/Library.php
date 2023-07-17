@@ -17,9 +17,9 @@ class Library extends Component
             ->withUrl()
             ->twitter();
 
-        return view(app('theme') . '.addons.library')
+        return view(app('skyTheme') . '.addons.library')
             ->with('libraries', config('zeus-sky.models.library')::get())
             ->with('categories', config('zeus-sky.models.tag')::getWithType('library'))
-            ->layout(config('zeus-sky.layout'));
+            ->layout(config('zeus.layout'));
     }
 }

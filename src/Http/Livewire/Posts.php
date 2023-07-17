@@ -45,13 +45,13 @@ class Posts extends Component
             ->withUrl()
             ->twitter();
 
-        return view(app('theme') . '.home')->with([
+        return view(app('skyTheme') . '.home')->with([
             'posts' => $posts,
             'pages' => $pages,
             'recent' => $recent,
             'tags' => config('zeus-sky.models.tag')::withCount('postsPublished')->where('type', 'category')->get(),
             'stickies' => config('zeus-sky.models.post')::sticky()->published()->get(),
         ])
-            ->layout(config('zeus-sky.layout'));
+            ->layout(config('zeus.layout'));
     }
 }

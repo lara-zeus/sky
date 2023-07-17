@@ -24,8 +24,8 @@ class LibraryItem extends Component
             ->withUrl()
             ->twitter();
 
-        return view(app('theme') . '.addons.library-item')
+        return view(app('skyTheme') . '.addons.library-item')
             ->with('library', $this->item)
-            ->layout(config('zeus-sky.layout'));
+            ->layout(config('zeus.layout'));
     }
 }

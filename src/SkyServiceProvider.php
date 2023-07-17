@@ -5,8 +5,7 @@ namespace LaraZeus\Sky;
 use Filament\Facades\Filament;
 use Filament\Forms\Components\Select;
 use Filament\PluginServiceProvider;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\View;
+use LaraZeus\Core\CoreServiceProvider;
 use LaraZeus\Sky\Console\migrateCommand;
 use LaraZeus\Sky\Console\PublishCommand;
 use LaraZeus\Sky\Filament\Resources\TagResource;
@@ -29,10 +28,7 @@ class SkyServiceProvider extends PluginServiceProvider
 
     public function bootingPackage(): void
     {
-        View::share('theme', 'zeus-sky::themes.' . config('zeus-sky.theme', 'zeus'));
-        App::singleton('theme', function () {
-            return 'zeus-sky::themes.' . config('zeus-sky.theme', 'zeus');
-        });
+        CoreServiceProvider::setThemePath('sky');
 
         Filament::serving(function () {
             $this->bootFilamentNavigation();
@@ -47,7 +43,7 @@ class SkyServiceProvider extends PluginServiceProvider
         ];
     }
 
-    public function packageConfiguring(Package $package): void
+    public function packageConfigured(Package $package): void
     {
         $package
             ->hasMigrations([
@@ -56,6 +52,7 @@ class SkyServiceProvider extends PluginServiceProvider
                 'modify_posts_columns',
                 'create_library_table',
             ])
+            ->hasViews('zeus')
             ->hasRoute('web');
     }
 

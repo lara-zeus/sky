@@ -2,7 +2,7 @@
     @unless($stickies->isEmpty())
         <section class="mt-10 grid @if($stickies->count() > 1) grid-cols-3 @endif gap-4">
             @foreach($stickies as $post)
-                @include($theme.'.partial.sticky')
+                @include($skyTheme.'.partial.sticky')
             @endforeach
         </section>
     @endunless
@@ -22,11 +22,11 @@
                 <h1 class="text-xl font-bold text-gray-700 dark:text-gray-100 md:text-2xl">{{ __('Posts') }}</h1>
                 @each($theme.'.partial.post', $posts, 'post')
             @else
-                @include($theme.'.partial.empty')
+                @include($skyTheme.'.partial.empty')
             @endunless
         </section>
         <nav class="w-full sm:w-1/3 lg:w-1/4">
-            @include($theme.'.partial.sidebar')
+            @include($skyTheme.'.partial.sidebar')
         </nav>
     </main>
 </div>

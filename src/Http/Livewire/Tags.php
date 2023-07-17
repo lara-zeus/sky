@@ -32,10 +32,10 @@ class Tags extends Component
             ->withUrl()
             ->twitter();
 
-        return view(app('theme') . '.category')
+        return view(app('skyTheme') . '.category')
             ->with([
                 'posts' => $this->tag->postsPublished,
             ])
-            ->layout(config('zeus-sky.layout'));
+            ->layout(config('zeus.layout'));
     }
 }

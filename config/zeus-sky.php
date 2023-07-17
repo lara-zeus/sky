@@ -75,17 +75,6 @@ return [
     'site_color' => '#F5F5F4',
 
     /**
-     * you can use the default layout as a starting point for your blog.
-     * however, if you're already using your own component, just set the path here.
-     */
-    'layout' => 'zeus::components.app',
-
-    /**
-     * the default theme, for now we only have one theme, and soon we will provide more free and premium themes.
-     */
-    'theme' => 'zeus',
-
-    /**
      * css class to apply on found search result, e.g. `bg-yellow-400`.
      */
     'search_result_highlight_css_class' => 'highlight',

@@ -2,7 +2,6 @@
 
 namespace LaraZeus\Sky\Filament\Resources;
 
-use Closure;
 use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;

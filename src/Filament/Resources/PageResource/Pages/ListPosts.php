@@ -2,7 +2,6 @@
 
 namespace LaraZeus\Sky\Filament\Resources\PageResource\Pages;
 
-use Filament\Actions\Action;
 use Filament\Actions\CreateAction;
 use Filament\Actions\LocaleSwitcher;
 use Filament\Resources\Pages\ListRecords;

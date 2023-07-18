@@ -2,7 +2,6 @@
 
 namespace LaraZeus\Sky\Filament\Resources;
 
-use Closure;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;

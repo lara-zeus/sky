@@ -2,7 +2,6 @@
 
 namespace LaraZeus\Sky\Filament\Resources;
 
-use Closure;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Grid;

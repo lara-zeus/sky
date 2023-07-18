@@ -20,7 +20,7 @@
 
             @unless ($posts->isEmpty())
                 <h1 class="text-xl font-bold text-gray-700 dark:text-gray-100 md:text-2xl">{{ __('Posts') }}</h1>
-                @each($theme.'.partial.post', $posts, 'post')
+                @each($skyTheme.'.partial.post', $posts, 'post')
             @else
                 @include($skyTheme.'.partial.empty')
             @endunless

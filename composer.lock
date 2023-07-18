@@ -222,12 +222,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/blade-ui-kit/blade-icons.git",
-                "reference": "d029244067cb4d3cfa1f06d452c6ea8acb0036d7"
+                "reference": "181e8f5835eb9c2d9f6ad0138a7f5a876203ae1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/blade-ui-kit/blade-icons/zipball/d029244067cb4d3cfa1f06d452c6ea8acb0036d7",
-                "reference": "d029244067cb4d3cfa1f06d452c6ea8acb0036d7",
+                "url": "https://api.github.com/repos/blade-ui-kit/blade-icons/zipball/181e8f5835eb9c2d9f6ad0138a7f5a876203ae1e",
+                "reference": "181e8f5835eb9c2d9f6ad0138a7f5a876203ae1e",
                 "shasum": ""
             },
             "require": {
@@ -296,7 +296,7 @@
                     "type": "paypal"
                 }
             ],
-            "time": "2023-07-07T13:57:38+00:00"
+            "time": "2023-07-18T00:17:00+00:00"
         },
         {
             "name": "brick/math",
@@ -10556,12 +10556,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "19cadf73b15656502e34bc4fc00e197fcc94802c"
+                "reference": "19c72d49bfdecc2dac983f3cd4b5b1aff30df7a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/19cadf73b15656502e34bc4fc00e197fcc94802c",
-                "reference": "19cadf73b15656502e34bc4fc00e197fcc94802c",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/19c72d49bfdecc2dac983f3cd4b5b1aff30df7a1",
+                "reference": "19c72d49bfdecc2dac983f3cd4b5b1aff30df7a1",
                 "shasum": ""
             },
             "require": {
@@ -10651,7 +10651,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-17T05:01:41+00:00"
+            "time": "2023-07-18T12:32:17+00:00"
         },
         {
             "name": "pimple/pimple",

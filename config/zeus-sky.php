@@ -28,6 +28,11 @@ return [
     'library_uri_prefix' => 'library',
 
     /**
+     * set the prefix for FAQ URL.
+     */
+    'faq_uri_prefix' => 'faq',
+
+    /**
      * customize the models
      */
     'models' => [
@@ -48,31 +53,6 @@ return [
         LaraZeus\Sky\Filament\Resources\FaqResource::class,
         LaraZeus\Sky\Filament\Resources\LibraryResource::class,
     ],
-
-    /**
-     * set the prefix for FAQ URL.
-     */
-    'faq_uri_prefix' => 'faq',
-
-    /**
-     * this will be set up the default seo site title. read more about it in 'laravel-seo'.
-     */
-    'site_title' => config('app.name', 'Laravel') . ' | Blogs',
-
-    /**
-     * this will be setup the default seo site description. read more about it in 'laravel-seo'.
-     */
-    'site_description' => 'All about ' . config('app.name', 'Laravel') . ' Blogs',
-
-    /**
-     * Num of recent pages/posts displayed on frontend.
-     */
-    'site_recent_count' => 5,
-
-    /**
-     * this will be setup the default seo site color theme. read more about it in 'laravel-seo'.
-     */
-    'site_color' => '#F5F5F4',
 
     /**
      * css class to apply on found search result, e.g. `bg-yellow-400`.
@@ -118,7 +98,7 @@ return [
         'tag' => 'Tag',
         'category' => 'Category',
         'library' => 'Library',
-        'faq' => 'faq',
+        'faq' => 'Faq',
     ],
 
     /**
@@ -127,7 +107,7 @@ return [
      * \LaraZeus\Sky\Classes\TinyEditor::class,
      * \LaraZeus\Sky\Classes\MarkdownEditor::class,
      */
-    'editor' => \LaraZeus\Sky\Classes\TinyEditor::class,
+    'editor' => \LaraZeus\Sky\Classes\TipTapEditor::class,
 
     /**
      * parse the content

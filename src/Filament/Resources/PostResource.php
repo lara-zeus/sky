@@ -2,13 +2,10 @@
 
 namespace LaraZeus\Sky\Filament\Resources;
 
-use Filament\Forms\Components\Card;
 use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Radio;
-use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\SpatieTagsInput;
@@ -85,7 +82,7 @@ class PostResource extends SkyResource
                         ->hint(__('Write an excerpt for your post')),
 
                     TextInput::make('slug')
-                        ->unique(ignorable: fn(?Post $record): ?Post => $record)
+                        ->unique(ignorable: fn (?Post $record): ?Post => $record)
                         ->required()
                         ->maxLength(255)
                         ->label(__('Post Slug')),
@@ -113,7 +110,7 @@ class PostResource extends SkyResource
                     TextInput::make('password')
                         ->label(__('Password'))
                         ->reactive()
-                        ->visible(fn(Get $get): bool => $get('status') === 'private'),
+                        ->visible(fn (Get $get): bool => $get('status') === 'private'),
 
                     DateTimePicker::make('published_at')
                         ->label(__('published at'))
@@ -144,12 +141,12 @@ class PostResource extends SkyResource
 
                     SpatieMediaLibraryFileUpload::make('featured_image_upload')
                         ->collection('posts')
-                        ->visible(fn(Get $get) => $get('featured_image_type') === 'upload')
+                        ->visible(fn (Get $get) => $get('featured_image_type') === 'upload')
                         ->label(''),
 
                     TextInput::make('featured_image')
                         ->label(__('featured image url'))
-                        ->visible(fn(Get $get) => $get('featured_image_type') === 'url')
+                        ->visible(fn (Get $get) => $get('featured_image_type') === 'url')
                         ->url(),
                 ]),
             ])->columnSpan(2),
@@ -173,7 +170,7 @@ class PostResource extends SkyResource
                     ->searchable(['status'])
                     ->toggleable()
                     ->view('zeus::filament.columns.status-desc')
-                    ->tooltip(fn(Post $record): string => $record->published_at->format('Y/m/d | H:i A')),
+                    ->tooltip(fn (Post $record): string => $record->published_at->format('Y/m/d | H:i A')),
 
                 SpatieTagsColumn::make('tags')
                     ->label(__('Post Tags'))
@@ -193,7 +190,7 @@ class PostResource extends SkyResource
                         ->color('warning')
                         ->icon('heroicon-o-arrow-top-right-on-square')
                         ->label(__('Open'))
-                        ->url(fn(Post $record): string => route('post', ['slug' => $record]))
+                        ->url(fn (Post $record): string => route('post', ['slug' => $record]))
                         ->openUrlInNewTab(),
                     DeleteAction::make('delete'),
                     ForceDeleteAction::make(),
@@ -214,17 +211,17 @@ class PostResource extends SkyResource
 
                 Filter::make('password')
                     ->label(__('Password Protected'))
-                    ->query(fn(Builder $query): Builder => $query->whereNotNull('password')),
+                    ->query(fn (Builder $query): Builder => $query->whereNotNull('password')),
 
                 Filter::make('sticky')
                     ->label(__('Still Sticky'))
                     // @phpstan-ignore-next-line
-                    ->query(fn(Builder $query): Builder => $query->sticky()),
+                    ->query(fn (Builder $query): Builder => $query->sticky()),
 
                 Filter::make('not_sticky')
                     ->label(__('Not Sticky'))
                     ->query(
-                        fn(Builder $query): Builder => $query
+                        fn (Builder $query): Builder => $query
                             ->whereDate('sticky_until', '<=', now())
                             ->orWhereNull('sticky_until')
                     ),
@@ -232,7 +229,7 @@ class PostResource extends SkyResource
                 Filter::make('sticky_only')
                     ->label(__('Sticky Only'))
                     ->query(
-                        fn(Builder $query): Builder => $query
+                        fn (Builder $query): Builder => $query
                             ->where('post_type', 'post')
                             ->whereNotNull('sticky_until')
                     ),

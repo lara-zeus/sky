@@ -2,12 +2,12 @@
 
 namespace LaraZeus\Sky\Filament\Resources\PageResource\Pages;
 
-use Filament\Resources\Pages\CreateRecord;
+use Filament\Resources\Pages\EditRecord;
 use LaraZeus\Sky\Filament\Resources\PageResource;
 
-class CreatePost extends CreateRecord
+class EditPage extends EditRecord
 {
-    use CreateRecord\Concerns\Translatable;
+    use EditRecord\Concerns\Translatable;
 
     protected static string $resource = PageResource::class;
 }

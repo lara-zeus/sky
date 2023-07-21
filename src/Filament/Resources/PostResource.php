@@ -6,11 +6,13 @@ use Filament\Forms\Components\Card;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\SpatieTagsInput;
+use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -48,119 +50,110 @@ class PostResource extends SkyResource
 
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema([
-                Grid::make()->schema([
-                    Card::make()->schema([
-                        TextInput::make('title')
-                            ->label(__('Post Title'))
-                            ->required()
-                            ->maxLength(255)
-                            ->reactive()
-                            ->afterStateUpdated(function (Set $set, $state, $context) {
-                                if ($context === 'edit') {
-                                    return;
-                                }
+        return $form->schema([
+            Tabs::make('post_tabs')->schema([
+                Tabs\Tab::make(__('Title & Content'))->schema([
+                    TextInput::make('title')
+                        ->label(__('Post Title'))
+                        ->required()
+                        ->maxLength(255)
+                        ->reactive()
+                        ->afterStateUpdated(function (Set $set, $state, $context) {
+                            if ($context === 'edit') {
+                                return;
+                            }
 
-                                $set('slug', Str::slug($state));
-                            }),
+                            $set('slug', Str::slug($state));
+                        }),
+                    config('zeus-sky.editor')::component(),
+                ]),
 
-                        config('zeus-sky.editor')::component(),
-                    ]),
-                ])->columnSpan(3),
+                Tabs\Tab::make(__('SEO'))->schema([
+                    Placeholder::make(__('SEO Settings')),
 
-                Grid::make()->schema([
-                    Section::make(__('SEO'))
-                        ->description(__('SEO Settings'))
-                        ->schema([
-                            Hidden::make('user_id')
-                                ->default(auth()->user()->id)
-                                ->required(),
+                    Hidden::make('user_id')
+                        ->default(auth()->user()->id)
+                        ->required(),
 
-                            Hidden::make('post_type')
-                                ->default('post')
-                                ->required(),
+                    Hidden::make('post_type')
+                        ->default('post')
+                        ->required(),
 
-                            Textarea::make('description')
-                                ->maxLength(255)
-                                ->label(__('Description'))
-                                ->hint(__('Write an excerpt for your post')),
+                    Textarea::make('description')
+                        ->maxLength(255)
+                        ->label(__('Description'))
+                        ->hint(__('Write an excerpt for your post')),
 
-                            TextInput::make('slug')
-                                ->unique(ignorable: fn (?Post $record): ?Post => $record)
-                                ->required()
-                                ->maxLength(255)
-                                ->label(__('Post Slug')),
+                    TextInput::make('slug')
+                        ->unique(ignorable: fn(?Post $record): ?Post => $record)
+                        ->required()
+                        ->maxLength(255)
+                        ->label(__('Post Slug')),
+                ]),
+                Tabs\Tab::make(__('Tags'))->schema([
+                    Placeholder::make(__('Tags and Categories')),
+                    SpatieTagsInput::make('tags')
+                        ->type('tag')
+                        ->label(__('Tags')),
+
+                    SpatieTagsInput::make('category')
+                        ->type('category')
+                        ->label(__('Categories')),
+                ]),
+
+                Tabs\Tab::make(__('Visibility'))->schema([
+                    Placeholder::make(__('Visibility Options')),
+                    Select::make('status')
+                        ->label(__('status'))
+                        ->default('publish')
+                        ->required()
+                        ->reactive()
+                        ->options(config('zeus-sky.models.postStatus')::pluck('label', 'name')),
+
+                    TextInput::make('password')
+                        ->label(__('Password'))
+                        ->reactive()
+                        ->visible(fn(Get $get): bool => $get('status') === 'private'),
+
+                    DateTimePicker::make('published_at')
+                        ->label(__('published at'))
+                        ->native(false)
+                        ->default(now()),
+
+                    DateTimePicker::make('sticky_until')
+                        ->native(false)
+                        ->label(__('Sticky Until')),
+                ]),
+
+                Tabs\Tab::make(__('Image'))->schema([
+                    Placeholder::make(__('Featured Image')),
+                    Radio::make('featured_image_type')
+                        ->label('')
+                        ->reactive()
+                        ->dehydrated(false)
+                        ->afterStateHydrated(function (Set $set, Get $get) {
+                            $setVal = ($get('featured_image') === null) ? 'upload' : 'url';
+                            $set('featured_image_type', $setVal);
+                        })
+                        ->default('upload')
+                        ->options([
+                            'upload' => __('upload'),
+                            'url' => __('url'),
                         ])
-                        ->collapsible(),
+                        ->inline(),
 
-                    Section::make(__('Tags and Categories'))
-                        ->description(__('Tags and Categories Options'))
-                        ->schema([
-                            SpatieTagsInput::make('tags')
-                                ->type('tag')
-                                ->label(__('Tags')),
+                    SpatieMediaLibraryFileUpload::make('featured_image_upload')
+                        ->collection('posts')
+                        ->visible(fn(Get $get) => $get('featured_image_type') === 'upload')
+                        ->label(''),
 
-                            SpatieTagsInput::make('category')
-                                ->type('category')
-                                ->label(__('Categories')),
-                        ])
-                        ->collapsible(),
-
-                    Section::make(__('visibility'))
-                        ->description(__('Visibility Options'))
-                        ->schema([
-                            Select::make('status')
-                                ->label(__('status'))
-                                ->default('publish')
-                                ->required()
-                                ->reactive()
-                                ->options(config('zeus-sky.models.postStatus')::pluck('label', 'name')),
-
-                            TextInput::make('password')
-                                ->label(__('Password'))
-                                ->reactive()
-                                ->visible(fn (Get $get): bool => $get('status') === 'private'),
-
-                            DateTimePicker::make('published_at')
-                                ->label(__('published at'))
-                                ->default(now()),
-
-                            DateTimePicker::make('sticky_until')
-                                ->label(__('Sticky Until')),
-                        ])
-                        ->collapsible(),
-
-                    Section::make(__('Featured Image'))
-                        ->schema([
-                            Radio::make('featured_image_type')
-                                ->label('')
-                                ->reactive()
-                                ->dehydrated(false)
-                                ->afterStateHydrated(function (Set $set, Get $get) {
-                                    $setVal = ($get('featured_image') === null) ? 'upload' : 'url';
-                                    $set('featured_image_type', $setVal);
-                                })
-                                ->default('upload')
-                                ->options([
-                                    'upload' => __('upload'),
-                                    'url' => __('url'),
-                                ])
-                                ->inline(),
-
-                            SpatieMediaLibraryFileUpload::make('featured_image_upload')
-                                ->collection('posts')
-                                ->visible(fn (Get $get) => $get('featured_image_type') === 'upload')
-                                ->label(''),
-
-                            TextInput::make('featured_image')
-                                ->label(__('featured image url'))
-                                ->visible(fn (Get $get) => $get('featured_image_type') === 'url')
-                                ->url(),
-                        ])
-                        ->collapsible(),
-                ])->columnSpan(1),
-            ])->columns(4);
+                    TextInput::make('featured_image')
+                        ->label(__('featured image url'))
+                        ->visible(fn(Get $get) => $get('featured_image_type') === 'url')
+                        ->url(),
+                ]),
+            ])->columnSpan(2),
+        ]);
     }
 
     public static function table(Table $table): Table
@@ -180,7 +173,7 @@ class PostResource extends SkyResource
                     ->searchable(['status'])
                     ->toggleable()
                     ->view('zeus::filament.columns.status-desc')
-                    ->tooltip(fn (Post $record): string => $record->published_at->format('Y/m/d | H:i A')),
+                    ->tooltip(fn(Post $record): string => $record->published_at->format('Y/m/d | H:i A')),
 
                 SpatieTagsColumn::make('tags')
                     ->label(__('Post Tags'))
@@ -200,7 +193,7 @@ class PostResource extends SkyResource
                         ->color('warning')
                         ->icon('heroicon-o-arrow-top-right-on-square')
                         ->label(__('Open'))
-                        ->url(fn (Post $record): string => route('post', ['slug' => $record]))
+                        ->url(fn(Post $record): string => route('post', ['slug' => $record]))
                         ->openUrlInNewTab(),
                     DeleteAction::make('delete'),
                     ForceDeleteAction::make(),
@@ -221,17 +214,17 @@ class PostResource extends SkyResource
 
                 Filter::make('password')
                     ->label(__('Password Protected'))
-                    ->query(fn (Builder $query): Builder => $query->whereNotNull('password')),
+                    ->query(fn(Builder $query): Builder => $query->whereNotNull('password')),
 
                 Filter::make('sticky')
                     ->label(__('Still Sticky'))
                     // @phpstan-ignore-next-line
-                    ->query(fn (Builder $query): Builder => $query->sticky()),
+                    ->query(fn(Builder $query): Builder => $query->sticky()),
 
                 Filter::make('not_sticky')
                     ->label(__('Not Sticky'))
                     ->query(
-                        fn (Builder $query): Builder => $query
+                        fn(Builder $query): Builder => $query
                             ->whereDate('sticky_until', '<=', now())
                             ->orWhereNull('sticky_until')
                     ),
@@ -239,7 +232,7 @@ class PostResource extends SkyResource
                 Filter::make('sticky_only')
                     ->label(__('Sticky Only'))
                     ->query(
-                        fn (Builder $query): Builder => $query
+                        fn(Builder $query): Builder => $query
                             ->where('post_type', 'post')
                             ->whereNotNull('sticky_until')
                     ),

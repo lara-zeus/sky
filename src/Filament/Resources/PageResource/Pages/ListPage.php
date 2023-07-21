@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use LaraZeus\Sky\Filament\Resources\PageResource;
 
-class ListPosts extends ListRecords
+class ListPage extends ListRecords
 {
     use ListRecords\Concerns\Translatable;
 

@@ -54,7 +54,7 @@ class PostResource extends SkyResource
                         ->label(__('Post Title'))
                         ->required()
                         ->maxLength(255)
-                        ->reactive()
+                        ->live(onBlur: true)
                         ->afterStateUpdated(function (Set $set, $state, $context) {
                             if ($context === 'edit') {
                                 return;
@@ -104,12 +104,11 @@ class PostResource extends SkyResource
                         ->label(__('status'))
                         ->default('publish')
                         ->required()
-                        ->reactive()
+                        ->live()
                         ->options(config('zeus-sky.models.postStatus')::pluck('label', 'name')),
 
                     TextInput::make('password')
                         ->label(__('Password'))
-                        ->reactive()
                         ->visible(fn (Get $get): bool => $get('status') === 'private'),
 
                     DateTimePicker::make('published_at')
@@ -126,7 +125,7 @@ class PostResource extends SkyResource
                     Placeholder::make(__('Featured Image')),
                     Radio::make('featured_image_type')
                         ->label('')
-                        ->reactive()
+                        ->live()
                         ->dehydrated(false)
                         ->afterStateHydrated(function (Set $set, Get $get) {
                             $setVal = ($get('featured_image') === null) ? 'upload' : 'url';

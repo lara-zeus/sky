@@ -43,7 +43,7 @@ class LibraryResource extends SkyResource
                     ->label(__('Library Title'))
                     ->required()
                     ->maxLength(255)
-                    ->reactive()
+                    ->live(onBlur: true)
                     ->afterStateUpdated(function (Set $set, $state, $context) {
                         if ($context === 'edit') {
                             return;
@@ -76,7 +76,7 @@ class LibraryResource extends SkyResource
                     ->schema([
                         Radio::make('upload_or_url')
                             ->label('')
-                            ->reactive()
+                            ->live()
                             ->dehydrated(false)
                             ->afterStateHydrated(function (Set $set, Get $get) {
                                 $setVal = ($get('file_path') === null) ? 'upload' : 'url';

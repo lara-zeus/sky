@@ -36,7 +36,7 @@ class TagResource extends SkyResource
                     ->required()
                     ->maxLength(255)
                     ->label(__('Tag.Name'))
-                    ->reactive()
+                    ->live(onBlur: true)
                     ->afterStateUpdated(function (Set $set, $state) {
                         $set('slug', Str::slug($state));
                     }),

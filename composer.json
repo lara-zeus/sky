@@ -89,10 +89,6 @@
     {
       "type": "github",
       "url": "https://github.com/atmonshi/filament-navigation"
-    },
-    {
-      "type": "path",
-      "url": "../core"
     }
   ]
 }

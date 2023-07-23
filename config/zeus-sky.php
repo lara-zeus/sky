@@ -14,10 +14,10 @@ return [
 
     //FE
     'uri_prefix' => [
-        'post'=>'post',
-        'page'=>'page',
-        'library'=>'library',
-        'faq'=>'faq',
+        'post' => 'post',
+        'page' => 'page',
+        'library' => 'library',
+        'faq' => 'faq',
     ],
 
     /**

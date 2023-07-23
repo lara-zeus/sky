@@ -3,7 +3,7 @@
         @if($post->parent !== null)
             <li class="flex items-center">
                 <a href="{{ route('page',[$post->parent->slug]) }}" class="text-gray-400 dark:text-gray-200 capitalize" aria-current="page">{{ $post->parent->title }}</a>
-                <x-iconpark-rightsmall-o class="fill-current w-4 h-4 mx-3" />
+                @svg('iconpark-rightsmall-o','fill-current w-4 h-4 mx-3')
             </li>
         @endif
         <li>

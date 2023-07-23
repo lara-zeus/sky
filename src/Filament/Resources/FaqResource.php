@@ -18,7 +18,7 @@ use LaraZeus\Sky\Models\Faq;
 
 class FaqResource extends SkyResource
 {
-    protected static ?string $navigationIcon = 'iconpark-folderwithdrawal-o';
+    protected static ?string $navigationIcon = 'heroicon-o-folder-open';
 
     public static function getModel(): string
     {

@@ -1,15 +1,15 @@
-<div class="filament-tables-text-column text-primary-600">
+<div class="fi-ta-text">
     @if($getRecord()->password !== null)
         <span x-tooltip.raw="{{ __('Password Protected') }}" title="{{ __('Password Protected') }}">
-            <x-iconpark-lock class="w-4 h-4 inline-flex text-danger-600"/>
+            @svg('heroicon-s-lock-closed','w-4 h-4 inline-flex text-danger-600')
         </span>
     @endif
 
     @if($getRecord()->sticky_until !== null)
         <span x-tooltip.raw="{{ __('Sticky Until') }} {{ $getRecord()->sticky_until->diffForHumans() }}" title="{{ __('Sticky Until') }} {{ $getRecord()->sticky_until->diffForHumans() }}">
-            <x-iconpark-pin class="w-4 h-4 inline-flex text-secondary-500"/>
+            @svg('iconpark-pin','w-4 h-4 inline-flex text-secondary-600')
         </span>
     @endif
 
-    {{ $getRecord()->title }}
+    {{ str($getRecord()->title)->limit(50) }}
 </div>

@@ -28,6 +28,7 @@ class SkyServiceProvider extends PackageServiceProvider
         $package
             ->name('zeus-sky')
             ->hasMigrations($this->getMigrations())
+            ->hasTranslations()
             ->hasCommands($this->getCommands())
             ->hasViews('zeus')
             ->hasConfigFile()
@@ -67,7 +68,7 @@ class SkyServiceProvider extends PackageServiceProvider
         NavigationResource::pluralLabel(__('Navigations'));
         NavigationResource::label(__('Navigation'));
 
-        NavigationResource::navigationIcon('iconpark-treelist-o');
+        NavigationResource::navigationIcon('heroicon-o-queue-list');
 
         FilamentNavigation::addItemType(__('Post link'), [
             Select::make('post_id')

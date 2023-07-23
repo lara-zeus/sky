@@ -19,7 +19,7 @@ use LaraZeus\Sky\Filament\Resources\TagResource\Pages;
 
 class TagResource extends SkyResource
 {
-    protected static ?string $navigationIcon = 'iconpark-tag-o';
+    protected static ?string $navigationIcon = 'heroicon-o-tag';
 
     protected static ?string $navigationGroup = 'Sky';
 

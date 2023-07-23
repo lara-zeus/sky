@@ -15,15 +15,21 @@
                                 <div x-data class="flex items-center justify-between text-primary-600 dark:text-primary-400 hover:dark:text-primary-300">
                                     <h3>{{ $library->title ?? '' }}</h3>
                                     @if($library->type === 'IMAGE')
-                                        <x-heroicon-o-photo x-tooltip.raw="{{ __('Image') }}" class="w-4 h-4 text-gray-400 dark:text-gray-500" />
+                                        <span x-tooltip.raw="{{ __('Image') }}">
+                                            @svg('heroicon-o-photo','w-4 h-4 text-gray-400 dark:text-gray-500')
+                                        </span>
                                     @endif
 
                                     @if($library->type === 'FILE')
-                                        <x-heroicon-o-document x-tooltip.raw="{{ __('File') }}" class="w-4 h-4 text-gray-400 dark:text-gray-500" />
+                                        <span x-tooltip.raw="{{ __('FILE') }}">
+                                            @svg('heroicon-o-document','w-4 h-4 text-gray-400 dark:text-gray-500')
+                                        </span>
                                     @endif
 
                                     @if($library->type === 'VIDEO')
-                                        <x-heroicon-o-film x-tooltip.raw="{{ __('Video') }}" class="w-4 h-4 text-gray-400 dark:text-gray-500" />
+                                        <span x-tooltip.raw="{{ __('VIDEO') }}">
+                                            @svg('heroicon-o-film','w-4 h-4 text-gray-400 dark:text-gray-500')
+                                        </span>
                                     @endif
                                 </div>
                                 <cite class="text-sm text-secondary-600 dark:text-secondary-500 hover:dark:text-secondary-300">

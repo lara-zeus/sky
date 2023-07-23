@@ -38,7 +38,7 @@ use LaraZeus\Sky\Models\Post;
 // @mixin Builder<PostScope>
 class PostResource extends SkyResource
 {
-    protected static ?string $navigationIcon = 'iconpark-docdetail-o';
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     public static function getModel(): string
     {
@@ -173,7 +173,7 @@ class PostResource extends SkyResource
 
                 SpatieTagsColumn::make('tags')
                     ->label(__('Post Tags'))
-                    ->toggleable()
+                    ->toggleable(isToggledHiddenByDefault:true)
                     ->type('tag'),
 
                 SpatieTagsColumn::make('category')

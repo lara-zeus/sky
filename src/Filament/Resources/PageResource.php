@@ -38,7 +38,7 @@ class PageResource extends SkyResource
 {
     protected static ?string $slug = 'pages';
 
-    protected static ?string $navigationIcon = 'iconpark-folder-o';
+    protected static ?string $navigationIcon = 'heroicon-o-document';
 
     public static function getModel(): string
     {

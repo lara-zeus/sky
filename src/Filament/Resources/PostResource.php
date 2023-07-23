@@ -34,6 +34,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\PostResource\Pages;
 use LaraZeus\Sky\Models\Post;
+use LaraZeus\Sky\SkyPlugin;
 
 // @mixin Builder<PostScope>
 class PostResource extends SkyResource
@@ -42,7 +43,7 @@ class PostResource extends SkyResource
 
     public static function getModel(): string
     {
-        return config('zeus-sky.models.post');
+        return SkyPlugin::get()->getPostModel();
     }
 
     public static function form(Form $form): Form
@@ -62,7 +63,7 @@ class PostResource extends SkyResource
 
                             $set('slug', Str::slug($state));
                         }),
-                    config('zeus-sky.editor')::component(),
+                    SkyPlugin::get()->getEditor()::component(),
                 ]),
 
                 Tabs\Tab::make(__('SEO'))->schema([
@@ -105,7 +106,7 @@ class PostResource extends SkyResource
                         ->default('publish')
                         ->required()
                         ->live()
-                        ->options(config('zeus-sky.models.postStatus')::pluck('label', 'name')),
+                        ->options(SkyPlugin::get()->getPostStatusModel()::pluck('label', 'name')),
 
                     TextInput::make('password')
                         ->label(__('Password'))
@@ -206,7 +207,7 @@ class PostResource extends SkyResource
                 SelectFilter::make('status')
                     ->multiple()
                     ->label(__('Status'))
-                    ->options(config('zeus-sky.models.postStatus')::pluck('label', 'name')),
+                    ->options(SkyPlugin::get()->getPostStatusModel()::pluck('label', 'name')),
 
                 Filter::make('password')
                     ->label(__('Password Protected'))

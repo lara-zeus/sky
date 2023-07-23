@@ -2,12 +2,14 @@
 
 namespace LaraZeus\Sky\Classes;
 
+use LaraZeus\Sky\SkyPlugin;
+
 class RenderNavItem
 {
     public static function render($item, $class = '')
     {
         if ($item['type'] === 'page-link') {
-            $page = config('zeus-sky.models.post')::page()->find($item['data']['page_id']) ?? '';
+            $page = SkyPlugin::get()->getPostModel()::page()->find($item['data']['page_id']) ?? '';
 
             return '<a class="' . $class . '"
                     target="' . ($item['data']['target'] ?? '_self') . '"
@@ -16,7 +18,7 @@ class RenderNavItem
                 $item['label'] .
                 '</a>';
         } elseif ($item['type'] === 'post-link') {
-            $post = config('zeus-sky.models.post')::find($item['data']['post_id']) ?? '';
+            $post = SkyPlugin::get()->getPostStatusModel()::find($item['data']['post_id']) ?? '';
 
             return '<a class="' . $class . '"
                     target="' . ($item['data']['target'] ?? '_self') . '"

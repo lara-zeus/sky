@@ -6,8 +6,6 @@ use Filament\Facades\Filament;
 use LaraZeus\Core\CoreServiceProvider;
 use LaraZeus\Sky\Console\migrateCommand;
 use LaraZeus\Sky\Console\PublishCommand;
-use RyanChandler\FilamentNavigation\Facades\FilamentNavigation;
-use RyanChandler\FilamentNavigation\Filament\Resources\NavigationResource;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -61,7 +59,7 @@ class SkyServiceProvider extends PackageServiceProvider
 
     /*private function bootFilamentNavigation(): void
     {
-        NavigationResource::navigationGroup(__(config('zeus-sky.navigation_group_label', 'Sky')));
+        NavigationResource::navigationGroup(\LaraZeus\Sky\SkyPlugin::get()->navigationGroupLabel());
         NavigationResource::navigationSort(99);
 
         NavigationResource::navigationLabel(__('Navigations'));
@@ -75,7 +73,7 @@ class SkyServiceProvider extends PackageServiceProvider
                 ->label(__('Select Post'))
                 ->searchable()
                 ->options(function () {
-                    return config('zeus-sky.models.post')::published()->pluck('title', 'id');
+                    return SkyPlugin::get()->getPostModel()::published()->pluck('title', 'id');
                 }),
         ]);
 
@@ -84,7 +82,7 @@ class SkyServiceProvider extends PackageServiceProvider
                 ->label(__('Select Page'))
                 ->searchable()
                 ->options(function () {
-                    return config('zeus-sky.models.post')::page()->pluck('title', 'id');
+                    return SkyPlugin::get()->getPostModel()::page()->pluck('title', 'id');
                 }),
         ]);
     }*/

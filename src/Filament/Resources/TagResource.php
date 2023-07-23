@@ -16,6 +16,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\TagResource\Pages;
+use LaraZeus\Sky\SkyPlugin;
 
 class TagResource extends SkyResource
 {
@@ -25,7 +26,7 @@ class TagResource extends SkyResource
 
     public static function getModel(): string
     {
-        return config('zeus-sky.models.tag');
+        return SkyPlugin::get()->getFaqModel();
     }
 
     public static function form(Form $form): Form

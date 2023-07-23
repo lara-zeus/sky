@@ -3,12 +3,13 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use LaraZeus\Sky\SkyPlugin;
 
 class PostFactory extends Factory
 {
     public function getModel(): string
     {
-        return config('zeus-sky.models.post');
+        return SkyPlugin::get()->getPostModel();
     }
 
     /**

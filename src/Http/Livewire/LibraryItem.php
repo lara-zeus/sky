@@ -2,6 +2,7 @@
 
 namespace LaraZeus\Sky\Http\Livewire;
 
+use LaraZeus\Sky\SkyPlugin;
 use Livewire\Component;
 
 class LibraryItem extends Component
@@ -10,7 +11,7 @@ class LibraryItem extends Component
 
     public function mount($slug)
     {
-        $this->item = config('zeus-sky.models.library')::where('slug', $slug)->firstOrFail();
+        $this->item = SkyPlugin::get()->getLibraryModel()::where('slug', $slug)->firstOrFail();
     }
 
     public function render()

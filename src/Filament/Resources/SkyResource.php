@@ -4,6 +4,7 @@ namespace LaraZeus\Sky\Filament\Resources;
 
 use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
+use LaraZeus\Sky\SkyPlugin;
 
 class SkyResource extends Resource
 {
@@ -11,7 +12,7 @@ class SkyResource extends Resource
 
     public static function getNavigationGroup(): ?string
     {
-        return __(config('zeus-sky.navigation_group_label', 'Sky'));
+        return SkyPlugin::get()->getNavigationGroupLabel();
     }
 
     public static function getNavigationBadge(): ?string

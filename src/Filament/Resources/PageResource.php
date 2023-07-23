@@ -33,6 +33,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\PageResource\Pages;
 use LaraZeus\Sky\Models\Post;
+use LaraZeus\Sky\SkyPlugin;
 
 class PageResource extends SkyResource
 {
@@ -42,7 +43,7 @@ class PageResource extends SkyResource
 
     public static function getModel(): string
     {
-        return config('zeus-sky.models.post');
+        return SkyPlugin::get()->getPostModel();
     }
 
     /**
@@ -69,7 +70,7 @@ class PageResource extends SkyResource
                         ->afterStateUpdated(function (Set $set, $state) {
                             $set('slug', Str::slug($state));
                         }),
-                    config('zeus-sky.editor')::component(),
+                    SkyPlugin::get()->getEditor()::component(),
                 ]),
                 Tabs\Tab::make(__('SEO'))->schema([
                     Hidden::make('user_id')
@@ -92,7 +93,7 @@ class PageResource extends SkyResource
                         ->label(__('Post Slug')),
 
                     Select::make('parent_id')
-                        ->options(config('zeus-sky.models.post')::where('post_type', 'page')->pluck(
+                        ->options(SkyPlugin::get()->getPostStatusModel()::where('post_type', 'page')->pluck(
                             'title',
                             'id'
                         ))
@@ -109,7 +110,7 @@ class PageResource extends SkyResource
                         ->default('publish')
                         ->required()
                         ->live()
-                        ->options(config('zeus-sky.models.postStatus')::pluck('label', 'name')),
+                        ->options(SkyPlugin::get()->getPostStatusModel()::pluck('label', 'name')),
 
                     TextInput::make('password')
                         ->label(__('Password'))
@@ -192,7 +193,7 @@ class PageResource extends SkyResource
                 SelectFilter::make('status')
                     ->multiple()
                     ->label(__('Status'))
-                    ->options(config('zeus-sky.models.postStatus')::pluck('label', 'name')),
+                    ->options(SkyPlugin::get()->getPostStatusModel()::pluck('label', 'name')),
                 Filter::make('password')
                     ->label(__('Password Protected'))
                     ->query(fn (Builder $query): Builder => $query->whereNotNull('password')),

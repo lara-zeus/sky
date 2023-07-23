@@ -3,12 +3,13 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use LaraZeus\Sky\SkyPlugin;
 
 class LibraryFactory extends Factory
 {
     public function getModel(): string
     {
-        return config('zeus-sky.models.library');
+        return SkyPlugin::get()->getLibraryModel();
     }
 
     /**

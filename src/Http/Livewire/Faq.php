@@ -2,6 +2,7 @@
 
 namespace LaraZeus\Sky\Http\Livewire;
 
+use LaraZeus\Sky\SkyPlugin;
 use Livewire\Component;
 
 class Faq extends Component
@@ -18,7 +19,7 @@ class Faq extends Component
             ->twitter();
 
         return view(app('skyTheme') . '.addons.faq')
-            ->with('faqs', config('zeus-sky.models.faq')::get())
+            ->with('faqs', SkyPlugin::get()->getFaqModel()::get())
             ->layout(config('zeus.layout'));
     }
 }

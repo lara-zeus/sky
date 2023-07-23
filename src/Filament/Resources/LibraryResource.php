@@ -23,6 +23,7 @@ use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\LibraryResource\Pages;
 use LaraZeus\Sky\Models\Library;
+use LaraZeus\Sky\SkyPlugin;
 
 class LibraryResource extends SkyResource
 {
@@ -32,7 +33,7 @@ class LibraryResource extends SkyResource
 
     public static function getModel(): string
     {
-        return config('zeus-sky.models.library') ?? Library::class;
+        return SkyPlugin::get()->getLibraryModel();
     }
 
     public static function form(Form $form): Form

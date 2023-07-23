@@ -2,6 +2,7 @@
 
 namespace LaraZeus\Sky\Http\Livewire;
 
+use LaraZeus\Sky\SkyPlugin;
 use Livewire\Component;
 
 class Library extends Component
@@ -18,8 +19,8 @@ class Library extends Component
             ->twitter();
 
         return view(app('skyTheme') . '.addons.library')
-            ->with('libraries', config('zeus-sky.models.library')::get())
-            ->with('categories', config('zeus-sky.models.tag')::getWithType('library'))
+            ->with('libraries', SkyPlugin::get()->getLibraryModel()::get())
+            ->with('categories', SkyPlugin::get()->getTagModel()::getWithType('library'))
             ->layout(config('zeus.layout'));
     }
 }

@@ -11,12 +11,13 @@ class TipTapEditor implements ContentEditor
 {
     public static function component(): Component
     {
-        if (class_exists(TipTapEditorAlias::class)) {
+        //todo
+        /*if (class_exists(TipTapEditorAlias::class)) {
             return \FilamentTiptapEditor\TiptapEditor::make('content')
                 ->profile('default')
                 ->output(TiptapOutput::Html)
                 ->required();
-        }
+        }*/
 
         return Textarea::make('content')->required();
     }

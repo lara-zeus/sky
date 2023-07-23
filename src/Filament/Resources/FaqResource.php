@@ -15,6 +15,7 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use LaraZeus\Sky\Filament\Resources\FaqResource\Pages;
 use LaraZeus\Sky\Models\Faq;
+use LaraZeus\Sky\SkyPlugin;
 
 class FaqResource extends SkyResource
 {
@@ -22,7 +23,7 @@ class FaqResource extends SkyResource
 
     public static function getModel(): string
     {
-        return config('zeus-sky.models.faq') ?? Faq::class;
+        return SkyPlugin::get()->getFaqModel();
     }
 
     public static function getLabel(): string

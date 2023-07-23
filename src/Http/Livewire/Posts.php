@@ -2,6 +2,7 @@
 
 namespace LaraZeus\Sky\Http\Livewire;
 
+use LaraZeus\Sky\SkyPlugin;
 use Livewire\Component;
 
 class Posts extends Component
@@ -13,14 +14,14 @@ class Posts extends Component
         $search = request('search');
         $category = request('category');
 
-        $posts = config('zeus-sky.models.post')::NotSticky()
+        $posts = SkyPlugin::get()->getPostModel()::NotSticky()
             ->search($search)
             ->forCategory($category)
             ->published()
             ->orderBy('published_at', 'desc')
             ->get();
 
-        $pages = config('zeus-sky.models.post')::page()
+        $pages = SkyPlugin::get()->getPostModel()::page()
             ->search($search)
             ->forCategory($category)
             ->orderBy('published_at', 'desc')
@@ -30,7 +31,7 @@ class Posts extends Component
         $pages = $this->highlightSearchResults($pages, $search);
         $posts = $this->highlightSearchResults($posts, $search);
 
-        $recent = config('zeus-sky.models.post')::posts()
+        $recent = SkyPlugin::get()->getPostModel()::posts()
             ->published()
             ->limit(config('zeus-sky.site_recent_count', 5))
             ->orderBy('published_at', 'desc')
@@ -49,8 +50,8 @@ class Posts extends Component
             'posts' => $posts,
             'pages' => $pages,
             'recent' => $recent,
-            'tags' => config('zeus-sky.models.tag')::withCount('postsPublished')->where('type', 'category')->get(),
-            'stickies' => config('zeus-sky.models.post')::sticky()->published()->get(),
+            'tags' => SkyPlugin::get()->getTagModel()::withCount('postsPublished')->where('type', 'category')->get(),
+            'stickies' => SkyPlugin::get()->getPostModel()::sticky()->published()->get(),
         ])
             ->layout(config('zeus.layout'));
     }

@@ -3,33 +3,34 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use LaraZeus\Sky\SkyPlugin;
 
 class SkySeeder extends Seeder
 {
     public function run()
     {
-        config('zeus-sky.models.tag')::create(['name' => ['en' => 'laravel', 'ar' => 'لارافل'], 'type' => 'category']);
-        config('zeus-sky.models.tag')::create(['name' => ['en' => 'talks', 'ar' => 'اخبار'], 'type' => 'category']);
-        config('zeus-sky.models.tag')::create(['name' => ['en' => 'dev', 'ar' => 'تطوير'], 'type' => 'category']);
+        SkyPlugin::get()->getTagModel()::create(['name' => ['en' => 'laravel', 'ar' => 'لارافل'], 'type' => 'category']);
+        SkyPlugin::get()->getTagModel()::create(['name' => ['en' => 'talks', 'ar' => 'اخبار'], 'type' => 'category']);
+        SkyPlugin::get()->getTagModel()::create(['name' => ['en' => 'dev', 'ar' => 'تطوير'], 'type' => 'category']);
 
-        config('zeus-sky.models.post')::factory()
+        SkyPlugin::get()->getPostModel()::factory()
             ->count(8)
             ->create();
 
-        foreach (config('zeus-sky.models.post')::all() as $post) {
-            $random_tags = config('zeus-sky.models.tag')::all()->random(1)->first()->name;
+        foreach (SkyPlugin::get()->getPostModel()::all() as $post) {
+            $random_tags = SkyPlugin::get()->getTagModel()::all()->random(1)->first()->name;
             $post->syncTagsWithType([$random_tags], 'category');
         }
 
-        config('zeus-sky.models.tag')::create(['name' => ['en' => 'support docs', 'ar' => 'الدعم الفني'], 'type' => 'library']);
-        config('zeus-sky.models.tag')::create(['name' => ['en' => 'how to', 'ar' => 'كيف'], 'type' => 'library']);
+        SkyPlugin::get()->getTagModel()::create(['name' => ['en' => 'support docs', 'ar' => 'الدعم الفني'], 'type' => 'library']);
+        SkyPlugin::get()->getTagModel()::create(['name' => ['en' => 'how to', 'ar' => 'كيف'], 'type' => 'library']);
 
-        config('zeus-sky.models.library')::factory()
+        SkyPlugin::get()->getLibraryModel()::factory()
             ->count(8)
             ->create();
 
-        foreach (config('zeus-sky.models.library')::all() as $library) {
-            $random_tags = config('zeus-sky.models.tag')::getWithType('library')->random(1)->first()->name;
+        foreach (SkyPlugin::get()->getLibraryModel()::all() as $library) {
+            $random_tags = SkyPlugin::get()->getTagModel()::getWithType('library')->random(1)->first()->name;
             $library->syncTagsWithType([$random_tags], 'library');
         }
     }

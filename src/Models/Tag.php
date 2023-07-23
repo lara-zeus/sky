@@ -5,6 +5,7 @@ namespace LaraZeus\Sky\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use LaraZeus\Sky\SkyPlugin;
 
 /**
  * @property string $slug
@@ -17,29 +18,29 @@ class Tag extends \Spatie\Tags\Tag
 {
     public function library(): MorphToMany
     {
-        return $this->morphedByMany(config('zeus-sky.models.library'), 'taggable');
+        return $this->morphedByMany(SkyPlugin::get()->getLibraryModel(), 'taggable');
     }
 
     public function category(): MorphToMany
     {
-        return $this->morphedByMany(config('zeus-sky.models.post'), 'taggable');
+        return $this->morphedByMany(SkyPlugin::get()->getPostModel(), 'taggable');
     }
 
     public function faq(): MorphToMany
     {
-        return $this->morphedByMany(config('zeus-sky.models.faq'), 'taggable');
+        return $this->morphedByMany(SkyPlugin::get()->getFaqModel(), 'taggable');
     }
 
     public function tag(): MorphToMany
     {
-        return $this->morphedByMany(config('zeus-sky.models.post'), 'taggable');
+        return $this->morphedByMany(SkyPlugin::get()->getPostModel(), 'taggable');
     }
 
     /** @return MorphToMany<Post> */
     public function postsPublished(): MorphToMany
     {
         // @phpstan-ignore-next-line
-        return $this->morphedByMany(config('zeus-sky.models.post'), 'taggable')->published();
+        return $this->morphedByMany(SkyPlugin::get()->getPostModel(), 'taggable')->published();
     }
 
     protected function generateSlug(string $locale): string

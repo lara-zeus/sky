@@ -2,6 +2,7 @@
 
 namespace LaraZeus\Sky\Http\Livewire;
 
+use LaraZeus\Sky\SkyPlugin;
 use Livewire\Component;
 
 class Tags extends Component
@@ -16,7 +17,7 @@ class Tags extends Component
     {
         $this->type = $type;
         $this->slug = $slug;
-        $this->tag = config('zeus-sky.models.tag')::findBySlug($slug, $type);
+        $this->tag = SkyPlugin::get()->getTagModel()::findBySlug($slug, $type);
 
         abort_if($this->tag === null, 404);
     }

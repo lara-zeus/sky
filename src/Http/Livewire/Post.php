@@ -2,6 +2,7 @@
 
 namespace LaraZeus\Sky\Http\Livewire;
 
+use LaraZeus\Sky\SkyPlugin;
 use Livewire\Component;
 
 class Post extends Component
@@ -10,7 +11,7 @@ class Post extends Component
 
     public function mount($slug)
     {
-        $this->post = config('zeus-sky.models.post')::where('slug', $slug)->firstOrFail();
+        $this->post = SkyPlugin::get()->getPostModel()::where('slug', $slug)->firstOrFail();
     }
 
     public function render()
@@ -29,7 +30,7 @@ class Post extends Component
 
         return view(app('skyTheme') . '.post')
             ->with('post', $this->post)
-            ->with('related', config('zeus-sky.models.post')::related($this->post)->take(4)->get())
+            ->with('related', SkyPlugin::get()->getPostModel()::related($this->post)->take(4)->get())
             ->layout(config('zeus.layout'));
     }
 

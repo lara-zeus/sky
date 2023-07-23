@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Blade;
+use LaraZeus\Sky\SkyPlugin;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Tags\HasTags;
@@ -80,7 +81,7 @@ class Post extends Model implements HasMedia
 
     public function statusDesc(): string
     {
-        $PostStatus = config('zeus-sky.models.postStatus')::where('name', $this->status)->first();
+        $PostStatus = SkyPlugin::get()->getPostStatusModel()::where('name', $this->status)->first();
         $icon = Blade::render('@svg("' . $PostStatus->icon . '","w-4 h-4 inline-flex")');
 
         return "<span title='" . __('post status') . "' class='$PostStatus->class'> " . $icon . " {$PostStatus->label}</span>";
@@ -114,7 +115,7 @@ class Post extends Model implements HasMedia
 
     public function getContent(): string
     {
-        return $this->parseContent(config('zeus-sky.editor')::render($this->content));
+        return $this->parseContent(SkyPlugin::get()->getEditor()::render($this->content));
     }
 
     public function parseContent($content): string

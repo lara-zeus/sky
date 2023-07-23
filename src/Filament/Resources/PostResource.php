@@ -173,7 +173,7 @@ class PostResource extends SkyResource
 
                 SpatieTagsColumn::make('tags')
                     ->label(__('Post Tags'))
-                    ->toggleable(isToggledHiddenByDefault:true)
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->type('tag'),
 
                 SpatieTagsColumn::make('category')

@@ -2,9 +2,9 @@
 
 namespace LaraZeus\Sky\Filament\Resources\LibraryResource\Pages;
 
+use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 use LaraZeus\Sky\Filament\Resources\LibraryResource;
-use Filament\Actions;
 
 class EditLibrary extends EditRecord
 {

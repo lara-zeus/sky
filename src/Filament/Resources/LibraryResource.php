@@ -53,7 +53,7 @@ class LibraryResource extends SkyResource
                     }),
 
                 TextInput::make('slug')
-                    ->unique(ignorable: fn(?Library $record): ?Library => $record)
+                    ->unique(ignorable: fn (?Library $record): ?Library => $record)
                     ->required()
                     ->maxLength(255)
                     ->label(__('Library Slug')),
@@ -93,12 +93,12 @@ class LibraryResource extends SkyResource
                             ->collection('library')
                             ->multiple()
                             ->reorderable()
-                            ->visible(fn(Get $get) => $get('upload_or_url') === 'upload')
+                            ->visible(fn (Get $get) => $get('upload_or_url') === 'upload')
                             ->label(''),
 
                         TextInput::make('file_path')
                             ->label(__('file url'))
-                            ->visible(fn(Get $get) => $get('upload_or_url') === 'url')
+                            ->visible(fn (Get $get) => $get('upload_or_url') === 'url')
                             ->url(),
                     ])
                     ->collapsible(),
@@ -116,9 +116,9 @@ class LibraryResource extends SkyResource
                     ->label(__('Library Type'))
                     ->searchable()
                     ->sortable()
-                    ->formatStateUsing(fn(string $state): string => str($state)->title())
+                    ->formatStateUsing(fn (string $state): string => str($state)->title())
                     ->color('primary')
-                    ->icon(fn(string $state) => match ($state) {
+                    ->icon(fn (string $state) => match ($state) {
                         'IMAGE' => 'heroicon-o-photo',
                         'FILE' => 'heroicon-o-document',
                         'VIDEO' => 'heroicon-o-film',
@@ -138,7 +138,7 @@ class LibraryResource extends SkyResource
                         ->color('warning')
                         ->icon('heroicon-o-arrow-top-right-on-square')
                         ->label(__('Open'))
-                        ->url(fn(Library $record): string => route('library.item', ['slug' => $record->slug]))
+                        ->url(fn (Library $record): string => route('library.item', ['slug' => $record->slug]))
                         ->openUrlInNewTab(),
                     DeleteAction::make('delete')
                         ->label(__('Delete')),

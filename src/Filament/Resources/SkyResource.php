@@ -9,11 +9,6 @@ class SkyResource extends Resource
 {
     use Translatable;
 
-    public static function getTranslatableLocales(): array
-    {
-        return config('zeus-sky.translatable_Locales');
-    }
-
     public static function getNavigationGroup(): ?string
     {
         return __(config('zeus-sky.navigation_group_label', 'Sky'));

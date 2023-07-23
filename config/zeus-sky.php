@@ -12,25 +12,12 @@ return [
      */
     'middleware' => ['web'],
 
-    /**
-     * set the prefix for posts URL.
-     */
-    'post_uri_prefix' => 'post',
-
-    /**
-     * set the prefix for pages URL.
-     */
-    'page_uri_prefix' => 'page',
-
-    /**
-     * set the prefix for library URL.
-     */
-    'library_uri_prefix' => 'library',
-
-    /**
-     * set the prefix for FAQ URL.
-     */
-    'faq_uri_prefix' => 'faq',
+    'uri_prefix' => [
+        'post'=>'post',
+        'page'=>'page',
+        'library'=>'library',
+        'faq'=>'faq',
+    ],
 
     /**
      * customize the models
@@ -64,11 +51,6 @@ return [
      * destroy html structure.
      */
     'skip_highlighting_terms' => ['iframe'],
-
-    /**
-     * available locales, this currently used only in tags manager.
-     */
-    'translatable_Locales' => ['en', 'ar'],
 
     /**
      * Navigation Group Label

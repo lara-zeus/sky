@@ -9,13 +9,14 @@ use LaraZeus\Sky\Http\Livewire\Post;
 use LaraZeus\Sky\Http\Livewire\Posts;
 use LaraZeus\Sky\Http\Livewire\Tags;
 use LaraZeus\Sky\SkyPlugin;
-if(\LaraZeus\Sky\SkyPlugin::get()->hasFaqResource()){
+
+if (\LaraZeus\Sky\SkyPlugin::get()->hasFaqResource()) {
     Route::middleware(config('zeus-sky.middleware'))
         ->get(config('zeus-sky.uri_prefix.faq'), Faq::class)
         ->name('faq');
 }
 
-if(\LaraZeus\Sky\SkyPlugin::get()->hasLibraryResource()){
+if (\LaraZeus\Sky\SkyPlugin::get()->hasLibraryResource()) {
     Route::middleware(config('zeus-sky.middleware'))
         ->prefix(config('zeus-sky.uri_prefix.library'))
         ->group(function () {

@@ -14,7 +14,6 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use LaraZeus\Sky\Filament\Resources\FaqResource\Pages;
-use LaraZeus\Sky\Models\Faq;
 use LaraZeus\Sky\SkyPlugin;
 
 class FaqResource extends SkyResource

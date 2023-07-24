@@ -11,6 +11,8 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class SkyServiceProvider extends PackageServiceProvider
 {
+    public static string $name = 'zeus-sky';
+
     public function packageBooted(): void
     {
         CoreServiceProvider::setThemePath('sky');
@@ -24,7 +26,7 @@ class SkyServiceProvider extends PackageServiceProvider
     public function configurePackage(Package $package): void
     {
         $package
-            ->name('zeus-sky')
+            ->name(static::$name)
             ->hasMigrations($this->getMigrations())
             ->hasTranslations()
             ->hasCommands($this->getCommands())

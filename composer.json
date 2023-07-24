@@ -1,94 +1,98 @@
 {
-  "name": "lara-zeus/sky",
-  "description": "Lara-zeus sky is simple CMS for your website. It includes posts, pages, tags, and categories.",
-  "keywords": [
-    "laravel",
-    "lara-zeus",
-    "sky",
-    "cms",
-    "pages",
-    "posts",
-    "menu",
-    "news",
-    "wordpress laravel",
-    "wordpress alternative",
-    "laravel cms",
-    "filamentphp"
-  ],
-  "homepage": "https://larazeus.com",
-  "license": "MIT",
-  "type": "library",
-  "authors": [
-    {
-      "name": "php coder",
-      "email": "info@larazeus.com",
-      "role": "Owner"
-    }
-  ],
-  "require": {
-    "php": "^8.0.2",
-    "ext-json": "*",
-    "doctrine/dbal": "^3.3",
-    "filament/spatie-laravel-media-library-plugin": "^3.0@beta",
-    "filament/spatie-laravel-tags-plugin": "^3.0@beta",
-    "filament/spatie-laravel-translatable-plugin": "^3.0@beta",
-    "awcodes/filament-tiptap-editor": "v3.0.0-alpha2",
-    "spatie/laravel-medialibrary": "^10.0.0",
-    "spatie/laravel-sluggable": "^3.3",
-    "spatie/laravel-tags": "^4.4",
-    "lara-zeus/core": "3.x-dev"
-  },
-  "require-dev": {
-    "pestphp/pest": "^2.0",
-    "phpunit/phpunit": "^10.2",
-    "laravel/pint": "^1.0",
-    "nunomaduro/collision": "^7.0",
-    "nunomaduro/larastan": "^2.0.1",
-    "orchestra/testbench": "^7.0 || ^8.0",
-    "pestphp/pest-plugin-laravel": "2.x-dev",
-    "pestphp/pest-plugin-livewire": "2.x-dev",
-    "phpstan/extension-installer": "^1.1",
-    "phpstan/phpstan-deprecation-rules": "^1.0",
-    "phpstan/phpstan-phpunit": "^1.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "LaraZeus\\Sky\\": "src"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "LaraZeus\\Sky\\Tests\\": "tests"
-    }
-  },
-  "scripts": {
-    "pint": "vendor/bin/pint",
-    "test:pest": "vendor/bin/pest --parallel",
-    "test:phpstan": "vendor/bin/phpstan analyse",
-    "test": [
-      "@test:pest",
-      "@test:phpstan"
+    "name": "lara-zeus/sky",
+    "description": "Lara-zeus sky is simple CMS for your website. It includes posts, pages, tags, and categories.",
+    "keywords": [
+        "laravel",
+        "lara-zeus",
+        "sky",
+        "cms",
+        "pages",
+        "posts",
+        "menu",
+        "news",
+        "wordpress laravel",
+        "wordpress alternative",
+        "laravel cms",
+        "filamentphp"
+    ],
+    "homepage": "https://larazeus.com/sky",
+    "support": {
+        "issues": "https://github.com/lara-zeus/sky/issues",
+        "source": "https://github.com/lara-zeus/sky"
+    },
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "php coder",
+            "email": "info@larazeus.com",
+            "role": "Owner"
+        }
+    ],
+    "require": {
+        "php": "^8.0.2",
+        "ext-json": "*",
+        "doctrine/dbal": "^3.3",
+        "filament/spatie-laravel-media-library-plugin": "^3.0@beta",
+        "filament/spatie-laravel-tags-plugin": "^3.0@beta",
+        "filament/spatie-laravel-translatable-plugin": "^3.0@beta",
+        "awcodes/filament-tiptap-editor": "v3.0.0-alpha2",
+        "spatie/laravel-medialibrary": "^10.0.0",
+        "spatie/laravel-sluggable": "^3.3",
+        "spatie/laravel-tags": "^4.4",
+        "lara-zeus/core": "3.x-dev"
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.0",
+        "phpunit/phpunit": "^10.2",
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^7.0",
+        "nunomaduro/larastan": "^2.0.1",
+        "orchestra/testbench": "^7.0 || ^8.0",
+        "pestphp/pest-plugin-laravel": "2.x-dev",
+        "pestphp/pest-plugin-livewire": "2.x-dev",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "LaraZeus\\Sky\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LaraZeus\\Sky\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "pint": "vendor/bin/pint",
+        "test:pest": "vendor/bin/pest --parallel",
+        "test:phpstan": "vendor/bin/phpstan analyse",
+        "test": [
+            "@test:pest",
+            "@test:phpstan"
+        ]
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaraZeus\\Sky\\SkyServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "github",
+            "url": "https://github.com/atmonshi/filament-navigation"
+        }
     ]
-  },
-  "config": {
-    "sort-packages": true,
-    "allow-plugins": {
-      "pestphp/pest-plugin": true,
-      "phpstan/extension-installer": true
-    }
-  },
-  "extra": {
-    "laravel": {
-      "providers": [
-        "LaraZeus\\Sky\\SkyServiceProvider"
-      ]
-    }
-  },
-  "minimum-stability": "dev",
-  "repositories": [
-    {
-      "type": "github",
-      "url": "https://github.com/atmonshi/filament-navigation"
-    }
-  ]
 }

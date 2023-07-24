@@ -59,7 +59,7 @@ class Library extends Model implements HasMedia
         return $this->file_path;
     }
 
-    public function getFiles(): MediaCollection|Collection
+    public function getFiles(): MediaCollection | Collection
     {
         if (! $this->getMedia('library')->isEmpty()) {
             return $this->getMedia('library');

@@ -32,6 +32,19 @@ trait Configuration
      */
     protected string $editor = \LaraZeus\Sky\Classes\TipTapEditor::class;
 
+    protected ?array $libraryTypes = [
+        'FILE' => 'File',
+        'IMAGE' => 'Image',
+        'VIDEO' => 'Video',
+    ];
+
+    protected ?array $tagTypes = [
+        'tag' => 'Tag',
+        'category' => 'Category',
+        'library' => 'Library',
+        'faq' => 'Faq',
+    ];
+
     public function postResource(bool $condition = true): static
     {
         $this->hasPostResource = $condition;
@@ -162,5 +175,29 @@ trait Configuration
     public function getEditor(): string
     {
         return $this->editor;
+    }
+
+    public function libraryTypes(array $types): static
+    {
+        $this->libraryTypes = $types;
+
+        return $this;
+    }
+
+    public function getLibraryTypes(): ?array
+    {
+        return $this->libraryTypes;
+    }
+
+    public function tagTypes(array $types): static
+    {
+        $this->tagTypes = $types;
+
+        return $this;
+    }
+
+    public function getTagTypes(): ?array
+    {
+        return $this->tagTypes;
     }
 }

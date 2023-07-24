@@ -70,8 +70,8 @@ class LibraryResource extends SkyResource
 
                 Select::make('type')
                     ->label(__('Library Type'))
-                    ->visible(config('zeus-sky.library_types') !== null)
-                    ->options(config('zeus-sky.library_types', [])),
+                    ->visible(SkyPlugin::get()->getLibraryTypes() !== null)
+                    ->options(SkyPlugin::get()->getLibraryTypes()),
 
                 Section::make(__('Library File'))
                     ->schema([
@@ -117,8 +117,15 @@ class LibraryResource extends SkyResource
                     ->label(__('Library Type'))
                     ->searchable()
                     ->sortable()
+                    ->visible(SkyPlugin::get()->getLibraryTypes() !== null)
                     ->formatStateUsing(fn (string $state): string => str($state)->title())
-                    ->color('primary')
+                    ->color('')
+                    ->color(fn (string $state) => match ($state) {
+                        'IMAGE' => 'primary',
+                        'FILE' => 'success',
+                        'VIDEO' => 'warning',
+                        default => '',
+                    })
                     ->icon(fn (string $state) => match ($state) {
                         'IMAGE' => 'heroicon-o-photo',
                         'FILE' => 'heroicon-o-document',
@@ -147,7 +154,9 @@ class LibraryResource extends SkyResource
             ])
             ->filters([
                 SelectFilter::make('type')
-                    ->options(config('zeus-sky.library_types'))
+                    ->visible()
+                    ->options(SkyPlugin::get()->getLibraryTypes())
+                    ->visible(SkyPlugin::get()->getLibraryTypes() !== null)
                     ->label(__('type')),
                 SelectFilter::make('tags')
                     ->multiple()

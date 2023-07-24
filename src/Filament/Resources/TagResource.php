@@ -46,7 +46,7 @@ class TagResource extends SkyResource
                     ->required()
                     ->maxLength(255),
                 Select::make('type')
-                    ->options(config('zeus-sky.tags_types')),
+                    ->options(SkyPlugin::get()->getTagTypes()),
             ]);
     }
 
@@ -63,7 +63,7 @@ class TagResource extends SkyResource
             ])
             ->filters([
                 SelectFilter::make('type')
-                    ->options(config('zeus-sky.tags_types'))
+                    ->options(SkyPlugin::get()->getTagTypes())
                     ->label(__('type')),
             ])
             ->actions([

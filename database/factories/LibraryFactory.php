@@ -23,7 +23,7 @@ class LibraryFactory extends Factory
             'slug' => $this->faker->slug(2),
             'title' => $this->faker->word,
             'description' => $this->faker->sentence,
-            'type' => $this->faker->randomElements(config('zeus-sky.library_types')),
+            'type' => $this->faker->randomElements(SkyPlugin::get()->getLibraryTypes()),
             'file_path' => 'https://picsum.photos/200/300',
         ];
     }

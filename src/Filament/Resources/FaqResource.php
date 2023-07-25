@@ -20,6 +20,8 @@ class FaqResource extends SkyResource
 {
     protected static ?string $navigationIcon = 'heroicon-o-folder-open';
 
+    protected static ?int $navigationSort = 3;
+
     public static function getModel(): string
     {
         return SkyPlugin::get()->getFaqModel();

@@ -3301,16 +3301,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v3.0.0-beta.3",
+            "version": "v3.0.0-beta.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "04298292a365841879d64c13881d5499517bb597"
+                "reference": "b57896e44397d7c5b1c42db64dba4c8382959357"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/04298292a365841879d64c13881d5499517bb597",
-                "reference": "04298292a365841879d64c13881d5499517bb597",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/b57896e44397d7c5b1c42db64dba4c8382959357",
+                "reference": "b57896e44397d7c5b1c42db64dba4c8382959357",
                 "shasum": ""
             },
             "require": {
@@ -3362,7 +3362,7 @@
             "description": "A front-end framework for Laravel.",
             "support": {
                 "issues": "https://github.com/livewire/livewire/issues",
-                "source": "https://github.com/livewire/livewire/tree/v3.0.0-beta.3"
+                "source": "https://github.com/livewire/livewire/tree/v3.0.0-beta.4"
             },
             "funding": [
                 {
@@ -3370,7 +3370,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-07-21T23:02:51+00:00"
+            "time": "2023-07-24T21:57:39+00:00"
         },
         {
             "name": "maennchen/zipstream-php",
@@ -4771,7 +4771,7 @@
             "dist": {
                 "type": "path",
                 "url": "../filament-navigation",
-                "reference": "d8f9dee8c4781fa0583486dc5580282af8655e89"
+                "reference": "f89df2af45290c65ce5fd8f5cf6ca4f9ec3b9077"
             },
             "require": {
                 "doctrine/dbal": "^3.5.1",

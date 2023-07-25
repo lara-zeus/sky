@@ -22,9 +22,11 @@ class TagResource extends SkyResource
 {
     protected static ?string $navigationIcon = 'heroicon-o-tag';
 
+    protected static ?int $navigationSort = 5;
+
     public static function getModel(): string
     {
-        return SkyPlugin::get()->getFaqModel();
+        return SkyPlugin::get()->getTagModel();
     }
 
     public static function form(Form $form): Form

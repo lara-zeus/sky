@@ -31,6 +31,8 @@ class LibraryResource extends SkyResource
 
     protected static ?string $navigationIcon = 'heroicon-o-folder';
 
+    protected static ?int $navigationSort = 4;
+
     public static function getModel(): string
     {
         return SkyPlugin::get()->getLibraryModel();

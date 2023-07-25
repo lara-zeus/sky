@@ -41,6 +41,8 @@ class PostResource extends SkyResource
 {
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
+    protected static ?int $navigationSort = 1;
+
     public static function getModel(): string
     {
         return SkyPlugin::get()->getPostModel();

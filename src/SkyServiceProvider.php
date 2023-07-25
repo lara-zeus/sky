@@ -64,6 +64,9 @@ class SkyServiceProvider extends PackageServiceProvider
 
     private function bootFilamentNavigation(): void
     {
+        if (!array_key_exists('zeus-sky', app('filament')->getCurrentPanel()->getPlugins())) {
+            return;
+        }
         NavigationResource::navigationGroup(SkyPlugin::get()->getNavigationGroupLabel());
         NavigationResource::navigationSort(999);
 

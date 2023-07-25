@@ -22,8 +22,6 @@ class TagResource extends SkyResource
 {
     protected static ?string $navigationIcon = 'heroicon-o-tag';
 
-    protected static ?string $navigationGroup = 'Sky';
-
     public static function getModel(): string
     {
         return SkyPlugin::get()->getFaqModel();

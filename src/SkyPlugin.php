@@ -45,7 +45,7 @@ class SkyPlugin implements Plugin
         return app(static::class);
     }
 
-    public static function get(): Plugin | \Filament\FilamentManager
+    public static function get(): Plugin|\Filament\FilamentManager
     {
         return filament(app(static::class)->getId());
     }

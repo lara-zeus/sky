@@ -39,6 +39,7 @@
         "awcodes/filament-tiptap-editor": "v3.0.0-alpha2",
         "spatie/laravel-medialibrary": "^10.0.0",
         "spatie/laravel-sluggable": "^3.3",
+        "ryangjchandler/filament-navigation": "dev-filament3",
         "spatie/laravel-tags": "^4.4",
         "lara-zeus/core": "3.x-dev"
     },
@@ -91,8 +92,8 @@
     "minimum-stability": "dev",
     "repositories": [
         {
-            "type": "github",
-            "url": "https://github.com/atmonshi/filament-navigation"
+            "type": "path",
+            "url": "../filament-navigation"
         }
     ]
 }

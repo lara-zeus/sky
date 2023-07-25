@@ -12,7 +12,7 @@ trait Configuration
 
     protected bool $hasLibraryResource = true;
 
-    protected string $navigationGroupLabel = 'sky';
+    protected string $navigationGroupLabel = 'Sky';
 
     protected string $faqModel = \LaraZeus\Sky\Models\Faq::class;
 

@@ -3,9 +3,12 @@
 namespace LaraZeus\Sky;
 
 use Filament\Facades\Filament;
+use Filament\Forms\Components\Select;
 use LaraZeus\Core\CoreServiceProvider;
 use LaraZeus\Sky\Console\migrateCommand;
 use LaraZeus\Sky\Console\PublishCommand;
+use RyanChandler\FilamentNavigation\Facades\FilamentNavigation;
+use RyanChandler\FilamentNavigation\Filament\Resources\NavigationResource;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -19,7 +22,7 @@ class SkyServiceProvider extends PackageServiceProvider
 
         Filament::serving(function () {
             // todo
-            //$this->bootFilamentNavigation();
+            $this->bootFilamentNavigation();
         });
     }
 
@@ -59,10 +62,10 @@ class SkyServiceProvider extends PackageServiceProvider
         ];
     }
 
-    /*private function bootFilamentNavigation(): void
+    private function bootFilamentNavigation(): void
     {
-        NavigationResource::navigationGroup(\LaraZeus\Sky\SkyPlugin::get()->navigationGroupLabel());
-        NavigationResource::navigationSort(99);
+        NavigationResource::navigationGroup(SkyPlugin::get()->getNavigationGroupLabel());
+        NavigationResource::navigationSort(999);
 
         NavigationResource::navigationLabel(__('Navigations'));
         NavigationResource::pluralLabel(__('Navigations'));
@@ -87,5 +90,5 @@ class SkyServiceProvider extends PackageServiceProvider
                     return SkyPlugin::get()->getPostModel()::page()->pluck('title', 'id');
                 }),
         ]);
-    }*/
+    }
 }

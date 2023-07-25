@@ -28,7 +28,7 @@ class PostStatus extends Model
         ];
     }
 
-    protected function sushiShouldCache()
+    protected function sushiShouldCache(): bool
     {
         return true;
     }

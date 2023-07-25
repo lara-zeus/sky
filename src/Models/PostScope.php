@@ -9,6 +9,7 @@ trait PostScope
 {
     /**
      * @param  Builder<Post>  $query
+     * @return Builder
      */
     public function scopeSticky(Builder $query): Builder
     {
@@ -20,6 +21,7 @@ trait PostScope
 
     /**
      * @param  Builder<Post>  $query
+     * @return Builder
      */
     public function scopeNotSticky(Builder $query): Builder
     {
@@ -31,6 +33,7 @@ trait PostScope
 
     /**
      * @param  Builder<Post>  $query
+     * @return Builder
      */
     public function scopePublished(Builder $query): Builder
     {
@@ -41,6 +44,8 @@ trait PostScope
 
     /**
      * @param  Builder<Post>  $query
+     * @param  Post  $post
+     * @return Builder
      */
     public function scopeRelated(Builder $query, Post $post): Builder
     {
@@ -50,6 +55,7 @@ trait PostScope
 
     /**
      * @param  Builder<Post>  $query
+     * @return Builder
      */
     public function scopePage(Builder $query): Builder
     {
@@ -59,6 +65,7 @@ trait PostScope
 
     /**
      * @param  Builder<Post>  $query
+     * @return Builder
      */
     public function scopePosts(Builder $query): Builder
     {
@@ -69,6 +76,7 @@ trait PostScope
     /**
      * @param  Builder<Post>  $query
      * @param  ?string  $category
+     * @return Builder
      */
     public function scopeForCategory(Builder $query, string $category = null): Builder
     {
@@ -87,6 +95,8 @@ trait PostScope
 
     /**
      * @param  Builder<Post>  $query
+     * @param $term
+     * @return Builder
      */
     public function scopeSearch(Builder $query, $term): Builder
     {

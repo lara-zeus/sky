@@ -26,7 +26,7 @@ class Library extends Model implements HasMedia
     use InteractsWithMedia;
     use HasTranslations;
 
-    public $translatable = [
+    public array $translatable = [
         'title',
         'description',
     ];
@@ -45,7 +45,7 @@ class Library extends Model implements HasMedia
         return LibraryFactory::new();
     }
 
-    public function getRouteKeyName()
+    public function getRouteKeyName(): string
     {
         return 'slug';
     }
@@ -59,12 +59,13 @@ class Library extends Model implements HasMedia
         return $this->file_path;
     }
 
+    /** Collection<mixed, mixed> */
     public function getFiles(): MediaCollection | Collection
     {
         if (! $this->getMedia('library')->isEmpty()) {
             return $this->getMedia('library');
         }
 
-        return collect();
+        return Collection::empty();
     }
 }

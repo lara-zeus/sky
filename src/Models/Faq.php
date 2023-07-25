@@ -11,7 +11,7 @@ class Faq extends Model
     use HasTranslations;
     use HasTags;
 
-    public $translatable = [
+    public array $translatable = [
         'question',
         'answer',
     ];

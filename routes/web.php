@@ -12,7 +12,7 @@ use LaraZeus\Sky\SkyPlugin;
 
 $filament = app('filament');
 
-if (array_key_exists('zeus-sky', $filament->getCurrentPanel()->getPlugins())) {
+if ($filament->getCurrentPanel() !== null && array_key_exists('zeus-sky', $filament->getCurrentPanel()->getPlugins())) {
 
     if (\LaraZeus\Sky\SkyPlugin::get()->hasFaqResource()) {
         Route::middleware(config('zeus-sky.middleware'))

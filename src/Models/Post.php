@@ -7,9 +7,13 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Blade;
+use LaraZeus\Bolt\Models\Field;
+use LaraZeus\Bolt\Models\Form;
 use LaraZeus\Sky\SkyPlugin;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -42,7 +46,7 @@ class Post extends Model implements HasMedia
     use PostScope;
     use HasTranslations;
 
-    public $translatable = [
+    public array $translatable = [
         'title',
         'content',
         'description',
@@ -87,17 +91,20 @@ class Post extends Model implements HasMedia
         return "<span title='" . __('post status') . "' class='$PostStatus->class'> " . $icon . " {$PostStatus->label}</span>";
     }
 
-    public function author()
+    /** @return BelongsTo<Post, Model> */
+    public function author(): BelongsTo
     {
         return $this->belongsTo(config('auth.providers.users.model'), 'user_id', 'id');
     }
 
-    public function parent()
+    /** @return BelongsTo<Post, Post> */
+    public function parent(): BelongsTo
     {
         return $this->belongsTo(self::class, 'parent_id', 'id');
     }
 
-    public function image()
+    /** Collection<mixed, mixed> */
+    public function image(): Collection|string
     {
         if (! $this->getMedia('posts')->isEmpty()) {
             return $this->getFirstMediaUrl('posts');
@@ -106,6 +113,9 @@ class Post extends Model implements HasMedia
         }
     }
 
+    /**
+     * @return Attribute<int, never>
+     */
     protected function requirePassword(): Attribute
     {
         return Attribute::make(
@@ -118,7 +128,7 @@ class Post extends Model implements HasMedia
         return $this->parseContent(SkyPlugin::get()->getEditor()::render($this->content));
     }
 
-    public function parseContent($content): string
+    public function parseContent(string $content): string
     {
         $parsers = config('zeus-sky.parsers');
 

@@ -12,8 +12,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Blade;
-use LaraZeus\Bolt\Models\Field;
-use LaraZeus\Bolt\Models\Form;
 use LaraZeus\Sky\SkyPlugin;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -104,7 +102,7 @@ class Post extends Model implements HasMedia
     }
 
     /** Collection<mixed, mixed> */
-    public function image(): Collection|string
+    public function image(): Collection | string
     {
         if (! $this->getMedia('posts')->isEmpty()) {
             return $this->getFirstMediaUrl('posts');

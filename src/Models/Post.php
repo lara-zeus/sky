@@ -103,8 +103,7 @@ class Post extends Model implements HasMedia
         return $this->belongsTo(self::class, 'parent_id', 'id');
     }
 
-    /** Collection<mixed, mixed> */
-    public function image(): Collection|string
+    public function image(): Collection|string|null
     {
         if (! $this->getMedia('posts')->isEmpty()) {
             return $this->getFirstMediaUrl('posts');

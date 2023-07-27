@@ -8,7 +8,7 @@
                 @foreach($faqs as $faq)
                     <div class="bg-white dark:bg-gray-800 rounded-[2rem] rounded-bl-none rounded-tr-none shadow-md group">
                         <h5>
-                            <a class="flex items-center justify-between w-full px-6 py-4 text-xl font-medium tracking-tight text-secondary-600 dark:text-secondary-200">
+                            <a class="flex items-center justify-between w-full px-6 py-4 text-xl font-medium tracking-tight text-custom-600 dark:text-custom-200">
                                 <span class="underline">
                                     {{ $faq->question }}
                                 </span>

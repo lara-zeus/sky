@@ -19,7 +19,7 @@ class PostStatus extends Model
         return [
             ['name' => 'publish', 'label' => __('Publish'), 'class' => 'px-2 py-0.5 text-xs rounded-xl text-success-700 bg-success-500/10', 'icon' => 'heroicon-o-check-badge'],
             ['name' => 'future', 'label' => __('Future'), 'class' => 'px-2 py-0.5 text-xs rounded-xl text-warning-700 bg-warning-500/10', 'icon' => 'heroicon-o-calendar-days'],
-            ['name' => 'draft', 'label' => __('Draft'), 'class' => 'px-2 py-0.5 text-xs rounded-xl text-secondary-700 bg-secondary-500/10', 'icon' => 'heroicon-o-document-magnifying-glass'],
+            ['name' => 'draft', 'label' => __('Draft'), 'class' => 'px-2 py-0.5 text-xs rounded-xl text-custom-700 bg-custom-500/10', 'icon' => 'heroicon-o-document-magnifying-glass'],
             ['name' => 'auto-draft', 'label' => __('Auto draft'), 'class' => 'px-2 py-0.5 text-xs rounded-xl text-info-700 bg-info-500/10', 'icon' => 'heroicon-o-document-magnifying-glass'],
             ['name' => 'pending', 'label' => __('Pending'), 'class' => 'px-2 py-0.5 text-xs rounded-xl text-info-700 bg-info-500/10', 'icon' => 'heroicon-o-document-minus'],
             ['name' => 'private', 'label' => __('Private'), 'class' => 'px-2 py-0.5 text-xs rounded-xl text-danger-700 bg-danger-500/10', 'icon' => 'heroicon-o-lock-closed'],

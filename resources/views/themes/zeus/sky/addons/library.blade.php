@@ -32,7 +32,7 @@
                                         </span>
                                     @endif
                                 </div>
-                                <cite class="text-sm text-secondary-600 dark:text-secondary-500 hover:dark:text-secondary-300">
+                                <cite class="text-sm text-custom-600 dark:text-custom-500 hover:dark:text-custom-300">
                                     {{ $library->description }}
                                 </cite>
                             </a>

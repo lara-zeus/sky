@@ -39,7 +39,7 @@ if (app('filament')->hasPlugin('zeus-sky')) {
                     ->first();
 
                 if ($post !== null) {
-                    request()->session()->put($slug.'-'.request('password'), request('password'));
+                    request()->session()->put($slug . '-' . request('password'), request('password'));
 
                     return redirect()->route($post->post_type, ['slug' => $post->slug]);
                 }
@@ -49,8 +49,8 @@ if (app('filament')->hasPlugin('zeus-sky')) {
                 ->name('passwordConfirmation');
 
             Route::get('/', Posts::class)->name('blogs');
-            Route::get(SkyPlugin::get()->getUriPrefix()['post'].'/{slug}', Post::class)->name('post');
-            Route::get(SkyPlugin::get()->getUriPrefix()['page'].'/{slug}', Page::class)->name('page');
+            Route::get(SkyPlugin::get()->getUriPrefix()['post'] . '/{slug}', Post::class)->name('post');
+            Route::get(SkyPlugin::get()->getUriPrefix()['page'] . '/{slug}', Page::class)->name('page');
             Route::get('{type}/{slug}', Tags::class)->name('tags');
         });
 }

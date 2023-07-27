@@ -11,7 +11,7 @@ class LibrarTag extends Component
 
     public function mount($slug)
     {
-        $this->tag = SkyPlugin::get()->getTagModel()::findBySlug($slug,'library');
+        $this->tag = SkyPlugin::get()->getTagModel()::findBySlug($slug, 'library');
 
         abort_if($this->tag === null, 404);
     }

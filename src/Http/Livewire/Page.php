@@ -41,10 +41,10 @@ class Page extends Component
     {
         seo()
             ->title($this->page->title)
-            ->description(($this->page->description ?? '') . ' ' . config('zeus-sky.site_description', 'Laravel'))
-            ->site(config('zeus-sky.site_title', 'Laravel'))
+            ->description(($this->page->description ?? '') . ' ' . config('zeus.site_description', 'Laravel'))
+            ->site(config('zeus.site_title', 'Laravel'))
             ->rawTag('favicon', '<link rel="icon" type="image/x-icon" href="' . asset('favicon/favicon.ico') . '">')
-            ->rawTag('<meta name="theme-color" content="' . config('zeus-sky.site_color') . '" />')
+            ->rawTag('<meta name="theme-color" content="' . config('zeus.site_color') . '" />')
             ->withUrl()
             ->twitter();
 

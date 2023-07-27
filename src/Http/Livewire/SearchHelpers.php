@@ -3,6 +3,7 @@
 namespace LaraZeus\Sky\Http\Livewire;
 
 use Illuminate\Database\Eloquent\Collection;
+use LaraZeus\Sky\SkyPlugin;
 
 trait SearchHelpers
 {
@@ -33,20 +34,18 @@ trait SearchHelpers
     {
         // Skip highlighting of search terms when specific tags e.g.
         // <iframe> exists in the content so no html breaks:
-        $skiplist = config('zeus-sky.skip_highlighting_terms', []);
-        foreach ($skiplist as $skipper) {
+        foreach (SkyPlugin::get()->getSkipHighlightingTerms() as $skipper) {
             if (str_contains($content, $skipper)) {
                 return $content;
             }
         }
 
-        $class = config('zeus-sky.search_result_highlight_css_class', 'highlight');
         $replace = array_flip(array_flip($words));
         $pattern = [];
 
         foreach ($replace as $k => $fword) {
             $pattern[] = '/\b(' . $fword . ')(?!>)\b/i';
-            $replace[$k] = sprintf('<span class="%s">$1</span>', $class);
+            $replace[$k] = sprintf('<span class="%s">$1</span>', SkyPlugin::get()->getSearchResultHighlightCssClass());
         }
 
         return preg_replace($pattern, $replace, $content);

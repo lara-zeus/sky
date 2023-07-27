@@ -33,16 +33,16 @@ class Posts extends Component
 
         $recent = SkyPlugin::get()->getPostModel()::posts()
             ->published()
-            ->limit(config('zeus-sky.site_recent_count', 5))
+            ->limit(SkyPlugin::get()->getRecentPostsLimit())
             ->orderBy('published_at', 'desc')
             ->get();
 
         seo()
-            ->title(config('zeus-sky.site_title', 'Laravel') . ' ' . __('Posts'))
-            ->description(__('Posts') . ' ' . config('zeus-sky.site_description', 'Laravel'))
-            ->site(config('zeus-sky.site_title', 'Laravel'))
+            ->title(config('zeus.site_title', 'Laravel') . ' ' . __('Posts'))
+            ->description(__('Posts') . ' ' . config('zeus.site_description', 'Laravel'))
+            ->site(config('zeus.site_title', 'Laravel'))
             ->rawTag('favicon', '<link rel="icon" type="image/x-icon" href="' . asset('favicon/favicon.ico') . '">')
-            ->rawTag('<meta name="theme-color" content="' . config('zeus-sky.site_color') . '" />')
+            ->rawTag('<meta name="theme-color" content="' . config('zeus.site_color') . '" />')
             ->withUrl()
             ->twitter();
 

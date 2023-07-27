@@ -18,7 +18,7 @@ class RenderNavItem
                 $item['label'] .
                 '</a>';
         } elseif ($item['type'] === 'post-link') {
-            $post = SkyPlugin::get()->getPostStatusModel()::find($item['data']['post_id']) ?? '';
+            $post = SkyPlugin::get()->getPostModel()::find($item['data']['post_id']) ?? '';
 
             return '<a class="' . $class . '"
                     target="' . ($item['data']['target'] ?? '_self') . '"

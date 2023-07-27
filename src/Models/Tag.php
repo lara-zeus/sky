@@ -59,7 +59,6 @@ class Tag extends \Spatie\Tags\Tag
     public static function findBySlug(string $slug, string $type = null, string $locale = null): ?Model
     {
         $locale = $locale ?? static::getLocale();
-
         return static::query()
             ->where("slug->{$locale}", $slug)
             ->where('type', $type)

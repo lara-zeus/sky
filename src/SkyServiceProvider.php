@@ -34,7 +34,6 @@ class SkyServiceProvider extends PackageServiceProvider
             ->hasTranslations()
             ->hasCommands($this->getCommands())
             ->hasViews('zeus')
-            ->hasConfigFile()
             ->hasRoute('web');
     }
 
@@ -91,6 +90,15 @@ class SkyServiceProvider extends PackageServiceProvider
                 ->searchable()
                 ->options(function () {
                     return SkyPlugin::get()->getPostModel()::page()->pluck('title', 'id');
+                }),
+        ]);
+
+        FilamentNavigation::addItemType(__('Library link'), [
+            Select::make('library_id')
+                ->label(__('Select Library'))
+                ->searchable()
+                ->options(function () {
+                    return SkyPlugin::get()->getTagModel()::getWithType('library')->pluck('name', 'id');
                 }),
         ]);
     }

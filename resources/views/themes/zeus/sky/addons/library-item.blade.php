@@ -11,7 +11,7 @@
         </li>
 
         <li class="flex items-center">
-            Viewing {{ $item->title }}
+            {{ __('Viewing') }} {{ $item->title }}
         </li>
     </x-slot>
 

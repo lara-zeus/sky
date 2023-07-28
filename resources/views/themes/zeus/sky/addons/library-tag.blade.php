@@ -11,12 +11,11 @@
         </li>
 
         <li class="flex items-center">
-            Viewing {{ $libraryTag->title }}
+            {{ __('Viewing') }} {{ $libraryTag->title }}
         </li>
     </x-slot>
 
-    <x-filament::card>
-        <h1 class="text-primary-500 text-xl">{{ $libraryTag->name }}</h1>
+        <h1 class="text-primary-600 text-3xl font-bold">{{ $libraryTag->name }}</h1>
 
         @if($libraryTag->description === null)
             <p>
@@ -24,23 +23,20 @@
             </p>
         @endif
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
-            @foreach($libraryTag->library as $item)
+        <div class="my-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
+            @foreach($libraryTag->library as $lib)
                 <x-filament::card>
-                    <div
-                        x-cloak x-show="show"
-                        x-transition.duration.500ms.opacity.scale x-init="$nextTick(() => show = true)"
-                    >
-                        <h2>{{ $item->name }}</h2>
+                    <div>
+                        <h2 class="text-secondary-600 text-xl font-semibold">
+                            <a href="{{ route('library.item', $lib->slug) }}">
+                                {{ $lib->title ?? '' }}
+                            </a>
+                        </h2>
                         <div class="space-y-2">
-                            @php
-                                $file = $item->getFiles()->first();
-                            @endphp
-                            @include($skyTheme.'.addons.library-types.'.strtolower($item->type))
+                            {{ $lib->description ?? '' }}
                         </div>
                     </div>
                 </x-filament::card>
             @endforeach
         </div>
-    </x-filament::card>
 </div>

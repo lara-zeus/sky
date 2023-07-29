@@ -94,6 +94,10 @@
         {
             "type": "path",
             "url": "../filament-navigation"
+        },
+        {
+            "type": "git",
+            "url": "git@github.com:jyrkidn/filament-tiptap-editor.git"
         }
     ]
 }

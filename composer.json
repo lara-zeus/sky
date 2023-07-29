@@ -92,12 +92,12 @@
     "minimum-stability": "dev",
     "repositories": [
         {
-            "type": "path",
-            "url": "../filament-navigation"
+            "type": "git",
+            "url": "git@github.com:jyrkidn/filament-tiptap-editor.git"
         },
         {
             "type": "git",
-            "url": "git@github.com:jyrkidn/filament-tiptap-editor.git"
+            "url": "git@github.com:atmonshi/filament-navigation.git"
         }
     ]
 }

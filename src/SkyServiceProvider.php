@@ -21,7 +21,6 @@ class SkyServiceProvider extends PackageServiceProvider
         CoreServiceProvider::setThemePath('sky');
 
         Filament::serving(function () {
-            // todo
             $this->bootFilamentNavigation();
         });
     }

@@ -35,7 +35,6 @@
         "doctrine/dbal": "^3.3",
         "filament/spatie-laravel-media-library-plugin": "^3.0@beta",
         "filament/spatie-laravel-tags-plugin": "^3.0@beta",
-        "filament/spatie-laravel-translatable-plugin": "^3.0@beta",
         "awcodes/filament-tiptap-editor": "dev-livewire-v3 as 3.0.0",
         "spatie/laravel-medialibrary": "^10.0.0",
         "spatie/laravel-sluggable": "^3.3",

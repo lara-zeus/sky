@@ -37,7 +37,6 @@
         "filament/spatie-laravel-tags-plugin": "^3.0@beta",
         "spatie/laravel-medialibrary": "^10.0.0",
         "spatie/laravel-sluggable": "^3.3",
-        "ryangjchandler/filament-navigation": "dev-filament3",
         "spatie/laravel-tags": "^4.4",
         "lara-zeus/core": "3.x-dev"
     },
@@ -87,11 +86,5 @@
             ]
         }
     },
-    "minimum-stability": "dev",
-    "repositories": [
-        {
-            "type": "git",
-            "url": "git@github.com:atmonshi/filament-navigation.git"
-        }
-    ]
+    "minimum-stability": "dev"
 }

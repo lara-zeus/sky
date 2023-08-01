@@ -33,6 +33,7 @@
         "php": "^8.1",
         "ext-json": "*",
         "doctrine/dbal": "^3.5.1",
+        "ryangjchandler/filament-navigation": "dev-filament3",
         "filament/spatie-laravel-media-library-plugin": "^3.0@beta",
         "filament/spatie-laravel-tags-plugin": "^3.0@beta",
         "spatie/laravel-medialibrary": "^10.0.0",
@@ -86,5 +87,11 @@
             ]
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git@github.com:atmonshi/filament-navigation.git"
+        }
+    ]
 }

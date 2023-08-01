@@ -33,7 +33,6 @@
         "php": "^8.1",
         "ext-json": "*",
         "doctrine/dbal": "^3.5.1",
-        "awcodes/filament-tiptap-editor": "dev-livewire-v3 as 3.0.0",
         "ryangjchandler/filament-navigation": "dev-filament3",
         "filament/spatie-laravel-media-library-plugin": "^3.0@beta",
         "filament/spatie-laravel-tags-plugin": "^3.0@beta",
@@ -93,10 +92,6 @@
         {
             "type": "git",
             "url": "git@github.com:atmonshi/filament-navigation.git"
-        },
-        {
-            "type": "git",
-            "url": "git@github.com:jyrkidn/filament-tiptap-editor.git"
         }
     ]
 }

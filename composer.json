@@ -35,7 +35,6 @@
         "doctrine/dbal": "^3.3",
         "filament/spatie-laravel-media-library-plugin": "^3.0@beta",
         "filament/spatie-laravel-tags-plugin": "^3.0@beta",
-        "awcodes/filament-tiptap-editor": "dev-livewire-v3 as 3.0.0",
         "spatie/laravel-medialibrary": "^10.0.0",
         "spatie/laravel-sluggable": "^3.3",
         "ryangjchandler/filament-navigation": "dev-filament3",
@@ -90,10 +89,6 @@
     },
     "minimum-stability": "dev",
     "repositories": [
-        {
-            "type": "git",
-            "url": "git@github.com:jyrkidn/filament-tiptap-editor.git"
-        },
         {
             "type": "git",
             "url": "git@github.com:atmonshi/filament-navigation.git"

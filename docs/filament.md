@@ -7,7 +7,7 @@
 
 # Zeus Sky
 
-Sky simple CMS for your website. it includes posts, pages, tags, and categories and more, with a frontend scaffolding. easy to customize it and match your branding.
+Sky simple CMS. it includes posts, pages, tags, and categories and more, with a frontend scaffolding. easy to customize it and match your branding.
 
 ## Features:
 

@@ -39,7 +39,7 @@
         "spatie/laravel-medialibrary": "^10.0.0",
         "spatie/laravel-sluggable": "^3.3",
         "spatie/laravel-tags": "^4.4",
-        "lara-zeus/core": "3.x-dev"
+        "lara-zeus/core": "^3.0"
     },
     "require-dev": {
         "pestphp/pest": "^2.0",

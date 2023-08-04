@@ -3,6 +3,7 @@
 namespace LaraZeus\Sky;
 
 use Filament\Facades\Filament;
+use Filament\Forms\Components\Select;
 use LaraZeus\Core\CoreServiceProvider;
 use LaraZeus\Sky\Console\migrateCommand;
 use LaraZeus\Sky\Console\PublishCommand;
@@ -17,10 +18,7 @@ class SkyServiceProvider extends PackageServiceProvider
     public function packageBooted(): void
     {
         CoreServiceProvider::setThemePath('sky');
-
-        Filament::serving(function () {
-            $this->bootFilamentNavigation();
-        });
+        $this->bootFilamentNavigation();
     }
 
     public function configurePackage(Package $package): void
@@ -60,15 +58,55 @@ class SkyServiceProvider extends PackageServiceProvider
 
     private function bootFilamentNavigation(): void
     {
-        if (!app('filament')->hasPlugin('zeus-sky')) {
+        if (!app('filament')->hasPlugin('zeus-sky') && !app('filament')->hasPlugin('navigation')) {
             return;
         }
 
-        NavigationResource::navigationGroup(SkyPlugin::get()->getNavigationGroupLabel());
-        NavigationResource::navigationSort(999);
-        NavigationResource::navigationIcon('heroicon-o-queue-list');
-        NavigationResource::navigationLabel(__('Navigations'));
-        NavigationResource::pluralLabel(__('Navigations'));
-        NavigationResource::label(__('Navigation'));
+        Filament::serving(function () {
+            NavigationResource::navigationGroup(SkyPlugin::get()->getNavigationGroupLabel());
+            NavigationResource::navigationSort(999);
+            NavigationResource::navigationIcon('heroicon-o-queue-list');
+            NavigationResource::navigationLabel(__('Navigations'));
+            NavigationResource::pluralLabel(__('Navigations'));
+            NavigationResource::label(__('Navigation'));
+
+            filament('navigation')
+                ->itemType(
+                    __('Post link'),
+                    [
+                        Select::make('post_id')
+                            ->label(__('Select Post'))
+                            ->searchable()
+                            ->options(function () {
+                                return SkyPlugin::get()->getPostModel()::published()->pluck('title', 'id');
+                            }),
+                    ],
+                    'post_link'
+                )
+                ->itemType(
+                    __('Page link'),
+                    [
+                        Select::make('page_id')
+                            ->label(__('Select Page'))
+                            ->searchable()
+                            ->options(function () {
+                                return SkyPlugin::get()->getPostModel()::page()->pluck('title', 'id');
+                            }),
+                    ],
+                    'page_link'
+                )
+                ->itemType(
+                    __('Library link'),
+                    [
+                        Select::make('library_id')
+                            ->label(__('Select Library'))
+                            ->searchable()
+                            ->options(function () {
+                                return SkyPlugin::get()->getTagModel()::getWithType('library')->pluck('name', 'id');
+                            }),
+                    ],
+                    'library_link'
+                );
+        });
     }
 }

@@ -25,7 +25,7 @@
 
         <div class="my-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
             @foreach($libraryTag->library as $lib)
-                <x-filament::card>
+                <x-filament::section>
                     <div>
                         <h2 class="text-secondary-600 text-xl font-semibold">
                             <a href="{{ route('library.item', $lib->slug) }}">
@@ -36,7 +36,7 @@
                             {{ $lib->description ?? '' }}
                         </div>
                     </div>
-                </x-filament::card>
+                </x-filament::section>
             @endforeach
         </div>
 </div>

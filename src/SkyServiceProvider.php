@@ -58,7 +58,7 @@ class SkyServiceProvider extends PackageServiceProvider
 
     private function bootFilamentNavigation(): void
     {
-        if (! app('filament')->hasPlugin('zeus-sky') && ! app('filament')->hasPlugin('navigation')) {
+        if (! app('filament')->hasPlugin('zeus-sky') || ! app('filament')->hasPlugin('navigation')) {
             return;
         }
 

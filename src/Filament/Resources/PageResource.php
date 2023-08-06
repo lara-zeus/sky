@@ -89,7 +89,7 @@ class PageResource extends SkyResource
                         ->hint(__('Write an excerpt for your post')),
 
                     TextInput::make('slug')
-                        ->unique(ignorable: fn (?Post $record): ?Post => $record)
+                        ->unique(ignorable: fn(?Post $record): ?Post => $record)
                         ->required()
                         ->maxLength(255)
                         ->label(__('Post Slug')),
@@ -116,7 +116,7 @@ class PageResource extends SkyResource
 
                     TextInput::make('password')
                         ->label(__('Password'))
-                        ->visible(fn (Get $get): bool => $get('status') === 'private'),
+                        ->visible(fn(Get $get): bool => $get('status') === 'private'),
 
                     DateTimePicker::make('published_at')
                         ->label(__('published at'))
@@ -140,11 +140,11 @@ class PageResource extends SkyResource
                         ->inline(),
                     SpatieMediaLibraryFileUpload::make('featured_image_upload')
                         ->collection('pages')
-                        ->visible(fn (Get $get) => $get('featured_image_type') === 'upload')
+                        ->visible(fn(Get $get) => $get('featured_image_type') === 'upload')
                         ->label(''),
                     TextInput::make('featured_image')
                         ->label(__('featured image url'))
-                        ->visible(fn (Get $get) => $get('featured_image_type') === 'url')
+                        ->visible(fn(Get $get) => $get('featured_image_type') === 'url')
                         ->url(),
                 ]),
             ])->columnSpan(2),
@@ -168,7 +168,7 @@ class PageResource extends SkyResource
                     ->searchable(['status'])
                     ->toggleable()
                     ->view('zeus::filament.columns.status-desc')
-                    ->tooltip(fn (Post $record): string => $record->published_at->format('Y/m/d | H:i A')),
+                    ->tooltip(fn(Post $record): string => $record->published_at->format('Y/m/d | H:i A')),
             ])
             ->defaultSort('id', 'desc')
             ->actions([
@@ -178,7 +178,7 @@ class PageResource extends SkyResource
                         ->color('warning')
                         ->icon('heroicon-o-arrow-top-right-on-square')
                         ->label(__('Open'))
-                        ->url(fn (Post $record): string => route('page', ['slug' => $record]))
+                        ->url(fn(Post $record): string => route('page', ['slug' => $record]))
                         ->openUrlInNewTab(),
                     DeleteAction::make('delete'),
                     ForceDeleteAction::make(),
@@ -198,7 +198,7 @@ class PageResource extends SkyResource
                     ->options(SkyPlugin::get()->getPostStatusModel()::pluck('label', 'name')),
                 Filter::make('password')
                     ->label(__('Password Protected'))
-                    ->query(fn (Builder $query): Builder => $query->whereNotNull('password')),
+                    ->query(fn(Builder $query): Builder => $query->whereNotNull('password')),
             ]);
     }
 

@@ -16,6 +16,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\TagResource\Pages;
+use LaraZeus\Sky\Models\Tag;
 use LaraZeus\Sky\SkyPlugin;
 
 class TagResource extends SkyResource
@@ -42,7 +43,7 @@ class TagResource extends SkyResource
                         $set('slug', Str::slug($state));
                     }),
                 TextInput::make('slug')
-                    ->unique(ignorable: fn (?Model $record): ?Model => $record)
+                    ->unique(ignorable: fn(?Model $record): ?Model => $record)
                     ->required()
                     ->maxLength(255),
                 Select::make('type')
@@ -59,7 +60,11 @@ class TagResource extends SkyResource
                 TextColumn::make('slug')->toggleable()->searchable()->sortable(),
                 TextColumn::make('items_count')
                     ->toggleable()
-                    ->view('zeus::filament.columns.tag-counts'),
+                    ->getStateUsing(
+                        fn(Tag $record): int => method_exists($record, $record->type)
+                            ? $record->{$record->type}()->count()
+                            : 0
+                    ),
             ])
             ->filters([
                 SelectFilter::make('type')

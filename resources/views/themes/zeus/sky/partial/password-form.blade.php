@@ -1,5 +1,5 @@
 <div class="max-w-3xl mx-auto">
-    <x-filament::card>
+    <x-filament::section>
         <x-filament-panels::form method="post" action="{{ route('passwordConfirmation',[$post]) }}">
             @csrf
             <div class="flex flex-col gap-4">
@@ -15,5 +15,5 @@
                 {{ __('Send') }}
             </x-filament::button>
         </x-filament-panels::form>
-    </x-filament::card>
+    </x-filament::section>
 </div>

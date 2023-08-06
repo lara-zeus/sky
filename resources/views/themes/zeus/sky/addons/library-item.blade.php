@@ -15,7 +15,7 @@
         </li>
     </x-slot>
 
-    <x-filament::card>
+    <x-filament::section>
         <h1>{{ $item->title }}</h1>
 
         <p>
@@ -32,5 +32,5 @@
                 @include($skyTheme.'.addons.library-types.'.strtolower($item->type))
             @endforeach
         </div>
-    </x-filament::card>
+    </x-filament::section>
 </div>

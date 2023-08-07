@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://larazeus.com"><img src="https://larazeus.com/images/sky-banner.png" /></a>
+<a href="https://larazeus.com"><img src="https://larazeus.com/images/sky-banner.png?v=2" /></a>
 </p>
 
 <p align="center">

@@ -47,7 +47,7 @@ class TagResource extends SkyResource
                                 $set('slug', Str::slug($state));
                             }),
                         TextInput::make('slug')
-                            ->unique(ignorable: fn(?Model $record): ?Model => $record)
+                            ->unique(ignorable: fn (?Model $record): ?Model => $record)
                             ->required()
                             ->maxLength(255),
                         Select::make('type')
@@ -67,7 +67,7 @@ class TagResource extends SkyResource
                 TextColumn::make('items_count')
                     ->toggleable()
                     ->getStateUsing(
-                        fn(Tag $record): int => method_exists($record, $record->type)
+                        fn (Tag $record): int => method_exists($record, $record->type)
                             ? $record->{$record->type}()->count()
                             : 0
                     ),

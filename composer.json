@@ -37,8 +37,10 @@
         "filament/spatie-laravel-media-library-plugin": "^3.0@beta",
         "filament/spatie-laravel-tags-plugin": "^3.0@beta",
         "spatie/laravel-medialibrary": "^10.0.0",
+        "awcodes/filament-tiptap-editor": "^3.0",
         "spatie/laravel-sluggable": "^3.3",
         "spatie/laravel-tags": "^4.4",
+        "andrewdwallo/filament-selectify": "^2.0",
         "lara-zeus/core": "^3.0"
     },
     "require-dev": {

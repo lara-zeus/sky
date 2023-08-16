@@ -2,6 +2,7 @@
 
 namespace LaraZeus\Sky\Filament\Resources;
 
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -34,20 +35,25 @@ class TagResource extends SkyResource
     {
         return $form
             ->schema([
-                TextInput::make('name')
-                    ->required()
-                    ->maxLength(255)
-                    ->label(__('Tag.Name'))
-                    ->live(onBlur: true)
-                    ->afterStateUpdated(function (Set $set, $state) {
-                        $set('slug', Str::slug($state));
-                    }),
-                TextInput::make('slug')
-                    ->unique(ignorable: fn (?Model $record): ?Model => $record)
-                    ->required()
-                    ->maxLength(255),
-                Select::make('type')
-                    ->options(SkyPlugin::get()->getTagTypes()),
+                Section::make()
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('name')
+                            ->required()
+                            ->maxLength(255)
+                            ->label(__('Tag.Name'))
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(function (Set $set, $state) {
+                                $set('slug', Str::slug($state));
+                            }),
+                        TextInput::make('slug')
+                            ->unique(ignorable: fn (?Model $record): ?Model => $record)
+                            ->required()
+                            ->maxLength(255),
+                        Select::make('type')
+                            ->columnSpan(2)
+                            ->options(SkyPlugin::get()->getTagTypes()),
+                    ]),
             ]);
     }
 

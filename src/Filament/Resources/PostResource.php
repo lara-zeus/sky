@@ -5,7 +5,6 @@ namespace LaraZeus\Sky\Filament\Resources;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Placeholder;
-use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\SpatieTagsInput;
@@ -35,6 +34,7 @@ use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\PostResource\Pages;
 use LaraZeus\Sky\Models\Post;
 use LaraZeus\Sky\SkyPlugin;
+use Wallo\FilamentSelectify\Components\ButtonGroup;
 
 // @mixin Builder<PostScope>
 class PostResource extends SkyResource
@@ -126,21 +126,19 @@ class PostResource extends SkyResource
 
                 Tabs\Tab::make(__('Image'))->schema([
                     Placeholder::make(__('Featured Image')),
-                    Radio::make('featured_image_type')
-                        ->label('')
+                    ButtonGroup::make('featured_image_type')
                         ->live()
+                        ->label('')
                         ->dehydrated(false)
                         ->afterStateHydrated(function (Set $set, Get $get) {
                             $setVal = ($get('featured_image') === null) ? 'upload' : 'url';
                             $set('featured_image_type', $setVal);
                         })
-                        ->default('upload')
                         ->options([
                             'upload' => __('upload'),
                             'url' => __('url'),
                         ])
-                        ->inline(),
-
+                        ->default('upload'),
                     SpatieMediaLibraryFileUpload::make('featured_image_upload')
                         ->collection('posts')
                         ->visible(fn (Get $get) => $get('featured_image_type') === 'upload')

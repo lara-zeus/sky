@@ -2,7 +2,6 @@
 
 namespace LaraZeus\Sky\Filament\Resources;
 
-use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
@@ -24,6 +23,7 @@ use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\LibraryResource\Pages;
 use LaraZeus\Sky\Models\Library;
 use LaraZeus\Sky\SkyPlugin;
+use Wallo\FilamentSelectify\Components\ButtonGroup;
 
 class LibraryResource extends SkyResource
 {
@@ -42,69 +42,71 @@ class LibraryResource extends SkyResource
     {
         return $form
             ->schema([
-                TextInput::make('title')
-                    ->label(__('Library Title'))
-                    ->required()
-                    ->maxLength(255)
-                    ->live(onBlur: true)
-                    ->afterStateUpdated(function (Set $set, $state, $context) {
-                        if ($context === 'edit') {
-                            return;
-                        }
+                Section::make(__('Library File'))
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('title')
+                            ->label(__('Library Title'))
+                            ->required()
+                            ->maxLength(255)
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(function (Set $set, $state, $context) {
+                                if ($context === 'edit') {
+                                    return;
+                                }
 
-                        $set('slug', Str::slug($state));
-                    }),
+                                $set('slug', Str::slug($state));
+                            }),
 
-                TextInput::make('slug')
-                    ->unique(ignorable: fn (?Library $record): ?Library => $record)
-                    ->required()
-                    ->maxLength(255)
-                    ->label(__('Library Slug')),
+                        TextInput::make('slug')
+                            ->unique(ignorable: fn(?Library $record): ?Library => $record)
+                            ->required()
+                            ->maxLength(255)
+                            ->label(__('Library Slug')),
 
-                Textarea::make('description')
-                    ->maxLength(255)
-                    ->label(__('Library Description'))
-                    ->columnSpan(2),
+                        Textarea::make('description')
+                            ->maxLength(255)
+                            ->label(__('Library Description'))
+                            ->columnSpan(2),
 
-                SpatieTagsInput::make('category')
-                    ->type('library')
-                    ->label(__('Library Categories')),
+                        SpatieTagsInput::make('category')
+                            ->type('library')
+                            ->label(__('Library Categories')),
 
-                Select::make('type')
-                    ->label(__('Library Type'))
-                    ->visible(SkyPlugin::get()->getLibraryTypes() !== null)
-                    ->options(SkyPlugin::get()->getLibraryTypes()),
+                        Select::make('type')
+                            ->label(__('Library Type'))
+                            ->visible(SkyPlugin::get()->getLibraryTypes() !== null)
+                            ->options(SkyPlugin::get()->getLibraryTypes()),
+                    ]),
 
                 Section::make(__('Library File'))
+                    ->collapsible()
+                    ->compact()
                     ->schema([
-                        Radio::make('upload_or_url')
-                            ->label('')
+                        ButtonGroup::make('upload_or_url')
                             ->live()
                             ->dehydrated(false)
                             ->afterStateHydrated(function (Set $set, Get $get) {
                                 $setVal = ($get('file_path') === null) ? 'upload' : 'url';
                                 $set('upload_or_url', $setVal);
                             })
-                            ->default('upload')
                             ->options([
                                 'upload' => __('upload'),
                                 'url' => __('url'),
                             ])
-                            ->inline(),
-
+                            ->default('upload'),
                         SpatieMediaLibraryFileUpload::make('file_path_upload')
                             ->collection('library')
                             ->multiple()
                             ->reorderable()
-                            ->visible(fn (Get $get) => $get('upload_or_url') === 'upload')
+                            ->visible(fn(Get $get) => $get('upload_or_url') === 'upload')
                             ->label(''),
 
                         TextInput::make('file_path')
                             ->label(__('file url'))
-                            ->visible(fn (Get $get) => $get('upload_or_url') === 'url')
+                            ->visible(fn(Get $get) => $get('upload_or_url') === 'url')
                             ->url(),
-                    ])
-                    ->collapsible(),
+                    ]),
             ]);
     }
 
@@ -120,15 +122,15 @@ class LibraryResource extends SkyResource
                     ->searchable()
                     ->sortable()
                     ->visible(SkyPlugin::get()->getLibraryTypes() !== null)
-                    ->formatStateUsing(fn (string $state): string => str($state)->title())
+                    ->formatStateUsing(fn(string $state): string => str($state)->title())
                     ->color('')
-                    ->color(fn (string $state) => match ($state) {
+                    ->color(fn(string $state) => match ($state) {
                         'IMAGE' => 'primary',
                         'FILE' => 'success',
                         'VIDEO' => 'warning',
                         default => '',
                     })
-                    ->icon(fn (string $state) => match ($state) {
+                    ->icon(fn(string $state) => match ($state) {
                         'IMAGE' => 'heroicon-o-photo',
                         'FILE' => 'heroicon-o-document',
                         'VIDEO' => 'heroicon-o-film',
@@ -148,7 +150,7 @@ class LibraryResource extends SkyResource
                         ->color('warning')
                         ->icon('heroicon-o-arrow-top-right-on-square')
                         ->label(__('Open'))
-                        ->url(fn (Library $record): string => route('library.item', ['slug' => $record->slug]))
+                        ->url(fn(Library $record): string => route('library.item', ['slug' => $record->slug]))
                         ->openUrlInNewTab(),
                     DeleteAction::make('delete')
                         ->label(__('Delete')),

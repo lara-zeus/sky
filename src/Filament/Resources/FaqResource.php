@@ -3,6 +3,7 @@
 namespace LaraZeus\Sky\Filament\Resources;
 
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\SpatieTagsInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Form;
@@ -46,21 +47,25 @@ class FaqResource extends SkyResource
     {
         return $form
             ->schema([
-                Textarea::make('question')
-                    ->label(__('Question'))
-                    ->required()
-                    ->maxLength(65535)
-                    ->columnSpan(2),
+                Section::make(__('Library File'))
+                    ->columns(2)
+                    ->schema([
+                        Textarea::make('question')
+                            ->label(__('Question'))
+                            ->required()
+                            ->maxLength(65535)
+                            ->columnSpan(2),
 
-                RichEditor::make('answer')
-                    ->label(__('Answer'))
-                    ->required()
-                    ->maxLength(65535)
-                    ->columnSpan(2),
+                        RichEditor::make('answer')
+                            ->label(__('Answer'))
+                            ->required()
+                            ->maxLength(65535)
+                            ->columnSpan(2),
 
-                SpatieTagsInput::make('category')
-                    ->type('faq')
-                    ->label(__('FAQ Categories')),
+                        SpatieTagsInput::make('category')
+                            ->type('faq')
+                            ->label(__('FAQ Categories')),
+                    ]),
             ]);
     }
 

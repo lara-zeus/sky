@@ -15,6 +15,7 @@ class TipTapEditor implements ContentEditor
             return \FilamentTiptapEditor\TiptapEditor::make('content')
                 ->profile('default')
                 ->output(TiptapOutput::Html)
+                ->extraInputAttributes(['style' => 'min-height: 24rem;'])
                 ->required();
         }
 

@@ -1,17 +1,17 @@
 <?php
 
-namespace LaraZeus\Sky\Classes;
+namespace LaraZeus\Sky\Editors;
 
 use Filament\Forms\Components\Component;
 use Filament\Forms\Components\Textarea;
 use FilamentTiptapEditor\Enums\TiptapOutput;
-use FilamentTiptapEditor\TiptapEditor as TipTapEditorAlias;
+use LaraZeus\Sky\Classes\ContentEditor;
 
 class TipTapEditor implements ContentEditor
 {
     public static function component(): Component
     {
-        if (class_exists(TipTapEditorAlias::class)) {
+        if (class_exists(\FilamentTiptapEditor\TiptapEditor::class)) {
             return \FilamentTiptapEditor\TiptapEditor::make('content')
                 ->profile('default')
                 ->output(TiptapOutput::Html)
@@ -24,7 +24,7 @@ class TipTapEditor implements ContentEditor
 
     public static function render(string $content): string
     {
-        if (class_exists(TipTapEditorAlias::class)) {
+        if (class_exists(\FilamentTiptapEditor\TiptapEditor::class)) {
             return tiptap_converter()->asHTML($content);
         }
 

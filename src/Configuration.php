@@ -47,11 +47,11 @@ trait Configuration
 
     /**
      * the default editor for pages and posts, Available:
-     * \LaraZeus\Sky\Classes\TipTapEditor::class,
-     * \LaraZeus\Sky\Classes\TinyEditor::class,
-     * \LaraZeus\Sky\Classes\MarkdownEditor::class,
+     * \LaraZeus\Sky\Editors\TipTapEditor::class,
+     * \LaraZeus\Sky\Editors\TinyEditor::class,
+     * \LaraZeus\Sky\Editors\MarkdownEditor::class,
      */
-    protected string $editor = \LaraZeus\Sky\Classes\TipTapEditor::class;
+    protected string $editor = Editors\TipTapEditor::class;
 
     /**
      * parse the content

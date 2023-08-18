@@ -1,9 +1,10 @@
 <?php
 
-namespace LaraZeus\Sky\Classes;
+namespace LaraZeus\Sky\Editors;
 
 use Filament\Forms\Components\Component;
 use Filament\Forms\Components\Textarea;
+use LaraZeus\Sky\Classes\ContentEditor;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor as TinyEditorAlias;
 
 class TinyEditor implements ContentEditor

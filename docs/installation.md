@@ -3,6 +3,8 @@ title: Installation
 weight: 2
 ---
 
+before you continue, please make sure you already installed filament, and all working prefecture for you.
+
 ## Composer
 
 You can install the package via composer:
@@ -20,20 +22,11 @@ php artisan vendor:publish --provider="Spatie\Tags\TagsServiceProvider" --tag="t
 php artisan vendor:publish --provider="Spatie\MediaLibrary\MediaLibraryServiceProvider" --tag="migrations"
 ```
 
-optionally, if you want to seed the database, publish the seeder and factories with:
-
-## Seeder and Factories
-```bash
-php artisan vendor:publish --tag=zeus-sky-seeder
-php artisan vendor:publish --tag=zeus-sky-factories
-```
-
 ## Assets
 to publish the assets files for the frontend:
 
 ```bash
 php artisan vendor:publish --tag=zeus-assets
-php artisan vendor:publish --tag="filament-forms-tinyeditor-assets"
 ```
 
 ## Run Migration

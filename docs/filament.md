@@ -1,15 +1,8 @@
-<!-- TOC -->
-* [Zeus Sky](#zeus-sky)
-  * [Features:](#features)
-  * [Screenshots:](#screenshots)
-  * [More Details](#more-details)
-<!-- TOC -->
-
 # Zeus Sky
 
 Sky simple CMS. it includes posts, pages, tags, and categories and more, with a frontend scaffolding. easy to customize it and match your branding.
 
-## Features:
+## Features
 
 - 🔥 built with [TALL stack](https://tallstack.dev/)
 - 🔥 using [filament](https://filamentadmin.com) as an admin panel
@@ -31,7 +24,7 @@ Sky simple CMS. it includes posts, pages, tags, and categories and more, with a 
 - 🔥 WordPress importer
         you can use our package [Zeus Rhea](https://larazeus.com/rhea) to import your blog from WordPress easily
 
-## Screenshots:
+## Screenshots
 
 * **CMS:** blog, pages with tags and categorises and navigations
 

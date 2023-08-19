@@ -21,7 +21,7 @@ Lara Zeus Sky is simple CMS for your website. It includes posts, pages, tags, an
 ## Support Filament
 
 <a href="https://github.com/sponsors/danharrin">
-<img width="320" alt="filament-logo" src="https://larazeus.com/images/filament-sponsor-banner.png">
+<img alt="sponsors filament" src="https://larazeus.com/images/filament-sponsor-banner.png">
 </a>
 
 ## features

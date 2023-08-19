@@ -23,9 +23,14 @@ weight: 1
     - password protections
     - multiple tags and categories
     - Featured Image
+- 🔥 Addons.
+    - Faq.
+    - Libraries.
 - 🔥 Customization
   - use it as headless CMS, make your own frontend stack.
   - chose your editor, already included: Markdown Editor, Tiny Editor, TipTap Editor,
+- 🔥 WordPress importer
+  you can use our package [Zeus Rhea](https://larazeus.com/rhea) to import your blog from WordPress easily
 
 and more on the way:
 - authors

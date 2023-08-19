@@ -3,7 +3,7 @@ title: Customization
 weight: 6
 ---
 
-to customize the layout, you can change the default layout in the config file
+to customize the layout, you can change the default layout in the `zeus.php` config file
 
 ```php
 'layout' => 'zeus::components.app',

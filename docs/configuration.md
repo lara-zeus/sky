@@ -10,6 +10,14 @@ to configure the plugin Sky, you can pass the configuration to the plugin in `ad
 these all the available configuration, and their defaults values
 
 ```php
+SpatieLaravelTranslatablePlugin::make()
+    //If you don't use multi-language
+    ->defaultLocales([config('app.locale')])
+    // or if you have more
+    ->defaultLocales(['en', 'pt']),
+
+FilamentNavigation::make(),
+    
 SkyPlugin::make()
     ->skyPrefix('sky')
     ->skyMiddleware(['web'])
@@ -21,10 +29,10 @@ SkyPlugin::make()
     ])
     
     // enable or disable the resources
-    ->hasPostResource()
-    ->hasPageResource()
-    ->hasFaqResource()
-    ->hasLibraryResource()
+    ->postResource()
+    ->pageResource()
+    ->faqResource()
+    ->libraryResource()
     
     ->navigationGroupLabel('Sky')
     
@@ -52,7 +60,6 @@ SkyPlugin::make()
         'library' => 'Library',
         'faq' => 'Faq',
     ])
-
 ```
 
 ## Content Editor

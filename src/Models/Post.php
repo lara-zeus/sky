@@ -129,7 +129,7 @@ class Post extends Model implements HasMedia
     {
         $parsers = SkyPlugin::get()->getParsers();
 
-        if (! empty($parsers)) {
+        if (filled($parsers)) {
             foreach ($parsers as $parser) {
                 $content = (new $parser)($content);
             }

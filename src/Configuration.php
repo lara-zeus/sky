@@ -59,8 +59,13 @@ trait Configuration
      *
      * to render Blot form by it slug: \LaraZeus\Sky\Classes\BoltParser::class,
      */
-    protected array $parsers = [\LaraZeus\Sky\Classes\BoltParser::class];
+    protected array $parsers = [
+        \LaraZeus\Sky\Classes\BoltParser::class
+    ];
 
+    /**
+     * for the frontend
+     */
     protected int $recentPostsLimit = 5;
 
     /**

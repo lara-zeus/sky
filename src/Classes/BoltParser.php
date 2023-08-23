@@ -16,7 +16,7 @@ class BoltParser
                 $formSlug = trim($bolt[1]);
                 $checkForm = BoltPlugin::getModel('Form')::where('slug', $formSlug)->first();
                 if ($checkForm !== null) {
-                    $boltComponent = Blade::render('<livewire:bolt.fill-form slug="' . $formSlug . '" />');
+                    $boltComponent = Blade::render('<livewire:bolt.fill-form inline="true" slug="' . $formSlug . '" />');
                     $content = str_replace('<bolt>' . $formSlug . '</bolt>', $boltComponent, $content);
                 }
             }

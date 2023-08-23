@@ -1,13 +1,22 @@
 <div class="mt-6 container mx-auto px-2 md:px-4">
-    <x-slot name="breadcrumps">
+
+    <x-slot name="header">
+        <span class="capitalize">{{ $post->title }}</span>
+    </x-slot>
+
+    <x-slot name="breadcrumbs">
+        <li class="flex items-center">
+            <a href="{{ url('/') }}">{{ __('Home') }}</a>
+            @svg('iconpark-rightsmall-o','fill-current w-4 h-4 mx-3 rtl:rotate-180')
+        </li>
         @if($post->parent !== null)
             <li class="flex items-center">
                 <a href="{{ route('page',[$post->parent->slug]) }}" class="text-gray-400 dark:text-gray-200 capitalize" aria-current="page">{{ $post->parent->title }}</a>
                 @svg('iconpark-rightsmall-o','fill-current w-4 h-4 mx-3')
             </li>
         @endif
-        <li>
-            <a class="text-gray-500 dark:text-gray-100 capitalize" aria-current="page">{{ $post->title }}</a>
+        <li class="flex items-center">
+            {{ $post->title }}
         </li>
     </x-slot>
 

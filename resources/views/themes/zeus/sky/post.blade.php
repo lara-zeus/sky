@@ -3,9 +3,17 @@
         <span class="capitalize">{{ $post->title }}</span>
     </x-slot>
 
-    <x-slot name="breadcrumps">
-        <li>
-            <a class="text-gray-500 dark:text-gray-100 capitalize" aria-current="page">{{ $post->title }}</a>
+    <x-slot name="breadcrumbs">
+        <li class="flex items-center">
+            <a href="{{ url('/') }}">{{ __('Home') }}</a>
+            @svg('iconpark-rightsmall-o','fill-current w-4 h-4 mx-3 rtl:rotate-180')
+        </li>
+        <li class="flex items-center">
+            <a href="{{ route('blogs') }}">{{ __('Posts') }}</a>
+            @svg('iconpark-rightsmall-o','fill-current w-4 h-4 mx-3 rtl:rotate-180')
+        </li>
+        <li class="flex items-center">
+            {{ $post->title }}
         </li>
     </x-slot>
 

@@ -4,9 +4,13 @@
         <h2>{{ $item->title }}</h2>
     </x-slot>
 
-    <x-slot name="breadcrumps">
+    <x-slot name="breadcrumbs">
         <li class="flex items-center">
-            <a href="{{ route('library') }}">{{ __('library') }}</a>
+            <a href="{{ url('/') }}">{{ __('Home') }}</a>
+            @svg('iconpark-rightsmall-o','fill-current w-4 h-4 mx-3 rtl:rotate-180')
+        </li>
+        <li class="flex items-center">
+            <a href="{{ route('library') }}">{{ __('libraries') }}</a>
             @svg('iconpark-rightsmall-o','fill-current w-4 h-4 mx-3')
         </li>
 

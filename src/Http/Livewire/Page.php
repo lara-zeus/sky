@@ -40,9 +40,9 @@ class Page extends Component
     public function setSeo(): void
     {
         seo()
-            ->title($this->page->title)
-            ->description(($this->page->description ?? '') . ' ' . config('zeus.site_description', 'Laravel'))
             ->site(config('zeus.site_title', 'Laravel'))
+            ->title($this->page->title . ' - ' . config('zeus.site_title'))
+            ->description(($this->page->description ?? '') . ' ' . config('zeus.site_description', 'Laravel') . ' ' . config('zeus.site_title'))
             ->rawTag('favicon', '<link rel="icon" type="image/x-icon" href="' . asset('favicon/favicon.ico') . '">')
             ->rawTag('<meta name="theme-color" content="' . config('zeus.site_color') . '" />')
             ->withUrl()

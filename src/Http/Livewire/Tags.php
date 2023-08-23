@@ -25,9 +25,9 @@ class Tags extends Component
     public function render()
     {
         seo()
-            ->title($this->tag->name)
-            ->site(config('app.name', 'Laravel'))
-            ->description(config('zeus.site_description') . ' ' . __('Show All posts in') . ' ' . $this->tag->name)
+            ->site(config('zeus.site_title', 'Laravel'))
+            ->title($this->tag->name . ' - ' . config('zeus.site_title'))
+            ->description(__('Show All posts in') . ' ' . $this->tag->name . ' - ' . config('zeus.site_description') . ' ' . config('zeus.site_title'))
             ->rawTag('favicon', '<link rel="icon" type="image/x-icon" href="' . asset('favicon/favicon.ico') . '">')
             ->rawTag('<meta name="theme-color" content="' . config('zeus.site_color') . '" />')
             ->withUrl()

@@ -4,6 +4,17 @@
         <h1>{{ __('Libraries') }}</h1>
     </x-slot>
 
+    <x-slot name="breadcrumbs">
+        <li class="flex items-center">
+            <a href="{{ url('/') }}">{{ __('Home') }}</a>
+            @svg('iconpark-rightsmall-o','fill-current w-4 h-4 mx-3 rtl:rotate-180')
+        </li>
+
+        <li class="flex items-center">
+            {{ __('libraries') }}
+        </li>
+    </x-slot>
+
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
         @foreach($categories as $category)
             <x-filament::section>

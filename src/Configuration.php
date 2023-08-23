@@ -60,7 +60,7 @@ trait Configuration
      * to render Blot form by it slug: \LaraZeus\Sky\Classes\BoltParser::class,
      */
     protected array $parsers = [
-        \LaraZeus\Sky\Classes\BoltParser::class
+        \LaraZeus\Sky\Classes\BoltParser::class,
     ];
 
     /**

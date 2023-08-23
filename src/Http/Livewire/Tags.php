@@ -26,8 +26,8 @@ class Tags extends Component
     {
         seo()
             ->site(config('zeus.site_title', 'Laravel'))
-            ->title($this->tag->name.' - '.config('zeus.site_title'))
-            ->description(__('Show All posts in'). ' '.$this->tag->name.' - '.config('zeus.site_description').' '.config('zeus.site_title'))
+            ->title($this->tag->name . ' - ' . config('zeus.site_title'))
+            ->description(__('Show All posts in') . ' ' . $this->tag->name . ' - ' . config('zeus.site_description') . ' ' . config('zeus.site_title'))
             ->rawTag('favicon', '<link rel="icon" type="image/x-icon" href="' . asset('favicon/favicon.ico') . '">')
             ->rawTag('<meta name="theme-color" content="' . config('zeus.site_color') . '" />')
             ->withUrl()

@@ -10,7 +10,7 @@ use LaraZeus\Sky\Filament\Resources\PageResource;
 use LaraZeus\Sky\Filament\Resources\PostResource;
 use LaraZeus\Sky\Filament\Resources\TagResource;
 
-class SkyPlugin implements Plugin
+final class SkyPlugin implements Plugin
 {
     use Configuration;
 
@@ -42,12 +42,13 @@ class SkyPlugin implements Plugin
 
     public static function make(): static
     {
-        return app(static::class);
+        return new self();
     }
 
-    public static function get(): Plugin | \Filament\FilamentManager
+    public static function get(): static
     {
-        return filament(app(static::class)->getId());
+        // @phpstan-ignore-next-line
+        return filament('zeus-sky');
     }
 
     public function boot(Panel $panel): void

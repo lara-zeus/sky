@@ -3,7 +3,6 @@
 namespace LaraZeus\Sky\Classes;
 
 use Illuminate\Support\Facades\Blade;
-use LaraZeus\Bolt\BoltPlugin;
 
 class BoltParser
 {
@@ -14,7 +13,8 @@ class BoltParser
             preg_match('/<bolt>(.*?)<\/bolt>/s', $content, $bolt);
             if (is_array($bolt) && isset($bolt[1])) {
                 $formSlug = trim($bolt[1]);
-                $checkForm = BoltPlugin::getModel('Form')::where('slug', $formSlug)->first();
+                // @phpstan-ignore-next-line
+                $checkForm = \LaraZeus\Bolt\BoltPlugin::getModel('Form')::where('slug', $formSlug)->first();
                 if ($checkForm !== null) {
                     $boltComponent = Blade::render('<livewire:bolt.fill-form inline="true" slug="' . $formSlug . '" />');
                     $content = str_replace('<bolt>' . $formSlug . '</bolt>', $boltComponent, $content);

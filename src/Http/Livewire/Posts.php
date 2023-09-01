@@ -2,6 +2,7 @@
 
 namespace LaraZeus\Sky\Http\Livewire;
 
+use Illuminate\View\View;
 use LaraZeus\Sky\SkyPlugin;
 use Livewire\Component;
 
@@ -9,7 +10,7 @@ class Posts extends Component
 {
     use SearchHelpers;
 
-    public function render()
+    public function render(): View
     {
         $search = request('search');
         $category = request('category');

@@ -14,7 +14,7 @@ class PostStatus extends Model
 {
     use \Sushi\Sushi;
 
-    public function getRows()
+    public function getRows(): array
     {
         return [
             ['name' => 'publish', 'label' => __('Publish'), 'class' => 'px-2 py-0.5 text-xs rounded-xl text-success-700 bg-success-500/10', 'icon' => 'heroicon-o-check-badge'],

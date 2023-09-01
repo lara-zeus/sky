@@ -11,6 +11,7 @@ use LaraZeus\Sky\SkyPlugin;
  * @property string $slug
  * @property string $type
  * @property string $name
+ * @property string $description
  *
  * @method Builder|static published()
  */

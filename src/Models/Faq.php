@@ -8,8 +8,8 @@ use Spatie\Translatable\HasTranslations;
 
 class Faq extends Model
 {
-    use HasTranslations;
     use HasTags;
+    use HasTranslations;
 
     public array $translatable = [
         'question',

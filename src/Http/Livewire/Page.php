@@ -2,19 +2,20 @@
 
 namespace LaraZeus\Sky\Http\Livewire;
 
+use Illuminate\View\View;
 use LaraZeus\Sky\SkyPlugin;
 use Livewire\Component;
 
 class Page extends Component
 {
-    public $page;
+    public \LaraZeus\Sky\Models\Post $page;
 
-    public function mount($slug)
+    public function mount(string $slug): void
     {
         $this->page = SkyPlugin::get()->getPostModel()::where('slug', $slug)->page()->firstOrFail();
     }
 
-    public function render()
+    public function render(): View
     {
         $this->setSeo();
 

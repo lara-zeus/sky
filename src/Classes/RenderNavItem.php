@@ -6,7 +6,7 @@ use LaraZeus\Sky\SkyPlugin;
 
 class RenderNavItem
 {
-    public static function render($item, $class = '')
+    public static function render(array $item, string $class = ''): string
     {
         if ($item['type'] === 'page-link') {
             $page = SkyPlugin::get()->getPostModel()::page()->find($item['data']['page_id']) ?? '';

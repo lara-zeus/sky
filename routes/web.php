@@ -13,7 +13,7 @@ use LaraZeus\Sky\SkyPlugin;
 
 $filament = app('filament');
 
-if (app('filament')->hasPlugin('zeus-sky')) {
+if (! defined('__PHPSTAN_RUNNING__') && app('filament')->hasPlugin('zeus-sky')) {
     Route::prefix(SkyPlugin::get()->getSkyPrefix())
         ->middleware(SkyPlugin::get()->getMiddleware())
         ->group(function () {

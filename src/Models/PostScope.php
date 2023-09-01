@@ -3,7 +3,6 @@
 namespace LaraZeus\Sky\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\DB;
 
 trait PostScope
 {
@@ -88,13 +87,13 @@ trait PostScope
     /**
      * @param  Builder<Post>  $query
      */
-    public function scopeSearch(Builder $query, $term): Builder
+    public function scopeSearch(Builder $query, ?string $term): Builder
     {
         if ($term !== null) {
             return $query->where(
                 function ($query) use ($term) {
                     foreach (['title', 'slug', 'content', 'description'] as $attribute) {
-                        $query->orWhere(DB::raw("lower({$attribute})"), 'like', "%{$term}%");
+                        $query->orWhere($attribute, 'like', "%{$term}%");
                     }
 
                     return $query;

@@ -2,19 +2,20 @@
 
 namespace LaraZeus\Sky\Http\Livewire;
 
+use Illuminate\View\View;
 use LaraZeus\Sky\SkyPlugin;
 use Livewire\Component;
 
 class LibraryItem extends Component
 {
-    public $item;
+    public \LaraZeus\Sky\Models\Library $item;
 
-    public function mount($slug)
+    public function mount(string $slug): void
     {
         $this->item = SkyPlugin::get()->getLibraryModel()::where('slug', $slug)->firstOrFail();
     }
 
-    public function render()
+    public function render(): View
     {
         seo()
             ->site(config('zeus.site_title', 'Laravel'))

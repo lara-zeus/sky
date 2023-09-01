@@ -23,10 +23,8 @@ class migrateCommand extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         $posts = SkyPlugin::get()->getPostModel()::get();
         foreach ($posts as $post) {
@@ -55,7 +53,7 @@ class migrateCommand extends Command
         }
     }
 
-    public function isJson($string)
+    public function isJson(string $string): bool
     {
         json_decode($string);
 

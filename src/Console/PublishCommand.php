@@ -22,10 +22,8 @@ class PublishCommand extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         // publish Sky files
         $this->callSilent('vendor:publish', ['--tag' => 'zeus-sky-migrations', '--force' => $this->option('force')]);

@@ -2,12 +2,13 @@
 
 namespace LaraZeus\Sky\Http\Livewire;
 
+use Illuminate\View\View;
 use LaraZeus\Sky\SkyPlugin;
 use Livewire\Component;
 
 class Library extends Component
 {
-    public function render()
+    public function render(): View
     {
         seo()
             ->site(config('zeus.site_title', 'Laravel'))

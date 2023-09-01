@@ -2,18 +2,20 @@
 
 namespace LaraZeus\Sky\Http\Livewire;
 
+use Illuminate\View\View;
+use LaraZeus\Sky\Models\Tag;
 use LaraZeus\Sky\SkyPlugin;
 use Livewire\Component;
 
 class Tags extends Component
 {
-    public $type;
+    public string $type;
 
-    public $slug;
+    public string $slug;
 
-    public $tag;
+    public Tag $tag;
 
-    public function mount($type, $slug)
+    public function mount(string $type, string $slug): void
     {
         $this->type = $type;
         $this->slug = $slug;
@@ -22,7 +24,7 @@ class Tags extends Component
         abort_if($this->tag === null, 404);
     }
 
-    public function render()
+    public function render(): View
     {
         seo()
             ->site(config('zeus.site_title', 'Laravel'))

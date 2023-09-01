@@ -8,6 +8,7 @@ use LaraZeus\Core\CoreServiceProvider;
 use LaraZeus\Sky\Console\migrateCommand;
 use LaraZeus\Sky\Console\PublishCommand;
 use RyanChandler\FilamentNavigation\Filament\Resources\NavigationResource;
+use RyanChandler\FilamentNavigation\FilamentNavigation;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -58,7 +59,7 @@ class SkyServiceProvider extends PackageServiceProvider
 
     private function bootFilamentNavigation(): void
     {
-        if (! app('filament')->hasPlugin('zeus-sky') || ! app('filament')->hasPlugin('navigation')) {
+        if (! defined('__PHPSTAN_RUNNING__') && (! app('filament')->hasPlugin('zeus-sky') || ! app('filament')->hasPlugin('navigation'))) {
             return;
         }
 
@@ -70,7 +71,7 @@ class SkyServiceProvider extends PackageServiceProvider
             NavigationResource::pluralLabel(__('Navigations'));
             NavigationResource::label(__('Navigation'));
 
-            filament('navigation')
+            FilamentNavigation::get()
                 ->itemType(
                     __('Post link'),
                     [

@@ -7,7 +7,7 @@ use LaraZeus\Sky\SkyPlugin;
 
 class SkySeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         SkyPlugin::get()->getTagModel()::create(['name' => ['en' => 'laravel', 'ar' => 'لارافل'], 'type' => 'category']);
         SkyPlugin::get()->getTagModel()::create(['name' => ['en' => 'talks', 'ar' => 'اخبار'], 'type' => 'category']);

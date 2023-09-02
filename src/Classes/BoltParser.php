@@ -16,7 +16,7 @@ class BoltParser
                 // @phpstan-ignore-next-line
                 $checkForm = \LaraZeus\Bolt\BoltPlugin::getModel('Form')::where('slug', $formSlug)->first();
                 if ($checkForm !== null) {
-                    $boltComponent = Blade::render('<livewire:bolt.fill-form inline="true" slug="' . $formSlug . '" />');
+                    $boltComponent = Blade::render('@push("styles") @filamentStyles @endpush <livewire:bolt.fill-form inline="true" slug="' . $formSlug . '" />');
                     $content = str_replace('<bolt>' . $formSlug . '</bolt>', $boltComponent, $content);
                 }
             }

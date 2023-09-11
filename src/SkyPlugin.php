@@ -4,6 +4,7 @@ namespace LaraZeus\Sky;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
+use Filament\Support\Concerns\EvaluatesClosures;
 use LaraZeus\Sky\Filament\Resources\FaqResource;
 use LaraZeus\Sky\Filament\Resources\LibraryResource;
 use LaraZeus\Sky\Filament\Resources\PageResource;
@@ -13,6 +14,7 @@ use LaraZeus\Sky\Filament\Resources\TagResource;
 final class SkyPlugin implements Plugin
 {
     use Configuration;
+    use EvaluatesClosures;
 
     public function getId(): string
     {

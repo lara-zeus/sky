@@ -2,12 +2,14 @@
 
 namespace LaraZeus\Sky;
 
+use Closure;
+
 trait Configuration
 {
     /**
      * set the default path for the blog homepage.
      */
-    protected string $skyPrefix = 'sky';
+    protected Closure | string $skyPrefix = 'sky';
 
     /**
      * the middleware you want to apply on all the blog routes
@@ -33,17 +35,18 @@ trait Configuration
 
     protected bool $hasLibraryResource = true;
 
-    protected string $navigationGroupLabel = 'Sky';
+    protected Closure | string $navigationGroupLabel = 'Sky';
 
-    protected string $faqModel = \LaraZeus\Sky\Models\Faq::class;
-
-    protected string $postModel = \LaraZeus\Sky\Models\Post::class;
-
-    protected string $postStatusModel = \LaraZeus\Sky\Models\PostStatus::class;
-
-    protected string $tagModel = \LaraZeus\Sky\Models\Tag::class;
-
-    protected string $libraryModel = \LaraZeus\Sky\Models\Library::class;
+    /**
+     * you can overwrite any model and use your own
+     */
+    protected array $skyModels = [
+        'Faq' => \LaraZeus\Sky\Models\Faq::class,
+        'Post' => \LaraZeus\Sky\Models\Post::class,
+        'PostStatus' => \LaraZeus\Sky\Models\PostStatus::class,
+        'Tag' => \LaraZeus\Sky\Models\Tag::class,
+        'Library' => \LaraZeus\Sky\Models\Library::class,
+    ];
 
     /**
      * the default editor for pages and posts, Available:
@@ -51,7 +54,7 @@ trait Configuration
      * \LaraZeus\Sky\Editors\TinyEditor::class,
      * \LaraZeus\Sky\Editors\MarkdownEditor::class,
      */
-    protected string $editor = Editors\TipTapEditor::class;
+    protected string $editor = Editors\MarkdownEditor::class;
 
     /**
      * parse the content
@@ -98,16 +101,16 @@ trait Configuration
         'faq' => 'Faq',
     ];
 
-    public function skyPrefix(string $prefix): static
+    public function skyPrefix(Closure | string $prefix): static
     {
         $this->skyPrefix = $prefix;
 
         return $this;
     }
 
-    public function getSkyPrefix(): string
+    public function getSkyPrefix(): Closure | string
     {
-        return $this->skyPrefix;
+        return $this->evaluate($this->skyPrefix);
     }
 
     public function skyMiddleware(array $middleware): static
@@ -170,76 +173,36 @@ trait Configuration
         return $this->hasLibraryResource;
     }
 
-    public function navigationGroupLabel(string $lable): static
+    public function navigationGroupLabel(Closure | string $lable): static
     {
         $this->navigationGroupLabel = $lable;
 
         return $this;
     }
 
-    public function getNavigationGroupLabel(): string
+    public function getNavigationGroupLabel(): Closure | string
     {
-        return $this->navigationGroupLabel;
+        return $this->evaluate($this->navigationGroupLabel);
     }
 
-    public function faqModel(string $model): static
+    public function skyModels(array $models): static
     {
-        $this->faqModel = $model;
+        $this->skyModels = $models;
 
         return $this;
     }
 
-    public function getFaqModel(): string
+    public function getSkyModels(): array
     {
-        return $this->faqModel;
+        return $this->skyModels;
     }
 
-    public function postModel(string $model): static
+    public static function getModel(string $model): string
     {
-        $this->postModel = $model;
-
-        return $this;
-    }
-
-    public function getPostModel(): string
-    {
-        return $this->postModel;
-    }
-
-    public function postStatusModel(string $model): static
-    {
-        $this->postStatusModel = $model;
-
-        return $this;
-    }
-
-    public function getPostStatusModel(): string
-    {
-        return $this->postStatusModel;
-    }
-
-    public function tagModel(string $model): static
-    {
-        $this->tagModel = $model;
-
-        return $this;
-    }
-
-    public function getTagModel(): string
-    {
-        return $this->tagModel;
-    }
-
-    public function libraryModel(string $model): static
-    {
-        $this->libraryModel = $model;
-
-        return $this;
-    }
-
-    public function getLibraryModel(): string
-    {
-        return $this->libraryModel;
+        return array_merge(
+            (new static())->skyModels,
+            (new static())::get()->getSkyModels()
+        )[$model];
     }
 
     public function editor(string $editor): static

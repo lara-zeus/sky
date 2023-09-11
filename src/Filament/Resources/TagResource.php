@@ -28,7 +28,7 @@ class TagResource extends SkyResource
 
     public static function getModel(): string
     {
-        return SkyPlugin::get()->getTagModel();
+        return SkyPlugin::get()->getModel('Tag');
     }
 
     public static function form(Form $form): Form

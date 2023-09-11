@@ -12,7 +12,7 @@ class Page extends Component
 
     public function mount(string $slug): void
     {
-        $this->page = SkyPlugin::get()->getPostModel()::where('slug', $slug)->page()->firstOrFail();
+        $this->page = SkyPlugin::get()->getModel('Post')::where('slug', $slug)->page()->firstOrFail();
     }
 
     public function render(): View
@@ -33,7 +33,7 @@ class Page extends Component
         return view(app('skyTheme') . '.page')
             ->with([
                 'post' => $this->page,
-                'children' => SkyPlugin::get()->getPostModel()::with('parent')->where('parent_id', $this->page->id)->get(),
+                'children' => SkyPlugin::get()->getModel('Post')::with('parent')->where('parent_id', $this->page->id)->get(),
             ])
             ->layout(config('zeus.layout'));
     }

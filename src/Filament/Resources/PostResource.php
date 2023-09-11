@@ -45,7 +45,7 @@ class PostResource extends SkyResource
 
     public static function getModel(): string
     {
-        return SkyPlugin::get()->getPostModel();
+        return SkyPlugin::get()->getModel('Post');
     }
 
     public static function form(Form $form): Form
@@ -108,7 +108,7 @@ class PostResource extends SkyResource
                         ->default('publish')
                         ->required()
                         ->live()
-                        ->options(SkyPlugin::get()->getPostStatusModel()::pluck('label', 'name')),
+                        ->options(SkyPlugin::get()->getModel('PostStatus')::pluck('label', 'name')),
 
                     TextInput::make('password')
                         ->label(__('Password'))
@@ -207,7 +207,7 @@ class PostResource extends SkyResource
                 SelectFilter::make('status')
                     ->multiple()
                     ->label(__('Status'))
-                    ->options(SkyPlugin::get()->getPostStatusModel()::pluck('label', 'name')),
+                    ->options(SkyPlugin::get()->getModel('PostStatus')::pluck('label', 'name')),
 
                 Filter::make('password')
                     ->label(__('Password Protected'))

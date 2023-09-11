@@ -20,7 +20,7 @@ class Faq extends Component
             ->twitter();
 
         return view(app('skyTheme') . '.addons.faq')
-            ->with('faqs', SkyPlugin::get()->getFaqModel()::get())
+            ->with('faqs', SkyPlugin::get()->getModel('Faq')::get())
             ->layout(config('zeus.layout'));
     }
 }

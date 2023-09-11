@@ -37,11 +37,13 @@ SkyPlugin::make()
     ->navigationGroupLabel('Sky')
     
     // the default models
-    ->faqModel(\LaraZeus\Sky\Models\Faq::class)
-    ->postModel(\LaraZeus\Sky\Models\Post::class)
-    ->postStatusModel(\LaraZeus\Sky\Models\PostStatus::class)
-    ->tagModel(\LaraZeus\Sky\Models\Tag::class)
-    ->libraryModel(\LaraZeus\Sky\Models\Library::class)
+    ->skyModels([
+        'Faq' => \LaraZeus\Sky\Models\Faq::class,
+        'Post' => \LaraZeus\Sky\Models\Post::class,
+        'PostStatus' => \LaraZeus\Sky\Models\PostStatus::class,
+        'Tag' => \LaraZeus\Sky\Models\Tag::class,
+        'Library' => \LaraZeus\Sky\Models\Library::class,
+    ])
 
     ->editor(Editors\TipTapEditor::class)
     ->parsers([\LaraZeus\Sky\Classes\BoltParser::class])

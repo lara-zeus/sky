@@ -9,7 +9,7 @@ class PostFactory extends Factory
 {
     public function getModel(): string
     {
-        return SkyPlugin::get()->getPostModel();
+        return SkyPlugin::get()->getModel('Post');
     }
 
     /**

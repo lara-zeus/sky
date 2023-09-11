@@ -79,7 +79,7 @@ class SkyServiceProvider extends PackageServiceProvider
                             ->label(__('Select Post'))
                             ->searchable()
                             ->options(function () {
-                                return SkyPlugin::get()->getPostModel()::published()->pluck('title', 'id');
+                                return SkyPlugin::get()->getModel('Post')::published()->pluck('title', 'id');
                             }),
                     ],
                     'post_link'
@@ -91,7 +91,7 @@ class SkyServiceProvider extends PackageServiceProvider
                             ->label(__('Select Page'))
                             ->searchable()
                             ->options(function () {
-                                return SkyPlugin::get()->getPostModel()::page()->pluck('title', 'id');
+                                return SkyPlugin::get()->getModel('Post')::page()->pluck('title', 'id');
                             }),
                     ],
                     'page_link'
@@ -103,7 +103,7 @@ class SkyServiceProvider extends PackageServiceProvider
                             ->label(__('Select Library'))
                             ->searchable()
                             ->options(function () {
-                                return SkyPlugin::get()->getTagModel()::getWithType('library')->pluck('name', 'id');
+                                return SkyPlugin::get()->getModel('Tag')::getWithType('library')->pluck('name', 'id');
                             }),
                     ],
                     'library_link'

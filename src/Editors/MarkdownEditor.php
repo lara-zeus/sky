@@ -3,16 +3,16 @@
 namespace LaraZeus\Sky\Editors;
 
 use Filament\Forms\Components\Component;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Textarea;
 use LaraZeus\Sky\Classes\ContentEditor;
-use Spatie\FilamentMarkdownEditor\MarkdownEditor as MarkdownEditorAlias;
 
 class MarkdownEditor implements ContentEditor
 {
     public static function component(): Component
     {
-        if (class_exists(MarkdownEditorAlias::class)) {
-            return MarkdownEditorAlias::make('content')
+        if (class_exists(RichEditor::class)) {
+            return RichEditor::make('content')
                 ->required();
         }
 
@@ -21,7 +21,7 @@ class MarkdownEditor implements ContentEditor
 
     public static function render(string $content): string
     {
-        if (class_exists(MarkdownEditorAlias::class)) {
+        if (class_exists(RichEditor::class)) {
             return str($content)->markdown();
         }
 

@@ -65,7 +65,8 @@ class PostResource extends SkyResource
 
                             $set('slug', Str::slug($state));
                         }),
-                    SkyPlugin::get()->getEditor()::component(),
+                    SkyPlugin::get()->getEditor()::component()
+                        ->label(__('Post Content')),
                 ]),
 
                 Tabs\Tab::make(__('SEO'))->schema([

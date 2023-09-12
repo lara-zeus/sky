@@ -23,8 +23,8 @@ class Library extends Model implements HasMedia
 {
     use HasFactory;
     use HasTags;
-    use InteractsWithMedia;
     use HasTranslations;
+    use InteractsWithMedia;
 
     public $translatable = [
         'title',

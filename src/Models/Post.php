@@ -34,12 +34,12 @@ use Spatie\Translatable\HasTranslations;
  */
 class Post extends Model implements HasMedia
 {
-    use SoftDeletes;
     use HasFactory;
     use HasTags;
+    use HasTranslations;
     use InteractsWithMedia;
     use PostScope;
-    use HasTranslations;
+    use SoftDeletes;
 
     public $translatable = [
         'title',

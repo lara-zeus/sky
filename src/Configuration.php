@@ -53,6 +53,7 @@ trait Configuration
      * \LaraZeus\Sky\Editors\TipTapEditor::class,
      * \LaraZeus\Sky\Editors\TinyEditor::class,
      * \LaraZeus\Sky\Editors\MarkdownEditor::class,
+     * \LaraZeus\Sky\Editors\RichEditor::class,
      */
     protected string $editor = Editors\MarkdownEditor::class;
 

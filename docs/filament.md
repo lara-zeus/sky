@@ -24,6 +24,7 @@ Sky simple CMS. it includes posts, pages, tags, and categories and more, with a 
 - 🔥 WordPress importer
       you can use our package [Zeus Rhea](https://larazeus.com/rhea) to import your blog from WordPress easily
 - 🔥 frontend scaffolding, highly customizable.
+- 🔥 amazing themes from [Zeus Artemis](https://larazeus.com/artemis).
 
 ## Screenshots
 

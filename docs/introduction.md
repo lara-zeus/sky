@@ -31,6 +31,7 @@ weight: 1
   - chose your editor, already included: Markdown Editor, Tiny Editor, TipTap Editor,
 - 🔥 WordPress importer
   you can use our package [Zeus Rhea](https://larazeus.com/rhea) to import your blog from WordPress easily
+- 🔥 amazing themes from [Zeus Artemis](https://larazeus.com/artemis).
 
 and more on the way:
 - authors

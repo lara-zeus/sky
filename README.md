@@ -42,6 +42,9 @@ Lara Zeus Sky is simple CMS for your website. It includes posts, pages, tags, an
   - featured Image
   - faq
   - libraries
+- 🔥 WordPress importer
+you can use our package [Zeus Rhea](https://larazeus.com/rhea) to import your blog from WordPress easily
+- 🔥 amazing themes from [Zeus Artemis](https://larazeus.com/artemis).
 
 and more on the way.
 

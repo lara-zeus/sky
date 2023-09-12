@@ -2,6 +2,46 @@
 
 All notable changes to `sky` will be documented in this file
 
+## v3.1.0 - 2023-09-12
+
+### stable version:
+
+Since [tiptap editor](https://github.com/awcodes/filament-tiptap-editor) still in beta, I decided to make `MarkdownEditor` the default editor, if you want to use other one you can set it in the panel configuration.
+
+#### ⚠️⚠️ the configuration for models has been changed to:
+
+```php
+->skyModels([
+        'Faq' => \LaraZeus\Sky\Models\Faq::class,
+        'Post' => \LaraZeus\Sky\Models\Post::class,
+        'PostStatus' => \LaraZeus\Sky\Models\PostStatus::class,
+        'Tag' => \LaraZeus\Sky\Models\Tag::class,
+        'Library' => \LaraZeus\Sky\Models\Library::class,
+    ])
+
+```
+#### What's Changed
+
+- Add tiptap editor by @atmonshi in https://github.com/lara-zeus/sky/pull/131
+- Update TipTapEditor.php by @atmonshi in https://github.com/lara-zeus/sky/pull/133
+- refactor-editors by @atmonshi in https://github.com/lara-zeus/sky/pull/135
+- Breadcrumbs and update SEO by @atmonshi in https://github.com/lara-zeus/sky/pull/141
+- Update configuration.md by @atmonshi in https://github.com/lara-zeus/sky/pull/142
+- remove config from `PublishCommand` by @atmonshi in https://github.com/lara-zeus/sky/pull/143
+- improve queries by @atmonshi in https://github.com/lara-zeus/sky/pull/144
+- fix duplicated breadcrumbs by @atmonshi in https://github.com/lara-zeus/sky/pull/145
+- push filament styles when embedding a form by @atmonshi in https://github.com/lara-zeus/sky/pull/146
+- update Render Nav Item class to include libraries items by @atmonshi in https://github.com/lara-zeus/sky/pull/148
+- Update MarkdownEditor.php by @albertobenavides in https://github.com/lara-zeus/sky/pull/149
+- refactor configuration model by @atmonshi in https://github.com/lara-zeus/sky/pull/151
+- add RichEditor and update MarkdownEditor  by @atmonshi in https://github.com/lara-zeus/sky/pull/152
+
+#### New Contributors
+
+- @albertobenavides made their first contribution in https://github.com/lara-zeus/sky/pull/149
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.34...v3.1.0
+
 ## 2.4.34 - 2023-07-14
 
 ### What's Changed
@@ -22,15 +62,16 @@ Make sure to add this to your config:
     \LaraZeus\Sky\Classes\BoltParser::class,
 ],
 
+
 ```
 You can copy that class and create your own parser, too, then add it to the array, and Sky will loop them all.
 
-```I also added a tab in forms to let users copy and paste.
+```I
 Of course, it will be visible only if you install Sky with Bolt :)
+
 ```
 <img width="1165" alt="Screenshot 2023-07-14 at 6 26 23 PM" src="https://github.com/lara-zeus/sky/assets/1952412/5b62af0f-ac6b-46c7-ae29-af01975a9976">
 ### Remember to update your views.
-
 **Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.33...2.4.34
 
 ## 2.4.33 - 2023-07-12

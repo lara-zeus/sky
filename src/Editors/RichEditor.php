@@ -7,7 +7,7 @@ use Filament\Forms\Components\RichEditor as RichEditorAlias;
 use Filament\Forms\Components\Textarea;
 use LaraZeus\Sky\Classes\ContentEditor;
 
-class RichEditorEditor implements ContentEditor
+class RichEditor implements ContentEditor
 {
     public static function component(): Component
     {

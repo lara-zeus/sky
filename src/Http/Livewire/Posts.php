@@ -15,7 +15,7 @@ class Posts extends Component
         $search = request('search');
         $category = request('category');
 
-        $posts = SkyPlugin::get()->getPostModel()::NotSticky()
+        $posts = SkyPlugin::get()->getModel('Post')::NotSticky()
             ->search($search)
             ->with(['tags', 'author', 'media'])
             ->forCategory($category)
@@ -23,7 +23,7 @@ class Posts extends Component
             ->orderBy('published_at', 'desc')
             ->get();
 
-        $pages = SkyPlugin::get()->getPostModel()::page()
+        $pages = SkyPlugin::get()->getModel('Post')::page()
             ->search($search)
             ->with(['tags', 'author', 'media'])
             ->forCategory($category)
@@ -34,7 +34,7 @@ class Posts extends Component
         $pages = $this->highlightSearchResults($pages, $search);
         $posts = $this->highlightSearchResults($posts, $search);
 
-        $recent = SkyPlugin::get()->getPostModel()::posts()
+        $recent = SkyPlugin::get()->getModel('Post')::posts()
             ->published()
             ->with(['tags', 'author', 'media'])
             ->limit(SkyPlugin::get()->getRecentPostsLimit())
@@ -55,10 +55,10 @@ class Posts extends Component
                 'posts' => $posts,
                 'pages' => $pages,
                 'recent' => $recent,
-                'tags' => SkyPlugin::get()->getTagModel()::withCount('postsPublished')
+                'tags' => SkyPlugin::get()->getModel('Tag')::withCount('postsPublished')
                     ->where('type', 'category')
                     ->get(),
-                'stickies' => SkyPlugin::get()->getPostModel()::with(['author', 'media'])->sticky()->published()->get(),
+                'stickies' => SkyPlugin::get()->getModel('Post')::with(['author', 'media'])->sticky()->published()->get(),
             ])
             ->layout(config('zeus.layout'));
     }

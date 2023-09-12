@@ -12,7 +12,7 @@ class LibraryItem extends Component
 
     public function mount(string $slug): void
     {
-        $this->item = SkyPlugin::get()->getLibraryModel()::where('slug', $slug)->firstOrFail();
+        $this->item = SkyPlugin::get()->getModel('Library')::where('slug', $slug)->firstOrFail();
     }
 
     public function render(): View

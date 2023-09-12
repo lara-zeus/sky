@@ -19,29 +19,29 @@ class Tag extends \Spatie\Tags\Tag
 {
     public function library(): MorphToMany
     {
-        return $this->morphedByMany(SkyPlugin::get()->getLibraryModel(), 'taggable');
+        return $this->morphedByMany(SkyPlugin::get()->getModel('Library'), 'taggable');
     }
 
     public function category(): MorphToMany
     {
-        return $this->morphedByMany(SkyPlugin::get()->getPostModel(), 'taggable');
+        return $this->morphedByMany(SkyPlugin::get()->getModel('Post'), 'taggable');
     }
 
     public function faq(): MorphToMany
     {
-        return $this->morphedByMany(SkyPlugin::get()->getFaqModel(), 'taggable');
+        return $this->morphedByMany(SkyPlugin::get()->getModel('Faq'), 'taggable');
     }
 
     public function tag(): MorphToMany
     {
-        return $this->morphedByMany(SkyPlugin::get()->getPostModel(), 'taggable');
+        return $this->morphedByMany(SkyPlugin::get()->getModel('Post'), 'taggable');
     }
 
     /** @return MorphToMany<Post> */
     public function postsPublished(): MorphToMany
     {
         // @phpstan-ignore-next-line
-        return $this->morphedByMany(SkyPlugin::get()->getPostModel(), 'taggable')->published();
+        return $this->morphedByMany(SkyPlugin::get()->getModel('Post'), 'taggable')->published();
     }
 
     protected function generateSlug(string $locale): string

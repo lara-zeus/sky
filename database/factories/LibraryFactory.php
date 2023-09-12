@@ -9,7 +9,7 @@ class LibraryFactory extends Factory
 {
     public function getModel(): string
     {
-        return SkyPlugin::get()->getLibraryModel();
+        return SkyPlugin::get()->getModel('Library');
     }
 
     /**

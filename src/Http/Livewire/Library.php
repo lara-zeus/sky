@@ -20,8 +20,8 @@ class Library extends Component
             ->twitter();
 
         return view(app('skyTheme') . '.addons.library')
-            ->with('libraries', SkyPlugin::get()->getLibraryModel()::get())
-            ->with('categories', SkyPlugin::get()->getTagModel()::getWithType('library'))
+            ->with('libraries', SkyPlugin::get()->getModel('Library')::get())
+            ->with('categories', SkyPlugin::get()->getModel('Tag')::getWithType('library'))
             ->layout(config('zeus.layout'));
     }
 }

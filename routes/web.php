@@ -33,7 +33,7 @@ if (! defined('__PHPSTAN_RUNNING__') && app('filament')->hasPlugin('zeus-sky')) 
 
             Route::post('passwordConfirmation/{slug}', function ($slug) {
 
-                $post = SkyPlugin::get()->getPostModel()::query()
+                $post = SkyPlugin::get()->getModel('Post')::query()
                     ->where('slug', $slug)
                     ->where('password', request('password'))
                     ->first();

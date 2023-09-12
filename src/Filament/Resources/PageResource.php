@@ -45,7 +45,7 @@ class PageResource extends SkyResource
 
     public static function getModel(): string
     {
-        return SkyPlugin::get()->getPostModel();
+        return SkyPlugin::get()->getModel('Post');
     }
 
     /**
@@ -95,7 +95,7 @@ class PageResource extends SkyResource
                         ->label(__('Post Slug')),
 
                     Select::make('parent_id')
-                        ->options(SkyPlugin::get()->getPostStatusModel()::where('post_type', 'page')->pluck(
+                        ->options(SkyPlugin::get()->getModel('PostStatus')::where('post_type', 'page')->pluck(
                             'title',
                             'id'
                         ))
@@ -112,7 +112,7 @@ class PageResource extends SkyResource
                         ->default('publish')
                         ->required()
                         ->live()
-                        ->options(SkyPlugin::get()->getPostStatusModel()::pluck('label', 'name')),
+                        ->options(SkyPlugin::get()->getModel('PostStatus')::pluck('label', 'name')),
 
                     TextInput::make('password')
                         ->label(__('Password'))
@@ -194,7 +194,7 @@ class PageResource extends SkyResource
                 SelectFilter::make('status')
                     ->multiple()
                     ->label(__('Status'))
-                    ->options(SkyPlugin::get()->getPostStatusModel()::pluck('label', 'name')),
+                    ->options(SkyPlugin::get()->getModel('PostStatus')::pluck('label', 'name')),
                 Filter::make('password')
                     ->label(__('Password Protected'))
                     ->query(fn (Builder $query): Builder => $query->whereNotNull('password')),

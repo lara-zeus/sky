@@ -35,7 +35,7 @@ class LibraryResource extends SkyResource
 
     public static function getModel(): string
     {
-        return SkyPlugin::get()->getLibraryModel();
+        return SkyPlugin::get()->getModel('Library');
     }
 
     public static function form(Form $form): Form

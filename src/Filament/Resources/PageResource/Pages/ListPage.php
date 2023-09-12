@@ -26,7 +26,7 @@ class ListPage extends ListRecords
 
     protected function getTableQuery(): Builder
     {
-        return SkyPlugin::get()->getPostModel()::query()
+        return SkyPlugin::get()->getModel('Post')::query()
             ->where('post_type', 'page')
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,

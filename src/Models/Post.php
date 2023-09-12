@@ -83,7 +83,7 @@ class Post extends Model implements HasMedia
 
     public function statusDesc(): string
     {
-        $PostStatus = SkyPlugin::get()->getPostStatusModel()::where('name', $this->status)->first();
+        $PostStatus = SkyPlugin::get()->getModel('PostStatus')::where('name', $this->status)->first();
         $icon = Blade::render('@svg("' . $PostStatus->icon . '","w-4 h-4 inline-flex")');
 
         return "<span title='" . __('post status') . "' class='$PostStatus->class'> " . $icon . " {$PostStatus->label}</span>";

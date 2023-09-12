@@ -25,7 +25,7 @@ class FaqResource extends SkyResource
 
     public static function getModel(): string
     {
-        return SkyPlugin::get()->getFaqModel();
+        return SkyPlugin::get()->getModel('Faq');
     }
 
     public static function getLabel(): string

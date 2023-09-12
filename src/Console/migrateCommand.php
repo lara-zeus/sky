@@ -26,7 +26,7 @@ class migrateCommand extends Command
      */
     public function handle(): void
     {
-        $posts = SkyPlugin::get()->getPostModel()::get();
+        $posts = SkyPlugin::get()->getModel('Post')::get();
         foreach ($posts as $post) {
             $post->translatable = [];
 

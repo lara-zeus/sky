@@ -26,7 +26,7 @@ class ListPosts extends ListRecords
 
     protected function getTableQuery(): Builder
     {
-        return SkyPlugin::get()->getPostModel()::query()
+        return SkyPlugin::get()->getModel('Post')::query()
             ->where('post_type', 'post')
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,

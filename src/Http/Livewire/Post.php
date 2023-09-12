@@ -12,7 +12,7 @@ class Post extends Component
 
     public function mount(string $slug): void
     {
-        $this->post = SkyPlugin::get()->getPostModel()::where('slug', $slug)->firstOrFail();
+        $this->post = SkyPlugin::get()->getModel('Post')::where('slug', $slug)->firstOrFail();
     }
 
     public function render(): View
@@ -31,7 +31,7 @@ class Post extends Component
 
         return view(app('skyTheme') . '.post')
             ->with('post', $this->post)
-            ->with('related', SkyPlugin::get()->getPostModel()::related($this->post)->take(4)->get())
+            ->with('related', SkyPlugin::get()->getModel('Post')::related($this->post)->take(4)->get())
             ->layout(config('zeus.layout'));
     }
 

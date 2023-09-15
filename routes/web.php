@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use LaraZeus\Sky\Http\Livewire\Faq;
-use LaraZeus\Sky\Http\Livewire\LibraryTag;
 use LaraZeus\Sky\Http\Livewire\Library;
 use LaraZeus\Sky\Http\Livewire\LibraryItem;
+use LaraZeus\Sky\Http\Livewire\LibraryTag;
 use LaraZeus\Sky\Http\Livewire\Page;
 use LaraZeus\Sky\Http\Livewire\Post;
 use LaraZeus\Sky\Http\Livewire\Posts;

@@ -13,7 +13,7 @@ class Tags extends Component
 
     public string $slug;
 
-    public Tag $tag;
+    public ?Tag $tag;
 
     public function mount(string $type, string $slug): void
     {

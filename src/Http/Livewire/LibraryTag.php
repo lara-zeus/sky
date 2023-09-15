@@ -7,9 +7,9 @@ use LaraZeus\Sky\Models\Tag;
 use LaraZeus\Sky\SkyPlugin;
 use Livewire\Component;
 
-class LibrarTag extends Component
+class LibraryTag extends Component
 {
-    public Tag $tag;
+    public ?Tag $tag;
 
     public function mount(string $slug): void
     {

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use LaraZeus\Sky\Http\Livewire\Faq;
-use LaraZeus\Sky\Http\Livewire\LibrarTag;
+use LaraZeus\Sky\Http\Livewire\LibraryTag;
 use LaraZeus\Sky\Http\Livewire\Library;
 use LaraZeus\Sky\Http\Livewire\LibraryItem;
 use LaraZeus\Sky\Http\Livewire\Page;
@@ -26,7 +26,7 @@ if (! defined('__PHPSTAN_RUNNING__') && app('filament')->hasPlugin('zeus-sky')) 
             if (SkyPlugin::get()->hasLibraryResource()) {
                 Route::prefix(SkyPlugin::get()->getUriPrefix()['library'])->group(function () {
                     Route::get('/', Library::class)->name('library');
-                    Route::get('/tag/{slug}', LibrarTag::class)->name('library.tag');
+                    Route::get('/tag/{slug}', LibraryTag::class)->name('library.tag');
                     Route::get('/{slug}', LibraryItem::class)->name('library.item');
                 });
             }

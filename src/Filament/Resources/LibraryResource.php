@@ -96,6 +96,8 @@ class LibraryResource extends SkyResource
                             ])
                             ->default('upload'),
                         SpatieMediaLibraryFileUpload::make('file_path_upload')
+                            ->disk(SkyPlugin::get()->getUploadDisk())
+                            ->directory(SkyPlugin::get()->getUploadDirectory())
                             ->collection('library')
                             ->multiple()
                             ->reorderable()

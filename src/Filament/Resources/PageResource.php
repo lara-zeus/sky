@@ -139,6 +139,8 @@ class PageResource extends SkyResource
                         ->default('upload'),
                     SpatieMediaLibraryFileUpload::make('featured_image_upload')
                         ->collection('pages')
+                        ->disk(SkyPlugin::get()->getUploadDisk())
+                        ->directory(SkyPlugin::get()->getUploadDirectory())
                         ->visible(fn (Get $get) => $get('featured_image_type') === 'upload')
                         ->label(''),
                     TextInput::make('featured_image')

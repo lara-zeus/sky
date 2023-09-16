@@ -36,6 +36,10 @@ SkyPlugin::make()
     
     ->navigationGroupLabel('Sky')
     
+    // uploading config
+    ->uploadDisk()
+    ->uploadDirectory()
+    
     // the default models
     ->skyModels([
         'Faq' => \LaraZeus\Sky\Models\Faq::class,

@@ -102,6 +102,16 @@ trait Configuration
         'faq' => 'Faq',
     ];
 
+    /**
+     * where to upload all files when using the file upload field
+     */
+    protected Closure | string $uploadDisk = 'public';
+
+    /**
+     * the directory name
+     */
+    protected Closure | string $uploadDirectory = '';
+
     public function skyPrefix(Closure | string $prefix): static
     {
         $this->skyPrefix = $prefix;
@@ -312,5 +322,29 @@ trait Configuration
     public function getDefaultFeaturedImage(): ?string
     {
         return $this->defaultFeaturedImage;
+    }
+
+    public function uploadDisk(Closure | string $disk): static
+    {
+        $this->uploadDisk = $disk;
+
+        return $this;
+    }
+
+    public function getUploadDisk(): Closure | string
+    {
+        return $this->evaluate($this->uploadDisk);
+    }
+
+    public function uploadDirectory(Closure | string $dir): static
+    {
+        $this->uploadDirectory = $dir;
+
+        return $this;
+    }
+
+    public function getUploadDirectory(): Closure | string
+    {
+        return $this->evaluate($this->uploadDirectory);
     }
 }

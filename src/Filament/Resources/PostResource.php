@@ -142,6 +142,8 @@ class PostResource extends SkyResource
                         ->default('upload'),
                     SpatieMediaLibraryFileUpload::make('featured_image_upload')
                         ->collection('posts')
+                        ->disk(SkyPlugin::get()->getUploadDisk())
+                        ->directory(SkyPlugin::get()->getUploadDirectory())
                         ->visible(fn (Get $get) => $get('featured_image_type') === 'upload')
                         ->label(''),
 

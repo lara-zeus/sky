@@ -28,6 +28,7 @@ class SkyServiceProvider extends PackageServiceProvider
             ->name(static::$name)
             ->hasMigrations($this->getMigrations())
             ->hasTranslations()
+            ->hasConfigFile()
             ->hasCommands($this->getCommands())
             ->hasViews('zeus')
             ->hasRoute('web');

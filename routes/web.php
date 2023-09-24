@@ -48,7 +48,7 @@ Route::prefix(config('zeus-sky.prefix'))
             ->name('passwordConfirmation');*/
 
         Route::get('/', Posts::class)->name('blogs');
-        Route::get(config('zeus-sky.uriPrefix.post').'/{slug}', Post::class)->name('post');
-        Route::get(config('zeus-sky.uriPrefix.page').'/{slug}', Page::class)->name('page');
+        Route::get(config('zeus-sky.uriPrefix.post') . '/{slug}', Post::class)->name('post');
+        Route::get(config('zeus-sky.uriPrefix.page') . '/{slug}', Page::class)->name('page');
         Route::get('{type}/{slug}', Tags::class)->name('tags');
     });

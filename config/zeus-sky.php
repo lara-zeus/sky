@@ -15,7 +15,7 @@ return [
         'FaqResource',
         'LibraryResource',
     ],
-    'parsers'=>[
+    'parsers' => [
         \LaraZeus\Sky\Classes\BoltParser::class,
     ],
     'recentPostsLimit' => 5,

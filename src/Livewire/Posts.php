@@ -1,6 +1,6 @@
 <?php
 
-namespace LaraZeus\Sky\Http\Livewire;
+namespace LaraZeus\Sky\Livewire;
 
 use Illuminate\View\View;
 use LaraZeus\Sky\SkyPlugin;
@@ -37,7 +37,7 @@ class Posts extends Component
         $recent = SkyPlugin::get()->getModel('Post')::posts()
             ->published()
             ->with(['tags', 'author', 'media'])
-            ->limit(SkyPlugin::get()->getRecentPostsLimit())
+            ->limit(config('zeus-sky.recentPostsLimit'))
             ->orderBy('published_at', 'desc')
             ->get();
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace LaraZeus\Sky\Http\Livewire;
+namespace LaraZeus\Sky\Livewire;
 
 use Illuminate\View\View;
 use LaraZeus\Sky\Models\Tag;

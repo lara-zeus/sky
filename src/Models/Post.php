@@ -106,7 +106,7 @@ class Post extends Model implements HasMedia
         if (! $this->getMedia('posts')->isEmpty()) {
             return $this->getFirstMediaUrl('posts');
         } else {
-            return $this->featured_image ?? SkyPlugin::get()->getDefaultFeaturedImage();
+            return $this->featured_image ?? config('zeus-sky.defaultFeaturedImage');
         }
     }
 
@@ -127,7 +127,7 @@ class Post extends Model implements HasMedia
 
     public function parseContent(string $content): string
     {
-        $parsers = SkyPlugin::get()->getParsers();
+        $parsers = config('zeus-sky.parsers');
 
         if (filled($parsers)) {
             foreach ($parsers as $parser) {

@@ -1,14 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use LaraZeus\Sky\Http\Livewire\Faq;
-use LaraZeus\Sky\Http\Livewire\Library;
-use LaraZeus\Sky\Http\Livewire\LibraryItem;
-use LaraZeus\Sky\Http\Livewire\LibraryTag;
-use LaraZeus\Sky\Http\Livewire\Page;
-use LaraZeus\Sky\Http\Livewire\Post;
-use LaraZeus\Sky\Http\Livewire\Posts;
-use LaraZeus\Sky\Http\Livewire\Tags;
+use LaraZeus\Sky\Livewire\Faq;
+use LaraZeus\Sky\Livewire\Library;
+use LaraZeus\Sky\Livewire\LibraryItem;
+use LaraZeus\Sky\Livewire\LibraryTag;
+use LaraZeus\Sky\Livewire\Page;
+use LaraZeus\Sky\Livewire\Post;
+use LaraZeus\Sky\Livewire\Posts;
+use LaraZeus\Sky\Livewire\Tags;
+use LaraZeus\Sky\SkyPlugin;
 
 $filament = app('filament');
 
@@ -16,13 +17,13 @@ Route::prefix(config('zeus-sky.prefix'))
     ->middleware(config('zeus-sky.middleware'))
     ->group(function () {
 
-        if (in_array('FaqResource', config('zeus-sky.enabledResources'))) {
-            Route::get(config('zeus-sky.uriPrefix.faq'), Faq::class)
+        if (in_array('faq', config('zeus-sky.uri'))) {
+            Route::get(config('zeus-sky.uri.faq'), Faq::class)
                 ->name('faq');
         }
 
-        if (in_array('LibraryResource', config('zeus-sky.enabledResources'))) {
-            Route::prefix(config('zeus-sky.uriPrefix.library'))
+        if (in_array('library', config('zeus-sky.uri'))) {
+            Route::prefix(config('zeus-sky.uri.library'))
                 ->group(function () {
                     Route::get('/', Library::class)->name('library');
                     Route::get('/tag/{slug}', LibraryTag::class)->name('library.tag');
@@ -48,7 +49,7 @@ Route::prefix(config('zeus-sky.prefix'))
             ->name('passwordConfirmation');*/
 
         Route::get('/', Posts::class)->name('blogs');
-        Route::get(config('zeus-sky.uriPrefix.post') . '/{slug}', Post::class)->name('post');
-        Route::get(config('zeus-sky.uriPrefix.page') . '/{slug}', Page::class)->name('page');
+        Route::get(config('zeus-sky.uri.post') . '/{slug}', Post::class)->name('post');
+        Route::get(config('zeus-sky.uri.page') . '/{slug}', Page::class)->name('page');
         Route::get('{type}/{slug}', Tags::class)->name('tags');
     });

@@ -263,11 +263,11 @@ trait Configuration
 
     public function getLibraryTypes(): ?array
     {
-        if ($this->translatedLibraryTypes === null && $this->libraryTypes) {
+        if ($this->translatedLibraryTypes === null && $this->libraryTypes && function_exists('__')) {
             $this->translatedLibraryTypes = array_map('__', $this->libraryTypes);
         }
 
-        return $this->translatedLibraryTypes;
+        return $this->translatedLibraryTypes ?? $this->libraryTypes;
     }
 
     public function tagTypes(array $types): static
@@ -281,11 +281,11 @@ trait Configuration
 
     public function getTagTypes(): ?array
     {
-        if ($this->translatedTagTypes === null && $this->tagTypes) {
+        if ($this->translatedTagTypes === null && $this->tagTypes && function_exists('__')) {
             $this->translatedTagTypes = array_map('__', $this->tagTypes);
         }
 
-        return $this->translatedTagTypes;
+        return $this->translatedTagTypes ?? $this->tagTypes;
     }
 
     public function uriPrefix(array $prefix): static

@@ -259,9 +259,16 @@ trait Configuration
         return $this;
     }
 
+    private ?array $translatedLibraryTypes = null;
+
     public function getLibraryTypes(): ?array
     {
-        return $this->libraryTypes;
+        if ($this->translatedLibraryTypes === null && $this->libraryTypes)
+        {
+            $this->translatedLibraryTypes = array_map('__', $this->libraryTypes);
+        }
+
+        return $this->translatedLibraryTypes;
     }
 
     public function tagTypes(array $types): static
@@ -271,9 +278,16 @@ trait Configuration
         return $this;
     }
 
+    private ?array $translatedTagTypes = null;
+
     public function getTagTypes(): ?array
     {
-        return $this->tagTypes;
+        if ($this->translatedTagTypes === null && $this->tagTypes)
+        {
+            $this->translatedTagTypes = array_map('__', $this->tagTypes);
+        }
+
+        return $this->translatedTagTypes;
     }
 
     public function uriPrefix(array $prefix): static

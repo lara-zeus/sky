@@ -263,8 +263,7 @@ trait Configuration
 
     public function getLibraryTypes(): ?array
     {
-        if ($this->translatedLibraryTypes === null && $this->libraryTypes)
-        {
+        if ($this->translatedLibraryTypes === null && $this->libraryTypes) {
             $this->translatedLibraryTypes = array_map('__', $this->libraryTypes);
         }
 
@@ -282,8 +281,7 @@ trait Configuration
 
     public function getTagTypes(): ?array
     {
-        if ($this->translatedTagTypes === null && $this->tagTypes)
-        {
+        if ($this->translatedTagTypes === null && $this->tagTypes) {
             $this->translatedTagTypes = array_map('__', $this->tagTypes);
         }
 

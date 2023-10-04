@@ -45,6 +45,7 @@ trait Configuration
      * \LaraZeus\Sky\Editors\TinyEditor::class,
      * \LaraZeus\Sky\Editors\MarkdownEditor::class,
      * \LaraZeus\Sky\Editors\RichEditor::class,
+     *
      * @deprecated deprecated since version 3.2
      */
     protected string $editor = Editors\MarkdownEditor::class;

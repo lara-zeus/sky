@@ -72,7 +72,7 @@ class PageResource extends SkyResource
                         ->afterStateUpdated(function (Set $set, $state) {
                             $set('slug', Str::slug($state));
                         }),
-                    SkyPlugin::get()->getEditor()::component(),
+                    config('zeus-sky.editor')::component(),
                 ]),
                 Tabs\Tab::make(__('SEO'))->schema([
                     Hidden::make('user_id')

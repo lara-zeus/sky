@@ -34,6 +34,8 @@ trait Configuration
 
     /**
      * you can overwrite any model and use your own
+     *
+     * @deprecated deprecated since version 3.2
      */
     protected array $skyModels = [];
 
@@ -43,6 +45,7 @@ trait Configuration
      * \LaraZeus\Sky\Editors\TinyEditor::class,
      * \LaraZeus\Sky\Editors\MarkdownEditor::class,
      * \LaraZeus\Sky\Editors\RichEditor::class,
+     * @deprecated deprecated since version 3.2
      */
     protected string $editor = Editors\MarkdownEditor::class;
 
@@ -187,6 +190,9 @@ trait Configuration
         )[$model];
     }
 
+    /*
+     * @deprecated deprecated since version 3.2
+     */
     public function editor(string $editor): static
     {
         $this->editor = $editor;
@@ -194,6 +200,9 @@ trait Configuration
         return $this;
     }
 
+    /*
+     * @deprecated deprecated since version 3.2
+     */
     public function getEditor(): string
     {
         return $this->editor;

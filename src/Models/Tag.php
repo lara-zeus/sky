@@ -5,7 +5,6 @@ namespace LaraZeus\Sky\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
-use LaraZeus\Sky\SkyPlugin;
 
 /**
  * @property string $slug

@@ -3,7 +3,6 @@
 namespace LaraZeus\Sky\Livewire;
 
 use Illuminate\View\View;
-use LaraZeus\Sky\SkyPlugin;
 use Livewire\Component;
 
 class Posts extends Component
@@ -15,7 +14,7 @@ class Posts extends Component
         $search = request('search');
         $category = request('category');
 
-        $posts = SkyPlugin::get()->getModel('Post')::NotSticky()
+        $posts = config('zeus-sky.models.Post')::NotSticky()
             ->search($search)
             ->with(['tags', 'author', 'media'])
             ->forCategory($category)
@@ -23,7 +22,7 @@ class Posts extends Component
             ->orderBy('published_at', 'desc')
             ->get();
 
-        $pages = SkyPlugin::get()->getModel('Post')::page()
+        $pages = config('zeus-sky.models.Post')::page()
             ->search($search)
             ->with(['tags', 'author', 'media'])
             ->forCategory($category)
@@ -34,7 +33,7 @@ class Posts extends Component
         $pages = $this->highlightSearchResults($pages, $search);
         $posts = $this->highlightSearchResults($posts, $search);
 
-        $recent = SkyPlugin::get()->getModel('Post')::posts()
+        $recent = config('zeus-sky.models.Post')::posts()
             ->published()
             ->with(['tags', 'author', 'media'])
             ->limit(config('zeus-sky.recentPostsLimit'))
@@ -55,10 +54,10 @@ class Posts extends Component
                 'posts' => $posts,
                 'pages' => $pages,
                 'recent' => $recent,
-                'tags' => SkyPlugin::get()->getModel('Tag')::withCount('postsPublished')
+                'tags' => config('zeus-sky.models.Tag')::withCount('postsPublished')
                     ->where('type', 'category')
                     ->get(),
-                'stickies' => SkyPlugin::get()->getModel('Post')::with(['author', 'media'])->sticky()->published()->get(),
+                'stickies' => config('zeus-sky.models.Post')::with(['author', 'media'])->sticky()->published()->get(),
             ])
             ->layout(config('zeus.layout'));
     }

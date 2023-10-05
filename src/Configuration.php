@@ -252,14 +252,8 @@ trait Configuration
         return $this;
     }
 
-    private ?array $translatedLibraryTypes = null;
-
     public function getLibraryTypes(): ?array
     {
-        if ($this->translatedLibraryTypes === null && $this->libraryTypes && function_exists('__')) {
-            $this->translatedLibraryTypes = array_map('__', $this->libraryTypes);
-        }
-
         return $this->translatedLibraryTypes ?? $this->libraryTypes;
     }
 
@@ -270,14 +264,8 @@ trait Configuration
         return $this;
     }
 
-    private ?array $translatedTagTypes = null;
-
     public function getTagTypes(): ?array
     {
-        if ($this->translatedTagTypes === null && $this->tagTypes && function_exists('__')) {
-            $this->translatedTagTypes = array_map('__', $this->tagTypes);
-        }
-
         return $this->translatedTagTypes ?? $this->tagTypes;
     }
 

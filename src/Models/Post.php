@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Blade;
-use LaraZeus\Sky\SkyPlugin;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Tags\HasTags;
@@ -83,7 +82,7 @@ class Post extends Model implements HasMedia
 
     public function statusDesc(): string
     {
-        $PostStatus = SkyPlugin::get()->getModel('PostStatus')::where('name', $this->status)->first();
+        $PostStatus = config('zeus-sky.models.PostStatus')::where('name', $this->status)->first();
         $icon = Blade::render('@svg("' . $PostStatus->icon . '","w-4 h-4 inline-flex")');
 
         return "<span title='" . __('post status') . "' class='$PostStatus->class'> " . $icon . " {$PostStatus->label}</span>";
@@ -106,7 +105,7 @@ class Post extends Model implements HasMedia
         if (! $this->getMedia('posts')->isEmpty()) {
             return $this->getFirstMediaUrl('posts');
         } else {
-            return $this->featured_image ?? SkyPlugin::get()->getDefaultFeaturedImage();
+            return $this->featured_image ?? config('zeus-sky.defaultFeaturedImage');
         }
     }
 
@@ -122,12 +121,12 @@ class Post extends Model implements HasMedia
 
     public function getContent(): string
     {
-        return $this->parseContent(SkyPlugin::get()->getEditor()::render($this->content));
+        return $this->parseContent(config('zeus-sky.editor')::render($this->content));
     }
 
     public function parseContent(string $content): string
     {
-        $parsers = SkyPlugin::get()->getParsers();
+        $parsers = config('zeus-sky.parsers');
 
         if (filled($parsers)) {
             foreach ($parsers as $parser) {

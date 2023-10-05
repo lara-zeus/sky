@@ -35,7 +35,9 @@ php artisan vendor:publish --tag=zeus-sky-translations
 
 
 ## Navigations
+
 to render the navigation:
+
 ```
 @php $menu = RyanChandler\FilamentNavigation\Models\Navigation::fromHandle('main-header-menu'); @endphp
 @foreach($menu->items as $item)
@@ -48,4 +50,5 @@ you can also copy the `RenderNavItem` class and customize it as you need.
 for more information refer to the main plugin [Filament Navigation](https://github.com/ryangjchandler/filament-navigation)
 
 ## themes
-soon
+
+you can create any frontend themes you want, checkout @zeus Artemis for more

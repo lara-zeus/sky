@@ -1,5 +1,5 @@
 ---
-title: addons
+title: Addons
 weight: 7
 ---
 
@@ -15,14 +15,16 @@ Sky comes with some addons, currently we have:
 to set the url of the FAQ from the `zeus-sky.php` config file:
 
 ```php
-->uriPrefix([
-        'faq' => 'faq',
-    ])
+'uri' => [
+    // ...
+    'faq' => 'faq',
+],
 ```
 
-to disable it, set it in the `adminPanelProvider`:
+to disable it in the admin, set it in the `adminPanelProvider`:
 ```php
-->hasFaqResource(),
+SkyPlugin::make()
+    ->faqResource(false),
 ```
 
 ## Library Addons
@@ -30,12 +32,14 @@ to disable it, set it in the `adminPanelProvider`:
 to set the url of the Library from the `zeus-sky.php` config file:
 
 ```php
-->uriPrefix([
-        'library' => 'library',
-    ])
+'uri' => [
+    // ...
+    'library' => 'library',
+],
 ```
 
 to disable it, set it in the `adminPanelProvider`:
 ```php
-->hasLibraryResource(),
+SkyPlugin::make()
+    ->libraryResource(false),
 ```

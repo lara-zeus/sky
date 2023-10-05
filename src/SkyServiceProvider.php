@@ -5,6 +5,7 @@ namespace LaraZeus\Sky;
 use Filament\Facades\Filament;
 use Filament\Forms\Components\Select;
 use LaraZeus\Core\CoreServiceProvider;
+use LaraZeus\Sky\Console\InstallCommand;
 use LaraZeus\Sky\Console\migrateCommand;
 use LaraZeus\Sky\Console\PublishCommand;
 use RyanChandler\FilamentNavigation\Filament\Resources\NavigationResource;
@@ -28,6 +29,7 @@ class SkyServiceProvider extends PackageServiceProvider
             ->name(static::$name)
             ->hasMigrations($this->getMigrations())
             ->hasTranslations()
+            ->hasConfigFile()
             ->hasCommands($this->getCommands())
             ->hasViews('zeus')
             ->hasRoute('web');
@@ -41,6 +43,7 @@ class SkyServiceProvider extends PackageServiceProvider
         return [
             migrateCommand::class,
             PublishCommand::class,
+            InstallCommand::class,
         ];
     }
 

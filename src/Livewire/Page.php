@@ -1,9 +1,8 @@
 <?php
 
-namespace LaraZeus\Sky\Http\Livewire;
+namespace LaraZeus\Sky\Livewire;
 
 use Illuminate\View\View;
-use LaraZeus\Sky\SkyPlugin;
 use Livewire\Component;
 
 class Page extends Component
@@ -12,7 +11,7 @@ class Page extends Component
 
     public function mount(string $slug): void
     {
-        $this->page = SkyPlugin::get()->getModel('Post')::where('slug', $slug)->page()->firstOrFail();
+        $this->page = config('zeus-sky.models.Post')::where('slug', $slug)->page()->firstOrFail();
     }
 
     public function render(): View
@@ -33,7 +32,7 @@ class Page extends Component
         return view(app('skyTheme') . '.page')
             ->with([
                 'post' => $this->page,
-                'children' => SkyPlugin::get()->getModel('Post')::with('parent')->where('parent_id', $this->page->id)->get(),
+                'children' => config('zeus-sky.models.Post')::with('parent')->where('parent_id', $this->page->id)->get(),
             ])
             ->layout(config('zeus.layout'));
     }

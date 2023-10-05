@@ -1,10 +1,9 @@
 <?php
 
-namespace LaraZeus\Sky\Http\Livewire;
+namespace LaraZeus\Sky\Livewire;
 
 use Illuminate\View\View;
 use LaraZeus\Sky\Models\Tag;
-use LaraZeus\Sky\SkyPlugin;
 use Livewire\Component;
 
 class LibraryTag extends Component
@@ -13,7 +12,7 @@ class LibraryTag extends Component
 
     public function mount(string $slug): void
     {
-        $this->tag = SkyPlugin::get()->getModel('Tag')::findBySlug($slug, 'library');
+        $this->tag = config('zeus-sky.models.Tag')::findBySlug($slug, 'library');
 
         abort_if($this->tag === null, 404);
     }

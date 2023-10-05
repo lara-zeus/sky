@@ -36,9 +36,6 @@ SkyPlugin::make()
         'Tag' => \LaraZeus\Sky\Models\Tag::class,
     ])
 
-    // the default editor
-    ->editor(Editors\TipTapEditor::class)
-
     // available tags
     ->tagTypes([
         'tag' => 'Tag',
@@ -127,6 +124,8 @@ return [
     'skipHighlightingTerms' => ['iframe'],
 
     'defaultFeaturedImage' => null,
+    
+    'editor' => \LaraZeus\Sky\Editors\RichEditor::class,
 ];
 ```
 
@@ -138,8 +137,17 @@ the default editor is: `MarkdownEditor`. and included:
 * [Tiptap Editor](https://filamentphp.com/plugins/tiptap)
 * [Tiny Editor](https://filamentphp.com/plugins/mohamedsabil83-tinyeditor)
 
-to use them you only need to install the package, and set the config 
-`->editor(Editors\TipTapEditor::class)`
+to use them you only need to install the package, and set the `editor` in `zeus-sky` 
+```php
+/**
+ * the default editor for pages and posts, Available:
+ * \LaraZeus\Sky\Editors\TipTapEditor::class,
+ * \LaraZeus\Sky\Editors\TinyEditor::class,
+ * \LaraZeus\Sky\Editors\MarkdownEditor::class,
+ * \LaraZeus\Sky\Editors\RichEditor::class,
+ */
+'editor' => \LaraZeus\Sky\Editors\RichEditor::class,
+```
 
 ### adding new editor
 

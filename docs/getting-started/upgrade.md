@@ -3,20 +3,21 @@ title: Upgrading
 weight: 100
 ---
 
+
 ## upgrade to v3.2
 
-in v3.2 I refactor the configuration, to separate the frontend configuration from filament related ones.
-this case issues when having multiple panels.
+In v3.2, I refactored the configuration to separate the frontend configuration from filament-related ones.
+This causes an issue when having multiple panels.
 
-first publish the config file by running:
+1. First, publish the config file by running the command:
 
 ```bash
 php artisan vendor:publish --tag="zeus-sky-config" --force
 ```
 
-now move your configuration form your panel provider to the `zeus-sky` config file.
+2. move your configuration from your panel provider to the `zeus-sky` config file.
 
-so these are the deprecated configuration methods:
+So these are the deprecated configuration methods:
 
 ```php
 
@@ -32,6 +33,7 @@ so these are the deprecated configuration methods:
 ->defaultFeaturedImage()
 
 ```
+
 
 ## upgrade from 2 to 3
 

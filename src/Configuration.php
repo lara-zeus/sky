@@ -245,30 +245,6 @@ trait Configuration
         return $this->recentPostsLimit;
     }
 
-    public function libraryTypes(array $types): static
-    {
-        $this->libraryTypes = $types;
-
-        return $this;
-    }
-
-    public function getLibraryTypes(): ?array
-    {
-        return $this->translatedLibraryTypes ?? $this->libraryTypes;
-    }
-
-    public function tagTypes(array $types): static
-    {
-        $this->tagTypes = $types;
-
-        return $this;
-    }
-
-    public function getTagTypes(): ?array
-    {
-        return $this->translatedTagTypes ?? $this->tagTypes;
-    }
-
     /*
      * @deprecated deprecated since version 3.2
      */
@@ -411,5 +387,41 @@ trait Configuration
     public function hasLibraryResource(): bool
     {
         return $this->hasLibraryResource;
+    }
+
+    public function libraryTypes(array $types): static
+    {
+        $this->libraryTypes = $types;
+
+        return $this;
+    }
+
+    private ?array $translatedLibraryTypes = null;
+
+    public function getLibraryTypes(): ?array
+    {
+        if ($this->translatedLibraryTypes === null && $this->libraryTypes && function_exists('__')) {
+            $this->translatedLibraryTypes = array_map('__', $this->libraryTypes);
+        }
+
+        return $this->translatedLibraryTypes ?? $this->libraryTypes;
+    }
+
+    public function tagTypes(array $types): static
+    {
+        $this->tagTypes = $types;
+
+        return $this;
+    }
+
+    private ?array $translatedTagTypes = null;
+
+    public function getTagTypes(): ?array
+    {
+        if ($this->translatedTagTypes === null && $this->tagTypes && function_exists('__')) {
+            $this->translatedTagTypes = array_map('__', $this->tagTypes);
+        }
+
+        return $this->translatedTagTypes ?? $this->tagTypes;
     }
 }

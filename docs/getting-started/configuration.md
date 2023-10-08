@@ -128,30 +128,3 @@ return [
     'editor' => \LaraZeus\Sky\Editors\RichEditor::class,
 ];
 ```
-
-## Content Editor
-
-the default editor is: `MarkdownEditor`. and included:
-
-* RichEditor
-* [Tiptap Editor](https://filamentphp.com/plugins/tiptap)
-* [Tiny Editor](https://filamentphp.com/plugins/mohamedsabil83-tinyeditor)
-
-to use them you only need to install the package, and set the `editor` in `zeus-sky` 
-```php
-/**
- * the default editor for pages and posts, Available:
- * \LaraZeus\Sky\Editors\TipTapEditor::class,
- * \LaraZeus\Sky\Editors\TinyEditor::class,
- * \LaraZeus\Sky\Editors\MarkdownEditor::class,
- * \LaraZeus\Sky\Editors\RichEditor::class,
- */
-'editor' => \LaraZeus\Sky\Editors\RichEditor::class,
-```
-
-### adding new editor
-
-you can add any editor available in [filament plugin directory](https://filamentphp.com/plugins)
-
-* first install the plugin that you want to use.
-* implement the `\LaraZeus\Sky\Editors\ContentEditor` interface, and set it in the config `editor`

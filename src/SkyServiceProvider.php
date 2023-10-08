@@ -8,6 +8,7 @@ use LaraZeus\Core\CoreServiceProvider;
 use LaraZeus\Sky\Console\InstallCommand;
 use LaraZeus\Sky\Console\migrateCommand;
 use LaraZeus\Sky\Console\PublishCommand;
+use LaraZeus\Sky\Console\ZeusEditorCommand;
 use RyanChandler\FilamentNavigation\Filament\Resources\NavigationResource;
 use RyanChandler\FilamentNavigation\FilamentNavigation;
 use Spatie\LaravelPackageTools\Package;
@@ -44,6 +45,7 @@ class SkyServiceProvider extends PackageServiceProvider
             migrateCommand::class,
             PublishCommand::class,
             InstallCommand::class,
+            ZeusEditorCommand::class,
         ];
     }
 

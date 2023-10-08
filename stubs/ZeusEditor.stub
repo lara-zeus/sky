@@ -1,0 +1,32 @@
+<?php
+
+namespace {{ namespace }};
+
+use Filament\Forms\Components\Component;
+use {{ plugin }} as {{ class }}Alias;
+use Filament\Forms\Components\Textarea;
+use LaraZeus\Sky\Classes\ContentEditor;
+
+class {{ class }} implements ContentEditor
+{
+    public static function component(): Component
+    {
+        if (class_exists({{ class }}Alias::class)) {
+            return {{ class }}Alias::make('content')
+                // add more options
+                ->required();
+        }
+
+        return Textarea::make('content')->required();
+    }
+
+    public static function render(string $content): string
+    {
+        if (class_exists({{ class }}Alias::class)) {
+            return $content;
+        }
+
+        return $content;
+    }
+}
+

@@ -2,6 +2,15 @@
 
 All notable changes to `sky` will be documented in this file
 
+## v3.2.2 - 2023-10-10
+
+### What's Changed
+
+- Bump stefanzweifel/git-auto-commit-action from 4 to 5 by @dependabot in https://github.com/lara-zeus/sky/pull/166
+- Update composer.lock by @atmonshi in https://github.com/lara-zeus/sky/pull/168
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/v3.2.1...v3.2.2
+
 ## v3.1.0 - 2023-09-12
 
 ### stable version:
@@ -18,6 +27,7 @@ Since [tiptap editor](https://github.com/awcodes/filament-tiptap-editor) still i
         'Tag' => \LaraZeus\Sky\Models\Tag::class,
         'Library' => \LaraZeus\Sky\Models\Library::class,
     ])
+
 
 ```
 #### What's Changed
@@ -63,17 +73,18 @@ Make sure to add this to your config:
 ],
 
 
+
 ```
 You can copy that class and create your own parser, too, then add it to the array, and Sky will loop them all.
 
 ```I
 Of course, it will be visible only if you install Sky with Bolt :)
 
+
 ```
 <img width="1165" alt="Screenshot 2023-07-14 at 6 26 23 PM" src="https://github.com/lara-zeus/sky/assets/1952412/5b62af0f-ac6b-46c7-ae29-af01975a9976">
 ### Remember to update your views.
 **Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.33...2.4.34
-
 ## 2.4.33 - 2023-07-12
 
 ### What's Changed

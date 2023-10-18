@@ -100,10 +100,10 @@ class Post extends Model implements HasMedia
         return $this->belongsTo(self::class, 'parent_id', 'id');
     }
 
-    public function image(): Collection | string | null
+    public function image(string $collection = 'posts'): Collection | string | null
     {
-        if (! $this->getMedia('posts')->isEmpty()) {
-            return $this->getFirstMediaUrl('posts');
+        if (! $this->getMedia($collection)->isEmpty()) {
+            return $this->getFirstMediaUrl($collection);
         } else {
             return $this->featured_image ?? config('zeus-sky.defaultFeaturedImage');
         }

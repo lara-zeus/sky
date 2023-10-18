@@ -13,8 +13,9 @@ use LaraZeus\Sky\SkyPlugin;
 
 $filament = app('filament');
 
-Route::prefix(config('zeus-sky.prefix'))
+Route::domain(config('zeus-sky.domain'))
     ->middleware(config('zeus-sky.middleware'))
+    ->prefix(config('zeus-sky.prefix'))
     ->group(function () {
 
         if (in_array('faq', config('zeus-sky.uri'))) {

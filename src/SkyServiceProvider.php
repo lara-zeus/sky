@@ -64,11 +64,14 @@ class SkyServiceProvider extends PackageServiceProvider
 
     private function bootFilamentNavigation(): void
     {
-        if (! defined('__PHPSTAN_RUNNING__') && (! app('filament')->hasPlugin('zeus-sky') || ! app('filament')->hasPlugin('navigation'))) {
-            return;
-        }
-
         Filament::serving(function () {
+            if (! defined('__PHPSTAN_RUNNING__') &&
+                ! app('filament')->hasPlugin('zeus-sky') &&
+                ! app('filament')->hasPlugin('navigation')
+            ) {
+                return;
+            }
+
             NavigationResource::navigationGroup(SkyPlugin::get()->getNavigationGroupLabel());
             NavigationResource::navigationSort(999);
             NavigationResource::navigationIcon('heroicon-o-queue-list');

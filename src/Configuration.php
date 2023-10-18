@@ -123,6 +123,8 @@ trait Configuration
 
     protected bool $hasLibraryResource = true;
 
+    protected bool $hasTagResource = true;
+
     /*
      * @deprecated deprecated since version 3.2
      */
@@ -387,6 +389,18 @@ trait Configuration
     public function hasLibraryResource(): bool
     {
         return $this->hasLibraryResource;
+    }
+
+    public function tagResource(bool $condition = true): static
+    {
+        $this->hasTagResource = $condition;
+
+        return $this;
+    }
+
+    public function hasTagResource(): bool
+    {
+        return $this->hasTagResource;
     }
 
     public function libraryTypes(array $types): static

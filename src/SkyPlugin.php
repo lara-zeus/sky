@@ -39,7 +39,9 @@ final class SkyPlugin implements Plugin
             $panel->resources([LibraryResource::class]);
         }
 
-        $panel->resources([TagResource::class]);
+        if ($this->hasTagResource()) {
+            $panel->resources([TagResource::class]);
+        }
     }
 
     public static function make(): static

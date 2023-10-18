@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'domain' => null,
+
     /**
      * set the default path for the blog homepage.
      */

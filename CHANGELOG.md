@@ -2,6 +2,14 @@
 
 All notable changes to `sky` will be documented in this file
 
+## v3.2.4 - 2023-10-20
+
+### What's Changed
+
+- fix config key for search skipper by @atmonshi in https://github.com/lara-zeus/sky/pull/172
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/v3.2.3...v3.2.4
+
 ## v3.2.3 - 2023-10-18
 
 ### What's Changed
@@ -37,6 +45,7 @@ Since [tiptap editor](https://github.com/awcodes/filament-tiptap-editor) still i
         'Tag' => \LaraZeus\Sky\Models\Tag::class,
         'Library' => \LaraZeus\Sky\Models\Library::class,
     ])
+
 
 
 
@@ -86,11 +95,13 @@ Make sure to add this to your config:
 
 
 
+
 ```
 You can copy that class and create your own parser, too, then add it to the array, and Sky will loop them all.
 
 ```I
 Of course, it will be visible only if you install Sky with Bolt :)
+
 
 
 
@@ -100,7 +111,6 @@ Of course, it will be visible only if you install Sky with Bolt :)
 **Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.33...2.4.34
 ## 2.4.33 - 2023-07-12
 ### What's Changed
-
 - Allow to skip highlighting of search terms by @thyseus in https://github.com/lara-zeus/sky/pull/125
 - fix when library is empty by @atmonshi in https://github.com/lara-zeus/sky/pull/126
 - update composer by @atmonshi in https://github.com/lara-zeus/sky/pull/127

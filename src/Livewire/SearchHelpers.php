@@ -33,7 +33,7 @@ trait SearchHelpers
     {
         // Skip highlighting of search terms when specific tags e.g.
         // <iframe> exists in the content so no html breaks:
-        foreach (config('zeus-sky.getSkipHighlightingTerms') as $skipper) {
+        foreach (config('zeus-sky.skipHighlightingTerms') as $skipper) {
             if (str_contains($content, $skipper)) {
                 return $content;
             }

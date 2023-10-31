@@ -2,6 +2,18 @@
 
 All notable changes to `sky` will be documented in this file
 
+## v3.2.5 - 2023-10-31
+
+### What's Changed
+
+- Add ckb translation by @RawanD201 in https://github.com/lara-zeus/sky/pull/173
+
+### New Contributors
+
+- @RawanD201 made their first contribution in https://github.com/lara-zeus/sky/pull/173
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/v3.2.4...v3.2.5
+
 ## v3.2.4 - 2023-10-20
 
 ### What's Changed
@@ -45,6 +57,7 @@ Since [tiptap editor](https://github.com/awcodes/filament-tiptap-editor) still i
         'Tag' => \LaraZeus\Sky\Models\Tag::class,
         'Library' => \LaraZeus\Sky\Models\Library::class,
     ])
+
 
 
 
@@ -96,11 +109,13 @@ Make sure to add this to your config:
 
 
 
+
 ```
 You can copy that class and create your own parser, too, then add it to the array, and Sky will loop them all.
 
 ```I
 Of course, it will be visible only if you install Sky with Bolt :)
+
 
 
 
@@ -114,7 +129,6 @@ Of course, it will be visible only if you install Sky with Bolt :)
 - Allow to skip highlighting of search terms by @thyseus in https://github.com/lara-zeus/sky/pull/125
 - fix when library is empty by @atmonshi in https://github.com/lara-zeus/sky/pull/126
 - update composer by @atmonshi in https://github.com/lara-zeus/sky/pull/127
-
 **Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.32...2.4.33
 
 ## 2.4.32 - 2023-07-12

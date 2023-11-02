@@ -14,7 +14,7 @@ return [
 
     'select-options' => [
         'same-tab' => 'نفس علامة التبويب',
-        'new-tab' => 'علامة تبويب جديدة'
+        'new-tab' => 'علامة تبويب جديدة',
     ],
 
     'items' => [
@@ -25,7 +25,7 @@ return [
         'move-down' => 'تحريك للأسفل',
         'indent' => 'إزاحة للداخل',
         'dedent' => 'إزاحة للخارج',
-        'remove' => 'إزالة'
+        'remove' => 'إزالة',
     ],
 
     'items-modal' => [

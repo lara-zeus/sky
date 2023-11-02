@@ -39,7 +39,7 @@ php artisan vendor:publish --tag=zeus-sky-translations
 to render the navigation:
 
 ```
-@php $menu = RyanChandler\FilamentNavigation\Models\Navigation::fromHandle('main-header-menu'); @endphp
+@php $menu = \LaraZeus\Sky\SkyPlugin::get()->getModel('Navigation')::fromHandle('main-header-menu'); @endphp
 @foreach($menu->items as $item)
     {!! \LaraZeus\Sky\Classes\RenderNavItem::render($item,'px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400') !!}
 @endforeach

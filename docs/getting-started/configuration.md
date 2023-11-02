@@ -20,8 +20,6 @@ SpatieLaravelTranslatablePlugin::make()
     // or if you have more
     ->defaultLocales(['en', 'pt']),
 
-FilamentNavigation::make(),
-
 SkyPlugin::make()
     ->navigationGroupLabel('Sky')
 

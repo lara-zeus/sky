@@ -47,7 +47,7 @@ to render the navigation:
 
 you can also copy the `RenderNavItem` class and customize it as you need.
 
-for more information refer to the main plugin [Filament Navigation](https://github.com/ryangjchandler/filament-navigation)
+the navigation plugin was originally created by [ryangjchandler](https://github.com/ryangjchandler/filament-navigation). and now it's included in sky plugin.
 
 ## themes
 

@@ -2300,16 +2300,16 @@
         },
         {
             "name": "lara-zeus/core",
-            "version": "v3.0.10",
+            "version": "v3.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lara-zeus/core.git",
-                "reference": "2b7fa3401288dce85f2e7ff7d54edea6e826ae59"
+                "reference": "07b64a72ef6d0aa17ee55d8f6145542fb68f8b63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lara-zeus/core/zipball/2b7fa3401288dce85f2e7ff7d54edea6e826ae59",
-                "reference": "2b7fa3401288dce85f2e7ff7d54edea6e826ae59",
+                "url": "https://api.github.com/repos/lara-zeus/core/zipball/07b64a72ef6d0aa17ee55d8f6145542fb68f8b63",
+                "reference": "07b64a72ef6d0aa17ee55d8f6145542fb68f8b63",
                 "shasum": ""
             },
             "require": {
@@ -2382,7 +2382,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-10-29T18:18:31+00:00"
+            "time": "2023-11-02T12:34:15+00:00"
         },
         {
             "name": "laravel/framework",

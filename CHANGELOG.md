@@ -2,6 +2,22 @@
 
 All notable changes to `sky` will be documented in this file
 
+## v3.3.0 - 2023-11-02
+
+### What's Changed
+
+- add navigation by @atmonshi in https://github.com/lara-zeus/sky/pull/174
+- Add nav by @atmonshi in https://github.com/lara-zeus/sky/pull/175
+
+Thanks to ryangjchandler, who created the beautiful plugin [filament-navigation](https://github.com/ryangjchandler/filament-navigation).
+Now, Sky already includes a version of the plugin to upgrade and add more features easily.
+
+### to upgrade:
+
+remove `FilamentNavigation::make(),` from your panel plugins.
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/v3.2.5...v3.3.0
+
 ## v3.2.5 - 2023-10-31
 
 ### What's Changed
@@ -62,6 +78,7 @@ Since [tiptap editor](https://github.com/awcodes/filament-tiptap-editor) still i
 
 
 
+
 ```
 #### What's Changed
 
@@ -110,11 +127,13 @@ Make sure to add this to your config:
 
 
 
+
 ```
 You can copy that class and create your own parser, too, then add it to the array, and Sky will loop them all.
 
 ```I
 Of course, it will be visible only if you install Sky with Bolt :)
+
 
 
 
@@ -130,7 +149,6 @@ Of course, it will be visible only if you install Sky with Bolt :)
 - fix when library is empty by @atmonshi in https://github.com/lara-zeus/sky/pull/126
 - update composer by @atmonshi in https://github.com/lara-zeus/sky/pull/127
 **Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.32...2.4.33
-
 ## 2.4.32 - 2023-07-12
 
 ### What's Changed

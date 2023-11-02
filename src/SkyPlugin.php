@@ -7,6 +7,7 @@ use Filament\Panel;
 use Filament\Support\Concerns\EvaluatesClosures;
 use LaraZeus\Sky\Filament\Resources\FaqResource;
 use LaraZeus\Sky\Filament\Resources\LibraryResource;
+use LaraZeus\Sky\Filament\Resources\NavigationResource;
 use LaraZeus\Sky\Filament\Resources\PageResource;
 use LaraZeus\Sky\Filament\Resources\PostResource;
 use LaraZeus\Sky\Filament\Resources\TagResource;
@@ -41,6 +42,10 @@ final class SkyPlugin implements Plugin
 
         if ($this->hasTagResource()) {
             $panel->resources([TagResource::class]);
+        }
+
+        if ($this->hasNavigationResource()) {
+            $panel->resources([NavigationResource::class]);
         }
     }
 

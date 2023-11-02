@@ -9,8 +9,7 @@ use LaraZeus\Sky\Console\InstallCommand;
 use LaraZeus\Sky\Console\migrateCommand;
 use LaraZeus\Sky\Console\PublishCommand;
 use LaraZeus\Sky\Console\ZeusEditorCommand;
-use RyanChandler\FilamentNavigation\Filament\Resources\NavigationResource;
-use RyanChandler\FilamentNavigation\FilamentNavigation;
+use LaraZeus\Sky\Filament\Resources\NavigationResource;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -59,6 +58,7 @@ class SkyServiceProvider extends PackageServiceProvider
             'create_faqs_table',
             'modify_posts_columns',
             'create_library_table',
+            'create_navigations_table',
         ];
     }
 
@@ -66,8 +66,7 @@ class SkyServiceProvider extends PackageServiceProvider
     {
         Filament::serving(function () {
             if (! defined('__PHPSTAN_RUNNING__') &&
-                ! app('filament')->hasPlugin('zeus-sky') &&
-                ! app('filament')->hasPlugin('navigation')
+                ! app('filament')->hasPlugin('zeus-sky')
             ) {
                 return;
             }
@@ -79,7 +78,7 @@ class SkyServiceProvider extends PackageServiceProvider
             NavigationResource::pluralLabel(__('Navigations'));
             NavigationResource::label(__('Navigation'));
 
-            FilamentNavigation::get()
+            SkyPlugin::get()
                 ->itemType(
                     __('Post link'),
                     [

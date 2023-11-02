@@ -3,6 +3,9 @@
 namespace LaraZeus\Sky;
 
 use Closure;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Illuminate\Support\Str;
 
 trait Configuration
 {
@@ -34,8 +37,6 @@ trait Configuration
 
     /**
      * you can overwrite any model and use your own
-     *
-     * @deprecated deprecated since version 3.2
      */
     protected array $skyModels = [];
 
@@ -124,6 +125,12 @@ trait Configuration
     protected bool $hasLibraryResource = true;
 
     protected bool $hasTagResource = true;
+
+    protected bool $hasNavigationResource = true;
+
+    protected array $itemTypes = [];
+
+    protected array | Closure $extraFields = [];
 
     /*
      * @deprecated deprecated since version 3.2
@@ -403,6 +410,18 @@ trait Configuration
         return $this->hasTagResource;
     }
 
+    public function navigationResource(bool $condition = true): static
+    {
+        $this->hasNavigationResource = $condition;
+
+        return $this;
+    }
+
+    public function hasNavigationResource(): bool
+    {
+        return $this->hasNavigationResource;
+    }
+
     public function libraryTypes(array $types): static
     {
         $this->libraryTypes = $types;
@@ -437,5 +456,52 @@ trait Configuration
         }
 
         return $this->translatedTagTypes ?? $this->tagTypes;
+    }
+
+    public function itemType(string $name, array | Closure $fields, string $slug = null): static
+    {
+        $this->itemTypes[$slug ?? Str::slug($name)] = [
+            'name' => $name,
+            'fields' => $fields,
+        ];
+
+        return $this;
+    }
+
+    public function withExtraFields(array | Closure $schema): static
+    {
+        $this->extraFields = $schema;
+
+        return $this;
+    }
+
+    public function getExtraFields(): array | Closure
+    {
+        return $this->extraFields;
+    }
+
+    public function getItemTypes(): array
+    {
+        return array_merge(
+            [
+                'external-link' => [
+                    'name' => __('zeus-sky::filament-navigation.attributes.external-link'),
+                    'fields' => [
+                        TextInput::make('url')
+                            ->label(__('zeus-sky::filament-navigation.attributes.url'))
+                            ->required(),
+                        Select::make('target')
+                            ->label(__('zeus-sky::filament-navigation.attributes.target'))
+                            ->options([
+                                '' => __('zeus-sky::filament-navigation.select-options.same-tab'),
+                                '_blank' => __('zeus-sky::filament-navigation.select-options.new-tab'),
+                            ])
+                            ->default('')
+                            ->selectablePlaceholder(false),
+                    ],
+                ],
+            ],
+            $this->itemTypes
+        );
     }
 }

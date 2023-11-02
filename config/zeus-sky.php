@@ -35,6 +35,7 @@ return [
         'PostStatus' => \LaraZeus\Sky\Models\PostStatus::class,
         'Tag' => \LaraZeus\Sky\Models\Tag::class,
         'Library' => \LaraZeus\Sky\Models\Library::class,
+        'Navigation' => \LaraZeus\Sky\Models\Navigation::class,
     ],
 
     'parsers' => [

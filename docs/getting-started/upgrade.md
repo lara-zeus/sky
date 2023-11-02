@@ -4,6 +4,10 @@ weight: 100
 ---
 
 
+## upgrade to v3.3
+
+remove `FilamentNavigation::make(),` from your panel plugins
+
 ## upgrade to v3.2
 
 In v3.2, I refactored the configuration to separate the frontend configuration from filament-related ones.

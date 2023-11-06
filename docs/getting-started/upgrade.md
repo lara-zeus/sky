@@ -8,6 +8,15 @@ weight: 100
 
 remove `FilamentNavigation::make(),` from your panel plugins
 
+if you published the config file, add the `Navigation` key to the `models` array
+
+```php
+'models' => [
+        //...
+        'Navigation' => \LaraZeus\Sky\Models\Navigation::class,
+    ],
+```
+
 ## upgrade to v3.2
 
 In v3.2, I refactored the configuration to separate the frontend configuration from filament-related ones.

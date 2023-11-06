@@ -9,7 +9,6 @@ use LaraZeus\Sky\Console\InstallCommand;
 use LaraZeus\Sky\Console\migrateCommand;
 use LaraZeus\Sky\Console\PublishCommand;
 use LaraZeus\Sky\Console\ZeusEditorCommand;
-use LaraZeus\Sky\Filament\Resources\NavigationResource;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -70,13 +69,6 @@ class SkyServiceProvider extends PackageServiceProvider
             ) {
                 return;
             }
-
-            NavigationResource::navigationGroup(SkyPlugin::get()->getNavigationGroupLabel());
-            NavigationResource::navigationSort(999);
-            NavigationResource::navigationIcon('heroicon-o-queue-list');
-            NavigationResource::navigationLabel(__('Navigations'));
-            NavigationResource::pluralLabel(__('Navigations'));
-            NavigationResource::label(__('Navigation'));
 
             SkyPlugin::get()
                 ->itemType(

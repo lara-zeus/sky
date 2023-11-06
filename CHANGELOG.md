@@ -2,6 +2,27 @@
 
 All notable changes to `sky` will be documented in this file
 
+## v3.3.1 - 2023-11-06
+
+### What's Changed
+
+- allow to hide Resources from Navigation by @atmonshi in https://github.com/lara-zeus/sky/pull/176
+
+Added a Small feature to allow to hide Resources from Navigation:
+
+in your panel provider you can hide any resource from the side nav
+
+```php
+->hideResources([
+        FaqResource::class,
+    ])
+
+```
+for more check out the docs:
+https://larazeus.com/docs/sky/v3/getting-started/configuration
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/v3.3.0...v3.3.1
+
 ## v3.3.0 - 2023-11-02
 
 ### What's Changed
@@ -79,6 +100,7 @@ Since [tiptap editor](https://github.com/awcodes/filament-tiptap-editor) still i
 
 
 
+
 ```
 #### What's Changed
 
@@ -128,11 +150,13 @@ Make sure to add this to your config:
 
 
 
+
 ```
 You can copy that class and create your own parser, too, then add it to the array, and Sky will loop them all.
 
 ```I
 Of course, it will be visible only if you install Sky with Bolt :)
+
 
 
 
@@ -150,7 +174,6 @@ Of course, it will be visible only if you install Sky with Bolt :)
 - update composer by @atmonshi in https://github.com/lara-zeus/sky/pull/127
 **Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.32...2.4.33
 ## 2.4.32 - 2023-07-12
-
 ### What's Changed
 
 - allow to upload multiple libraries and refactor the views by @atmonshi in https://github.com/lara-zeus/sky/pull/123

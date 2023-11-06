@@ -41,6 +41,19 @@ SkyPlugin::make()
         'library' => 'Library',
         'faq' => 'Faq',
     ])
+
+    // disable a Resource, if you dont use it, or want to replace them with your own resource
+    ->postResource()
+    ->pageResource()
+    ->faqResource()
+    ->libraryResource()
+    ->tagResource()
+    ->navigationResource()
+
+    // hide a Resource, if you need to register them, but want to hide them from the sidebar navigation
+    ->hideResources([
+        FaqResource::class,
+    ])
 ```
 
 ## Customize Filament Resources
@@ -57,6 +70,7 @@ available resources:
 
 - FaqResource, 
 - LibraryResource, 
+- NavigationResource, 
 - PageResource, 
 - PostResource, 
 - TagResource,

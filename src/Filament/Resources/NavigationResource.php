@@ -10,7 +10,6 @@ use Filament\Forms\Components\View;
 use Filament\Forms\Components\ViewField;
 use Filament\Forms\Form;
 use Filament\Forms\Set;
-use Filament\Resources\Resource;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
@@ -20,17 +19,13 @@ use Illuminate\Support\Str;
 use LaraZeus\Sky\Models\Navigation;
 use LaraZeus\Sky\SkyPlugin;
 
-class NavigationResource extends Resource
+class NavigationResource extends SkyResource
 {
-    protected static ?string $navigationIcon = 'heroicon-o-bars-3';
+    protected static ?string $navigationIcon = 'heroicon-o-queue-list';
+
+    protected static ?int $navigationSort = 99;
 
     protected static bool $showTimestamps = true;
-
-    private static ?string $workNavigationLabel = null;
-
-    private static ?string $workPluralLabel = null;
-
-    private static ?string $workLabel = null;
 
     public static function disableTimestamps(bool $condition = true): void
     {
@@ -89,34 +84,19 @@ class NavigationResource extends Resource
             ->columns(12);
     }
 
-    public static function navigationLabel(?string $string): void
+    public static function getLabel(): string
     {
-        self::$workNavigationLabel = $string;
+        return __('Navigation');
     }
 
-    public static function pluralLabel(?string $string): void
+    public static function getPluralLabel(): string
     {
-        self::$workPluralLabel = $string;
-    }
-
-    public static function label(?string $string): void
-    {
-        self::$workLabel = $string;
+        return __('Navigations');
     }
 
     public static function getNavigationLabel(): string
     {
-        return self::$workNavigationLabel ?? parent::getNavigationLabel();
-    }
-
-    public static function getModelLabel(): string
-    {
-        return self::$workLabel ?? parent::getModelLabel();
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return self::$workPluralLabel ?? parent::getPluralModelLabel();
+        return __('Navigations');
     }
 
     public static function table(Table $table): Table

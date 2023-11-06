@@ -106,6 +106,8 @@ trait Configuration
         'faq' => 'Faq',
     ];
 
+    protected array $hiddenResources = [];
+
     /**
      * where to upload all files when using the file upload field
      */
@@ -503,5 +505,17 @@ trait Configuration
             ],
             $this->itemTypes
         );
+    }
+
+    public function hiddenResources(): array
+    {
+        return $this->hiddenResources;
+    }
+
+    public function hideResources(array $resources = []): static
+    {
+        $this->hiddenResources = $resources;
+
+        return $this;
     }
 }

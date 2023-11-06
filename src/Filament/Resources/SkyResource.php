@@ -15,6 +15,11 @@ class SkyResource extends Resource
         return SkyPlugin::get()->getNavigationGroupLabel();
     }
 
+    public static function shouldRegisterNavigation(): bool
+    {
+        return ! in_array(static::class, SkyPlugin::get()->hiddenResources());
+    }
+
     public static function getNavigationBadge(): ?string
     {
         return (string) static::getModel()::query()->count();

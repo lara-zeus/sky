@@ -49,7 +49,7 @@ class Page extends Component
             ->twitter();
 
         if (! $this->page->getMedia('posts')->isEmpty()) {
-            seo()->image($this->page->getFirstMediaUrl('posts'));
+            seo()->image($this->page->getFirstMediaUrl('pages'));
         }
     }
 }

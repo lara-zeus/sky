@@ -89,6 +89,11 @@ class FaqResource extends SkyResource
             ->actions([
                 ActionGroup::make([
                     EditAction::make('edit')->label(__('Edit')),
+
+                    //@phpstan-ignore-next-line
+                    \LaraZeus\Helen\Actions\ShortUrlAction::make('get-link')
+                        ->distUrl(fn (): string => route('faq')),
+
                     DeleteAction::make('delete')
                         ->label(__('Delete')),
                 ]),

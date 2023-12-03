@@ -195,6 +195,11 @@ class PostResource extends SkyResource
                         ->label(__('Open'))
                         ->url(fn (Post $record): string => route('post', ['slug' => $record]))
                         ->openUrlInNewTab(),
+
+                    //@phpstan-ignore-next-line
+                    \LaraZeus\Helen\Actions\ShortUrlAction::make('get-link')
+                        ->distUrl(fn (Post $record): string => route('post', ['slug' => $record])),
+
                     DeleteAction::make('delete'),
                     ForceDeleteAction::make(),
                     RestoreAction::make(),

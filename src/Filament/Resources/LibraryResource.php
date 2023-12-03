@@ -147,13 +147,19 @@ class LibraryResource extends SkyResource
             ])
             ->actions([
                 ActionGroup::make([
-                    EditAction::make('edit')->label(__('Edit')),
+                    EditAction::make('edit')
+                        ->label(__('Edit')),
                     Action::make('Open')
                         ->color('warning')
                         ->icon('heroicon-o-arrow-top-right-on-square')
                         ->label(__('Open'))
                         ->url(fn (Library $record): string => route('library.item', ['slug' => $record->slug]))
                         ->openUrlInNewTab(),
+
+                    //@phpstan-ignore-next-line
+                    \LaraZeus\Helen\Actions\ShortUrlAction::make('get-link')
+                        ->distUrl(fn (Library $record): string => route('library.item', ['slug' => $record->slug])),
+
                     DeleteAction::make('delete')
                         ->label(__('Delete')),
                 ]),

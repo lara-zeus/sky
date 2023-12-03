@@ -92,11 +92,9 @@ class FaqResource extends SkyResource
     public static function getActions(): array
     {
         $action = [
-            ActionGroup::make([
-                EditAction::make('edit')->label(__('Edit')),
-                DeleteAction::make('delete')
-                    ->label(__('Delete')),
-            ]),
+            EditAction::make('edit')->label(__('Edit')),
+            DeleteAction::make('delete')
+                ->label(__('Delete')),
         ];
 
         if (class_exists(\LaraZeus\Helen\HelenServiceProvider::class)) {
@@ -105,7 +103,7 @@ class FaqResource extends SkyResource
                 ->distUrl(fn (): string => route('faq'));
         }
 
-        return $action;
+        return [ActionGroup::make($action)];
     }
 
     public static function getPages(): array

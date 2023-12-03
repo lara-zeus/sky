@@ -172,26 +172,7 @@ class PageResource extends SkyResource
                     ->tooltip(fn (Post $record): string => $record->published_at->format('Y/m/d | H:i A')),
             ])
             ->defaultSort('id', 'desc')
-            ->actions([
-                ActionGroup::make([
-                    EditAction::make('edit')->label(__('Edit')),
-
-                    Action::make('Open')
-                        ->color('warning')
-                        ->icon('heroicon-o-arrow-top-right-on-square')
-                        ->label(__('Open'))
-                        ->url(fn (Post $record): string => route('page', ['slug' => $record]))
-                        ->openUrlInNewTab(),
-
-                    //@phpstan-ignore-next-line
-                    \LaraZeus\Helen\Actions\ShortUrlAction::make('get-link')
-                        ->distUrl(fn (Post $record): string => route('page', ['slug' => $record])),
-
-                    DeleteAction::make('delete'),
-                    ForceDeleteAction::make(),
-                    RestoreAction::make(),
-                ]),
-            ])
+            ->actions(static::getActions())
             ->bulkActions([
                 DeleteBulkAction::make(),
                 ForceDeleteBulkAction::make(),
@@ -231,5 +212,32 @@ class PageResource extends SkyResource
     public static function getNavigationLabel(): string
     {
         return __('Pages');
+    }
+
+    public static function getActions(): array
+    {
+        $action = [
+            ActionGroup::make([
+                EditAction::make('edit')->label(__('Edit')),
+
+                Action::make('Open')
+                    ->color('warning')
+                    ->icon('heroicon-o-arrow-top-right-on-square')
+                    ->label(__('Open'))
+                    ->url(fn (Post $record): string => route('page', ['slug' => $record]))
+                    ->openUrlInNewTab(),
+                DeleteAction::make('delete'),
+                ForceDeleteAction::make(),
+                RestoreAction::make(),
+            ]),
+        ];
+
+        if (class_exists(\LaraZeus\Helen\HelenServiceProvider::class)) {
+            //@phpstan-ignore-next-line
+            $action[] = \LaraZeus\Helen\Actions\ShortUrlAction::make('get-link')
+                ->distUrl(fn (Post $record): string => route('page', ['slug' => $record]));
+        }
+
+        return $action;
     }
 }

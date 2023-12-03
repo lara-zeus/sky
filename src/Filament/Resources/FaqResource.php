@@ -86,18 +86,26 @@ class FaqResource extends SkyResource
                     ->relationship('tags', 'name')
                     ->label(__('Tags')),
             ])
-            ->actions([
-                ActionGroup::make([
-                    EditAction::make('edit')->label(__('Edit')),
+            ->actions(static::getActions());
+    }
 
-                    //@phpstan-ignore-next-line
-                    \LaraZeus\Helen\Actions\ShortUrlAction::make('get-link')
-                        ->distUrl(fn (): string => route('faq')),
+    public static function getActions(): array
+    {
+        $action = [
+            ActionGroup::make([
+                EditAction::make('edit')->label(__('Edit')),
+                DeleteAction::make('delete')
+                    ->label(__('Delete')),
+            ]),
+        ];
 
-                    DeleteAction::make('delete')
-                        ->label(__('Delete')),
-                ]),
-            ]);
+        if (class_exists(\LaraZeus\Helen\HelenServiceProvider::class)) {
+            //@phpstan-ignore-next-line
+            $action[] = \LaraZeus\Helen\Actions\ShortUrlAction::make('get-link')
+                ->distUrl(fn (): string => route('faq'));
+        }
+
+        return $action;
     }
 
     public static function getPages(): array

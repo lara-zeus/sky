@@ -146,23 +146,7 @@ class LibraryResource extends SkyResource
                     ->type('library'),
             ])
             ->actions([
-                ActionGroup::make([
-                    EditAction::make('edit')
-                        ->label(__('Edit')),
-                    Action::make('Open')
-                        ->color('warning')
-                        ->icon('heroicon-o-arrow-top-right-on-square')
-                        ->label(__('Open'))
-                        ->url(fn (Library $record): string => route('library.item', ['slug' => $record->slug]))
-                        ->openUrlInNewTab(),
-
-                    //@phpstan-ignore-next-line
-                    \LaraZeus\Helen\Actions\ShortUrlAction::make('get-link')
-                        ->distUrl(fn (Library $record): string => route('library.item', ['slug' => $record->slug])),
-
-                    DeleteAction::make('delete')
-                        ->label(__('Delete')),
-                ]),
+                ActionGroup::make(static::getActions()),
             ])
             ->filters([
                 SelectFilter::make('type')
@@ -200,5 +184,31 @@ class LibraryResource extends SkyResource
     public static function getNavigationLabel(): string
     {
         return __('Libraries');
+    }
+
+    public static function getActions(): array
+    {
+        $action = [
+            ActionGroup::make([
+                EditAction::make('edit')
+                    ->label(__('Edit')),
+                Action::make('Open')
+                    ->color('warning')
+                    ->icon('heroicon-o-arrow-top-right-on-square')
+                    ->label(__('Open'))
+                    ->url(fn (Library $record): string => route('library.item', ['slug' => $record->slug]))
+                    ->openUrlInNewTab(),
+                DeleteAction::make('delete')
+                    ->label(__('Delete')),
+            ]),
+        ];
+
+        if (class_exists(\LaraZeus\Helen\HelenServiceProvider::class)) {
+            //@phpstan-ignore-next-line
+            $action[] = \LaraZeus\Helen\Actions\ShortUrlAction::make('get-link')
+                ->distUrl(fn (Library $record): string => route('library.item', ['slug' => $record->slug]));
+        }
+
+        return $action;
     }
 }

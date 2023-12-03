@@ -258,18 +258,16 @@ class PostResource extends SkyResource
     public static function getActions(): array
     {
         $action = [
-            ActionGroup::make([
-                EditAction::make('edit')->label(__('Edit')),
-                Action::make('Open')
-                    ->color('warning')
-                    ->icon('heroicon-o-arrow-top-right-on-square')
-                    ->label(__('Open'))
-                    ->url(fn (Post $record): string => route('post', ['slug' => $record]))
-                    ->openUrlInNewTab(),
-                DeleteAction::make('delete'),
-                ForceDeleteAction::make(),
-                RestoreAction::make(),
-            ]),
+            EditAction::make('edit')->label(__('Edit')),
+            Action::make('Open')
+                ->color('warning')
+                ->icon('heroicon-o-arrow-top-right-on-square')
+                ->label(__('Open'))
+                ->url(fn (Post $record): string => route('post', ['slug' => $record]))
+                ->openUrlInNewTab(),
+            DeleteAction::make('delete'),
+            ForceDeleteAction::make(),
+            RestoreAction::make(),
         ];
 
         if (class_exists(\LaraZeus\Helen\HelenServiceProvider::class)) {
@@ -278,6 +276,6 @@ class PostResource extends SkyResource
                 ->distUrl(fn (Post $record): string => route('post', ['slug' => $record]));
         }
 
-        return $action;
+        return [ActionGroup::make($action)];
     }
 }

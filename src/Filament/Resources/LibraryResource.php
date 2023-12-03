@@ -145,9 +145,7 @@ class LibraryResource extends SkyResource
                     ->toggleable()
                     ->type('library'),
             ])
-            ->actions([
-                ActionGroup::make(static::getActions()),
-            ])
+            ->actions(static::getActions())
             ->filters([
                 SelectFilter::make('type')
                     ->visible()
@@ -189,18 +187,16 @@ class LibraryResource extends SkyResource
     public static function getActions(): array
     {
         $action = [
-            ActionGroup::make([
-                EditAction::make('edit')
-                    ->label(__('Edit')),
-                Action::make('Open')
-                    ->color('warning')
-                    ->icon('heroicon-o-arrow-top-right-on-square')
-                    ->label(__('Open'))
-                    ->url(fn (Library $record): string => route('library.item', ['slug' => $record->slug]))
-                    ->openUrlInNewTab(),
-                DeleteAction::make('delete')
-                    ->label(__('Delete')),
-            ]),
+            EditAction::make('edit')
+                ->label(__('Edit')),
+            Action::make('Open')
+                ->color('warning')
+                ->icon('heroicon-o-arrow-top-right-on-square')
+                ->label(__('Open'))
+                ->url(fn (Library $record): string => route('library.item', ['slug' => $record->slug]))
+                ->openUrlInNewTab(),
+            DeleteAction::make('delete')
+                ->label(__('Delete')),
         ];
 
         if (class_exists(\LaraZeus\Helen\HelenServiceProvider::class)) {
@@ -209,6 +205,6 @@ class LibraryResource extends SkyResource
                 ->distUrl(fn (Library $record): string => route('library.item', ['slug' => $record->slug]));
         }
 
-        return $action;
+        return [ActionGroup::make($action)];
     }
 }

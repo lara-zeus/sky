@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 trait SearchHelpers
 {
-    private function highlightSearchResults(Collection $collection, string $search = null): Collection
+    private function highlightSearchResults(Collection $collection, ?string $search = null): Collection
     {
         if (! $search) {
             return $collection;

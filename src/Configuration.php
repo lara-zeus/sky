@@ -460,7 +460,7 @@ trait Configuration
         return $this->translatedTagTypes ?? $this->tagTypes;
     }
 
-    public function itemType(string $name, array | Closure $fields, string $slug = null): static
+    public function itemType(string $name, array | Closure $fields, ?string $slug = null): static
     {
         $this->itemTypes[$slug ?? Str::slug($name)] = [
             'name' => $name,

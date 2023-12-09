@@ -69,7 +69,7 @@ trait PostScope
      * @param  Builder<Post>  $query
      * @param  ?string  $category
      */
-    public function scopeForCategory(Builder $query, string $category = null): Builder
+    public function scopeForCategory(Builder $query, ?string $category = null): Builder
     {
         if ($category !== null) {
             return $query->where(

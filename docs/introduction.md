@@ -43,4 +43,4 @@ and more on the way:
 available support channels:
 * join our channel in discord [Discord](https://discord.com/channels/883083792112300104/965924351289491496)
 * open an issue on [GitHub](https://github.com/lara-zeus/sky/issues)
-* email us using the [contact center](https://still-code.com/contact-us/lara-zeus)
+* email us using the [contact center](https://larazeus.com/contact-us)

@@ -2,6 +2,14 @@
 
 All notable changes to `sky` will be documented in this file
 
+## v3.3.6 - 2023-12-15
+
+### What's Changed
+
+* update class custom to primary by @atmonshi in https://github.com/lara-zeus/sky/pull/182
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/v3.3.5...v3.3.6
+
 ## v3.3.5 - 2023-12-03
 
 ### What's Changed
@@ -48,6 +56,7 @@ in your panel provider you can hide any resource from the side nav
 ->hideResources([
         FaqResource::class,
     ])
+
 
 
 
@@ -141,6 +150,7 @@ Since [tiptap editor](https://github.com/awcodes/filament-tiptap-editor) still i
 
 
 
+
 ```
 #### What's Changed
 
@@ -195,11 +205,13 @@ Make sure to add this to your config:
 
 
 
+
 ```
 You can copy that class and create your own parser, too, then add it to the array, and Sky will loop them all.
 
 ```I
 Of course, it will be visible only if you install Sky with Bolt :)
+
 
 
 
@@ -228,7 +240,6 @@ Of course, it will be visible only if you install Sky with Bolt :)
 **Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.31...2.4.32
 ## 2.4.31 - 2023-07-04
 ### What's Changed
-
 - Bump dependabot/fetch-metadata from 1.5.1 to 1.6.0 by @dependabot in https://github.com/lara-zeus/sky/pull/121
 - update all dependecies by @atmonshi in https://github.com/lara-zeus/sky/pull/122
 

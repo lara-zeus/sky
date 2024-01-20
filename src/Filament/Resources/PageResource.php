@@ -10,6 +10,7 @@ use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\ToggleButtons;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Forms\Set;
@@ -33,7 +34,6 @@ use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\PageResource\Pages;
 use LaraZeus\Sky\Models\Post;
 use LaraZeus\Sky\SkyPlugin;
-use Wallo\FilamentSelectify\Components\ButtonGroup;
 
 class PageResource extends SkyResource
 {
@@ -124,14 +124,15 @@ class PageResource extends SkyResource
                 ]),
                 Tabs\Tab::make(__('Image'))->schema([
                     Placeholder::make(__('Featured Image')),
-                    ButtonGroup::make('featured_image_type')
-                        ->live()
-                        ->label('')
+                    ToggleButtons::make('featured_image_type')
                         ->dehydrated(false)
+                        ->hiddenLabel()
+                        ->live()
                         ->afterStateHydrated(function (Set $set, Get $get) {
                             $setVal = ($get('featured_image') === null) ? 'upload' : 'url';
                             $set('featured_image_type', $setVal);
                         })
+                        ->grouped()
                         ->options([
                             'upload' => __('upload'),
                             'url' => __('url'),

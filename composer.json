@@ -38,7 +38,6 @@
         "spatie/laravel-medialibrary": "^10.0.0",
         "spatie/laravel-sluggable": "^3.3",
         "spatie/laravel-tags": "^4.4",
-        "andrewdwallo/filament-selectify": "^2.0",
         "lara-zeus/core": "^3.1"
     },
     "require-dev": {

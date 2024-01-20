@@ -8,6 +8,7 @@ use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\SpatieTagsInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\ToggleButtons;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Forms\Set;
@@ -23,7 +24,6 @@ use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\LibraryResource\Pages;
 use LaraZeus\Sky\Models\Library;
 use LaraZeus\Sky\SkyPlugin;
-use Wallo\FilamentSelectify\Components\ButtonGroup;
 
 class LibraryResource extends SkyResource
 {
@@ -83,13 +83,15 @@ class LibraryResource extends SkyResource
                     ->collapsible()
                     ->compact()
                     ->schema([
-                        ButtonGroup::make('upload_or_url')
-                            ->live()
+                        ToggleButtons::make('upload_or_url')
                             ->dehydrated(false)
+                            ->hiddenLabel()
+                            ->live()
                             ->afterStateHydrated(function (Set $set, Get $get) {
                                 $setVal = ($get('file_path') === null) ? 'upload' : 'url';
                                 $set('upload_or_url', $setVal);
                             })
+                            ->grouped()
                             ->options([
                                 'upload' => __('upload'),
                                 'url' => __('url'),

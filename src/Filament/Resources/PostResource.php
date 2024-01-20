@@ -11,6 +11,7 @@ use Filament\Forms\Components\SpatieTagsInput;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\ToggleButtons;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Forms\Set;
@@ -34,7 +35,6 @@ use Illuminate\Support\Str;
 use LaraZeus\Sky\Filament\Resources\PostResource\Pages;
 use LaraZeus\Sky\Models\Post;
 use LaraZeus\Sky\SkyPlugin;
-use Wallo\FilamentSelectify\Components\ButtonGroup;
 
 // @mixin Builder<PostScope>
 class PostResource extends SkyResource
@@ -127,14 +127,16 @@ class PostResource extends SkyResource
 
                 Tabs\Tab::make(__('Image'))->schema([
                     Placeholder::make(__('Featured Image')),
-                    ButtonGroup::make('featured_image_type')
-                        ->live()
-                        ->label('')
+
+                    ToggleButtons::make('featured_image_type')
                         ->dehydrated(false)
+                        ->hiddenLabel()
+                        ->live()
                         ->afterStateHydrated(function (Set $set, Get $get) {
                             $setVal = ($get('featured_image') === null) ? 'upload' : 'url';
                             $set('featured_image_type', $setVal);
                         })
+                        ->grouped()
                         ->options([
                             'upload' => __('upload'),
                             'url' => __('url'),

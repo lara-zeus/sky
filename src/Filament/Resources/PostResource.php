@@ -117,6 +117,7 @@ class PostResource extends SkyResource
 
                     DateTimePicker::make('published_at')
                         ->label(__('published at'))
+                        ->required()
                         ->native(false)
                         ->default(now()),
 

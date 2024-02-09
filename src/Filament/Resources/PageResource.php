@@ -120,6 +120,7 @@ class PageResource extends SkyResource
 
                     DateTimePicker::make('published_at')
                         ->label(__('published at'))
+                        ->required()
                         ->default(now()),
                 ]),
                 Tabs\Tab::make(__('Image'))->schema([

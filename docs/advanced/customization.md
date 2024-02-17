@@ -1,5 +1,5 @@
 ---
-title: Customization
+title: UI Customization
 weight: 6
 ---
 

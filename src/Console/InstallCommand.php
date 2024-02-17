@@ -27,31 +27,31 @@ class InstallCommand extends Command
     {
         $this->info('publishing configuration...');
 
-        $this->callSilent('vendor:publish', ['--tag' => 'zeus-sky-config']);
+        $this->call('vendor:publish', ['--tag' => 'zeus-sky-config']);
 
         $this->info('publishing migrations...');
 
-        $this->callSilent('vendor:publish', ['--tag' => 'zeus-sky-migrations']);
+        $this->call('vendor:publish', ['--tag' => 'zeus-sky-migrations']);
 
-        $this->callSilent('vendor:publish', [
+        $this->call('vendor:publish', [
             '--provider' => 'Spatie\Tags\TagsServiceProvider',
             '--tag' => 'tags-migrations',
         ]);
 
-        $this->callSilent('vendor:publish', [
+        $this->call('vendor:publish', [
             '--provider' => 'Spatie\MediaLibrary\MediaLibraryServiceProvider',
             '--tag' => 'migrations',
         ]);
 
         $this->info('publishing zeus assets...');
 
-        $this->callSilent('vendor:publish', ['--tag' => 'zeus-config']);
-        $this->callSilent('vendor:publish', ['--tag' => 'zeus-assets']);
+        $this->call('vendor:publish', ['--tag' => 'zeus-config']);
+        $this->call('vendor:publish', ['--tag' => 'zeus-assets']);
 
         $this->info('running migrations...');
 
-        $this->callSilent('migrate');
-
-        $this->output->success('Zeus and Sky has been Published successfully');
+        $this->call('migrate');
+        
+        $this->output->success('Zeus Sky has been Installed successfully, consider ⭐️ the package in filament site :)');
     }
 }

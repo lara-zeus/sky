@@ -51,7 +51,7 @@ class InstallCommand extends Command
         $this->info('running migrations...');
 
         $this->call('migrate');
-        
+
         $this->output->success('Zeus Sky has been Installed successfully, consider ⭐️ the package in filament site :)');
     }
 }

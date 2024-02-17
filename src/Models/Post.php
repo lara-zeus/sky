@@ -91,11 +91,11 @@ class Post extends Model implements HasMedia
     /** @return BelongsTo<Post, Model> */
     public function author(): BelongsTo
     {
-       // return $this->belongsTo(config('auth.providers.users.model'), 'user_id', 'id');
-        // To acocomodate using LDAPRecord ( https://ldaprecord.com/docs/laravel/v3/auth/database/configuration#introduction ) the belongs to relation needs to look back at the database model rather than the LDAP model.  The LDAP model itself doesn't have provision for 
+        // return $this->belongsTo(config('auth.providers.users.model'), 'user_id', 'id');
+        // To acocomodate using LDAPRecord ( https://ldaprecord.com/docs/laravel/v3/auth/database/configuration#introduction ) the belongs to relation needs to look back at the database model rather than the LDAP model.  The LDAP model itself doesn't have provision for
         // the belongsTo relationship and instead gives an error from the Spatie permissions side: LDAP RECORD with Spatie Permissions gives error "The LDAP connection [mysql] does not exist."
-          return $this->belongsTo( !empty(config('auth.providers.users.database.model')) ? config('auth.providers.users.database.model') : config('auth.providers.users.model'), 'user_id', 'id');
-    
+        return $this->belongsTo(! empty(config('auth.providers.users.database.model')) ? config('auth.providers.users.database.model') : config('auth.providers.users.model'), 'user_id', 'id');
+
     }
 
     /** @return BelongsTo<Post, Post> */

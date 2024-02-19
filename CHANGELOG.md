@@ -2,6 +2,16 @@
 
 All notable changes to `sky` will be documented in this file
 
+## v3.4.5 - 2024-02-19
+
+### What's Changed
+
+* add better support for libraries with URL item by @atmonshi in https://github.com/lara-zeus/sky/pull/190
+  and added new blade files:
+  `resources/views/themes/zeus/sky/addons/library-types/*-url.blade.php`
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/v3.4.4...v3.4.5
+
 ## v3.4.4 - 2024-02-19
 
 ### What's Changed
@@ -113,6 +123,7 @@ in your panel provider you can hide any resource from the side nav
 
 
 
+
 ```
 for more check out the docs:
 https://larazeus.com/docs/sky/v3/getting-started/configuration
@@ -207,6 +218,7 @@ Since [tiptap editor](https://github.com/awcodes/filament-tiptap-editor) still i
 
 
 
+
 ```
 #### What's Changed
 
@@ -267,11 +279,13 @@ Make sure to add this to your config:
 
 
 
+
 ```
 You can copy that class and create your own parser, too, then add it to the array, and Sky will loop them all.
 
 ```I
 Of course, it will be visible only if you install Sky with Bolt :)
+
 
 
 
@@ -313,7 +327,6 @@ Of course, it will be visible only if you install Sky with Bolt :)
 ### What's Changed
 - allow to force delete and restore posts, and finally green phpstan by @atmonshi in https://github.com/lara-zeus/sky/pull/120
 **Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.29...2.4.30
-
 ## 2.4.2 - 2023-04-24
 
 ### What's Changed

@@ -95,7 +95,7 @@ class PageResource extends SkyResource
                         ->label(__('Post Slug')),
 
                     Select::make('parent_id')
-                        ->options(SkyPlugin::get()->getModel('PostStatus')::where('post_type', 'page')->pluck(
+                        ->options(SkyPlugin::get()->getModel('Post')::where('post_type', 'page')->pluck(
                             'title',
                             'id'
                         ))

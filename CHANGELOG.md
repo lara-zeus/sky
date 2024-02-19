@@ -2,6 +2,14 @@
 
 All notable changes to `sky` will be documented in this file
 
+## v3.4.4 - 2024-02-19
+
+### What's Changed
+
+* Update PageResource.php by @HeartlandTechie in https://github.com/lara-zeus/sky/pull/189
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/v3.4.3...v3.4.4
+
 ## v3.4.3 - 2024-02-17
 
 ### What's Changed
@@ -94,6 +102,7 @@ in your panel provider you can hide any resource from the side nav
 ->hideResources([
         FaqResource::class,
     ])
+
 
 
 
@@ -197,6 +206,7 @@ Since [tiptap editor](https://github.com/awcodes/filament-tiptap-editor) still i
 
 
 
+
 ```
 #### What's Changed
 
@@ -256,11 +266,13 @@ Make sure to add this to your config:
 
 
 
+
 ```
 You can copy that class and create your own parser, too, then add it to the array, and Sky will loop them all.
 
 ```I
 Of course, it will be visible only if you install Sky with Bolt :)
+
 
 
 
@@ -300,7 +312,6 @@ Of course, it will be visible only if you install Sky with Bolt :)
 ## 2.4.30 - 2023-07-02
 ### What's Changed
 - allow to force delete and restore posts, and finally green phpstan by @atmonshi in https://github.com/lara-zeus/sky/pull/120
-
 **Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.29...2.4.30
 
 ## 2.4.2 - 2023-04-24

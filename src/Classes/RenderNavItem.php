@@ -11,7 +11,7 @@ class RenderNavItem
         $color = 'border-b border-b-secondary-500 text-secondary-500';
 
         if ($item['type'] === 'page-link' || $item['type'] === 'page_link') {
-            $page = SkyPlugin::get()->getModel('Post')::page()->find($item['data']['page_id']) ?? '';
+            $page = SkyPlugin::get()->getModel('Post')::page()->whereDate('published_at', '<=', now())->find($item['data']['page_id']) ?? '';
             $activeClass = (request()->routeIs('page', $page)) ? $color : 'border-transparent';
 
             return '<a class="' . $class . ' ' . $activeClass . '"

@@ -22,7 +22,9 @@ class Posts extends Component
             ->orderBy('published_at', 'desc')
             ->get();
 
-        $pages = config('zeus-sky.models.Post')::page()
+        $pages = config('zeus-sky.models.Post')::query()
+            ->page()
+            ->whereDate('published_at', '<=', now())
             ->search($search)
             ->with(['tags', 'author', 'media'])
             ->forCategory($category)
@@ -33,8 +35,10 @@ class Posts extends Component
         $pages = $this->highlightSearchResults($pages, $search);
         $posts = $this->highlightSearchResults($posts, $search);
 
-        $recent = config('zeus-sky.models.Post')::posts()
+        $recent = config('zeus-sky.models.Post')::query()
+            ->posts()
             ->published()
+            ->whereDate('published_at', '<=', now())
             ->with(['tags', 'author', 'media'])
             ->limit(config('zeus-sky.recentPostsLimit'))
             ->orderBy('published_at', 'desc')

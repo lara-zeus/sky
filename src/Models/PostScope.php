@@ -52,8 +52,7 @@ trait PostScope
      */
     public function scopePage(Builder $query): Builder
     {
-        return $query->where('post_type', 'page')
-            ->whereDate('published_at', '<=', now());
+        return $query->where('post_type', 'page');
     }
 
     /**
@@ -61,8 +60,7 @@ trait PostScope
      */
     public function scopePosts(Builder $query): Builder
     {
-        return $query->where('post_type', 'post')
-            ->whereDate('published_at', '<=', now());
+        return $query->where('post_type', 'post');
     }
 
     /**

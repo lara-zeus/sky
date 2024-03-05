@@ -11,7 +11,11 @@ class Page extends Component
 
     public function mount(string $slug): void
     {
-        $this->page = config('zeus-sky.models.Post')::where('slug', $slug)->page()->firstOrFail();
+        $this->page = config('zeus-sky.models.Post')::query()
+            ->page()
+            ->where('slug', $slug)
+            ->whereDate('published_at', '<=', now())
+            ->firstOrFail();
     }
 
     public function render(): View

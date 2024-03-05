@@ -258,6 +258,11 @@ class PostResource extends SkyResource
         return __('Posts');
     }
 
+    public static function getNavigationBadge(): ?string
+    {
+        return (string) SkyPlugin::get()->getModel('Post')::posts()->count();
+    }
+
     public static function getActions(): array
     {
         $action = [

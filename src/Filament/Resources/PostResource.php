@@ -260,7 +260,7 @@ class PostResource extends SkyResource
 
     public static function getNavigationBadge(): ?string
     {
-        return (string) static::getEloquentQuery()->posts()->count();
+        return (string) SkyPlugin::get()->getModel('Post')::posts()->count();
     }
 
     public static function getActions(): array

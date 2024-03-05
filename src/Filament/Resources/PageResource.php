@@ -218,7 +218,7 @@ class PageResource extends SkyResource
 
     public static function getNavigationBadge(): ?string
     {
-        return (string) static::getEloquentQuery()->page()->count();
+        return (string) SkyPlugin::get()->getModel('Post')::page()->count();
     }
 
     public static function getActions(): array

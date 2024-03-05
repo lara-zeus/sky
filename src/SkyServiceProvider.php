@@ -90,7 +90,10 @@ class SkyServiceProvider extends PackageServiceProvider
                             ->label(__('Select Page'))
                             ->searchable()
                             ->options(function () {
-                                return SkyPlugin::get()->getModel('Post')::page()->pluck('title', 'id');
+                                return SkyPlugin::get()->getModel('Post')::query()
+                                    ->page()
+                                    ->whereDate('published_at', '<=', now())
+                                    ->pluck('title', 'id');
                             }),
                     ],
                     'page_link'

@@ -258,6 +258,11 @@ class PostResource extends SkyResource
         return __('Posts');
     }
 
+    public static function getNavigationBadge(): ?string
+    {
+        return (string) static::getEloquentQuery()->posts()->count();
+    }
+
     public static function getActions(): array
     {
         $action = [

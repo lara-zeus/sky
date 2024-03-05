@@ -216,6 +216,11 @@ class PageResource extends SkyResource
         return __('Pages');
     }
 
+    public static function getNavigationBadge(): ?string
+    {
+        return (string) static::getEloquentQuery()->page()->count();
+    }
+
     public static function getActions(): array
     {
         $action = [

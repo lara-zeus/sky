@@ -112,10 +112,10 @@ trait HandlesNavigationBuilder
                     Group::make()
                         ->statePath('data')
                         ->whenTruthy('type')
-                        ->schema(function (Get $get) {
+                        ->schema(function (Get $get, Component $component) {
                             $type = $get('type');
 
-                            return SkyPlugin::get()->getItemTypes()[$type]['fields'] ?? [];
+                            return $component->evaluate(SkyPlugin::get()->getItemTypes()[$type]['fields']) ?? [];
                         }),
                     Group::make()
                         ->statePath('data')

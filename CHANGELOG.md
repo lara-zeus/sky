@@ -2,6 +2,14 @@
 
 All notable changes to `sky` will be documented in this file
 
+## v3.4.7 - 2024-03-07
+
+### What's Changed
+
+* fix: evaluate potential closure value before rendering navigation component by @mallardduck in https://github.com/lara-zeus/sky/pull/197
+
+**Full Changelog**: https://github.com/lara-zeus/sky/compare/v3.4.6...v3.4.7
+
 ## v3.4.6 - 2024-03-05
 
 ### What's Changed
@@ -139,6 +147,7 @@ in your panel provider you can hide any resource from the side nav
 
 
 
+
 ```
 for more check out the docs:
 https://larazeus.com/docs/sky/v3/getting-started/configuration
@@ -235,6 +244,7 @@ Since [tiptap editor](https://github.com/awcodes/filament-tiptap-editor) still i
 
 
 
+
 ```
 #### What's Changed
 
@@ -297,11 +307,13 @@ Make sure to add this to your config:
 
 
 
+
 ```
 You can copy that class and create your own parser, too, then add it to the array, and Sky will loop them all.
 
 ```I
 Of course, it will be visible only if you install Sky with Bolt :)
+
 
 
 
@@ -347,7 +359,6 @@ Of course, it will be visible only if you install Sky with Bolt :)
 **Full Changelog**: https://github.com/lara-zeus/sky/compare/2.4.29...2.4.30
 ## 2.4.2 - 2023-04-24
 ### What's Changed
-
 - add featured image by URL by @atmonshi in https://github.com/lara-zeus/sky/pull/72
 - Default featured image from config by @atmonshi in https://github.com/lara-zeus/sky/pull/73
 - Allow preview post for author by @atmonshi in https://github.com/lara-zeus/sky/pull/74

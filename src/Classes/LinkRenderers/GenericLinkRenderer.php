@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class GenericLinkRenderer extends NavLinkRenderer
 {
-
     public function getModel(): ?Model
     {
         return null;

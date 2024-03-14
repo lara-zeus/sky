@@ -12,8 +12,7 @@ class LibraryLinkRenderer extends NavLinkRenderer
 
     public function getModel(): ?Model
     {
-        return SkyPlugin::get()->getModel('Tag')
-            ::find($this->item['data']['library_id']);
+        return SkyPlugin::get()->getModel('Tag')::find($this->item['data']['library_id']);
     }
 
     public function getLink(): ?string
@@ -22,6 +21,7 @@ class LibraryLinkRenderer extends NavLinkRenderer
          * @var Library $tag
          */
         $tag = $this->getModel();
+
         return route('library.tag', $tag->slug);
     }
 
@@ -31,6 +31,7 @@ class LibraryLinkRenderer extends NavLinkRenderer
          * @var Library $tag
          */
         $tag = $this->getModel();
+
         return str(request()->url())->contains($tag->library->first()->slug);
     }
 }

@@ -45,6 +45,7 @@ class RenderNavItem
         } else {
             $renderer = new static::$defaultRendererClass($item);
         }
+
         /**
          * @var NavLinkRenderer $renderer
          */

@@ -12,8 +12,7 @@ class PostLinkRenderer extends NavLinkRenderer
 
     public function getModel(): ?Model
     {
-        return SkyPlugin::get()->getModel('Post')
-            ::whereDate('published_at', '<=', now())
+        return SkyPlugin::get()->getModel('Post')::whereDate('published_at', '<=', now())
             ->find($this->item['data']['post_id']);
     }
 
@@ -23,6 +22,7 @@ class PostLinkRenderer extends NavLinkRenderer
          * @var Post $post
          */
         $post = $this->getModel();
+
         return route('post', $post);
     }
 
@@ -32,6 +32,7 @@ class PostLinkRenderer extends NavLinkRenderer
          * @var Post $post
          */
         $post = $this->getModel();
+
         return request()->routeIs('post', $post);
     }
 }

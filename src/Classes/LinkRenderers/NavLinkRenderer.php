@@ -10,10 +10,12 @@ abstract class NavLinkRenderer
 
     public function __construct(
         protected array $item
-    ) {}
+    ) {
+    }
 
     // TODO: something to control these classes for end-user?
     public static string $activeClasses = 'border-b border-b-secondary-500 text-secondary-500';
+
     public static string $defaultActiveClass = 'border-transparent';
 
     abstract public function getModel(): ?Model;
@@ -32,7 +34,8 @@ abstract class NavLinkRenderer
     /**
      * @return array{}
      */
-    public function getPreparedLink(string $classes = ''): array {
+    public function getPreparedLink(string $classes = ''): array
+    {
         return [
             'classes' => $classes . ' ' . $this->getActiveClass(),
             'target' => $this->item['data']['target'] ?? '_self',

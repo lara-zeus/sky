@@ -290,7 +290,7 @@ trait Configuration
     }
 
     /**
-     * @param class-string<NavLinkRenderer> $rendererClass
+     * @param  class-string<NavLinkRenderer>  $rendererClass
      * @return $this
      */
     public function navRenderer(string $rendererClass): static

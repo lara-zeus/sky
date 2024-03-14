@@ -13,8 +13,8 @@ class PageLinkRenderer extends NavLinkRenderer
     public function getModel(): ?Model
     {
         return SkyPlugin::get()->getModel('Post')::page()
-                    ->whereDate('published_at', '<=', now())
-                    ->find($this->item['data']['page_id']);
+            ->whereDate('published_at', '<=', now())
+            ->find($this->item['data']['page_id']);
     }
 
     public function getLink(): ?string
@@ -23,6 +23,7 @@ class PageLinkRenderer extends NavLinkRenderer
          * @var Post $page
          */
         $page = $this->getModel();
+
         return route('page', $page);
     }
 
@@ -32,6 +33,7 @@ class PageLinkRenderer extends NavLinkRenderer
          * @var Post $page
          */
         $page = $this->getModel();
+
         return request()->routeIs('page', $page);
     }
 }

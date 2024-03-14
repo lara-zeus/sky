@@ -41,8 +41,6 @@ abstract class NavLinkRenderer
             'target' => $this->item['data']['target'] ?? '_self',
             'link' => $this->getLink(),
             'label' => $this->item['label'],
-            'wrap' => null,
-            'wrapClass' => null,
         ];
     }
 }

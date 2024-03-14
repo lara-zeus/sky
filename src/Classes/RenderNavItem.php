@@ -18,8 +18,6 @@ class RenderNavItem
         string $target,
         string $link,
         string $label,
-        bool $wrap = false,
-        string $wrapClass = '',
     ): string {
         // TODO: make this component based?
         // Then it's probably easier for users to further customize this?

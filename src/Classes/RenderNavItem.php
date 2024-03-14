@@ -27,7 +27,8 @@ class RenderNavItem
                     target="' . $target . '"
                     href="' . $link . '"
                 >' .
-            $label .
+            $label . // TODO: allow optional wrapping link text in span?
+            // Or maybe support this customization via components?
             '</a>';
     }
 

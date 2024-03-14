@@ -6,6 +6,10 @@ use Closure;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Support\Str;
+use LaraZeus\Sky\Classes\LinkRenderers\LibraryLinkRenderer;
+use LaraZeus\Sky\Classes\LinkRenderers\NavLinkRenderer;
+use LaraZeus\Sky\Classes\LinkRenderers\PageLinkRenderer;
+use LaraZeus\Sky\Classes\LinkRenderers\PostLinkRenderer;
 
 trait Configuration
 {
@@ -54,6 +58,11 @@ trait Configuration
     protected bool $hasNavigationResource = true;
 
     protected array $itemTypes = [];
+
+    /**
+     * @var class-string<NavLinkRenderer>[]
+     */
+    protected array $navRenderers = [];
 
     protected array | Closure $extraFields = [];
 
@@ -278,5 +287,28 @@ trait Configuration
         $this->hiddenResources = $resources;
 
         return $this;
+    }
+
+    /**
+     * @param class-string<NavLinkRenderer> $rendererClass
+     * @return $this
+     */
+    public function navRenderer(string $rendererClass): static
+    {
+        $this->navRenderers[$rendererClass::$renders] = $rendererClass;
+
+        return $this;
+    }
+
+    public function getNavRenderers(): array
+    {
+        return array_merge(
+            [
+                PageLinkRenderer::$renders => PageLinkRenderer::class,
+                PostLinkRenderer::$renders => PostLinkRenderer::class,
+                LibraryLinkRenderer::$renders => LibraryLinkRenderer::class,
+            ],
+            $this->navRenderers
+        );
     }
 }

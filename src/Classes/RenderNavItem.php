@@ -2,52 +2,52 @@
 
 namespace LaraZeus\Sky\Classes;
 
+use LaraZeus\Sky\Classes\LinkRenderers\GenericLinkRenderer;
+use LaraZeus\Sky\Classes\LinkRenderers\NavLinkRenderer;
 use LaraZeus\Sky\SkyPlugin;
 
 class RenderNavItem
 {
+    /**
+     * @var class-string<NavLinkRenderer>
+     */
+    public static string $defaultRendererClass = GenericLinkRenderer::class;
+
+    private static function anchorLink(
+        string $classes,
+        string $target,
+        string $link,
+        string $label,
+        bool $wrap = false,
+        string $wrapClass = '',
+    ): string {
+        // TODO: make this component based?
+        // Then it's probably easier for users to further customize this?
+        return '<a class="' . $classes . '"
+                    target="' . $target . '"
+                    href="' . $link . '"
+                >' .
+            $label .
+            '</a>';
+    }
+
     public static function render(array $item, string $class = ''): string
     {
-        $color = 'border-b border-b-secondary-500 text-secondary-500';
-
-        if ($item['type'] === 'page-link' || $item['type'] === 'page_link') {
-            $page = SkyPlugin::get()->getModel('Post')::page()->whereDate('published_at', '<=', now())->find($item['data']['page_id']) ?? '';
-            $activeClass = (request()->routeIs('page', $page)) ? $color : 'border-transparent';
-
-            return '<a class="' . $class . ' ' . $activeClass . '"
-                    target="' . ($item['data']['target'] ?? '_self') . '"
-                    href="' . route('page', $page) . '"
-                >' .
-                $item['label'] .
-                '</a>';
-        } elseif ($item['type'] === 'post-link' || $item['type'] === 'post_link') {
-            $post = SkyPlugin::get()->getModel('Post')::find($item['data']['post_id']) ?? '';
-            $activeClass = (request()->routeIs('post', $post)) ? $color : 'border-transparent';
-
-            return '<a class="' . $class . ' ' . $activeClass . '"
-                    target="' . ($item['data']['target'] ?? '_self') . '"
-                    href="' . route('post', $post) . '"
-                >' .
-                $item['label'] .
-                '</a>';
-        } elseif ($item['type'] === 'library-link' || $item['type'] === 'library_link') {
-            $tag = SkyPlugin::get()->getModel('Tag')::find($item['data']['library_id']) ?? '';
-            $activeClass = (str(request()->url())->contains($tag->library->first()->slug)) ? $color : 'border-transparent';
-
-            return '<a class="' . $class . ' ' . $activeClass . '"
-                    target="' . ($item['data']['target'] ?? '_self') . '"
-                    href="' . route('library.tag', $tag->slug) . '"
-                >' .
-                $item['label'] .
-                '</a>';
-
-        } else {
-            return '<a class="' . $class . '"
-                    target="' . ($item['data']['target'] ?? '_self') . '"
-                    href="' . $item['data']['url'] . '"
-                >' .
-                $item['label'] .
-                '</a>';
+        $itemType = $item['type'];
+        if (str($itemType)->contains('_')) {
+            $itemType = str($itemType)->replace('_', '-')->toString();
         }
+        $renderersMap = SkyPlugin::get()->getNavRenderers();
+        // TODO: make match current behavior with underscore or hyphen
+        if (array_key_exists($itemType, $renderersMap)) {
+            $rendererClass = $renderersMap[$itemType];
+            $renderer = new $rendererClass($item);
+        } else {
+            $renderer = new static::$defaultRendererClass($item);
+        }
+        /**
+         * @var NavLinkRenderer $renderer
+         */
+        return static::anchorLink(...$renderer->getPreparedLink($class));
     }
 }

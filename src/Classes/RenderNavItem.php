@@ -39,7 +39,6 @@ class RenderNavItem
             $itemType = str($itemType)->replace('_', '-')->toString();
         }
         $renderersMap = SkyPlugin::get()->getNavRenderers();
-        // TODO: make match current behavior with underscore or hyphen
         if (array_key_exists($itemType, $renderersMap)) {
             $rendererClass = $renderersMap[$itemType];
             $renderer = new $rendererClass($item);

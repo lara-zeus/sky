@@ -37,9 +37,9 @@ abstract class NavLinkRenderer
     public function getPreparedLink(string $classes = ''): array
     {
         return [
-            'classes' => $classes . ' ' . $this->getActiveClass(),
+            'class' => $classes . ' ' . $this->getActiveClass(),
             'target' => $this->item['data']['target'] ?? '_self',
-            'link' => $this->getLink(),
+            'href' => $this->getLink(),
             'label' => $this->item['label'],
         ];
     }

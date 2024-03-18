@@ -2,6 +2,7 @@
 
 namespace LaraZeus\Sky\Classes;
 
+use Illuminate\Support\Facades\Blade;
 use LaraZeus\Sky\Classes\LinkRenderers\GenericLinkRenderer;
 use LaraZeus\Sky\Classes\LinkRenderers\NavLinkRenderer;
 use LaraZeus\Sky\SkyPlugin;
@@ -12,23 +13,6 @@ class RenderNavItem
      * @var class-string<NavLinkRenderer>
      */
     public static string $defaultRendererClass = GenericLinkRenderer::class;
-
-    private static function anchorLink(
-        string $classes,
-        string $target,
-        string $link,
-        string $label,
-    ): string {
-        // TODO: make this component based?
-        // Then it's probably easier for users to further customize this?
-        return '<a class="' . $classes . '"
-                    target="' . $target . '"
-                    href="' . $link . '"
-                >' .
-            $label . // TODO: allow optional wrapping link text in span?
-            // Or maybe support this customization via components?
-            '</a>';
-    }
 
     public static function render(array $item, string $class = ''): string
     {
@@ -47,6 +31,9 @@ class RenderNavItem
         /**
          * @var NavLinkRenderer $renderer
          */
-        return static::anchorLink(...$renderer->getPreparedLink($class));
+        return Blade::render(
+            '<x-zeus::sky-link :class="$class" :target="$target" :href="$href" :label="$label"  />',
+            $renderer->getPreparedLink($class)
+        );
     }
 }

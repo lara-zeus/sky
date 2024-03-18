@@ -314,23 +314,25 @@ trait Configuration
 
     /**
      * Set the default active CSS class(es) on a nav link.
-     * @param string $activeClasses
+     *
      * @return $this
      */
     public function setActiveClasses(string $activeClasses): static
     {
         NavLinkRenderer::$activeClasses = $activeClasses;
+
         return $this;
     }
 
     /**
      * Set the default non-active CSS class(es) on a nav link.
-     * @param string $nonActiveClass
+     *
      * @return $this
      */
     public function setNonActiveClasses(string $nonActiveClass): static
     {
         NavLinkRenderer::$nonActiveClasses = $nonActiveClass;
+
         return $this;
     }
 }

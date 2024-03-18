@@ -6,14 +6,14 @@ use Illuminate\View\Component;
 
 class SkyLink extends Component
 {
-
     public function __construct(
         public string $label,
         public ?bool $hasLabelWrap = false,
-    ) {}
+    ) {
+    }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function render()
     {

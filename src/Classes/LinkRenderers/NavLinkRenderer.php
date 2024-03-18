@@ -13,10 +13,9 @@ abstract class NavLinkRenderer
     ) {
     }
 
-    // TODO: something to control these classes for end-user?
     public static string $activeClasses = 'border-b border-b-secondary-500 text-secondary-500';
 
-    public static string $defaultActiveClass = 'border-transparent';
+    public static string $nonActiveClasses = 'border-transparent';
 
     abstract public function getModel(): ?Model;
 
@@ -28,7 +27,7 @@ abstract class NavLinkRenderer
     {
         return $this->isActiveRoute() ?
                 self::$activeClasses :
-                self::$defaultActiveClass;
+                self::$nonActiveClasses;
     }
 
     /**

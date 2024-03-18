@@ -1,3 +1,3 @@
-<a {{ $attributes->except('label')->except('hasLabelWrap') }}>
+<a {{ $attributes->except(['label', 'hasLabelWrap']) }}>
     {{ $label }}
 </a>

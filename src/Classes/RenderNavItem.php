@@ -8,7 +8,6 @@ use LaraZeus\Sky\Classes\LinkRenderers\LibraryLinkRenderer;
 use LaraZeus\Sky\Classes\LinkRenderers\NavLinkRenderer;
 use LaraZeus\Sky\Classes\LinkRenderers\PageLinkRenderer;
 use LaraZeus\Sky\Classes\LinkRenderers\PostLinkRenderer;
-use LaraZeus\Sky\SkyPlugin;
 
 class RenderNavItem
 {

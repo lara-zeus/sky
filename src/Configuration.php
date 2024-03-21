@@ -6,6 +6,7 @@ use Closure;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Support\Str;
+use LaraZeus\Sky\Classes\LinkRenderers\NavLinkRenderer;
 
 trait Configuration
 {
@@ -54,6 +55,11 @@ trait Configuration
     protected bool $hasNavigationResource = true;
 
     protected array $itemTypes = [];
+
+    /**
+     * @var class-string<NavLinkRenderer>[]
+     */
+    protected array $navRenderers = [];
 
     protected array | Closure $extraFields = [];
 

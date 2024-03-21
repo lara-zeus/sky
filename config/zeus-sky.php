@@ -58,4 +58,11 @@ return [
      * \LaraZeus\Sky\Editors\RichEditor::class,
      */
     'editor' => \LaraZeus\Sky\Editors\RichEditor::class,
+
+    /**
+     * A list of custom NavLinkRenderer classes for your app.
+     */
+    'navRenderers' => [
+        // Add your custom Nav Renderers here...
+    ],
 ];

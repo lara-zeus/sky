@@ -8,7 +8,7 @@ use LaraZeus\Sky\SkyPlugin;
 
 class LibraryLinkRenderer extends NavLinkRenderer
 {
-    public static string $renders = 'library-link';
+    public static string $rendersKey = 'library-link';
 
     public function getModel(): ?Model
     {

@@ -8,7 +8,7 @@ use LaraZeus\Sky\SkyPlugin;
 
 class PostLinkRenderer extends NavLinkRenderer
 {
-    public static string $renders = 'post-link';
+    public static string $rendersKey = 'post-link';
 
     public function getModel(): ?Model
     {

@@ -8,7 +8,7 @@ use LaraZeus\Sky\SkyPlugin;
 
 class PageLinkRenderer extends NavLinkRenderer
 {
-    public static string $renders = 'page-link';
+    public static string $rendersKey = 'page-link';
 
     public function getModel(): ?Model
     {

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 abstract class NavLinkRenderer
 {
-    public static string $renders;
+    public static string $rendersKey;
 
     public function __construct(
         protected array $item

@@ -7,7 +7,7 @@ use LaraZeus\Sky\Concerns\CanManipulateFiles;
 
 class ZeusEditorCommand extends Command
 {
-    //art make:zeus-editor Filament\\Forms\\Components\\MarkdownEditor
+    // art make:zeus-editor Filament\\Forms\\Components\\MarkdownEditor
     use CanManipulateFiles;
 
     /**

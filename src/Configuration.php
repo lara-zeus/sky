@@ -87,7 +87,7 @@ trait Configuration
     {
         return array_merge(
             config('zeus-sky.models'),
-            (new static())::get()->getSkyModels()
+            (new static)::get()->getSkyModels()
         )[$model];
     }
 

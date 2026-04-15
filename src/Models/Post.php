@@ -3,6 +3,7 @@
 namespace LaraZeus\Sky\Models;
 
 use Database\Factories\PostFactory;
+use Filament\Forms\Components\RichEditor\RichContentRenderer;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -117,7 +118,11 @@ class Post extends Model implements HasMedia
 
     public function getContent(): string
     {
-        return $this->parseContent(config('zeus-sky.editor')::render($this->content));
+        if (is_array($this->content)) {
+            $content = RichContentRenderer::make($this->content)->toHtml();
+        }
+
+        return $this->parseContent(config('zeus-sky.editor')::render($content));
     }
 
     public function parseContent(string $content): string

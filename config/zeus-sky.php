@@ -3,6 +3,12 @@
 use LaraZeus\Sky\Classes\BoltParser;
 use LaraZeus\Sky\Editors\RichEditor;
 use LaraZeus\Sky\Enums\PostStatus;
+use LaraZeus\Sky\Filament\Resources\FaqResource;
+use LaraZeus\Sky\Filament\Resources\LibraryResource;
+use LaraZeus\Sky\Filament\Resources\NavigationResource;
+use LaraZeus\Sky\Filament\Resources\PageResource;
+use LaraZeus\Sky\Filament\Resources\PostResource;
+use LaraZeus\Sky\Filament\Resources\TagResource;
 use LaraZeus\Sky\Models\Faq;
 use LaraZeus\Sky\Models\Library;
 use LaraZeus\Sky\Models\Navigation;
@@ -53,6 +59,15 @@ return [
 
     'enums' => [
         'PostStatus' => PostStatus::class,
+    ],
+
+    'resource' => [
+        'post' => PostResource::class,
+        'page' => PageResource::class,
+        'library' => LibraryResource::class,
+        'faq' => FaqResource::class,
+        'tag' => TagResource::class,
+        'navigation' => NavigationResource::class,
     ],
 
     'parsers' => [

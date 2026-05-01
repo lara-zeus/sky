@@ -41,28 +41,34 @@ final class SkyPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        if (! in_array(PostResource::class, $this->getHiddenResources())) {
-            $panel->resources([PostResource::class]);
+        $postResource = config('zeus-sky.resource.post', PostResource::class);
+        if (! in_array($postResource, $this->getHiddenResources(), true)) {
+            $panel->resources([$postResource]);
         }
 
-        if (! in_array(PageResource::class, $this->getHiddenResources())) {
-            $panel->resources([PageResource::class]);
+        $pageResource = config('zeus-sky.resource.page', PageResource::class);
+        if (! in_array($pageResource, $this->getHiddenResources(), true)) {
+            $panel->resources([$pageResource]);
         }
 
-        if (! in_array(FaqResource::class, $this->getHiddenResources())) {
-            $panel->resources([FaqResource::class]);
+        $faqResource = config('zeus-sky.resource.faq', FaqResource::class);
+        if (! in_array($faqResource, $this->getHiddenResources(), true)) {
+            $panel->resources([$faqResource]);
         }
 
-        if (! in_array(LibraryResource::class, $this->getHiddenResources())) {
-            $panel->resources([LibraryResource::class]);
+        $libraryResource = config('zeus-sky.resource.library', LibraryResource::class);
+        if (! in_array($libraryResource, $this->getHiddenResources(), true)) {
+            $panel->resources([$libraryResource]);
         }
 
-        if (! in_array(TagResource::class, $this->getHiddenResources())) {
-            $panel->resources([TagResource::class]);
+        $navigationResource = config('zeus-sky.resource.navigation', NavigationResource::class);
+        if (! in_array($navigationResource, $this->getHiddenResources(), true)) {
+            $panel->resources([$navigationResource]);
         }
 
-        if (! in_array(NavigationResource::class, $this->getHiddenResources())) {
-            $panel->resources([NavigationResource::class]);
+        $tagResource = config('zeus-sky.resource.tag', TagResource::class);
+        if (! in_array($tagResource, $this->getHiddenResources(), true)) {
+            $panel->resources([$tagResource]);
         }
     }
 

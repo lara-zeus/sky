@@ -49,11 +49,11 @@ final class SkyPlugin implements Plugin
             $panel->resources([PageResource::class]);
         }
 
-        if (! in_array(FaqResource::class, $this->getHiddenResources())) {
+        if ($this->hasFaqResource() && ! in_array(FaqResource::class, $this->getHiddenResources())) {
             $panel->resources([FaqResource::class]);
         }
 
-        if (! in_array(LibraryResource::class, $this->getHiddenResources())) {
+        if ($this->hasLibraryResource() && ! in_array(LibraryResource::class, $this->getHiddenResources())) {
             $panel->resources([LibraryResource::class]);
         }
 

@@ -59,10 +59,13 @@ class PageResource extends SkyResource
      */
     public static function getEloquentQuery(): Builder
     {
-        return parent::getEloquentQuery()
+        /** @var Builder<Post> $query */
+        $query = parent::getEloquentQuery()
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
             ]);
+
+        return $query;
     }
 
     public static function form(Schema $schema): Schema
@@ -167,6 +170,9 @@ class PageResource extends SkyResource
 
     public static function table(Table $table): Table
     {
+        /** @var view-string $pageTitleView */
+        $pageTitleView = 'zeus::filament.columns.page-title';
+
         return $table
             ->columns([
                 ViewColumn::make('title_card')
@@ -174,7 +180,7 @@ class PageResource extends SkyResource
                     ->sortable(['title'])
                     ->searchable(['title'])
                     ->toggleable()
-                    ->view('zeus::filament.columns.page-title'),
+                    ->view($pageTitleView),
 
                 TextColumn::make('status')
                     ->label(__('zeus-sky::cms.page.status'))
@@ -233,7 +239,10 @@ class PageResource extends SkyResource
             return null;
         }
 
-        return (string) SkyPlugin::get()->getModel('Post')::page()->count();
+        /** @var class-string<Post> $postModel */
+        $postModel = SkyPlugin::get()->getModel('Post');
+
+        return (string) $postModel::page()->count();
     }
 
     public static function getActions(): array

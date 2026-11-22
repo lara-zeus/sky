@@ -35,6 +35,11 @@ class NavigationResource extends SkyResource
 
     public static function form(Schema $schema): Schema
     {
+        /** @var view-string $navigationBuilderView */
+        $navigationBuilderView = 'zeus::filament.navigation-builder';
+        /** @var view-string $cardDividerView */
+        $cardDividerView = 'zeus::filament.card-divider';
+
         return $schema
             ->components([
                 Section::make()
@@ -55,10 +60,10 @@ class NavigationResource extends SkyResource
                         ViewField::make('items')
                             ->label(__('zeus-sky::filament-navigation.attributes.items'))
                             ->default([])
-                            ->view('zeus::filament.navigation-builder'),
+                            ->view($navigationBuilderView),
                     ])
                     ->columnSpan([
-                        12,
+                        'default' => 12,
                         'lg' => 8,
                     ]),
                 Section::make()
@@ -68,7 +73,7 @@ class NavigationResource extends SkyResource
                             ->label(__('zeus-sky::filament-navigation.attributes.handle'))
                             ->required()
                             ->unique(),
-                        View::make('zeus::filament.card-divider')
+                        View::make($cardDividerView)
                             ->visible(static::$showTimestamps),
                         TextEntry::make('created_at')
                             ->label(__('zeus-sky::filament-navigation.attributes.created_at'))
@@ -78,7 +83,7 @@ class NavigationResource extends SkyResource
                             ->visible(static::$showTimestamps),
                     ])
                     ->columnSpan([
-                        12,
+                        'default' => 12,
                         'lg' => 4,
                     ]),
             ])

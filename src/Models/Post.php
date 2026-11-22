@@ -20,7 +20,7 @@ use Spatie\Translatable\HasTranslations;
 
 /**
  * @property string $title
- * @property string $content
+ * @property string | array<mixed> | null $content
  * @property string $description
  * @property Carbon $published_at
  * @property PostStatus $status
@@ -28,11 +28,10 @@ use Spatie\Translatable\HasTranslations;
  * @property string $post_type
  * @property int $user_id
  * @property bool $require_password
- * @property string $password
+ * @property string | null $password
  *
  * @method Builder|static sticky()
  * @method Builder|static published()
- * @method Builder|static query()
  * @method Builder|static withAnyTags()
  */
 class Post extends Model implements HasMedia
@@ -85,13 +84,16 @@ class Post extends Model implements HasMedia
         return 'slug';
     }
 
-    /** @return BelongsTo<Post, Model> */
+    /** @return BelongsTo<Model, $this> */
     public function author(): BelongsTo
     {
-        return $this->belongsTo(config('auth.providers.users.database.model', config('auth.providers.users.model')), 'user_id', 'id');
+        /** @var class-string<Model> $userModel */
+        $userModel = config('auth.providers.users.database.model', config('auth.providers.users.model'));
+
+        return $this->belongsTo($userModel, 'user_id', 'id');
     }
 
-    /** @return BelongsTo<Post, Post> */
+    /** @return BelongsTo<Post, $this> */
     public function parent(): BelongsTo
     {
         return $this->belongsTo(self::class, 'parent_id', 'id');

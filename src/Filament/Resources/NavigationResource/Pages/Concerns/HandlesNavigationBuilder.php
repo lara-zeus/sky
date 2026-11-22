@@ -71,6 +71,9 @@ trait HandlesNavigationBuilder
 
     protected function getActions(): array
     {
+        /** @var view-string $hiddenActionView */
+        $hiddenActionView = 'zeus::filament.hidden-action';
+
         return [
             Action::make('item')
                 ->mountUsing(function ($form) {
@@ -84,7 +87,7 @@ trait HandlesNavigationBuilder
 
                     $form->fill($this->mountedItemData);
                 })
-                ->view('zeus::filament.hidden-action')
+                ->view($hiddenActionView)
                 ->schema([
                     TextInput::make('label')
                         ->label(__('zeus-sky::filament-navigation.items-modal.label'))

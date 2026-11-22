@@ -43,11 +43,6 @@ final class SkyPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        $configuredResources = array_merge(
-            (array) (config($this->getId() . '.resources', []) ?? []),
-            $this->getResources(),
-        );
-
         $defaultResources = [
             'Post' => [PostResource::class, $this->hasPostResource()],
             'Page' => [PageResource::class, $this->hasPageResource()],
@@ -64,7 +59,7 @@ final class SkyPlugin implements Plugin
                 continue;
             }
 
-            $resource = $configuredResources[$key] ?? $defaultResource;
+            $resource = $this->resolveResource($key) ?? $defaultResource;
 
             if (! in_array($resource, $this->getHiddenResources(), true)) {
                 $resources[] = $resource;

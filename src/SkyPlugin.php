@@ -43,19 +43,28 @@ final class SkyPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
+        $configuredResources = array_merge(
+            (array) (config($this->getId() . '.resources', []) ?? []),
+            $this->getResources(),
+        );
+
         $defaultResources = [
-            'Post' => PostResource::class,
-            'Page' => PageResource::class,
-            'Faq' => FaqResource::class,
-            'Library' => LibraryResource::class,
-            'Tag' => TagResource::class,
-            'Navigation' => NavigationResource::class,
+            'Post' => [PostResource::class, $this->hasPostResource()],
+            'Page' => [PageResource::class, $this->hasPageResource()],
+            'Faq' => [FaqResource::class, $this->hasFaqResource()],
+            'Library' => [LibraryResource::class, $this->hasLibraryResource()],
+            'Tag' => [TagResource::class, $this->hasTagResource()],
+            'Navigation' => [NavigationResource::class, $this->hasNavigationResource()],
         ];
 
         $resources = [];
 
-        foreach ($defaultResources as $key => $defaultResource) {
-            $resource = self::getResource($key) ?? $defaultResource;
+        foreach ($defaultResources as $key => [$defaultResource, $enabled]) {
+            if (! $enabled) {
+                continue;
+            }
+
+            $resource = $configuredResources[$key] ?? $defaultResource;
 
             if (! in_array($resource, $this->getHiddenResources(), true)) {
                 $resources[] = $resource;

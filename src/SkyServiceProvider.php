@@ -9,6 +9,8 @@ use LaraZeus\Sky\Console\InstallCommand;
 use LaraZeus\Sky\Console\migrateCommand;
 use LaraZeus\Sky\Console\PublishCommand;
 use LaraZeus\Sky\Console\ZeusEditorCommand;
+use LaraZeus\Sky\Models\Post;
+use LaraZeus\Sky\Models\Tag;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -72,6 +74,11 @@ class SkyServiceProvider extends PackageServiceProvider
                 return;
             }
 
+            /** @var class-string<Post> $postModel */
+            $postModel = SkyPlugin::get()->getModel('Post');
+            /** @var class-string<Tag> $tagModel */
+            $tagModel = SkyPlugin::get()->getModel('Tag');
+
             SkyPlugin::get()
                 ->itemType(
                     __('zeus-sky::cms.post.link'),
@@ -79,8 +86,8 @@ class SkyServiceProvider extends PackageServiceProvider
                         Select::make('post_id')
                             ->label(__('zeus-sky::cms.post.select_post'))
                             ->searchable()
-                            ->options(function () {
-                                return SkyPlugin::get()->getModel('Post')::published()->pluck('title', 'id');
+                            ->options(function () use ($postModel) {
+                                return $postModel::published()->pluck('title', 'id');
                             }),
                     ],
                     'post_link'
@@ -92,7 +99,7 @@ class SkyServiceProvider extends PackageServiceProvider
                             ->label(__('zeus-sky::cms.page.select_page'))
                             ->searchable()
                             ->options(
-                                SkyPlugin::get()->getModel('Post')::query()
+                                $postModel::query()
                                     ->page()
                                     ->whereDate('published_at', '<=', now())
                                     ->pluck('title', 'id')
@@ -107,7 +114,7 @@ class SkyServiceProvider extends PackageServiceProvider
                             ->label(__('zeus-sky::cms.library.select_library'))
                             ->searchable()
                             ->options(
-                                SkyPlugin::get()->getModel('Tag')::getWithType('library')->pluck('name', 'id')
+                                $tagModel::getWithType('library')->pluck('name', 'id')
                             ),
                     ],
                     'library_link'

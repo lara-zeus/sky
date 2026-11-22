@@ -13,7 +13,7 @@ class BoltParser
         if (class_exists(Bolt::class)) {
             $content = html_entity_decode($content);
             preg_match('/<bolt>(.*?)<\/bolt>/s', $content, $bolt);
-            if (is_array($bolt) && isset($bolt[1])) {
+            if (isset($bolt[1])) {
                 $formSlug = trim($bolt[1]);
                 // @phpstan-ignore-next-line
                 $checkForm = BoltPlugin::getModel('Form')::where('slug', $formSlug)->first();

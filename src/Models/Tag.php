@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 /**
- * @property string $slug
+ * @property string | null $slug
  * @property string $type
  * @property string $name
  * @property string $description
@@ -18,29 +18,43 @@ class Tag extends \Spatie\Tags\Tag
 {
     public function library(): MorphToMany
     {
-        return $this->morphedByMany(config('zeus-sky.models.Library'), 'taggable');
+        /** @var class-string<Library> $libraryModel */
+        $libraryModel = config('zeus-sky.models.Library');
+
+        return $this->morphedByMany($libraryModel, 'taggable');
     }
 
     public function category(): MorphToMany
     {
-        return $this->morphedByMany(config('zeus-sky.models.Post'), 'taggable');
+        /** @var class-string<Post> $postModel */
+        $postModel = config('zeus-sky.models.Post');
+
+        return $this->morphedByMany($postModel, 'taggable');
     }
 
     public function faq(): MorphToMany
     {
-        return $this->morphedByMany(config('zeus-sky.models.Faq'), 'taggable');
+        /** @var class-string<Faq> $faqModel */
+        $faqModel = config('zeus-sky.models.Faq');
+
+        return $this->morphedByMany($faqModel, 'taggable');
     }
 
     public function tag(): MorphToMany
     {
-        return $this->morphedByMany(config('zeus-sky.models.Post'), 'taggable');
+        /** @var class-string<Post> $postModel */
+        $postModel = config('zeus-sky.models.Post');
+
+        return $this->morphedByMany($postModel, 'taggable');
     }
 
-    /** @return MorphToMany<Post> */
+    /** @return MorphToMany<Post, $this> */
     public function postsPublished(): MorphToMany
     {
-        // @phpstan-ignore-next-line
-        return $this->morphedByMany(config('zeus-sky.models.Post'), 'taggable')->published();
+        /** @var class-string<Post> $postModel */
+        $postModel = config('zeus-sky.models.Post');
+
+        return $this->morphedByMany($postModel, 'taggable')->published();
     }
 
     protected function generateSlug(string $locale): string

@@ -81,7 +81,7 @@ class PostResource extends SkyResource
                         Tab::make(__('zeus-sky::cms.common.SEO'))
                             ->schema([
                                 Hidden::make('user_id')
-                                    ->default(auth()->user()?->id ?? 0)
+                                    ->default(auth()->user()->id ?? 0)
                                     ->required(),
 
                                 Hidden::make('post_type')
@@ -170,6 +170,9 @@ class PostResource extends SkyResource
 
     public static function table(Table $table): Table
     {
+        /** @var view-string $postTitleView */
+        $postTitleView = 'zeus::filament.columns.post-title';
+
         return $table
             ->columns([
                 ViewColumn::make('title_card')
@@ -177,7 +180,7 @@ class PostResource extends SkyResource
                     ->sortable(['title'])
                     ->searchable(['title'])
                     ->toggleable()
-                    ->view('zeus::filament.columns.post-title'),
+                    ->view($postTitleView),
 
                 TextColumn::make('status')
                     ->label(__('zeus-sky::cms.post.status_label'))
@@ -273,7 +276,10 @@ class PostResource extends SkyResource
             return null;
         }
 
-        return (string) SkyPlugin::get()->getModel('Post')::posts()->count();
+        /** @var class-string<Post> $postModel */
+        $postModel = SkyPlugin::get()->getModel('Post');
+
+        return (string) $postModel::posts()->count();
     }
 
     public static function getActions(): array

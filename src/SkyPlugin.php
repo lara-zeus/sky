@@ -11,6 +11,7 @@ use LaraZeus\FilamentPluginTools\Concerns\CanHideResources;
 use LaraZeus\FilamentPluginTools\Concerns\HasEnums;
 use LaraZeus\FilamentPluginTools\Concerns\HasModels;
 use LaraZeus\FilamentPluginTools\Concerns\HasNavigationGroupLabel;
+use LaraZeus\FilamentPluginTools\Concerns\HasResources;
 use LaraZeus\FilamentPluginTools\Concerns\HasRouteNamePrefix;
 use LaraZeus\FilamentPluginTools\Concerns\HasUploads;
 use LaraZeus\Sky\Filament\Resources\FaqResource;
@@ -29,6 +30,7 @@ final class SkyPlugin implements Plugin
     use HasEnums;
     use HasModels;
     use HasNavigationGroupLabel;
+    use HasResources;
     use HasRouteNamePrefix;
     use HasUploads;
 
@@ -41,28 +43,27 @@ final class SkyPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        if (! in_array(PostResource::class, $this->getHiddenResources())) {
-            $panel->resources([PostResource::class]);
+        $defaultResources = [
+            'Post' => PostResource::class,
+            'Page' => PageResource::class,
+            'Faq' => FaqResource::class,
+            'Library' => LibraryResource::class,
+            'Tag' => TagResource::class,
+            'Navigation' => NavigationResource::class,
+        ];
+
+        $resources = [];
+
+        foreach ($defaultResources as $key => $defaultResource) {
+            $resource = self::getResource($key) ?? $defaultResource;
+
+            if (! in_array($resource, $this->getHiddenResources(), true)) {
+                $resources[] = $resource;
+            }
         }
 
-        if (! in_array(PageResource::class, $this->getHiddenResources())) {
-            $panel->resources([PageResource::class]);
-        }
-
-        if (! in_array(FaqResource::class, $this->getHiddenResources())) {
-            $panel->resources([FaqResource::class]);
-        }
-
-        if (! in_array(LibraryResource::class, $this->getHiddenResources())) {
-            $panel->resources([LibraryResource::class]);
-        }
-
-        if (! in_array(TagResource::class, $this->getHiddenResources())) {
-            $panel->resources([TagResource::class]);
-        }
-
-        if (! in_array(NavigationResource::class, $this->getHiddenResources())) {
-            $panel->resources([NavigationResource::class]);
+        if ($resources !== []) {
+            $panel->resources($resources);
         }
     }
 

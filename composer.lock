@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "21a1c655999893ad4468e6fbf39bff55",
+    "content-hash": "78f2364def80ba568fa571356c4cd11b",
     "packages": [
         {
             "name": "blade-ui-kit/blade-heroicons",
@@ -2256,16 +2256,16 @@
         },
         {
             "name": "lara-zeus/filament-plugin-tools",
-            "version": "3.0.2",
+            "version": "3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lara-zeus/filament-plugin-tools.git",
-                "reference": "eefdfc0708c7aa4b7372f16289c06ec8223ef921"
+                "reference": "68cdb249d09d948ec319220a3dae883f2da63218"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lara-zeus/filament-plugin-tools/zipball/eefdfc0708c7aa4b7372f16289c06ec8223ef921",
-                "reference": "eefdfc0708c7aa4b7372f16289c06ec8223ef921",
+                "url": "https://api.github.com/repos/lara-zeus/filament-plugin-tools/zipball/68cdb249d09d948ec319220a3dae883f2da63218",
+                "reference": "68cdb249d09d948ec319220a3dae883f2da63218",
                 "shasum": ""
             },
             "require": {
@@ -2329,7 +2329,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-04-16T08:39:52+00:00"
+            "time": "2026-11-22T18:31:17+00:00",
+            "published-time": "2026-11-22T18:33:11+00:00"
         },
         {
             "name": "lara-zeus/laravel-seo",
@@ -13155,5 +13156,5 @@
         "php": "^8.2"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.11.0"
 }

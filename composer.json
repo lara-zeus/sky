@@ -36,7 +36,7 @@
         "spatie/laravel-sluggable": "^3.3",
         "spatie/laravel-tags": "^4.6",
         "lara-zeus/core": "^5.0",
-        "lara-zeus/filament-plugin-tools": "^3.0"
+        "lara-zeus/filament-plugin-tools": "^3.0.3"
     },
     "require-dev": {
         "phpstan/extension-installer": "^1.4",

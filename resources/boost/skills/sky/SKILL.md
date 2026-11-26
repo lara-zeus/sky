@@ -7,8 +7,8 @@ description: Use when installing, configuring, or customizing the lara-zeus/sky 
 
 ## Overview & Requirements
 `lara-zeus/sky` is a Filament v5 CMS for posts, pages, tags/categories, FAQs, libraries, and navigation menus.
-- **PHP**: `^8.2`
-- **Dependencies**: `lara-zeus/core` (`^5.0`), `lara-zeus/filament-plugin-tools` (`^3.0.3`), `filament/spatie-laravel-media-library-plugin` (`^5.0`), `filament/spatie-laravel-tags-plugin` (`^5.0`), `spatie/laravel-medialibrary` (`^11.0`), `spatie/laravel-sluggable` (`^3.3 || ^6.0`), `spatie/laravel-tags` (`^4.6`)
+- **PHP**: `^8.4` (Laravel 13)
+- **Dependencies**: `lara-zeus/core` (`^5.0`), `lara-zeus/filament-plugin-tools` (`^3.0.3`), `filament/spatie-laravel-media-library-plugin` (`^5.0`), `filament/spatie-laravel-tags-plugin` (`^5.0`), `spatie/laravel-medialibrary` (`^11.0`), `spatie/laravel-sluggable` (`^6.0`), `spatie/laravel-tags` (`^4.6`)
 
 ## Installation
 ```bash

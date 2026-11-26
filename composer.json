@@ -29,11 +29,11 @@
         }
     ],
     "require": {
-        "php": "^8.2",
+        "php": "^8.4",
         "filament/spatie-laravel-media-library-plugin": "^5.0",
         "filament/spatie-laravel-tags-plugin": "^5.0",
         "spatie/laravel-medialibrary": "^11.0",
-        "spatie/laravel-sluggable": "^3.3 || ^6.0",
+        "spatie/laravel-sluggable": "^6.0",
         "spatie/laravel-tags": "^4.6",
         "lara-zeus/core": "^5.0",
         "lara-zeus/filament-plugin-tools": "^3.0.3"
@@ -42,7 +42,7 @@
         "phpstan/extension-installer": "^1.4",
         "larastan/larastan": "^3.0",
         "laravel/pint": "^1.0",
-        "orchestra/testbench": "^10.0",
+        "orchestra/testbench": "^11.0",
         "pestphp/pest": "^4.0",
         "pestphp/pest-plugin-arch": "^4.0",
         "pestphp/pest-plugin-laravel": "^4.0",

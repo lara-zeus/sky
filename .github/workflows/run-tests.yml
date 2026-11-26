@@ -5,14 +5,11 @@ on:
     branches: [5.x]
     paths:
       - '**.php'
-      - 'composer.json'
-      - 'composer.lock'
   pull_request:
     branches: [5.x]
     paths:
       - '**.php'
       - 'composer.json'
-      - 'composer.lock'
   workflow_dispatch:
 
 jobs:
